@@ -11,4 +11,9 @@ class FrontendController extends Controller
 		$result['data'] = [];
         return view('home', $result);
 	}
+	public function tour_details($id)
+	{
+		$result['data'] = [];
+        return view('tour-details', $result);
+	}
 }

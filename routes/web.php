@@ -49,6 +49,7 @@ Route::get('db-seed', function () {
 });
 //PAGE ROUTE START
 Route::get('/', [FrontendController::class, 'index'])->name('home');
+Route::get('/tours/{id}', [FrontendController::class, 'tour_details'])->name('tour.details');
 Route::get('/error', [FrontendController::class, 'error_page'])->name('error');
 
 // ------------- temporary new post add route start ----------

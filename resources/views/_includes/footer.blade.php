@@ -56,7 +56,7 @@
 				   </div>
 				</div>
 				<div class="copyright">
-				   <p>© 2017 Carspot All rights reserved. Design by <a href="http://themeforest.net/user/scriptsbundle/portfolio" target="_blank">Scriptsbundle</a> </p>
+				   <p>© {{date('Y')}} Satpura Adventure Club All rights reserved. Developed by <a href="https://exaltedsolution.com/" target="_blank">Exalted Solution</a> </p>
 				</div>   
 				<!-- Newslatter -->
 			 </div>

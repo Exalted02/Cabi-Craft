@@ -57,7 +57,7 @@
 
         @include('_includes/footer')
 		<!-- Back To Top -->
-		<a href="#0" class="cd-top">Top</a>
+		<a href="#0" class="cd-top" style="background-image: url('{{ url('images/cd-top-arrow.svg') }}')">Top</a>
 		<!-- =-=-=-=-=-=-= JQUERY =-=-=-=-=-=-= -->
 		<script src="{{ url('front-assets/js/jquery.min.js') }}"></script>
 		<!-- Bootstrap Core Css  -->

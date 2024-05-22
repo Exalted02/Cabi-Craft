@@ -1,16 +1,5 @@
 @extends('layouts.app')
 @section('content')
-<!-- Master Slider -->
-<div class="master-slider ms-skin-default" id="masterslider">
-	<!-- slide 1 -->
-	<div class="ms-slide slide-1"  data-delay="5">
-		<img src="{{ url('images/slider/slider-banner.avif') }}" alt="Slide1 background"/> 
-	</div>
-	<div class="ms-slide slide-3" data-delay="5">
-		<img src="{{ url('images/slider/slider-banner2.avif') }}" alt="Slide1 background"/>
-	</div>
-</div>
-<!-- end Master Slider -->
 <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
 <div class="main-content-area clearfix">
 	<section class="custom-padding">
@@ -19,7 +8,7 @@
 				<div class="clearfix"></div>
 				<div class="heading-panel">
 					<div class="col-xs-12 col-md-12 col-sm-12 text-center">
-						<h1><span class="secondary-color">Pachmarhi</span></h1>
+						<h1><span class="secondary-color">In progress...</span></h1>
 					</div>
 				</div>
 				<div class="row">

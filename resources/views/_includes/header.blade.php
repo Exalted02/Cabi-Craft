@@ -1,7 +1,7 @@
 <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
   <div class="preloader"></div>
   <!-- =-=-=-=-=-=-=  Header =-=-=-=-=-=-= -->
-  <div class="colored-header">
+  <div class="colored-header" style="{{ (request()->routeIs('home')) ? '' : 'border-bottom: 1px solid #e0e0e0;' }}">
 	 <!-- Top Bar -->
 	 <div class="header-top">
 		<div class="container">
@@ -28,7 +28,7 @@
 					<!-- menu logo -->
 					<ul class="menu-logo">
 					   <li>
-						  <a href="index.html"><img src="{{ url('images/logo.png') }}" alt="logo"> </a>
+						  <a href="{{ route('home') }}"><img src="{{ url('images/logo.png') }}" alt="logo"> </a>
 					   </li>
 					</ul>
 					<!-- menu links -->

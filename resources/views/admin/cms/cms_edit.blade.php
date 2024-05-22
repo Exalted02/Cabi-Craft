@@ -38,36 +38,12 @@
 				</div>
 				<div class="row updateCMSrow mb-3">
 					<div class="col-lg-2">
-						<h5 class="card-title mb-2">CMS Page Content In English<sup>*</sup></h5>
+						<h5 class="card-title mb-2">CMS Page Content<sup>*</sup></h5>
 					</div>
 					<div class="col-lg-10">
 						<textarea name="cms_page_content" id="" class="form-control summernote">{{$cms_page_content}}</textarea>
 					</div>
-				</div>
-				<div class="row updateCMSrow mb-3">
-					<div class="col-lg-2">
-						<h5 class="card-title mb-2">CMS Page Content In German<sup>*</sup></h5>
-					</div>
-					<div class="col-lg-10">
-						<textarea name="cms_page_content_de" id="" class="form-control summernote">{{$cms_page_content_de}}</textarea>
-					</div>
-				</div>
-				<div class="row updateCMSrow mb-3">
-					<div class="col-lg-2">
-						<h5 class="card-title mb-2">CMS Page Content In French<sup>*</sup></h5>
-					</div>
-					<div class="col-lg-10">
-						<textarea name="cms_page_content_fr" id="" class="form-control summernote">{{$cms_page_content_fr}}</textarea>
-					</div>
-				</div>
-				<div class="row updateCMSrow mb-3">
-					<div class="col-lg-2">
-						<h5 class="card-title mb-2">CMS Page Content In Itally<sup>*</sup></h5>
-					</div>
-					<div class="col-lg-10">
-						<textarea name="cms_page_content_it" id="" class="form-control summernote">{{$cms_page_content_it}}</textarea>
-					</div>
-				</div>				
+				</div>			
 				<div class="row updateCMSrow mb-3">
 					<div class="col-lg-2">
 						<h5 class="card-title mb-2">Status<sup>*</sup></h5>

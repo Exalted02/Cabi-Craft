@@ -11,7 +11,7 @@
 			<div class="card-body">
 				<div class="row add_cat mb-3">
 					<div class="col-lg-2">
-						<h5 class="card-title mb-2">Message Subject In English<sup>*</sup></h5>
+						<h5 class="card-title mb-2">Message Subject<sup>*</sup></h5>
 					</div>
 					<div class="col-lg-8">
 						<input type="text" name="message_subject" value="{{$message_subject ?? ''}}" class="form-control" placeholder="Message Subject" required>
@@ -19,61 +19,10 @@
 				</div>
 				<div class="row updateCMSrow mb-3">
 					<div class="col-lg-2">
-						<h5 class="card-title mb-2">Email Message In English<sup>*</sup></h5>
+						<h5 class="card-title mb-2">Email Message<sup>*</sup></h5>
 					</div>
 					<div class="col-lg-10">
 						<textarea name="message" id="" class="form-control summernote">{{$message}}</textarea>
-					</div>
-				</div>
-				
-				<div class="row add_cat mb-3">
-					<div class="col-lg-2">
-						<h5 class="card-title mb-2">Message Subject In German<sup>*</sup></h5>
-					</div>
-					<div class="col-lg-8">
-						<input type="text" name="message_subject_de" value="{{$message_subject_de ?? ''}}" class="form-control" placeholder="Message Subject In German" required>
-					</div>
-				</div>
-				<div class="row updateCMSrow mb-3">
-					<div class="col-lg-2">
-						<h5 class="card-title mb-2">Email Message In German<sup>*</sup></h5>
-					</div>
-					<div class="col-lg-10">
-						<textarea name="message_de" id="" class="form-control summernote">{{$message_de}}</textarea>
-					</div>
-				</div>
-				
-				<div class="row add_cat mb-3">
-					<div class="col-lg-2">
-						<h5 class="card-title mb-2">Message Subject In French<sup>*</sup></h5>
-					</div>
-					<div class="col-lg-8">
-						<input type="text" name="message_subject_fr" value="{{$message_subject_fr ?? ''}}" class="form-control" placeholder="Message Subject In French" required>
-					</div>
-				</div>
-				<div class="row updateCMSrow mb-3">
-					<div class="col-lg-2">
-						<h5 class="card-title mb-2">Email Message In French<sup>*</sup></h5>
-					</div>
-					<div class="col-lg-10">
-						<textarea name="message_fr" id="" class="form-control summernote">{{$message_fr}}</textarea>
-					</div>
-				</div>
-				
-				<div class="row add_cat mb-3">
-					<div class="col-lg-2">
-						<h5 class="card-title mb-2">Message Subject In Itally<sup>*</sup></h5>
-					</div>
-					<div class="col-lg-8">
-						<input type="text" name="message_subject_it" value="{{$message_subject_it ?? ''}}" class="form-control" placeholder="Message Subject In ltally" required>
-					</div>
-				</div>
-				<div class="row updateCMSrow mb-3">
-					<div class="col-lg-2">
-						<h5 class="card-title mb-2">Email Message In Itally<sup>*</sup></h5>
-					</div>
-					<div class="col-lg-10">
-						<textarea name="message_it" id="" class="form-control summernote">{{$message_it}}</textarea>
 					</div>
 				</div>
 				<div class="row updateCMSrow mb-3">

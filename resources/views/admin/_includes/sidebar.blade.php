@@ -21,27 +21,14 @@
                              <span class="align-middle">Course</span>
                         </a>
                     </li>
-                    <li class="sidebar-item sub_menu {{ (request()->routeIs('admin.colleges.mou','admin.college.add-mou-college','admin.college.update-mou-college','admin.colleges.non-mou','admin.college.add-non-mou-college','admin.college.update-non-mou-college','admin.college.manage_college_images','admin.college.manage_college_courses','admin.college.manage_college_faculty')) ? 'active' : '' }}">
-                        <a class="sidebar-link {{ (request()->routeIs('admin.colleges.mou','admin.college.add-mou-college','admin.college.update-mou-college','admin.colleges.non-mou','admin.college.add-non-mou-college','admin.college.update-non-mou-college','admin.college.manage_college_images','admin.college.manage_college_courses','admin.college.manage_college_faculty')) ? '' : 'collapsed' }}" href="#collapseReport" data-bs-toggle="collapse" aria-expanded="false">
-                            <i class="align-middle" data-feather="home"></i> <span class="align-middle">Colleges</span>
-                        </a>
-						<ul class="submenu collapse {{ (request()->routeIs('admin.colleges.mou','admin.college.add-mou-college','admin.college.update-mou-college','admin.colleges.non-mou','admin.college.add-non-mou-college','admin.college.update-non-mou-college','admin.college.manage_college_images','admin.college.manage_college_courses','admin.college.manage_college_faculty')) ? 'show' : '' }}" id="collapseReport">
-							<li><a class="nav-link {{ (request()->routeIs('admin.colleges.mou','admin.college.add-mou-college','admin.college.update-mou-college')) ? 'active' : '' }}" href="{{ route('admin.colleges.mou') }}">MoU Colleges</a></li>
-							<li><a class="nav-link {{ (request()->routeIs('admin.colleges.non-mou','admin.college.add-non-mou-college','admin.college.update-non-mou-college')) ? 'active' : '' }}" href="{{ route('admin.colleges.non-mou') }}">Non MoU Colleges</a></li>
-						</ul>
-                    </li>
-                    <li class="sidebar-item {{ (request()->routeIs('admin.agent','admin.add-agent','admin.update-agent')) ? 'active' : '' }}">
-                        <a class="sidebar-link" href="{{ route('admin.agent') }}">
-                            {{-- <i class="align-middle" data-feather="align-justify"></i> --}}
-                            <i class="fas fa-layer-group"></i>
-                             <span class="align-middle">Agent</span>
+					<li class="sidebar-item {{ (request()->routeIs('admin.cms','admin.add-cms','admin.cms-edit')) ? 'active' : '' }}">
+                        <a class="sidebar-link" href="{{ route('admin.cms') }}">
+                            <i class="align-middle" data-feather="server"></i> <span class="align-middle">CMS</span>
                         </a>
                     </li>
-                    <li class="sidebar-item {{ (request()->routeIs('admin.institutions','admin.add-institution','admin.update-institution')) ? 'active' : '' }}">
-                        <a class="sidebar-link" href="{{ route('admin.institutions') }}">
-                            {{-- <i class="align-middle" data-feather="align-justify"></i> --}}
-                            <i class="fas fa-layer-group"></i>
-                             <span class="align-middle">Institution</span>
+					<li class="sidebar-item {{ (request()->routeIs('admin.email-management','admin.add-email-management','admin.email-management-edit')) ? 'active' : '' }}">
+                        <a class="sidebar-link" href="{{ route('admin.email-management') }}">
+                            <i class="align-middle" data-feather="server"></i> <span class="align-middle">Email Management</span>
                         </a>
                     </li>
 				</ul>

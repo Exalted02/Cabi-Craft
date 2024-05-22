@@ -28,7 +28,7 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	
 	<!--Data table plugin start-->
-	@if (request()->routeIs('admin.course','admin.colleges.mou','admin.colleges.non-mou','admin.college.manage_college_images','admin.college.manage_college_courses','admin.college.manage_college_faculty','admin.agent','admin.institutions'))
+	@if (request()->routeIs('admin.course','admin.colleges.mou','admin.colleges.non-mou','admin.college.manage_college_images','admin.college.manage_college_courses','admin.college.manage_college_faculty','admin.agent','admin.institutions', 'admin.cms', 'admin.email-management'))
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.17.2/ckeditor.js" integrity="sha512-QuHtmTNLFyCbmk2jGlr0URK0XiNn1G0nHYMaNfbOLQgXBiO6RllC+xFkPO5YnG6zYnRVUj6b5uSXwmJeJgOLBw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -49,48 +49,7 @@
 	<!--Data table plugin end-->
 	
 	<!--Delete modal start-->
-		@if (request()->routeIs('admin.course','admin.colleges.mou','admin.colleges.non-mou','admin.college.manage_college_images','admin.college.manage_college_courses','admin.college.manage_college_faculty','admin.agent' ,'admin.institutions'))
-			<!--Single Delete modal start-->
-			<div class="modal fade" id="confirmDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-body">
-						   Are you sure want to delete this record?
-						</div>
-						<div class="modal-footer">
-							<button type="button" data-bs-dismiss="modal" class="btn btn-primary" id="delete">Delete</button>
-							<button type="button" data-bs-dismiss="modal" class="btn btn-secondary" id="cancel">Cancel</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<script>
-			$(".delete-data").on('click', function (e) {
-				$('#confirmDelete').modal("show");
-				var id = $(this).data('id');
-				var url = $(this).data('url');
-				e.preventDefault();
-				$('#confirmDelete').on('click', '#delete', function(e) {
-					$.ajaxSetup({
-						headers: {
-							'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-						 }
-					});
-					$.ajax({
-						url: url,
-						method: "POST",
-						data: {id:id},
-						dataType: 'json',
-						success: function(response) {
-							location.reload(true);
-						}
-					});
-				});
-			});
-			</script>
-			<!--Single Delete modal end-->
-		@endif
-		@if (request()->routeIs('admin.course','admin.colleges.mou','admin.colleges.non-mou','admin.college.manage_college_images','admin.college.manage_college_courses','admin.college.manage_college_faculty','admin.agent','admin.institutions'))
+		@if (request()->routeIs('admin.course','admin.colleges.mou','admin.colleges.non-mou','admin.college.manage_college_images','admin.college.manage_college_courses','admin.college.manage_college_faculty','admin.agent' ,'admin.institutions', 'admin.cms', 'admin.email-management'))
 			<!--Single Delete modal start-->
 			<div class="modal fade" id="confirmDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
@@ -132,7 +91,7 @@
 			<!--Single Delete modal end-->
 		@endif
 		<!--Multiple Delete modal start-->
-		@if (request()->routeIs('admin.course','admin.colleges.mou','admin.colleges.non-mou','admin.college.manage_college_images','admin.college.manage_college_courses','admin.college.manage_college_faculty','admin.agent' ,'admin.institutions'))
+		@if (request()->routeIs('admin.course','admin.colleges.mou','admin.colleges.non-mou','admin.college.manage_college_images','admin.college.manage_college_courses','admin.college.manage_college_faculty','admin.agent' ,'admin.institutions', 'admin.cms', 'admin.email-management'))
 			<div class="modal fade" id="confirmMultiDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
 					<div class="modal-content">
@@ -186,7 +145,7 @@
 	<!--Delete modal end-->
 	
 	<!--Status change modal start-->
-		@if (request()->routeIs('admin.course','admin.colleges.mou','admin.colleges.non-mou','admin.agent','admin.institutions'))
+		@if (request()->routeIs('admin.course','admin.colleges.mou','admin.colleges.non-mou','admin.agent','admin.institutions', 'admin.cms', 'admin.email-management'))
 		<!--Single status modal start-->
 		<script>
 		$(".changeStatus").on('click', function (e) {
@@ -222,7 +181,7 @@
 		</script>
 		<!--Single status modal end-->
 		@endif
-		@if (request()->routeIs('admin.course','admin.colleges.mou','admin.colleges.non-mou','admin.agent','admin.institutions'))
+		@if (request()->routeIs('admin.course','admin.colleges.mou','admin.colleges.non-mou','admin.agent','admin.institutions', 'admin.cms', 'admin.email-management'))
 			<div class="modal fade" id="confirmMultiStatus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
 					<div class="modal-content">
@@ -324,7 +283,7 @@
 
 <!--confirm checkbox selected-->
 
-	@if(request()->routeIs('admin.course','admin.colleges.mou','admin.colleges.non-mou','admin.college.manage_college_images','admin.college.manage_college_courses','admin.college.manage_college_faculty','admin.agent','admin.institutions'))
+	@if(request()->routeIs('admin.course','admin.colleges.mou','admin.colleges.non-mou','admin.college.manage_college_images','admin.college.manage_college_courses','admin.college.manage_college_faculty','admin.agent','admin.institutions','admin.cms','admin.email-management'))
 
 	<div class="modal fade" id="confirmChkSelect" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -337,7 +296,7 @@
 		</div>
 	</div>
 	@endif
-	@if (request()->routeIs('admin.course','admin.colleges.mou','admin.colleges.non-mou'))
+	@if (request()->routeIs('admin.course','admin.colleges.mou','admin.colleges.non-mou','admin.cms','admin.email-management'))
 	<!-- View Modal Start -->
 	<div class="modal fade" id="viewDetails" tabindex="-1" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered">

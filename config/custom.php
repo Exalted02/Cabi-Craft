@@ -1,0 +1,6 @@
+<?php
+return [
+//Email Management id
+    'APPLICATION_FORM_EMAIL_ID_RECEIVED_BY_STUDENT' => 1,
+    'APPLICATION_FORM_EMAIL_ID_RECEIVED_BY_ADMIN' => 2,
+];

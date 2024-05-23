@@ -424,8 +424,8 @@
 .mega-menu .menu-search-bar input.header-search::placeholder {
     color: #007D41 !important;
 }
-.mega-menu .menu-search-bar input.header-search:focus,
-.mega-menu .menu-search-bar input.header-search {
+.mega-menu input.header-search:focus,
+.mega-menu input.header-search {
 	border: 1px solid #007D41;
     width: 300px;
     max-width: 300px;

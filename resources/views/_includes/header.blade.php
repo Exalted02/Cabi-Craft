@@ -7,10 +7,18 @@
 		<div class="container">
 		   <div class="row">
 			  <!-- Header Top Left -->
-			  <div class="header-top-left col-md-12">
-				<ul class="listnone text-center">
-					<li>Summer Sale Save Upto 70% off On your trip</li>
+			  <div class="header-top-left col-md-8 col-sm-6 col-xs-12 hidden-xs">
+				<ul class="listnone">
+					<li><a href="#"><i class="fa fa-picture-o" aria-hidden="true"></i> Gallery</a></li>
+                    <li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i> Contact Us</a></li>
 				</ul>
+			  </div>
+			  <div class="header-right col-md-4 col-sm-6 col-xs-12 ">
+				 <div class="pull-right">
+					<ul class="listnone text-center">
+						<li>Summer Sale Save Upto 70% off On your trip</li>
+					</ul>
+				 </div>
 			  </div>
 		   </div>
 		</div>
@@ -70,12 +78,26 @@
 							 <li><a href="favourite.html">Adventure activities</a></li>
 						  </ul>
 					   </li>
+					   <li>
+							<input type="search" placeholder="Search..." class="header-search">
+					   </li>
 					</ul>
 					<ul class="menu-search-bar menu-full-height-center">
-					   <li>
-						  <!--<a href="post-ad-1.html" class="btn btn-theme">Sell Your Car</a>-->
-						  <input type="search" placeholder="Search..." class="header-search">
-					   </li>
+						{{--<li>
+							<input type="search" placeholder="Search..." class="header-search">
+						</li>--}}
+						<li>
+							<a>
+								<div class="contact-in-header clearfix">
+									<i class="flaticon-customer-service"></i>
+									<span>
+									Call Us Now
+									<br>
+									<strong>111 222 333 444</strong>
+									</span>
+								</div>
+							</a>
+						</li>
 					</ul>
 				 </div>
 			  </div>

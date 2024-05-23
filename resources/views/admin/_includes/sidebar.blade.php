@@ -31,6 +31,11 @@
                             <i class="align-middle" data-feather="server"></i> <span class="align-middle">Email Management</span>
                         </a>
                     </li>
+                    <li class="sidebar-item {{ (request()->routeIs('admin.settings')) ? 'active' : '' }}"> <a class="sidebar-link" href="{{ route('admin.settings') }}">
+                        <i class="fa-solid fa-gear"></i>
+                        <span class="align-middle">Settings </span>
+                    </a>
+                </li>
 				</ul>
             </div>
         </nav>

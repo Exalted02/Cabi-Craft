@@ -2,6 +2,8 @@
 //common functions here
 use App\Models\User;
 use App\Models\Country;
+use App\Models\Settings;
+use App\Models\EmailManagement;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
@@ -31,12 +33,6 @@ use Intervention\Image\Drivers\Gd\Driver;
 		);
         return $data;
     }
-//get email template
-	function get_email($id){
-		$arr = EmailManagement::where('id',$id)
-				->first();
-		return $arr;
-	}
 //uc all text
     function uc_all($data){
         return strtoupper($data);
@@ -204,5 +200,54 @@ use Intervention\Image\Drivers\Gd\Driver;
 				}
 			}
 		}
+	}
+	// this function fetch dynamic data of Settings page
+	function getSettings(){
+		$settings = Settings::find(1);
+		return $settings;
+	}
+	//Email Configuration
+	function set_email_configuration(){
+		$settings = getSettings();
+		$get_label_data = !empty($settings->data) ? json_decode($settings->data, true) : '';
+		if(!is_null($get_label_data)) {
+			$config = array(
+				'driver'     =>     isset($get_label_data['driver']) ? $get_label_data['driver'] : '',
+				'host'       =>     isset($get_label_data['host']) ? $get_label_data['host'] : '',
+				'port'       =>     isset($get_label_data['port']) ? $get_label_data['port'] : '',
+				'username'   =>     isset($get_label_data['username']) ? $get_label_data['username'] : '',
+				'password'   =>     isset($get_label_data['password']) ? $get_label_data['password'] : '',
+				'encryption' =>    isset($get_label_data['encryption']) ? $get_label_data['encryption'] : '',
+				'from'       =>     array('address' => isset($get_label_data['sender_email']) ? $get_label_data['sender_email'] : '', 'name' => isset($get_label_data['sender_name']) ? $get_label_data['sender_name'] : ''),
+			);
+			Config::set('mail', $config);					
+		}
+	}
+	//get email template
+	function get_email($id){
+		$arr = EmailManagement::where('id',$id)
+				->first();
+		return $arr;
+	}
+	//send email template
+	function send_email($data){
+		// toEmails = Receiver Email, bccEmails = Bcc Receiver, ccEmails = Cc Receiver, files = For attatchment files.
+		$data['body'] = str_replace(array("[SCREEN_NAME]", "[YEAR]"), array(config('app.name', 'Laravel'),date('Y')), $data['body']);
+		set_email_configuration();
+		Mail::send('email.sendmail', $data, function($message)use($data) {
+			$message->to($data["toEmails"]);
+			if(isset($data['bccEmails']) && count($data['bccEmails']) > 0){
+				$message->bcc($data["bccEmails"]);
+			}
+			if(isset($data['ccEmails']) && count($data['ccEmails']) > 0){
+				$message->cc($data["ccEmails"]);
+			}
+			$message->subject($data["subject"]);
+			if(isset($data['files']) && count($data['files']) > 0){
+				foreach ($data['files'] as $file){
+					$message->attach($file);
+				}
+			}
+		});
 	}
 ?>

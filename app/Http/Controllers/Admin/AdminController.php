@@ -96,4 +96,5 @@ class AdminController extends Controller
 
         return redirect()->route('admin_login')->with('success','Password reset successfully');
     }
+  
 }

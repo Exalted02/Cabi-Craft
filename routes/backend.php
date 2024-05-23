@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CmsController;
 use App\Http\Controllers\Admin\EmailManagementController;
 use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\SettingsController;
 
 
 Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
@@ -41,6 +42,10 @@ Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
 		Route::post('/email-management/multi_delete',[EmailManagementController::class,'multi_delete']);
 		Route::post('/email-management/status',[EmailManagementController::class,'status']);
 		Route::post('/email-management/multi_change_status',[EmailManagementController::class,'multi_change_status']);
+		
+		// settings
+		Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
+		Route::post('/settings/manage_settings_process',[SettingsController::class,'manage_settings_process'])->name('settings.manage_settings_process');
 });
 
 Route::prefix('admin')->group(function () {

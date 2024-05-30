@@ -7,18 +7,10 @@
 		<div class="container">
 		   <div class="row">
 			  <!-- Header Top Left -->
-			  <div class="header-top-left col-md-8 col-sm-6 col-xs-12 hidden-xs">
-				<ul class="listnone">
-					<li><a href="#"><i class="fa fa-picture-o" aria-hidden="true"></i> Gallery</a></li>
-                    <li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i> Contact Us</a></li>
+			  <div class="col-md-12">
+				<ul class="listnone text-center">
+					<li>SALE 70% OFF</li>
 				</ul>
-			  </div>
-			  <div class="header-right col-md-4 col-sm-6 col-xs-12 ">
-				 <div class="pull-right">
-					<ul class="listnone text-center">
-						<li>Summer Sale Save Upto 70% off On your trip</li>
-					</ul>
-				 </div>
 			  </div>
 		   </div>
 		</div>
@@ -28,82 +20,58 @@
 	 <div class="clearfix"></div>
 	 <!-- menu start -->
 	 <nav id="menu-1" class="mega-menu">
-		<!-- menu list items container -->
-		<section class="menu-list-items">
-		   <div class="container">
-			  <div class="row">
-				 <div class="col-lg-12 col-md-12">
-					<!-- menu logo -->
-					<ul class="menu-logo">
-					   <li>
-						  <a href="{{ route('home') }}"><img src="{{ url('images/logo.png') }}" alt="logo"> </a>
-					   </li>
-					</ul>
-					<!-- menu links -->
-					<ul class="menu-links menu-full-height-center">
-					   <!-- active class -->
-					   <li>
-						  <a href="javascript:void(0)">Pachmarhi <i class="fa fa-angle-down fa-indicator"></i></a>
-						  <ul class="drop-down-multilevel">
-							 <li><a href="profile.html">Hotel</a></li>
-							 <li><a href="archives.html">Resort</a></li>
-							 <li><a href="active-ads.html">Camping</a></li>
-							 <li><a href="favourite.html">Adventure activities</a></li>
-						  </ul>
-					   </li>
-					   <li>
-						  <a href="javascript:void(0)">Amarkantak <i class="fa fa-angle-down fa-indicator"></i></a>
-						  <ul class="drop-down-multilevel">
-							 <li><a href="profile.html">Hotel</a></li>
-							 <li><a href="archives.html">Resort</a></li>
-							 <li><a href="active-ads.html">Camping</a></li>
-							 <li><a href="favourite.html">Adventure activities</a></li>
-						  </ul>
-					   </li>
-					   <li>
-						  <a href="javascript:void(0)">Madhai <i class="fa fa-angle-down fa-indicator"></i></a>
-						  <ul class="drop-down-multilevel">                                
-							 <li><a href="profile.html">Hotel</a></li>
-							 <li><a href="archives.html">Resort</a></li>
-							 <li><a href="active-ads.html">Camping</a></li>
-							 <li><a href="favourite.html">Adventure activities</a></li>
-						  </ul>
-					   </li>
-					   <li>
-						  <a href="javascript:void(0)">Bhopal <i class="fa fa-angle-down fa-indicator"></i></a>
-						  <ul class="drop-down-multilevel">
-							 <li><a href="profile.html">Hotel</a></li>
-							 <li><a href="archives.html">Resort</a></li>
-							 <li><a href="active-ads.html">Camping</a></li>
-							 <li><a href="favourite.html">Adventure activities</a></li>
-						  </ul>
-					   </li>
-					   <li>
-							<input type="search" placeholder="Search..." class="header-search">
-					   </li>
-					</ul>
-					<ul class="menu-search-bar menu-full-height-center">
+            <!-- menu list items container -->
+            <section class="menu-list-items">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-lg-12 col-md-12">
+                        <!-- menu logo -->
+                        <ul class="menu-logo">
+                           <li class="d-flex justify-space-between align-items-center">
+                              <a href="index.html"><img src="images/logo.png" alt="logo"> </a>
+							  <div class="search-container-div">
+								<input type="search" placeholder="Search..." class="header-search">
+							  </div>
+                           </li>
+                        </ul>
+                        <ul class="menu-links">
 						{{--<li>
-							<input type="search" placeholder="Search..." class="header-search">
-						</li>--}}
-						<li>
-							<a>
-								<div class="contact-in-header clearfix">
-									<i class="flaticon-customer-service"></i>
-									<span>
-									Call Us Now
-									<br>
-									<strong>111 222 333 444</strong>
-									</span>
-								</div>
-							</a>
-						</li>
-					</ul>
-				 </div>
+                              <a href="javascript:void(0)">Home <i class="fa fa-angle-down fa-indicator"></i></a>
+                              <ul class="drop-down-multilevel">
+                                 <li><a href="index-1.html">Home 1</a></li>
+                                 <li><a href="index-2.html">Home 2</a></li>
+                                 <li><a href="index-3.html">Home 3</a></li>
+                                 <li><a href="index-4.html">Home 4</a></li>
+                                 <li><a href="index-5.html">Home 5</a></li>
+                              </ul>
+                           </li>--}}
+                           <li>
+                              <a href="javascript:void(0)">Home</a>
+                              <a href="javascript:void(0)">Contact Us</a>
+                              <a href="javascript:void(0)">Group Discount</a>
+                              <a href="javascript:void(0)">Destinations</a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </section>
+     </nav>
+	<div class="clearfix"></div>
+	<div class="header-location">
+		<div class="container">
+		   <div class="row">
+			  <!-- Header Top Left -->
+			  <div class="col-md-12">
+				<ul class="listnone text-center">
+					<li><a href="#">Pachmarhi</a></li>
+					<li><a href="#">Madhai</a></li>
+					<li><a href="#">Amarkantak</a></li>
+				</ul>
 			  </div>
 		   </div>
-		</section>
-	 </nav>
+		</div>
+	 </div>	 
 	 <!-- menu end -->
   </div>
   <div class="clearfix"></div>

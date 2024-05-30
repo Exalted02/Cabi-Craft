@@ -78,8 +78,8 @@
 			<div class="row">
 				<div class="clearfix"></div>
 				<div class="heading-panel">
-					<div class="col-xs-12 col-md-12 col-sm-12 text-center">
-						<h1><span class="secondary-color">Pachmarhi</span></h1>
+					<div class="col-xs-12 col-md-12 col-sm-12 left-side">
+						<h1><span class="secondary-color">Adventure Activities</span></h1>
 					</div>
 				</div>
 				<div class="row">
@@ -93,7 +93,7 @@
 						   </div>
 						</div>
 						<div class="posts-masonry">
-							<div class="col-md-4 col-xs-12 col-sm-6">
+							<div class="col-md-3 col-xs-12 col-sm-6">
 								<div class="category-grid-box">
 									<div class="category-grid-img">
 										<div class="image-background" style="background-image: url('{{ url('images/posting/1.avif') }}');"></div>
@@ -111,7 +111,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-4 col-xs-12 col-sm-6">
+							<div class="col-md-3 col-xs-12 col-sm-6">
 								<div class="category-grid-box">
 									<div class="category-grid-img">
 										<div class="image-background" style="background-image: url('{{ url('images/posting/2.avif') }}');"	></div>
@@ -129,7 +129,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-4 col-xs-12 col-sm-6">
+							<div class="col-md-3 col-xs-12 col-sm-6">
 								<div class="category-grid-box">
 									<div class="category-grid-img">
 										<div class="image-background" style="background-image: url('{{ url('images/posting/3.avif') }}');"></div>
@@ -147,11 +147,11 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-4 col-xs-12 col-sm-6">
+							<div class="col-md-3 col-xs-12 col-sm-6">
 								<div class="category-grid-box">
 									<div class="category-grid-img">
-										<div class="image-background" style="background-image: url('{{ url('images/posting/3.avif') }}');"		></div>
-										<img class="img-responsive" alt="" src="{{ url('images/posting/3.avif') }}">
+										<div class="image-background" style="background-image: url('{{ url('images/posting/1.avif') }}');"		></div>
+										<img class="img-responsive" alt="" src="{{ url('images/posting/1.avif') }}">
 									</div>
 									<div class="short-description">
 										<div class="category-title"> <span><a href="#">Car & Bikes</a></span> </div>
@@ -165,17 +165,42 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-4 col-xs-12 col-sm-6">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="custom-padding">
+		<div class="container">
+			<div class="row">
+				<div class="clearfix"></div>
+				<div class="heading-panel">
+					<div class="col-xs-12 col-md-12 col-sm-12 left-side">
+						<h1><span class="secondary-color">Resorts</span></h1>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 col-xs-12 col-sm-12">
+						<div class="posts-masonry view-all mb-10">
+						   <div class="col-md-12 text-right">
+								<a href="">
+									<span class="secondary-color">View All</span> 
+									<span class="view-all-arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
+								</a>
+						   </div>
+						</div>
+						<div class="posts-masonry">
+							<div class="col-md-3 col-xs-12 col-sm-6">
 								<div class="category-grid-box">
 									<div class="category-grid-img">
-										<div class="image-background" style="background-image: url('{{ url('images/posting/2.avif') }}');"></div>
-										<img class="img-responsive" alt="" src="{{ url('images/posting/2.avif') }}">
-										<span class="ad-status"> Featured </span>
+										<div class="image-background" style="background-image: url('{{ url('images/posting/1.avif') }}');"></div>
+										<img class="img-responsive" alt="" src="{{ url('images/posting/1.avif') }}">
 									</div>
 									<div class="short-description">
-										<div class="category-title"> <span><a href="#">Car & Bikes</a></span> </div>
-										<h3><a title="" href="{{url('tours')}}/1">Honda Civic 2017 Brand New </a></h3>
-										<div class="price">INR 500 <span class="negotiable">(Negotiable)</span></div>
+										<div class="category-title"> <span><a href="#">6 days & 5 nights</a></span> </div>
+										<h3><a title="" href="{{url('tours')}}/1">Highlights of North Sikkim | FREE Visit to Bhim Nala Falls</a></h3>
+										<div class="price">INR 24,999 </div>
 									</div>
 									<div class="ad-info">
 										<ul>
@@ -184,21 +209,154 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-4 col-xs-12 col-sm-6">
+							<div class="col-md-3 col-xs-12 col-sm-6">
+								<div class="category-grid-box">
+									<div class="category-grid-img">
+										<div class="image-background" style="background-image: url('{{ url('images/posting/2.avif') }}');"	></div>
+										<img class="img-responsive" alt="" src="{{ url('images/posting/2.avif') }}">
+									</div>
+									<div class="short-description">
+										<div class="category-title"> <span><a href="#">Car & Bikes</a></span> </div>
+										<h3><a title="" href="{{url('tours')}}/1">2017 Audi A4 quattro Premium</a></h3>
+										<div class="price">INR 43,000</div>
+									</div>
+									<div class="ad-info">
+										<ul>
+											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#exampleModal">Request Callback</button></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-xs-12 col-sm-6">
+								<div class="category-grid-box">
+									<div class="category-grid-img">
+										<div class="image-background" style="background-image: url('{{ url('images/posting/3.avif') }}');"></div>
+										<img class="img-responsive" alt="" src="{{ url('images/posting/3.avif') }}">
+									</div>
+									<div class="short-description">
+										<div class="category-title"> <span><a href="#">Car & Bikes</a></span> </div>
+										<h3><a title="" href="{{url('tours')}}/1">2014 Ford Shelby GT500 Coupe</a></h3>
+										<div class="price">INR 77,00</div>
+									</div>
+									<div class="ad-info">
+										<ul>
+											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#exampleModal">Request Callback</button></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-xs-12 col-sm-6">
+								<div class="category-grid-box">
+									<div class="category-grid-img">
+										<div class="image-background" style="background-image: url('{{ url('images/posting/1.avif') }}');"		></div>
+										<img class="img-responsive" alt="" src="{{ url('images/posting/1.avif') }}">
+									</div>
+									<div class="short-description">
+										<div class="category-title"> <span><a href="#">Car & Bikes</a></span> </div>
+										<h3><a title="" href="{{url('tours')}}/1">BMW I8 1.5 Auto 4X4 2dr </a></h3>
+										<div class="price">INR 250 <span class="negotiable">(Negotiable)</span></div>
+									</div>
+									<div class="ad-info">
+										<ul>
+											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#exampleModal">Request Callback</button></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="custom-padding">
+		<div class="container">
+			<div class="row">
+				<div class="clearfix"></div>
+				<div class="heading-panel">
+					<div class="col-xs-12 col-md-12 col-sm-12 left-side">
+						<h1><span class="secondary-color">Camping</span></h1>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 col-xs-12 col-sm-12">
+						<div class="posts-masonry view-all mb-10">
+						   <div class="col-md-12 text-right">
+								<a href="">
+									<span class="secondary-color">View All</span> 
+									<span class="view-all-arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
+								</a>
+						   </div>
+						</div>
+						<div class="posts-masonry">
+							<div class="col-md-3 col-xs-12 col-sm-6">
 								<div class="category-grid-box">
 									<div class="category-grid-img">
 										<div class="image-background" style="background-image: url('{{ url('images/posting/1.avif') }}');"></div>
 										<img class="img-responsive" alt="" src="{{ url('images/posting/1.avif') }}">
-										<span class="ad-status"> Featured </span>
 									</div>
 									<div class="short-description">
-										<div class="category-title"> <span><a href="#">Car & Bikes</a></span> </div>
-										<h3><a title="" href="{{url('tours')}}/1">McLaren F1 Sports Car</a></h3>
-										<div class="price">INR 18,200 <span class="negotiable">(Negotiable)</span></div>
+										<div class="category-title"> <span><a href="#">6 days & 5 nights</a></span> </div>
+										<h3><a title="" href="{{url('tours')}}/1">Highlights of North Sikkim | FREE Visit to Bhim Nala Falls</a></h3>
+										<div class="price">INR 24,999 </div>
 									</div>
 									<div class="ad-info">
 										<ul>
-										   <li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#exampleModal">Request Callback</button></li>
+											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#exampleModal">Request Callback</button></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-xs-12 col-sm-6">
+								<div class="category-grid-box">
+									<div class="category-grid-img">
+										<div class="image-background" style="background-image: url('{{ url('images/posting/2.avif') }}');"	></div>
+										<img class="img-responsive" alt="" src="{{ url('images/posting/2.avif') }}">
+									</div>
+									<div class="short-description">
+										<div class="category-title"> <span><a href="#">Car & Bikes</a></span> </div>
+										<h3><a title="" href="{{url('tours')}}/1">2017 Audi A4 quattro Premium</a></h3>
+										<div class="price">INR 43,000</div>
+									</div>
+									<div class="ad-info">
+										<ul>
+											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#exampleModal">Request Callback</button></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-xs-12 col-sm-6">
+								<div class="category-grid-box">
+									<div class="category-grid-img">
+										<div class="image-background" style="background-image: url('{{ url('images/posting/3.avif') }}');"></div>
+										<img class="img-responsive" alt="" src="{{ url('images/posting/3.avif') }}">
+									</div>
+									<div class="short-description">
+										<div class="category-title"> <span><a href="#">Car & Bikes</a></span> </div>
+										<h3><a title="" href="{{url('tours')}}/1">2014 Ford Shelby GT500 Coupe</a></h3>
+										<div class="price">INR 77,00</div>
+									</div>
+									<div class="ad-info">
+										<ul>
+											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#exampleModal">Request Callback</button></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-xs-12 col-sm-6">
+								<div class="category-grid-box">
+									<div class="category-grid-img">
+										<div class="image-background" style="background-image: url('{{ url('images/posting/1.avif') }}');"		></div>
+										<img class="img-responsive" alt="" src="{{ url('images/posting/1.avif') }}">
+									</div>
+									<div class="short-description">
+										<div class="category-title"> <span><a href="#">Car & Bikes</a></span> </div>
+										<h3><a title="" href="{{url('tours')}}/1">BMW I8 1.5 Auto 4X4 2dr </a></h3>
+										<div class="price">INR 250 <span class="negotiable">(Negotiable)</span></div>
+									</div>
+									<div class="ad-info">
+										<ul>
+											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#exampleModal">Request Callback</button></li>
 										</ul>
 									</div>
 								</div>
@@ -210,7 +368,7 @@
 		</div>
 	</section>
 	<!-- =-=-=-=-=-=-= Statistics Counter =-=-=-=-=-=-= -->
-	<div class="funfacts custom-padding parallex" style="background: rgba(0, 0, 0, 0) url('{{ url('images/design/parallex1.jpg') }}') no-repeat scroll center center;">
+	<div class="funfacts section-padding parallex" style="background: rgba(0, 0, 0, 0) url('{{ url('images/design/parallex1.jpg') }}') no-repeat scroll center center;">
 		<div class="container">
 		   <div class="row">
 			  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
@@ -354,7 +512,7 @@
 	</section>
 	<!-- =-=-=-=-=-=-= Testimonials Section End =-=-=-=-=-=-= -->
 	<!-- =-=-=-=-=-=-= Gallery Image =-=-=-=-=-=-= -->
-	<section class="custom-padding padding-top-30 padding-bottom-30">
+	{{--<section class="custom-padding padding-top-30 padding-bottom-30">
 		<div class="album">
 			<div class="heading-panel">
 				<div class="col-xs-12 col-md-12 col-sm-12 text-center">
@@ -379,15 +537,10 @@
 			</div>
 		</div>
 	</section>
-	<!-- =-=-=-=-=-=-= Gallery Image =-=-=-=-=-=-= -->
-	<!-- =-=-=-=-=-=-= Get In Touch =-=-=-=-=-=-= -->
 	<section class="section-padding gray padding-top-30 padding-bottom-30">
-		<!-- Main Container -->
 		<div class="container">
-		   <!-- Row -->
 		   <div class="heading-panel">
 			 <div class="col-xs-12 col-md-12 col-sm-12 text-center">
-				<!-- Main Title -->
 				<h1>Get In Touch</h1>
 			 </div>
 		   </div>
@@ -420,11 +573,8 @@
 				 </div>
 			  </div>
 		   </div>
-		   <!-- Row End --> 
 		</div>
-		<!-- Main Container End --> 
 	</section>
-	<!-- =-=-=-=-=-=-= Get In Touch =-=-=-=-=-=-= -->
 	<section class="custom-padding">
 		<div class="container">
 			<div class="row">
@@ -446,7 +596,6 @@
                                        <div class="user-preview">
                                           <a href="#"> <img src="{{ url('images/posting/1.avif') }}" class="avatar avatar-small" alt=""> </a>
                                        </div>
-                                       {{--<a href="" class="view-details">View Details</a>--}}
                                        <div class="additional-information">
                                           <h3>View All Hotels</h3>
                                        </div>
@@ -460,7 +609,6 @@
                                        <div class="user-preview">
                                           <a href="#"> <img src="{{ url('images/posting/2.avif') }}" class="avatar avatar-small" alt=""> </a>
                                        </div>
-                                       {{--<a href="" class="view-details">View Details</a>--}}
                                        <div class="additional-information">
                                           <h3>View All Resort</h3>
                                        </div>
@@ -474,7 +622,6 @@
                                        <div class="user-preview">
                                           <a href="#"> <img src="{{ url('images/posting/3.avif') }}" class="avatar avatar-small" alt=""> </a>
                                        </div>
-                                       {{--<a href="" class="view-details">View Details</a>--}}
                                        <div class="additional-information">
                                           <h3>View All Camping</h3>
                                        </div>
@@ -488,7 +635,6 @@
                                        <div class="user-preview">
                                           <a href="#"> <img src="{{ url('images/posting/1.avif') }}" class="avatar avatar-small" alt=""> </a>
                                        </div>
-                                       {{--<a href="" class="view-details">View Details</a>--}}
                                        <div class="additional-information">
                                           <h3>View All activities</h3>
                                        </div>
@@ -501,7 +647,7 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section>--}}
 </div>
 @endsection
 @section('scripts')

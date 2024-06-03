@@ -1,6 +1,7 @@
 <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
   <div class="preloader"></div>
   <!-- =-=-=-=-=-=-=  Header =-=-=-=-=-=-= -->
+  <button type="button" class="btn btn-theme requestCallbackFixedBtn" data-toggle="modal" data-target="#requestCallback">Request a Call Back</button>
   <div class="colored-header" style="{{ (request()->routeIs('home')) ? '' : 'border-bottom: 1px solid #e0e0e0;' }}">
 	 <!-- Top Bar -->
 	 <div class="header-top">

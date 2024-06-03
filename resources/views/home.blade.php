@@ -73,17 +73,15 @@
 <!-- end Master Slider -->
 <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
 <div class="main-content-area clearfix" style="background-image: url('{{ url('images/design/bg.png') }}')">
-	<section class="custom-padding">
+	<section class="custom-padding padding-bottom-0">
 		<div class="container">
 			<div class="row">
 				<div class="clearfix"></div>
 				<div class="heading-panel">
-					<div class="col-xs-12 col-md-12 col-sm-12 left-side">
+					<div class="col-xs-12 col-md-7 col-sm-6 left-side">
 						<h1><span class="secondary-color">Adventure Activities</span></h1>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12 col-xs-12 col-sm-12">
+					<div class="col-sm-6 col-xs-12 col-md-5">
 						<div class="posts-masonry view-all mb-10">
 						   <div class="col-md-12 text-right">
 								<a href="">
@@ -92,6 +90,10 @@
 								</a>
 						   </div>
 						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 col-xs-12 col-sm-12">
 						<div class="posts-masonry">
 							<div class="col-md-3 col-xs-12 col-sm-6">
 								<div class="category-grid-box">
@@ -106,7 +108,7 @@
 									</div>
 									<div class="ad-info">
 										<ul>
-											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#exampleModal">Request Callback</button></li>
+											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
 										</ul>
 									</div>
 								</div>
@@ -124,7 +126,7 @@
 									</div>
 									<div class="ad-info">
 										<ul>
-											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#exampleModal">Request Callback</button></li>
+											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
 										</ul>
 									</div>
 								</div>
@@ -142,7 +144,7 @@
 									</div>
 									<div class="ad-info">
 										<ul>
-											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#exampleModal">Request Callback</button></li>
+											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
 										</ul>
 									</div>
 								</div>
@@ -160,7 +162,7 @@
 									</div>
 									<div class="ad-info">
 										<ul>
-											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#exampleModal">Request Callback</button></li>
+											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
 										</ul>
 									</div>
 								</div>
@@ -171,17 +173,15 @@
 			</div>
 		</div>
 	</section>
-	<section class="custom-padding">
+	<section class="custom-padding padding-top-0 padding-bottom-0">
 		<div class="container">
 			<div class="row">
 				<div class="clearfix"></div>
 				<div class="heading-panel">
-					<div class="col-xs-12 col-md-12 col-sm-12 left-side">
+					<div class="col-xs-12 col-md-7 col-sm-6 left-side">
 						<h1><span class="secondary-color">Resorts</span></h1>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12 col-xs-12 col-sm-12">
+					<div class="col-sm-6 col-xs-12 col-md-5">
 						<div class="posts-masonry view-all mb-10">
 						   <div class="col-md-12 text-right">
 								<a href="">
@@ -190,6 +190,10 @@
 								</a>
 						   </div>
 						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 col-xs-12 col-sm-12">
 						<div class="posts-masonry">
 							<div class="col-md-3 col-xs-12 col-sm-6">
 								<div class="category-grid-box">
@@ -204,7 +208,7 @@
 									</div>
 									<div class="ad-info">
 										<ul>
-											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#exampleModal">Request Callback</button></li>
+											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
 										</ul>
 									</div>
 								</div>
@@ -222,7 +226,7 @@
 									</div>
 									<div class="ad-info">
 										<ul>
-											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#exampleModal">Request Callback</button></li>
+											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
 										</ul>
 									</div>
 								</div>
@@ -240,7 +244,7 @@
 									</div>
 									<div class="ad-info">
 										<ul>
-											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#exampleModal">Request Callback</button></li>
+											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
 										</ul>
 									</div>
 								</div>
@@ -258,7 +262,7 @@
 									</div>
 									<div class="ad-info">
 										<ul>
-											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#exampleModal">Request Callback</button></li>
+											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
 										</ul>
 									</div>
 								</div>
@@ -269,17 +273,15 @@
 			</div>
 		</div>
 	</section>
-	<section class="custom-padding">
+	<section class="custom-padding padding-top-0">
 		<div class="container">
 			<div class="row">
 				<div class="clearfix"></div>
 				<div class="heading-panel">
-					<div class="col-xs-12 col-md-12 col-sm-12 left-side">
+					<div class="col-xs-12 col-md-7 col-sm-6 left-side">
 						<h1><span class="secondary-color">Camping</span></h1>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12 col-xs-12 col-sm-12">
+					<div class="col-sm-6 col-xs-12 col-md-5">
 						<div class="posts-masonry view-all mb-10">
 						   <div class="col-md-12 text-right">
 								<a href="">
@@ -288,6 +290,10 @@
 								</a>
 						   </div>
 						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 col-xs-12 col-sm-12">
 						<div class="posts-masonry">
 							<div class="col-md-3 col-xs-12 col-sm-6">
 								<div class="category-grid-box">
@@ -302,7 +308,7 @@
 									</div>
 									<div class="ad-info">
 										<ul>
-											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#exampleModal">Request Callback</button></li>
+											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
 										</ul>
 									</div>
 								</div>
@@ -320,7 +326,7 @@
 									</div>
 									<div class="ad-info">
 										<ul>
-											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#exampleModal">Request Callback</button></li>
+											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
 										</ul>
 									</div>
 								</div>
@@ -338,7 +344,7 @@
 									</div>
 									<div class="ad-info">
 										<ul>
-											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#exampleModal">Request Callback</button></li>
+											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
 										</ul>
 									</div>
 								</div>
@@ -356,7 +362,7 @@
 									</div>
 									<div class="ad-info">
 										<ul>
-											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#exampleModal">Request Callback</button></li>
+											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
 										</ul>
 									</div>
 								</div>

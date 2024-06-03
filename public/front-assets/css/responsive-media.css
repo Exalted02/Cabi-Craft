@@ -1248,7 +1248,8 @@ margin-bottom: 30px;
 	margin-top:15px;	
 }
 .mega-menu .menu-mobile-collapse-trigger {
-	top:5px;	
+	/* top:5px;	 */
+	top:0;	
 }
 .alert-box-container .form-control {
     margin-bottom: 20px;
@@ -1615,7 +1616,7 @@ ul.add_info li {
 	margin-bottom:15px; 
 }
 .mega-menu img {
-    margin: 10px 0 10px 0;
+    margin: 5px 0 5px 0;
 }
 
 .review-excerpt .pro-cons .pro-section {

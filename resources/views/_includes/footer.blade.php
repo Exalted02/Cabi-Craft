@@ -66,8 +66,8 @@
    
  </footer>
  <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
-<!-- =-=-=-=-=-=-= More Brands Modal =-=-=-=-=-=-= -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+<!-- =-=-=-=-=-=-= Modal =-=-=-=-=-=-= -->
+  <div class="modal fade" id="collegeRequestCallback" tabindex="-1" role="dialog" aria-hidden="true">
 	 <div class="modal-dialog">
 		<div class="modal-content">
 		   <div class="modal-header">
@@ -105,6 +105,44 @@
 								</div>
 								<div class="col-md-6 mb-10">
 									<input type="text" class="form-control" placeholder="Travel Count*">
+								</div>
+								<div class="col-md-12 mb-10">
+									<textarea type="text" class="form-control" placeholder="Message"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+				 </div>
+			  </div>
+		   </div>
+		   <div class="modal-footer">
+			  <button type="button" class="btn btn-block btn-block modal-submit-btn">Connect  with an Expert</button>
+		   </div>
+		</div>
+	 </div>
+  </div>
+  <div class="modal fade" id="requestCallback" tabindex="-1" role="dialog" aria-hidden="true">
+	 <div class="modal-dialog">
+		<div class="modal-content">
+		   <div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+			  <h3 class="modal-title text-center">Request Callback</h3>
+		   </div>
+		   <div class="modal-body">
+			  <!-- content goes here -->
+			  <div class="search-block">
+				 <div class="row">
+					<div class="col-md-12 col-xs-12 col-sm-12 popular-search">
+						<div class="modal-form">
+							<div class="row">
+								<div class="col-md-12 mb-10">
+									<input type="text" class="form-control" placeholder="Full Name*">
+								</div>
+								<div class="col-md-12 mb-10">
+									<input type="text" class="form-control" placeholder="Email (Optional)">
+								</div>
+								<div class="col-md-12 mb-10">
+									<input type="text" class="form-control" placeholder="Phone*">
 								</div>
 								<div class="col-md-12 mb-10">
 									<textarea type="text" class="form-control" placeholder="Message"></textarea>

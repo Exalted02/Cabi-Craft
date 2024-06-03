@@ -72,18 +72,19 @@
 </div>
 <!-- end Master Slider -->
 <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
-<div class="main-content-area clearfix" style="background-image: url('{{ url('images/design/bg.png') }}')">
+<div class="main-content-area clearfix">
 	<section class="custom-padding padding-bottom-0">
 		<div class="container">
 			<div class="row">
 				<div class="clearfix"></div>
 				<div class="heading-panel">
-					<div class="col-xs-12 col-md-7 col-sm-6 left-side">
-						<h1><span class="secondary-color">Adventure Activities</span></h1>
+					<div class="col-xs-8 col-md-7 col-sm-6 left-side">
+						<h1>Adventure Activities</h1>
+						<p class="heading-text">Some text here....</p>
 					</div>
-					<div class="col-sm-6 col-xs-12 col-md-5">
-						<div class="posts-masonry view-all mb-10">
-						   <div class="col-md-12 text-right">
+					<div class="col-xs-4 col-md-5 col-sm-6">
+						<div class="posts-masonry view-all margin-top-30">
+						   <div class="text-right width-100">
 								<a href="">
 									<span class="secondary-color">View All</span> 
 									<span class="view-all-arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
@@ -94,8 +95,8 @@
 				</div>
 				<div class="row">
 					<div class="col-md-12 col-xs-12 col-sm-12">
-						<div class="posts-masonry">
-							<div class="col-md-3 col-xs-12 col-sm-6">
+						<div class="row" id="adventure-activities">
+							<div class="" style="width: 280px;">
 								<div class="category-grid-box">
 									<div class="category-grid-img">
 										<div class="image-background" style="background-image: url('{{ url('images/posting/1.avif') }}');"></div>
@@ -104,16 +105,16 @@
 									<div class="short-description">
 										<div class="category-title"> <span><a href="#">6 days & 5 nights</a></span> </div>
 										<h3><a title="" href="{{url('tours')}}/1">Highlights of North Sikkim | FREE Visit to Bhim Nala Falls</a></h3>
-										<div class="price">INR 24,999 </div>
+										<div class="price color-black">INR 24,999 </div>
 									</div>
 									<div class="ad-info">
 										<ul>
-											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
+											<li class="w-100"><button class="btn btn-theme btn-secondary-color w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
 										</ul>
 									</div>
 								</div>
 							</div>
-							<div class="col-md-3 col-xs-12 col-sm-6">
+							<div class="" style="width: 280px;">
 								<div class="category-grid-box">
 									<div class="category-grid-img">
 										<div class="image-background" style="background-image: url('{{ url('images/posting/2.avif') }}');"	></div>
@@ -122,16 +123,16 @@
 									<div class="short-description">
 										<div class="category-title"> <span><a href="#">Car & Bikes</a></span> </div>
 										<h3><a title="" href="{{url('tours')}}/1">2017 Audi A4 quattro Premium</a></h3>
-										<div class="price">INR 43,000</div>
+										<div class="price color-black">INR 43,000</div>
 									</div>
 									<div class="ad-info">
 										<ul>
-											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
+											<li class="w-100"><button class="btn btn-theme btn-secondary-color w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
 										</ul>
 									</div>
 								</div>
 							</div>
-							<div class="col-md-3 col-xs-12 col-sm-6">
+							<div class="" style="width: 280px;">
 								<div class="category-grid-box">
 									<div class="category-grid-img">
 										<div class="image-background" style="background-image: url('{{ url('images/posting/3.avif') }}');"></div>
@@ -140,16 +141,34 @@
 									<div class="short-description">
 										<div class="category-title"> <span><a href="#">Car & Bikes</a></span> </div>
 										<h3><a title="" href="{{url('tours')}}/1">2014 Ford Shelby GT500 Coupe</a></h3>
-										<div class="price">INR 77,00</div>
+										<div class="price color-black">INR 77,00</div>
 									</div>
 									<div class="ad-info">
 										<ul>
-											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
+											<li class="w-100"><button class="btn btn-theme btn-secondary-color w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
 										</ul>
 									</div>
 								</div>
 							</div>
-							<div class="col-md-3 col-xs-12 col-sm-6">
+							<div class="" style="width: 280px;">
+								<div class="category-grid-box">
+									<div class="category-grid-img">
+										<div class="image-background" style="background-image: url('{{ url('images/posting/1.avif') }}');"></div>
+										<img class="img-responsive" alt="" src="{{ url('images/posting/1.avif') }}">
+									</div>
+									<div class="short-description">
+										<div class="category-title"> <span><a href="#">6 days & 5 nights</a></span> </div>
+										<h3><a title="" href="{{url('tours')}}/1">Highlights of North Sikkim | FREE Visit to Bhim Nala Falls</a></h3>
+										<div class="price color-black">INR 24,999 </div>
+									</div>
+									<div class="ad-info">
+										<ul>
+											<li class="w-100"><button class="btn btn-theme btn-secondary-color w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="" style="width: 280px;">
 								<div class="category-grid-box">
 									<div class="category-grid-img">
 										<div class="image-background" style="background-image: url('{{ url('images/posting/1.avif') }}');"		></div>
@@ -158,11 +177,11 @@
 									<div class="short-description">
 										<div class="category-title"> <span><a href="#">Car & Bikes</a></span> </div>
 										<h3><a title="" href="{{url('tours')}}/1">BMW I8 1.5 Auto 4X4 2dr </a></h3>
-										<div class="price">INR 250 <span class="negotiable">(Negotiable)</span></div>
+										<div class="price color-black">INR 250 <span class="negotiable">(Negotiable)</span></div>
 									</div>
 									<div class="ad-info">
 										<ul>
-											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
+											<li class="w-100"><button class="btn btn-theme btn-secondary-color w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
 										</ul>
 									</div>
 								</div>
@@ -178,12 +197,12 @@
 			<div class="row">
 				<div class="clearfix"></div>
 				<div class="heading-panel">
-					<div class="col-xs-12 col-md-7 col-sm-6 left-side">
-						<h1><span class="secondary-color">Resorts</span></h1>
+					<div class="col-xs-8 col-md-7 col-sm-6 left-side">
+						<h1>Resorts</h1>
 					</div>
-					<div class="col-sm-6 col-xs-12 col-md-5">
-						<div class="posts-masonry view-all mb-10">
-						   <div class="col-md-12 text-right">
+					<div class="col-xs-4 col-md-5 col-sm-6">
+						<div class="posts-masonry view-all margin-top-30">
+						   <div class="text-right width-100">
 								<a href="">
 									<span class="secondary-color">View All</span> 
 									<span class="view-all-arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
@@ -194,8 +213,8 @@
 				</div>
 				<div class="row">
 					<div class="col-md-12 col-xs-12 col-sm-12">
-						<div class="posts-masonry">
-							<div class="col-md-3 col-xs-12 col-sm-6">
+						<div class="row" id="resorts">
+							<div class="" style="width: 280px;">
 								<div class="category-grid-box">
 									<div class="category-grid-img">
 										<div class="image-background" style="background-image: url('{{ url('images/posting/1.avif') }}');"></div>
@@ -204,16 +223,16 @@
 									<div class="short-description">
 										<div class="category-title"> <span><a href="#">6 days & 5 nights</a></span> </div>
 										<h3><a title="" href="{{url('tours')}}/1">Highlights of North Sikkim | FREE Visit to Bhim Nala Falls</a></h3>
-										<div class="price">INR 24,999 </div>
+										<div class="price color-black">INR 24,999 </div>
 									</div>
 									<div class="ad-info">
 										<ul>
-											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
+											<li class="w-100"><button class="btn btn-theme btn-secondary-color w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
 										</ul>
 									</div>
 								</div>
 							</div>
-							<div class="col-md-3 col-xs-12 col-sm-6">
+							<div class="" style="width: 280px;">
 								<div class="category-grid-box">
 									<div class="category-grid-img">
 										<div class="image-background" style="background-image: url('{{ url('images/posting/2.avif') }}');"	></div>
@@ -222,16 +241,16 @@
 									<div class="short-description">
 										<div class="category-title"> <span><a href="#">Car & Bikes</a></span> </div>
 										<h3><a title="" href="{{url('tours')}}/1">2017 Audi A4 quattro Premium</a></h3>
-										<div class="price">INR 43,000</div>
+										<div class="price color-black">INR 43,000</div>
 									</div>
 									<div class="ad-info">
 										<ul>
-											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
+											<li class="w-100"><button class="btn btn-theme btn-secondary-color w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
 										</ul>
 									</div>
 								</div>
 							</div>
-							<div class="col-md-3 col-xs-12 col-sm-6">
+							<div class="" style="width: 280px;">
 								<div class="category-grid-box">
 									<div class="category-grid-img">
 										<div class="image-background" style="background-image: url('{{ url('images/posting/3.avif') }}');"></div>
@@ -240,16 +259,34 @@
 									<div class="short-description">
 										<div class="category-title"> <span><a href="#">Car & Bikes</a></span> </div>
 										<h3><a title="" href="{{url('tours')}}/1">2014 Ford Shelby GT500 Coupe</a></h3>
-										<div class="price">INR 77,00</div>
+										<div class="price color-black">INR 77,00</div>
 									</div>
 									<div class="ad-info">
 										<ul>
-											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
+											<li class="w-100"><button class="btn btn-theme btn-secondary-color w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
 										</ul>
 									</div>
 								</div>
 							</div>
-							<div class="col-md-3 col-xs-12 col-sm-6">
+							<div class="" style="width: 280px;">
+								<div class="category-grid-box">
+									<div class="category-grid-img">
+										<div class="image-background" style="background-image: url('{{ url('images/posting/1.avif') }}');"></div>
+										<img class="img-responsive" alt="" src="{{ url('images/posting/1.avif') }}">
+									</div>
+									<div class="short-description">
+										<div class="category-title"> <span><a href="#">6 days & 5 nights</a></span> </div>
+										<h3><a title="" href="{{url('tours')}}/1">Highlights of North Sikkim | FREE Visit to Bhim Nala Falls</a></h3>
+										<div class="price color-black">INR 24,999 </div>
+									</div>
+									<div class="ad-info">
+										<ul>
+											<li class="w-100"><button class="btn btn-theme btn-secondary-color w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="" style="width: 280px;">
 								<div class="category-grid-box">
 									<div class="category-grid-img">
 										<div class="image-background" style="background-image: url('{{ url('images/posting/1.avif') }}');"		></div>
@@ -258,11 +295,11 @@
 									<div class="short-description">
 										<div class="category-title"> <span><a href="#">Car & Bikes</a></span> </div>
 										<h3><a title="" href="{{url('tours')}}/1">BMW I8 1.5 Auto 4X4 2dr </a></h3>
-										<div class="price">INR 250 <span class="negotiable">(Negotiable)</span></div>
+										<div class="price color-black">INR 250 <span class="negotiable">(Negotiable)</span></div>
 									</div>
 									<div class="ad-info">
 										<ul>
-											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
+											<li class="w-100"><button class="btn btn-theme btn-secondary-color w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
 										</ul>
 									</div>
 								</div>
@@ -278,12 +315,12 @@
 			<div class="row">
 				<div class="clearfix"></div>
 				<div class="heading-panel">
-					<div class="col-xs-12 col-md-7 col-sm-6 left-side">
-						<h1><span class="secondary-color">Camping</span></h1>
+					<div class="col-xs-8 col-md-7 col-sm-6 left-side">
+						<h1>Camping</h1>
 					</div>
-					<div class="col-sm-6 col-xs-12 col-md-5">
-						<div class="posts-masonry view-all mb-10">
-						   <div class="col-md-12 text-right">
+					<div class="col-xs-4 col-md-5 col-sm-6">
+						<div class="posts-masonry view-all margin-top-30">
+						   <div class="text-right width-100">
 								<a href="">
 									<span class="secondary-color">View All</span> 
 									<span class="view-all-arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
@@ -294,26 +331,8 @@
 				</div>
 				<div class="row">
 					<div class="col-md-12 col-xs-12 col-sm-12">
-						<div class="posts-masonry">
-							<div class="col-md-3 col-xs-12 col-sm-6">
-								<div class="category-grid-box">
-									<div class="category-grid-img">
-										<div class="image-background" style="background-image: url('{{ url('images/posting/1.avif') }}');"></div>
-										<img class="img-responsive" alt="" src="{{ url('images/posting/1.avif') }}">
-									</div>
-									<div class="short-description">
-										<div class="category-title"> <span><a href="#">6 days & 5 nights</a></span> </div>
-										<h3><a title="" href="{{url('tours')}}/1">Highlights of North Sikkim | FREE Visit to Bhim Nala Falls</a></h3>
-										<div class="price">INR 24,999 </div>
-									</div>
-									<div class="ad-info">
-										<ul>
-											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3 col-xs-12 col-sm-6">
+						<div class="row" id="camping">
+							<div class="" style="width: 280px;">
 								<div class="category-grid-box">
 									<div class="category-grid-img">
 										<div class="image-background" style="background-image: url('{{ url('images/posting/2.avif') }}');"	></div>
@@ -322,16 +341,16 @@
 									<div class="short-description">
 										<div class="category-title"> <span><a href="#">Car & Bikes</a></span> </div>
 										<h3><a title="" href="{{url('tours')}}/1">2017 Audi A4 quattro Premium</a></h3>
-										<div class="price">INR 43,000</div>
+										<div class="price color-black">INR 43,000</div>
 									</div>
 									<div class="ad-info">
 										<ul>
-											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
+											<li class="w-100"><button class="btn btn-theme btn-secondary-color w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
 										</ul>
 									</div>
 								</div>
 							</div>
-							<div class="col-md-3 col-xs-12 col-sm-6">
+							<div class="" style="width: 280px;">
 								<div class="category-grid-box">
 									<div class="category-grid-img">
 										<div class="image-background" style="background-image: url('{{ url('images/posting/3.avif') }}');"></div>
@@ -340,16 +359,52 @@
 									<div class="short-description">
 										<div class="category-title"> <span><a href="#">Car & Bikes</a></span> </div>
 										<h3><a title="" href="{{url('tours')}}/1">2014 Ford Shelby GT500 Coupe</a></h3>
-										<div class="price">INR 77,00</div>
+										<div class="price color-black">INR 77,00</div>
 									</div>
 									<div class="ad-info">
 										<ul>
-											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
+											<li class="w-100"><button class="btn btn-theme btn-secondary-color w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
 										</ul>
 									</div>
 								</div>
 							</div>
-							<div class="col-md-3 col-xs-12 col-sm-6">
+							<div class="" style="width: 280px;">
+								<div class="category-grid-box">
+									<div class="category-grid-img">
+										<div class="image-background" style="background-image: url('{{ url('images/posting/1.avif') }}');"></div>
+										<img class="img-responsive" alt="" src="{{ url('images/posting/1.avif') }}">
+									</div>
+									<div class="short-description">
+										<div class="category-title"> <span><a href="#">6 days & 5 nights</a></span> </div>
+										<h3><a title="" href="{{url('tours')}}/1">Highlights of North Sikkim | FREE Visit to Bhim Nala Falls</a></h3>
+										<div class="price color-black">INR 24,999 </div>
+									</div>
+									<div class="ad-info">
+										<ul>
+											<li class="w-100"><button class="btn btn-theme btn-secondary-color w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="" style="width: 280px;">
+								<div class="category-grid-box">
+									<div class="category-grid-img">
+										<div class="image-background" style="background-image: url('{{ url('images/posting/2.avif') }}');"	></div>
+										<img class="img-responsive" alt="" src="{{ url('images/posting/2.avif') }}">
+									</div>
+									<div class="short-description">
+										<div class="category-title"> <span><a href="#">Car & Bikes</a></span> </div>
+										<h3><a title="" href="{{url('tours')}}/1">2017 Audi A4 quattro Premium</a></h3>
+										<div class="price color-black">INR 43,000</div>
+									</div>
+									<div class="ad-info">
+										<ul>
+											<li class="w-100"><button class="btn btn-theme btn-secondary-color w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="" style="width: 280px;">
 								<div class="category-grid-box">
 									<div class="category-grid-img">
 										<div class="image-background" style="background-image: url('{{ url('images/posting/1.avif') }}');"		></div>
@@ -358,11 +413,11 @@
 									<div class="short-description">
 										<div class="category-title"> <span><a href="#">Car & Bikes</a></span> </div>
 										<h3><a title="" href="{{url('tours')}}/1">BMW I8 1.5 Auto 4X4 2dr </a></h3>
-										<div class="price">INR 250 <span class="negotiable">(Negotiable)</span></div>
+										<div class="price color-black">INR 250 <span class="negotiable">(Negotiable)</span></div>
 									</div>
 									<div class="ad-info">
 										<ul>
-											<li class="w-100"><button class="btn btn-theme w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
+											<li class="w-100"><button class="btn btn-theme btn-secondary-color w-100" data-toggle="modal" data-target="#collegeRequestCallback">Request Callback</button></li>
 										</ul>
 									</div>
 								</div>
@@ -374,7 +429,7 @@
 		</div>
 	</section>
 	<!-- =-=-=-=-=-=-= Statistics Counter =-=-=-=-=-=-= -->
-	<div class="funfacts section-padding parallex" style="background: rgba(0, 0, 0, 0) url('{{ url('images/design/parallex1.jpg') }}') no-repeat scroll center center;">
+	{{--<div class="funfacts section-padding parallex" style="background: rgba(0, 0, 0, 0) url('{{ url('images/design/parallex1.jpg') }}') no-repeat scroll center center;">
 		<div class="container">
 		   <div class="row">
 			  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
@@ -406,13 +461,11 @@
 				 <h4>Adventure <span>Activities</span></h4>
 			  </div>
 		   </div>
-		   <!-- /.row -->
 		</div>
-		<!-- /.container -->
-	</div>
+	</div>--}}
 	<!-- =-=-=-=-=-=-= Statistics Counter End =-=-=-=-=-=-= -->
 	<!-- =-=-=-=-=-=-= Car Inspection =-=-=-=-=-=-= -->
-	<section class="car-inspection section-padding">
+	{{--<section class="car-inspection section-padding">
 		<div class="container">
 		   <div class="row">
 			  <div class="col-md-6 col-sm-6 col-xs-12 nopadding hidden-sm">
@@ -423,32 +476,14 @@
 			  <div class="col-md-6 col-sm-12 col-xs-12 nopadding">
 				 <div class="call-to-action-detail-section">
 					<div class="heading-2">
-						{{--<h3> Want To Sale Your Car ?</h3>--}}
 					   <h2>About Our Club's</h2>
 					</div>
 					<p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.. </p>
-					{{--<div class="row">
-					   <ul>
-						  <li class="col-sm-4"> <i class="fa fa-check"></i> Transmission</li>
-						  <li class="col-sm-4"> <i class="fa fa-check"></i> Steering</li>
-						  <li class="col-sm-4"> <i class="fa fa-check"></i> Engine</li>
-						  <li class="col-sm-4"> <i class="fa fa-check"></i> Tires</li>
-						  <li class="col-sm-4"> <i class="fa fa-check"></i> Lighting</li>
-						  <li class="col-sm-4"> <i class="fa fa-check"></i> Interior</li>
-						  <li class="col-sm-4">  <i class="fa fa-check"></i> Suspension</li>
-						  <li class="col-sm-4">  <i class="fa fa-check"></i> Exterior</li>
-						  <li class="col-sm-4">  <i class="fa fa-check"></i> Brakes</li>
-						  <li class="col-sm-4">  <i class="fa fa-check"></i> Air Conditioning</li>
-						  <li class="col-sm-4">  <i class="fa fa-check"></i> Engine Diagnostics</li>
-						  <li class="col-sm-4">  <i class="fa fa-check"></i> Wheel Alignment</li>
-					   </ul>
-					</div>
-					<a href="" class="btn-theme btn-lg btn">Schedule Inspection <i class="fa fa-angle-right"></i></a>--}}
 				 </div>
 			  </div>
 		   </div>
 		</div>
-	</section>
+	</section>--}}
 	<!-- =-=-=-=-=-=-= Car Inspection End =-=-=-=-=-=-= -->
 	<!-- =-=-=-=-=-=-= Testimonials =-=-=-=-=-=-= -->         
 	<section class="section-padding parallex bg-img-3" style="background: rgba(0, 0, 0, 0) url('{{ url('images/design/parallex2.jpg') }}') no-repeat scroll center center;">
@@ -517,6 +552,24 @@
 		</div>
 	</section>
 	<!-- =-=-=-=-=-=-= Testimonials Section End =-=-=-=-=-=-= -->
+	<!-- =-=-=-=-=-=-= Call to action Start =-=-=-=-=-=-= -->
+	<div class="parallex bg-img-3 section-padding">
+		<div class="container">
+		   <div class="row">
+			  <div class="col-md-8 col-sm-12">
+				 <div class="call-action">
+					<i class="flaticon-like-1"></i>
+					<h4>Not sure What you are looking for? </h4>
+					{{--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>--}}
+				 </div>
+			  </div>
+			  <div class="col-md-4 col-sm-12">
+				 <div class="parallex-button"> <a href="#" class="btn btn-theme" data-toggle="modal" data-target="#requestCallback">Request a Call Back</a> </div>
+			  </div>
+		   </div>
+		</div>
+	</div>
+	<!-- =-=-=-=-=-=-= Call to action End =-=-=-=-=-=-= -->
 	<!-- =-=-=-=-=-=-= Gallery Image =-=-=-=-=-=-= -->
 	{{--<section class="custom-padding padding-top-30 padding-bottom-30">
 		<div class="album">
@@ -657,6 +710,18 @@
 </div>
 @endsection
 @section('scripts')
-
+<script>
+$('#adventure-activities, #resorts, #camping').slick({
+  infinite: true,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  // autoplay: true,
+  autoplaySpeed: 1000,
+  nextArrow: '',
+  prevArrow: '',
+  variableWidth: true,
+  centerMode: true,
+});
+</script>
 @endsection
 

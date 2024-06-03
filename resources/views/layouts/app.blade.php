@@ -46,11 +46,12 @@
 		<link rel="stylesheet" href="{{ url('front-assets/js/masterslider/skins/default/style.css') }}" />
 		<link rel="stylesheet" href="{{ url('front-assets/js/masterslider/style/style.css') }}" />
 		<link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600%7CSource+Sans+Pro:400,400i,600" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 		<!-- JavaScripts -->
 		<script src="{{ url('front-assets/js/modernizr.js') }}"></script>
 	</head>
 
-	<body>
+	<body style="background-image: url('{{ url('images/design/bg.png') }}'); background-color: #ffefbb;">
 		@include('_includes/header')
 		
 			@yield('content')
@@ -94,7 +95,21 @@
 		<!-- For This Page Only -->
 		<!-- MasterSlider --> 
 		<script src="{{ url('front-assets/js/masterslider/masterslider.min.js') }}"></script> 
+		<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 		<script type="text/javascript">	
+		$(document).ready(function(){
+			$('.myTextField').focus(function(){
+				$('#mySearch').addClass('header-search-expanded');
+				$('.search-form').removeClass('d-none');
+			});
+			$(document).on("click", function(event){
+				// Check if the clicked element is not within #myDiv
+				if (!$(event.target).closest("#mySearch").length) {
+					$('#mySearch').removeClass('header-search-expanded');
+					$('.search-form').addClass('d-none');
+				}
+			});
+		});
          (function($) {
            "use strict";	
          

@@ -82,7 +82,12 @@
   float: left;
   position: relative;
   
-  width: 100%
+  width: 100%;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* position: relative; */
 }
 
 @media screen and (min-width: 993px) {
@@ -430,20 +435,8 @@
 
 .search-container-div{
     min-width: 100px;
-    max-width: 300px;
-}
-.mega-menu .menu-search-bar input.header-search::placeholder {
-    color: #007D41 !important;
-}
-.mega-menu input.header-search:focus,
-.mega-menu input.header-search {
-	border: 1px solid #007D41;
-    border-radius: 30px;
-    height: 45px;
-    color: #000;
-    padding: 10px;
-    font-size: 15px;
-	background: none;
+    max-width: 500px;
+	width: 500px;
 }
 .mega-menu .menu-search-bar input {
   max-width: 0;
@@ -520,8 +513,9 @@
   /*------------------------------------------------------ MOBILE COLLAPSE TRIGGER BUTTON */
   margin: 0;
   padding: 0;
-  height: 50px;
-  width: 70px;
+  /* height: 50px; */
+  height: 40px;
+  width: 55px;
   background: #1a1a1a;
   /* display: none; */
   /* position: absolute; */
@@ -544,10 +538,12 @@
   content: "";
   display: block;
   height: 4px;
-  width: 40px;
+  /* width: 40px; */
+  width: 30px;
   background: #fff;
   position: absolute;
-  top: 13px;
+  /* top: 13px; */
+  top: 8px;
   left: 0;
   right: 0;
   margin: 0 auto;
@@ -563,11 +559,13 @@
 }
 
 .mega-menu .menu-mobile-collapse-trigger:after {
-  top: 33px;
+  /* top: 33px; */
+  top: 28px;
 }
 
 .mega-menu .menu-mobile-collapse-trigger span {
-  top: 23px;
+  /* top: 23px; */
+  top: 18px;
 }
 
 .mega-menu .menu-mobile-collapse-trigger.active span {
@@ -575,15 +573,21 @@
 }
 
 .mega-menu .menu-mobile-collapse-trigger.active:before {
-  -webkit-transform: rotate(30deg);
+  /*-webkit-transform: rotate(30deg);
       -ms-transform: rotate(30deg);
-          transform: rotate(30deg);
+          transform: rotate(30deg);*/
+  -webkit-transform: rotate(42deg);
+      -ms-transform: rotate(42deg);
+          transform: rotate(42deg);
 }
 
 .mega-menu .menu-mobile-collapse-trigger.active:after {
-  -webkit-transform: rotate(-30deg);
+  /*-webkit-transform: rotate(-30deg);
       -ms-transform: rotate(-30deg);
-          transform: rotate(-30deg);
+          transform: rotate(-30deg);*/
+  -webkit-transform: rotate(-39deg);
+      -ms-transform: rotate(-39deg);
+          transform: rotate(-39deg);
 }
 
 @media screen and (max-width: 992px) {
@@ -2128,4 +2132,21 @@ box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 
 @media (max-width: 1272px) {
 .mega-menu .drop-down.grid-col-5 { width: 61.666667%; }
+}
+
+@media (max-width: 415px) {
+	.mega-menu .menu-mobile-collapse-trigger:before, .mega-menu .menu-mobile-collapse-trigger:after,
+	.mega-menu .menu-mobile-collapse-trigger span {
+		width: 20px;
+	}
+	.mega-menu .menu-mobile-collapse-trigger:after {
+		top: 22px;
+	}
+	.mega-menu .menu-mobile-collapse-trigger span {
+		top: 15px;
+	}
+	.mega-menu .menu-mobile-collapse-trigger {
+		height: 34px;
+		width: 41px;
+	}
 }

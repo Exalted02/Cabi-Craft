@@ -28,12 +28,60 @@
                      <div class="col-lg-12 col-md-12">
                         <!-- menu logo -->
                         <ul class="menu-logo">
-                           <li class="d-flex justify-space-between align-items-center">
-                              <a href="index.html"><img src="images/logo.png" alt="logo"> </a>
-							  <div class="search-container-div">
-								<input type="search" placeholder="Search..." class="header-search">
-							  </div>
-                           </li>
+							<li class="d-flex justify-space-between align-items-center">
+								<a href="index.html"><img src="images/logo.png" alt="logo"> </a>
+							</li>
+								{{--<div class="search-container-div">--}}
+									{{--<input type="search" placeholder="Search..." class="">--}}
+									<div id="mySearch" class="header-search">
+										<div class="search-input-container">
+											<div class="search-input-icon">
+												<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 16 16" role="img"><path stroke="#515151" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" d="M7.333 12.667A5.333 5.333 0 107.333 2a5.333 5.333 0 000 10.667zM14 14l-2.9-2.9"></path></svg>
+											</div>
+											<div class="search-input-field-container">
+												<input type="text" class="search-input myTextField" value="">
+											</div>
+										</div>
+										<div class="search-form-content search-form d-none">
+											<div class="search-form-content-div">
+												<span class="search-content-heading">Product Type</span>
+												<div class="search-tab-container">
+													<div class="search-tab">
+														<span class="search-tab-text">Tour</span>
+													</div>
+													<div class="search-tab">
+														<span class="search-tab-text ">Activity</span>
+													</div>
+												</div>
+											</div>
+											<div class="search-seperator"></div>
+											<div class="search-form-content-div">
+												<span class="search-content-heading">Trip Duration</span>
+												<div class="search-tab-container">
+													<div class="search-tab">
+														<span class="search-tab-text">Upto 1 Day</span>
+													</div>
+													<div class="search-tab">
+														<span class="search-tab-text ">2 to 3 days</span>
+													</div>
+													<div class="search-tab">
+														<span class="search-tab-text ">3 to 5 days</span>
+													</div>
+													<div class="search-tab">
+														<span class="search-tab-text ">5 to 7 days</span>
+													</div>
+													<div class="search-tab">
+														<span class="search-tab-text ">7+ days</span>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="search-submit-container search-form d-none">
+											<span class="search-clear-all">Clear All</span>
+											<button class="btn btn-theme btn-secondary-color">Search For Products</button>
+										</div>
+									</div>
+								{{--</div>--}}
                         </ul>
                         <ul class="menu-links">
 						{{--<li>

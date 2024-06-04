@@ -8,8 +8,11 @@
 		<div class="container">
 		   <div class="row">
 			  <!-- Header Top Left -->
-			  <div class="col-md-12">
-				<ul class="listnone text-center">
+			  <div class="col-md-12 d-flex">
+				<div class="rotate-icon">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="38" viewBox="0 0 24 38" fill="none"><path d="M24 0H14.5L5 38H14.5L24 0Z" fill="white" fill-opacity="0.5"></path><path d="M12 0H9.95238L0 38H2.04762L12 0Z" fill="white" fill-opacity="0.5"></path></svg>
+				</div>
+				<ul class="listnone text-center width-100">
 					<li>SALE 70% OFF</li>
 				</ul>
 			  </div>

@@ -497,7 +497,7 @@
 					   <p>Lorem ipsum dolor sit amet consectetur adipisicing elitsed eiusmod tempor enim minim veniam quis notru.</p>
 					</div>
 					<div class="testimonial-meta-box">
-					   <img src="images/users/1.jpg" alt="">
+					   <img src="{{ asset('/images/noimage.png') }}" alt="">
 					   <div class="testimonial-meta">
 						  <h3 class="">Jhon Emily Copper </h3>
 						  <p> Developer</p>
@@ -516,7 +516,7 @@
 					   <p>Lorem ipsum dolor sit amet consectetur adipisicing elitsed eiusmod tempor enim minim veniam quis notru.</p>
 					</div>
 					<div class="testimonial-meta-box">
-					   <img src="images/users/2.jpg" alt="">
+					   <img src="{{ asset('/images/noimage.png') }}" alt="">
 					   <div class="testimonial-meta">
 						  <h3 class="">Hania Sheikh </h3>
 						  <p> CEO Pvt. Inc.</p>
@@ -535,7 +535,7 @@
 					   <p>Lorem ipsum dolor sit amet consectetur adipisicing elitsed eiusmod tempor enim minim veniam quis notru.</p>
 					</div>
 					<div class="testimonial-meta-box">
-					   <img src="images/users/3.jpg" alt="">
+					   <img src="{{ asset('/images/noimage.png') }}" alt="">
 					   <div class="testimonial-meta">
 						  <h3 class="">Jaccica Albana </h3>
 						  <p>  CTO Albana Inc.</p>
@@ -558,7 +558,7 @@
 		   <div class="row">
 			  <div class="col-md-8 col-sm-12">
 				 <div class="call-action">
-					<i class="flaticon-like-1"></i>
+					<i class="flaticon-mail"></i>
 					<h4>Not sure What you are looking for? </h4>
 					{{--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>--}}
 				 </div>

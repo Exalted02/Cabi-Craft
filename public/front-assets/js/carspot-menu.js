@@ -53,7 +53,6 @@
                 desktopTopFixed = 'desktopTopFixed',
                 mobileTopFixed = 'mobileTopFixed',
                 fullWidth = 'menuFullWidth',
-                menuOpenMobile  = 'menu-open-mobile ',
                 Canvas;
 
             // Main Object
@@ -118,14 +117,10 @@
                                 // show the drop down
                                 $(this).addClass(activeClass);
                                 drop_down.show(0);
-								
-								menu_links.addClass(menuOpenMobile);
                             } else {
                                 // hide the drop down
                                 $(this).removeClass(activeClass);
                                 drop_down.hide(0);
-								
-								menu_links.removeClass(menuOpenMobile);
                             }
                             return false;
                         });

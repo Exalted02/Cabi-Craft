@@ -139,17 +139,6 @@
     opacity: 0;
     filter: alpha(opacity=0);
 }
-.fileUpload input.uploadcollege {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-    cursor: pointer;
-    opacity: 0;
-    filter: alpha(opacity=0);
-}
 /*-- Image Upload Style End --*/
 .imageSection {
 	margin-top: -16px !important;
@@ -319,9 +308,7 @@
 }
 #logo {
 	font-family: 'Oswald-SemiBold';
-	/* background: #1d2a36; */
-	/* background: #cbcccd; */
-	background: #fff;
+	background: #1d2a36;
 	text-align: center;
 	font-weight: bold;
 	font-size: 35px;
@@ -531,6 +518,20 @@ input:checked + .slider:before {
 	color: #fd0000;
 	box-shadow: 0px 0px 5px 0px #8a8a8a;
 }
-.post-view-div{
-	margin-top:20px;
+.invoiceprice {
+	margin-top:10px;
+}
+.white-text{
+	color:white;
+	margin-left:80px;
+	font-size:20px;
+}
+.offer-border-color{
+	background-color:white;
+	width:240px;
+	height:auto;
+	margin-left:10px;
+}
+.disabled-link{
+	pointer-events: none;
 }

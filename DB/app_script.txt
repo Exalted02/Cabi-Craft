@@ -1,0 +1,136 @@
+App Excel Url :-- https://docs.google.com/spreadsheets/d/1ERr5TuSQLwn2TfIqz_EtQw5lJhv2zZiZMiIllpyeZyg/edit#gid=0
+
+App Script Code Url :-- https://script.google.com/u/0/home/projects/1mMDpjuDY8GKlVQVqZbgZsonpATvmlNpDT7vpWfyyI5WK7TBmPL86yLfi/edit
+
+
+========================================================================================================
+let MySheets  = SpreadsheetApp.getActiveSpreadsheet();  //01
+let InvSheet  = MySheets.getSheetByName("Inv");                   
+let ItemSheet = MySheets.getSheetByName("Item");
+
+function doPost(e)          //02 
+{
+  let Inv = e.parameters; 
+  let Qtys = Inv.qty;     
+  let IsNew = Inv.IsNew;
+ 
+  if (IsNew == 'Y') {
+    /*InvSheet.appendRow([Inv.inv_sl[0], Inv.inv_dt[0], Inv.cust_nm[0], Inv.addr[0], Inv.city[0], Inv.state[0], Inv.zipcode[0], Inv.inv_no[0]]);*/    //07
+    InvSheet.appendRow([Inv.inv_no[0], Inv.inv_dt[0], Inv.cust_nm[0], Inv.addr[0], Inv.city[0], Inv.state[0], Inv.zipcode[0]]);
+
+    let i = 1;
+    Qtys.forEach(function (value, index)                       //08
+    {
+      if (i > 0) {
+        InvSheet.appendRow(["", "", "", "", "", "", "",Inv.inv_sl[0], Inv.cat_nm[index], Inv.subcat_nm[index], Inv.cabi_nm[index], Inv.width[index], Inv.length[index], Inv.deep[index], Inv.qty[index], Inv.material[index], Inv.cabinetcolour[index], Inv.exposide[index], Inv.expocolour[index], Inv.shuttermaterial[index], Inv.shuttercolour[index], Inv.legtype[index], Inv.sktheight[index], Inv.handeltype[index], "", "", Inv.price[index], "", Inv.a1[index], "", "", Inv.a3[index], Inv.a2[index]]); 
+
+        /*InvSheet.appendRow(["", "", "", "", "", "", "","", Inv.cat_nm[index], Inv.subcat_nm[index], Inv.cabi_nm[index], Inv.width[index], Inv.length[index], Inv.deep[index], Inv.qty[index], Inv.material[index], Inv.cabinetcolour[index], Inv.exposide[index], Inv.expocolour[index], Inv.shuttermaterial[index], Inv.shuttercolour[index], Inv.legtype[index], Inv.sktheight[index], Inv.handeltype[index]]); */ //08
+      }
+      i++;
+
+
+    });
+  }
+  else {
+
+    InvSheet.getRange(Inv.StartRow, 1, 1, 7).setValues([[Inv.inv_no[0], Inv.inv_dt[0], Inv.cust_nm[0], Inv.addr[0], Inv.city[0], Inv.state[0], Inv.zipcode[0]]]);
+
+    /*InvSheet.getRange(Inv.StartRow, 1, 1, 7).setValues([[Inv.inv_sl[0], Inv.inv_dt[0], Inv.cust_nm[0], Inv.addr[0], Inv.city[0], Inv.state[0], Inv.zipcode[0]]]);*/
+
+    let NextRow = Inv.StartRow;
+    let DeleteRow = +Inv.StartRow + 1;
+    InvSheet.deleteRows(DeleteRow, Inv.RowCount);
+
+    let i = 1;
+    Qtys.forEach(function (value, index)                       //08
+    {
+      if (i > 0) {
+        NextRow++;
+        InvSheet.insertRows(NextRow, 1);
+
+        InvSheet.getRange(NextRow, 1, 1, 33).setValues([["", "", "", "", "", "", "", Inv.inv_sl[0],Inv.cat_nm[index], Inv.subcat_nm[index], Inv.cabi_nm[index], Inv.width[index], Inv.length[index], Inv.deep[index], Inv.qty[index], Inv.material[index], Inv.cabinetcolour[index], Inv.exposide[index], Inv.expocolour[index], Inv.shuttermaterial[index], Inv.shuttercolour[index], Inv.legtype[index], Inv.sktheight[index], Inv.handeltype[index], "", "", Inv.price[index], "", Inv.a1[index], "", "", Inv.a3[index], Inv.a2[index]]]);
+
+        /*InvSheet.getRange(NextRow, 1, 1, 24).setValues([["", "", "", "", "", "", "", "",Inv.cat_nm[index], Inv.subcat_nm[index], Inv.cabi_nm[index], Inv.width[index], Inv.length[index], Inv.deep[index], Inv.qty[index], Inv.material[index], Inv.cabinetcolour[index], Inv.exposide[index], Inv.expocolour[index], Inv.shuttermaterial[index], Inv.shuttercolour[index], Inv.legtype[index], Inv.sktheight[index], Inv.handeltype[index]]]);*/
+
+      }
+      i++;
+    });
+  }
+  return ContentService.createTextOutput("Data Submitted"); //09
+}
+
+function doGet(e) {  //03
+console.log(e);
+  let page = e.parameter.page;
+
+  if (page == null || page == undefined) {
+    page = "index";
+    return HtmlService.createTemplateFromFile(page).evaluate();
+  }
+  else if (page == 'dropdown') {
+    let table = ItemSheet.getRange("A:A").getValues().filter(r => r.every(Boolean));
+    let str = JSON.stringify(table);
+    return ContentService.createTextOutput(str);
+  }
+  else if (page == 'max') {
+    let table = InvSheet.getRange("A:A").getValues().filter(Number);
+    let myMax = Math.max(...table) + 1;
+    /*return ContentService.createTextOutput(myMax);*/
+    
+    let invoiceNoValues = InvSheet.getRange("H:H").getValues().filter(String);
+    let maxInvoice  = Math.max(...invoiceNoValues);
+
+      var output = {
+      maxSerialNo: myMax,
+      invoiceNoValues: invoiceNoValues
+    };
+    var jsonString = JSON.stringify(output);
+    return ContentService.createTextOutput(jsonString);
+  }
+  else if (page == 'search') {
+    let no = e.parameter.no;
+    let ReturnData = InvSheet.getRange("A:A").createTextFinder(no).matchEntireCell(true).findAll();
+    /*let ReturnData = InvSheet.getRange("H:H").createTextFinder(no).matchEntireCell(true).findAll();*/
+
+    let StartRow = 0;
+    let EndRow = 0;
+
+    ReturnData.forEach(function (range) {
+      StartRow = range.getRow();
+    });
+
+    if (StartRow > 0) {
+
+      for (var i = StartRow + 1; i <= StartRow + 24; i = i + 1) {
+
+        let val = InvSheet.getRange(i, 9).getValue();
+
+        if (val == "") {
+          EndRow = i - 1;
+          break;
+        }
+
+      }  
+
+      let table = InvSheet.getRange("A" + StartRow + ":AG" + EndRow).getValues();
+
+      //let str = JSON.stringify(table);
+      let cnt = EndRow - StartRow;
+      let str = JSON.stringify({ record: table, SR: StartRow, CNT: cnt });
+
+      return ContentService.createTextOutput(str);
+    }
+    else {
+      let str = JSON.stringify("NOT FOUND");
+      return ContentService.createTextOutput(str);
+    }
+  }
+
+  else if (page == 'all') {
+       let table = InvSheet.getRange("A:E").getValues().filter(r=>r.every(Boolean));
+       let str = JSON.stringify(table);
+       return ContentService.createTextOutput(str); 
+  }
+
+ 
+}

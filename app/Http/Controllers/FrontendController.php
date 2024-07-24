@@ -11,4 +11,16 @@ class FrontendController extends Controller
 		$result['data'] = [];
         return view('home', $result);
 	}
+	public function browse()
+	{
+        return view('browsecatalogue');
+	}
+	public function login()
+	{
+        return view('login');
+	}
+	public function register()
+	{
+        return view('register');
+	}
 }

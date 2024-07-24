@@ -5605,6 +5605,127 @@ h2.no-span:before, h2.no-span:after {
 	font-weight: 600;
 	border-color: transparent;
 }
+.submited-form .form-control {
+    background-color: #fff;
+    box-shadow: none;
+	border-radius: 5px;
+    color: #555;
+    font-size: 14px;
+    height: auto;
+    padding: 5px;
+	width: 100%;
+    transition: all 0.2s cubic-bezier(0, 0, 0.58, 1);
+}
+.submited-form.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+	position: relative;
+	min-height: 1px;
+	padding-right:5px; 
+	padding-left: 5px; 
+  } 
+
+
+
+.submited-form .form-group {
+	margin-bottom: 5px;
+  }
+.submited-form .panel-title{
+	display: block;
+	padding: 1px;
+	text-decoration: none;
+	 font-weight: 500;
+}
+.image-margin{
+	margin-left: 12px;
+	
+}
+.form-group.row {
+	  margin-right: 0px;
+	  margin-left: 0px;
+	}  
+.submiteds-form .panel-body{
+	padding: 10px 10px;
+}
+.switch { 
+	position : relative ;
+	display : inline-block;
+	width : 40px;
+	height : 20px;
+	background-color: #eee;
+	border-radius: 20px;
+  }
+  .switch::after {
+	content: '';
+	position: absolute;
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	background-color: white;
+	top: 1px; 
+	left: 1px;
+	transition: all 0.3s;
+  }
+  .checkbox:checked + .switch::after {
+	left : 20px; 
+  }
+  .checkbox:checked + .switch {
+	background-color: hsla(0, 94%, 49%, 0.822);
+  }
+  .checkbox { 
+	display : none;
+ }
+ .submited-form label{
+	color: hsl(0, 3%, 33%);
+ }
+.doted{
+	border-top: 1px dotted #000; 	
+}
+
+.gride {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	
+}
+.gride .form-grid{
+	padding-right:0px;
+	padding-left:50px;
+}
+.gride .form-control{
+	padding-top: 4px;
+	padding-right: 1px;
+	padding-bottom: 4px;
+	padding-left: 1px;
+}
+/* .image-container {
+	margin-top: 50px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 5px;
+}  */
+
+.image-container { 
+	padding-top: 40px;
+	padding-right: 30px;
+	padding-bottom: 50px;
+	padding-left: 20px; 
+}
+.image-container img {
+	height: 280px;
+	border-radius: 10px;
+	border-bottom-right-radius: 50px;
+	
+} 
+/* .custom-padding {
+	margin-top: 250px;
+	margin-left: 50px;
+} */
+.passage{
+	word-wrap: break-word;
+    white-space: normal;
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    max-height: 4.5em;
+    line-height: 1.5em; 
+}
 
 .panel.with-nav-tabs .nav-justified {
 	margin-bottom: -1px;

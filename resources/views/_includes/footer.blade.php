@@ -5,64 +5,40 @@
             <div class="footer-top">
                <div class="container">
                   <div class="row">
-                     <div class="col-md-3  col-sm-6 col-xs-12">
+                     <div class="col-md-9  col-sm-9 col-xs-12">
                         <!-- Info Widget -->
                         <div class="widget">
-                           <div class="logo"> <img alt="" src="front-assets/images/logo.png"> </div>
-                           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et dolor eget erat fringilla port.</p>
-                           <ul class="apps-donwloads">
-                              <li><img src="front-assets/images/googleplay.png" alt=""></li>
-                              <li><img src="front-assets/images/appstore.png" alt=""></li>
-                           </ul>
+                           <p>Avoid the hassle of building your interiors with delays and mistakes.
+                           Simply customize and buy Cupboards.</p>
                         </div>
                                                  
                         <!-- Info Widget Exit -->
                      </div>
-                     <div class="col-md-2 col-sm-6 col-xs-12">
+                     <div class="col-md-3 col-sm-3 col-xs-12">
                         <!-- Follow Us -->
-                        <div class="widget socail-icons">
+                        <div class="widget socail-icons"style="text-align: center;">
                            <h5>Follow Us</h5>
-                           <ul>
-                              <li><a class="Facebook" href=""><i class="fa fa-facebook"></i></a><span>Facebook</span></li>
-                              <li><a class="Twitter" href=""><i class="fa fa-twitter"></i></a><span>Twitter</span></li>
-                              <li><a class="Linkedin" href=""><i class="fa fa-linkedin"></i></a><span>Linkedin</span></li>
-                              <li><a class="Google" href=""><i class="fa fa-google-plus"></i></a><span>Google+</span></li>
+                           <ul style="list-style: none; padding: 0; margin: 0; display: flex; justify-content: center;">
+                              <li style="margin: 0 5px;"><a class="Instagram" href=""><i class="fa fa-instagram"></i></a><span></span></li>
+                              <li  style="margin: 0 5px;"><a class="Facebook" href=""><i class="fa fa-facebook"></i></a><span></span></li>
+                              <li style="margin: 0 5px;"><a class="Linkedin" href=""><i class="fa fa-linkedin"></i></a><span></span></li>
+                              <li style="margin: 0 5px;"><a class="YouTube" href=""><i class="fa fa-youtube"></i></a><span></span></li>
                            </ul>
                         </div>
                         <!-- Follow Us End -->
                      </div>
-                     <div class="col-md-2  col-sm-6 col-xs-12">
-                        <!-- Follow Us -->
-                        <div class="widget my-quicklinks">
-                           <h5>Quick Links</h5>
-                           <ul >
-                              <li><a href="#">About Us</a></li>
-                             <li><a href="#">Faqs</a></li>
-                             <li><a href="#">Packages</a></li>
-                             <li><a href="#">Contact Us</a></li>
-                           </ul>
-                        </div>
-                        <!-- Follow Us End -->
-                     </div>
-                     <div class="col-md-5  col-sm-6 col-xs-12">
+                  </div>   
+                     <div style="text-align: center;">
                         <!-- Newslatter -->
-                        <div class="widget widget-newsletter">
-                           <h5>Singup for Weekly Newsletter</h5>
-                           <div class="fieldset">
-                              <p>We may send you information about related events, webinars, products and services which we believe.</p>
-                              <form>
-                                 <input class="" value="Enter your email address" type="text">
-                                 <input class="submit-btn" name="submit" value="Submit" type="submit"> 
-                              </form>
-                           </div>
-                        </div>
                         <div class="copyright">
                            <p>© 2017 Carspot All rights reserved. Design by <a href="http://themeforest.net/user/scriptsbundle/portfolio" target="_blank">Scriptsbundle</a> </p>
                         </div>   
                         <!-- Newslatter -->
                      </div>
-                  </div>
+                  
                </div>
             </div>
            
          </footer>
+
+      

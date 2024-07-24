@@ -40,6 +40,11 @@
 		<link href="{{ url('front-assets/css/responsive-media.css') }}" rel="stylesheet">
 		<!-- =-=-=-=-=-=-= Template Color =-=-=-=-=-=-= -->
 		<link rel="stylesheet" id="color" href="{{ url('front-assets/css/colors/defualt.css') }}">
+		<!-- Base MasterSlider style sheet -->
+		<link rel="stylesheet" href="{{ url('front-assets/js/masterslider/style/masterslider.css') }}" />
+      <link rel="stylesheet" href="{{ url('front-assets/js/masterslider/skins/default/style.css') }}" />
+      <link rel="stylesheet" href="{{ url('front-assets/js/masterslider/style/style.css') }}" />
+      <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600%7CSource+Sans+Pro:400,400i,600" rel="stylesheet">
 		<!-- JavaScripts -->
 		<script src="{{ url('front-assets/js/modernizr.js') }}"></script>
 	</head>
@@ -84,7 +89,42 @@
 		<!-- Wow Animation -->
 		<script src="{{ url('front-assets/js/wow.js') }}"></script>
 		<!-- Template Core JS -->
-		<script src="{{ url('front-assets/js/custom.js') }}"></script>
+		<script src="{{ url('front-assets/js/custom.js') }}"></script>		
+      	<!-- MasterSlider --> 
+      	<script src="{{ url('front-assets/js/masterslider/masterslider.min.js') }}"></script> 
+		  <script type="text/javascript">	
+         (function($) {
+           "use strict";	
+         
+         
+         	    var slider = new MasterSlider();
+         
+         	    // adds Arrows navigation control to the slider.
+         	    slider.control('arrows');
+         	  
+         	     slider.setup('masterslider' , {
+         	         width:1400,    // slider standard width
+         	         height:560,   // slider standard height
+         	         layout:'fullwidth',
+         	         loop:true,
+         	         preload:0,
+         fillMode:'fill',
+         	         instantStartLayers:true,
+         	         autoplay:true,
+         view:"basic"
+         
+         	    });
+         // add scroll parallax effect
+         
+         })(jQuery);
+         
+         
+         
+         
+         
+         
+         
+      </script>
 		<!-- For This Page Only -->
 		<link rel="stylesheet" href="{{ url('common-assets/css/toastr.min.css') }}"/>
 		<script src="{{ url('common-assets/js/toastr.min.js') }}"></script>

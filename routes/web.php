@@ -59,3 +59,6 @@ Route::middleware(['auth','verified'])->group(function () {
 require __DIR__.'/auth.php';
 
 require __DIR__.'/backend.php';
+Route::get('/browsecatalogue', [FrontendController::class, 'browse'])->name('browsecatalogue');
+Route::get('/loginpage', [FrontendController::class, 'login'])->name('loginpage');
+Route::get('/registerpage', [FrontendController::class, 'register'])->name('registerpage');

@@ -3,7 +3,7 @@
 	  margin-left: -3px;
 	}  */
 @section('content')
-    <div class="row-new">
+    <div class="row">
         <div class="col-md-12 col-xs-12 col-sm-12">
             <div class="col-md-8">
                 <div class="search-widget">
@@ -715,3 +715,104 @@
     </div>
     
 @endsection
+<div class="row">
+    <!-- Middle Content Area -->
+    <div class="col-md-12 doted">
+        <div class="row">
+            <div class="gride col-md-4 col-sm-3">
+                <!-- Form -->
+                <div class="form-grid">
+                    <form>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input placeholder="Your Email" class="form-control" type="email">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input placeholder="Your Password" class="form-control" type="password">
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="skin-minimal">
+                                        <ul class="list">
+                                            <li>
+                                                <input type="checkbox" id="minimal-checkbox-1">
+                                                <label for="minimal-checkbox-1">Remember Me</label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-theme btn-lg btn-block">Login With Us</button>
+                        <h2 class="no-span"><b>(OR)</b></h2>
+                        <a class="btn btn-lg btn-block btn-social btn-facebook">
+                            <span class="fa fa-facebook"></span> Sign in with Facebook
+                        </a>
+                        <a class="btn btn-lg btn-block btn-social btn-google">
+                            <span class="fa fa-google"></span> Sign in with Google
+                        </a>
+                    </form>
+                </div>
+                <!-- Form -->
+            </div>
+            <!-- Middle Content Area End -->
+
+            <!-- Blog Post -->
+            <div class="col-md-8">
+                <div class="row image-container">
+                    <div class="image-container">
+                        <div class="col-md-3 col-sm-3">
+                            <img alt="" src="front-assets/images/posting/1.jpg" class="img-responsive">
+                            <h4>Kitchen</h4>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                            <img alt="" src="front-assets/images/posting/1.jpg" class="img-responsive">
+                            <h4>Laundry</h4>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                            <img alt="" src="front-assets/images/posting/1.jpg" class="img-responsive">
+                            <h4>Bedroom</h4>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                            <img alt="" src="front-assets/images/posting/1.jpg" class="img-responsive">
+                            <h4>Bathroom</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- Blog Post End -->
+                 <p class="passage">No more hassle of buying raw materials and working with multiple contractors.
+                 <br>Just buy the “CABICRAFT” has all the products that are in your design.</p>
+            </div>
+        </div>
+    </div>
+    <!-- Row End -->
+</div>
+/* .image-container {
+	margin-top: 50px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 5px;
+}  */
+
+/* .image-container { 
+	padding-top: 40px;
+	padding-right: 30px;
+	padding-bottom: 50px;
+	padding-left: 20px; 
+}
+.image-container img {
+	height: 280px;
+	border-radius: 10px;
+	border-bottom-right-radius: 50px;
+	
+} 
+.passage{
+	word-wrap: break-word;
+    white-space: normal;
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    max-height: 4.5em;
+    line-height: 1.5em; 
+} */

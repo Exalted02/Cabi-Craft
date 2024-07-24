@@ -47,6 +47,7 @@
       <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600%7CSource+Sans+Pro:400,400i,600" rel="stylesheet">
 		<!-- JavaScripts -->
 		<script src="{{ url('front-assets/js/modernizr.js') }}"></script>
+		@livewireStyles
 	</head>
 
 	<body>
@@ -161,6 +162,7 @@
 				toastr[type](msg);
 			}
 		</script>
+		@livewireScripts
 		@yield('scripts')
 	</body>
 </html>

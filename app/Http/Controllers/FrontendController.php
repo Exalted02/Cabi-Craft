@@ -8,8 +8,7 @@ class FrontendController extends Controller
 {	
 	public function index()
 	{
-		$result['data'] = [];
-        return view('home', $result);
+		return view('home');
 	}
 	public function browse()
 	{

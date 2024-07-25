@@ -4,31 +4,22 @@
          <!-- slide 1 -->
          <div class="ms-slide slide-1"  data-delay="5">
             <!-- slide background --> 
-            <img src="js/masterslider/style/blank.gif" data-src="images/slider/slider-banner.jpg" alt="Slide1 background"/>
-            <!-- slide thumbnail Image -->
-            <img src="js/masterslider/style/blank.gif" data-src="images/slider/audi.png" alt="Master Slider"
-               style="left:750px; top:180px;"
-               class="ms-layer"
-               data-type="image"
-               data-delay="1000"
-               data-duration="3000"
-               data-ease="easeOutExpo"
-               data-effect="scalefrom(1.1,1.1,190,0)"/> 
-            <h3 class="ms-layer title4 font-white font-uppercase font-thin-xs"
+            <img src="js/masterslider/style/blank.gif" data-src="{{ url('images/banner.jpg') }}" alt="Slide1 background"/>            
+            <h3 class="ms-layer title4 font-black font-uppercase font-thin-xs"
                style="left:120px; top:150px;"
                data-type="text"
                data-delay="2000"
                data-duration="2000"
                data-ease="easeOutExpo"
-               data-effect="skewleft(30,80)">Find Your Dream Car</h3>
+               data-effect="skewleft(30,80)">All Your Design Modules</h3>
             <h3 class="ms-layer title4 font-white font-thin-xs"
                style="left:120px; top:210px;"
                data-type="text"
                data-delay="2500"
                data-duration="2000"
                data-ease="easeOutExpo"
-               data-effect="skewleft(30,80)"><span class="font-color font-thin-xs heading-color">Thousand Of Cars Of Your Choice</span></h3>
-            <h5 class="ms-layer text1 font-white"
+               data-effect="skewleft(30,80)"><span class="font-color font-thin-xs heading-color">You can bring into live</span></h3>
+			   {{--<h5 class="ms-layer text1 font-white"
                style="left: 120px; top: 280px;"
                data-type="text"
                data-effect="bottom(45)"
@@ -43,79 +34,36 @@
                data-delay="3500"
                data-ease="easeOutExpo"
                data-duration="2000"
-               data-effect="scale(1.5,1.6)">Search Cars</a> 
+               data-effect="scale(1.5,1.6)">Search Cars</a> --}}
          </div>
          <!-- end of slide --> 
          <!-- slide 2 -->
          <div class="ms-slide slide-3" data-delay="5">
             <!-- slide background --> 
-            <img src="js/masterslider/style/blank.gif" data-src="images/slider/slider-banner2.jpg" alt="Slide1 background"/>
-            <h3 class="ms-layer title4 font-white font-uppercase font-thin-xs"
+            <img src="js/masterslider/style/blank.gif" data-src="{{ url('images/banner1.jpg') }}" alt="Slide1 background"/>
+            <h3 class="ms-layer title4 font-black font-uppercase font-thin-xs"
                style="left:120px; top:150px;"
                data-type="text"
                data-delay="2000"
                data-duration="2000"
                data-ease="easeOutExpo"
-               data-effect="skewleft(30,80)">Welcome to Carspot</h3>
+               data-effect="skewleft(30,80)">Cupboards Made for</h3>
             <h3 class="ms-layer title4 font-white font-thin-xs"
                style="left:120px; top:210px;"
                data-type="text"
                data-delay="2500"
                data-duration="2000"
                data-ease="easeOutExpo"
-               data-effect="skewleft(30,80)"><span class="font-color font-thin-xs heading-color">Find Your Dream Car</span></h3>
+               data-effect="skewleft(30,80)"><span class="font-color font-thin-xs heading-color">Designers and Architects.</span></h3>
             <h5 class="ms-layer text1 font-white"
                style="left: 120px; top: 280px;"
                data-type="text"
                data-effect="bottom(45)"
                data-duration="2500"
                data-delay="3000"
-               data-ease="easeOutExpo">Lorem Ipsum is simply dummy text of the printing typesetting<br>
-               industry is proident sunt in culpa officia deserunt mollit.
+               data-ease="easeOutExpo">No more hassle of buying raw materials and working with multiple contractors.<br>
+				Just buy the “CABICRAFT”has all the products that are in your design.
             </h5>
-            <a class="ms-layer btn3 uppercase"
-               style="left:120px; top: 390px;"
-               data-type="text"
-               data-delay="3500"
-               data-ease="easeOutExpo"
-               data-duration="2000"
-               data-effect="scale(1.5,1.6)"> View All Cars</a> 
-         </div>
-         <!-- end of slide --> 
-         <div class="ms-slide slide-2" data-delay="4">
-            <div class="ms-overlay-layers"></div>
-            <!-- slide background --> 
-            <img src="js/masterslider/style/blank.gif" data-src="images/slider/slider-banner4.jpg" alt="Slide1 background"/> 
-            <h3 class="ms-layer title4 font-white font-uppercase font-thin-xs"
-               style="left:120px; top:150px;"
-               data-type="text"
-               data-delay="2000"
-               data-duration="2000"
-               data-ease="easeOutExpo"
-               data-effect="skewleft(30,80)">Welcome to Carspot</h3>
-            <h3 class="ms-layer title4 font-white font-thin-xs"
-               style="left:120px; top:210px;"
-               data-type="text"
-               data-delay="2500"
-               data-duration="2000"
-               data-ease="easeOutExpo"
-               data-effect="skewleft(30,80)"><span class="font-color font-thin-xs heading-color">Find Your Dream Car</span></h3>
-            <h5 class="ms-layer text1 font-white"
-               style="left: 120px; top: 280px;"
-               data-type="text"
-               data-effect="bottom(45)"
-               data-duration="2500"
-               data-delay="3000"
-               data-ease="easeOutExpo">Lorem Ipsum is simply dummy text of the printing typesetting<br>
-               industry is proident sunt in culpa officia deserunt mollit.
-            </h5>
-            <a class="ms-layer btn3 uppercase"
-               style="left:120px; top: 390px;"
-               data-type="text"
-               data-delay="3500"
-               data-ease="easeOutExpo"
-               data-duration="2000"
-               data-effect="scale(1.5,1.6)"> View All Cars</a> 
          </div>
          <!-- slide 2 -->
          <!-- end of slide --> 
@@ -299,7 +247,7 @@
                <!-- Row End -->
             </div>
             <!-- Main Container End -->
-               <div class="ad-info-1" style="display: flex; justify-content: center; align-items: center;">
+               <div class="" style="display: flex; justify-content: center; align-items: center;">
                <a href="{{url('browsecatalogue')}}" class="btn btn-primary" >Browse Catalogue</a>
                </div>
          </section>

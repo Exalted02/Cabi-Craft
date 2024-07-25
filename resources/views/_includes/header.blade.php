@@ -10,7 +10,7 @@
 			  <div class="header-top-left col-md-6 col-sm-6 col-xs-12 hidden-xs">
 				 <ul class="listnone">
 					<li><a href="about.html"><i class="fa fa-heart-o" aria-hidden="true"></i> About</a></li>
-					<li><a href="faqs.html"><i class="fa fa-folder-open-o" aria-hidden="true"></i> FAQS</a></li>
+					{{--<li><a href="faqs.html"><i class="fa fa-folder-open-o" aria-hidden="true"></i> FAQS</a></li>
 					<li class="dropdown">
 					   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-globe" aria-hidden="true"></i> Language <span class="caret"></span></a>
 					   <ul class="dropdown-menu">
@@ -20,17 +20,17 @@
 						  <li><a href="#">Russian</a></li>
 						  <li><a href="#">chinese</a></li>
 					   </ul>
-					</li>
+					</li>--}}
 				 </ul>
 			  </div>
 			  <!-- Header Top Right Social -->
 			  <div class="header-right col-md-6 col-sm-6 col-xs-12 ">
 				 <div class="pull-right">
 					<ul class="listnone">
-					   <li><a href="{{url('loginpage')}}"><i class="fa fa-sign-in"></i> Log in</a></li>
-					   <li class="hidden-xs hidden-sm"><a href="{{url('registerpage')}}"><i class="fa fa-unlock" aria-hidden="true"></i> Register</a></li>
+					   <li><a href="{{ route('loginpage') }}"><i class="fa fa-sign-in"></i> Log in</a></li>
+					   <li class="hidden-xs hidden-sm"><a href="{{ route('registerpage') }}"><i class="fa fa-unlock" aria-hidden="true"></i> Register</a></li>
 					   <li class="dropdown">
-						  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="img-circle resize" alt="" src="front-assets/images/users/3.jpg"> <span class="myname hidden-xs"> Umair </span> <span class="caret"></span></a>
+						  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="img-circle resize" alt="" src="front-assets/images/users/3.jpg"> <span class="myname hidden-xs"> Hello,  Midhun </span> <span class="caret"></span></a>
 						  <ul class="dropdown-menu">
 							 <li><a href="{{ route('browsecatalogue') }}">New Order</a></li>
 							 <li><a href="profile.html">User Profile</a></li>
@@ -41,9 +41,9 @@
 							 <li><a href="deactive.html">Account Deactivation</a></li>
 						  </ul>
 					   </li>
-					   <li>
+					   {{--<li>
 						  <a href="post-ad-1.html" class="btn btn-theme">Sell Your Car</a>
-					   </li>
+					   </li>--}}
 					</ul>
 				 </div>
 			  </div>
@@ -68,7 +68,7 @@
 						</li>
 						</ul>
 					</div>
-					<div class="header-right col-md-6 col-sm-6 col-xs-12 ">
+					<div class="header-right col-md-8 col-sm-8 col-xs-12 ">
 						<div class="pull-right">
 							<ul class="listnone">
 							<!-- menu links -->
@@ -76,7 +76,7 @@
 								<ul class="menu-links">
 								<!-- active class -->
 								<li>
-									<a href="javascript:void(0)">Home </a>
+									<a href="{{ route('home') }}">Home </a>
 									<!-- drop down multilevel  -->
 								</li>
 								<li>
@@ -98,7 +98,12 @@
 								</li>
 								<li>
 									<a href="javascript:void(0)">Contact us</a>
-									<!-- drop down multilevel  -->
+								</li>
+								<li>
+									<a href="{{url('loginpage')}}">Login</a>
+								</li>
+								<li>
+									<a href="{{ route('registerpage') }}">Register</a>
 								</li>
 								</ul>
 							</ul>

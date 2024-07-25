@@ -4599,6 +4599,9 @@ label {
 .font-white {
 	color: #FFF;
 }
+.font-black {
+	color: #000;
+}
 
 .text-right {
 	text-align: right;

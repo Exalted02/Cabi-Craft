@@ -62,3 +62,5 @@ require __DIR__.'/backend.php';
 Route::get('/browsecatalogue', [FrontendController::class, 'browse'])->name('browsecatalogue');
 Route::get('/loginpage', [FrontendController::class, 'login'])->name('loginpage');
 Route::get('/registerpage', [FrontendController::class, 'register'])->name('registerpage');
+Route::get('/cartpage', [FrontendController::class, 'cart'])->name('cartpage');
+Route::get('/profilepage', [FrontendController::class, 'profile'])->name('profilepage');

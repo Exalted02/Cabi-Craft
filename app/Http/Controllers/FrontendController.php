@@ -22,4 +22,12 @@ class FrontendController extends Controller
 	{
         return view('register');
 	}
+	public function cart()
+	{
+        return view('cart');
+	}
+	public function profile()
+	{
+        return view('profile');
+	}
 }

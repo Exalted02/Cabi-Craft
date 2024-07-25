@@ -5693,9 +5693,9 @@ h2.no-span:before, h2.no-span:after {
 	
 }
 .gride .form-grid{
-	padding-right:0px;
-	padding-left:50px;
-}
+	padding-right:30px;
+	padding-left:30px;
+} 
 .gride .form-control{
 	padding-top: 4px;
 	padding-right: 1px;
@@ -5704,28 +5704,36 @@ h2.no-span:before, h2.no-span:after {
 }
 .image-container {
     padding-top: 40px;
-    padding-right: 30px;
+    padding-right: 40px;
     padding-bottom: 50px;
-    padding-left: 20px;
+    padding-left: 40px;
 }
 
 .image-container img {
     max-width: 100%; 
-    height: auto;
+    height: 250px;
     max-height: 280px; 
     border-radius: 10px;
     object-fit: cover;
+	border-bottom-right-radius: 40px;
 }
 
 .passage {
     word-wrap: break-word; /* Allows long words to break */
-    overflow: hidden; /* Prevents text from overflowing its container */
+    overflow: hidden; 
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* Limiting the number of lines to 3 */
+    -webkit-line-clamp: 3; 
     -webkit-box-orient: vertical;
-    line-height: 1.5em; /* Line height for text readability */
-    max-height: 4.5em; /* Limits the passage to 3 lines */
+    line-height: 1.5em; 
+    max-height: 4.5em;
 }
+.post-excerpts .post-excerpt {
+	font-size: 14px;
+	line-height: 26px;
+	margin-bottom: 30px;
+	padding: 0 20px;
+	color: #999;
+  }
 
 .panel.with-nav-tabs .nav-justified {
 	margin-bottom: -1px;

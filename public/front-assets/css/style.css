@@ -5623,9 +5623,13 @@ h2.no-span:before, h2.no-span:after {
 	position: relative;
 	min-height: 1px;
 	padding-right:5px; 
-	padding-left: 5px; 
+	padding-left: 5px;
 }
 .submited-form .row {
+	margin-right: -5px;
+    margin-left: -5px;
+  } 
+.loginrow .row {
 	margin-right: -5px;
     margin-left: -5px;
   } 

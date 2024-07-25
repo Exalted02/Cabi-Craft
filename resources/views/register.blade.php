@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="container">
+<div class="loginrow">
     <div class="row">
         <!-- Middle Content Area -->
         <div class="col-md-12 doted">

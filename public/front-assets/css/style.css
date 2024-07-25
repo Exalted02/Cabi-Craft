@@ -5625,7 +5625,7 @@ h2.no-span:before, h2.no-span:after {
 	padding-right:5px; 
 	padding-left: 5px; 
   } 
-.submited-form .row {
+.submited-form .row .loginrow {
 	margin-right: -5px;
     margin-left: -5px;
   } 

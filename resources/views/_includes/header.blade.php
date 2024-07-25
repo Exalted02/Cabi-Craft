@@ -32,6 +32,7 @@
 					   <li class="dropdown">
 						  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="img-circle resize" alt="" src="front-assets/images/users/3.jpg"> <span class="myname hidden-xs"> Umair </span> <span class="caret"></span></a>
 						  <ul class="dropdown-menu">
+							 <li><a href="{{ route('browsecatalogue') }}">New Order</a></li>
 							 <li><a href="profile.html">User Profile</a></li>
 							 <li><a href="archives.html">Archives</a></li>
 							 <li><a href="active-ads.html">Active Ads</a></li>
@@ -63,7 +64,7 @@
 						<!-- menu logo -->
 						<ul class="menu-logo">
 						<li>
-							<a href="index.html"><img src="front-assets/images/logo.png" alt="logo"> </a>
+							<a href="{{ route('home') }}"><img src="{{ url('images/logo.png') }}" alt="logo"> </a>
 						</li>
 						</ul>
 					</div>

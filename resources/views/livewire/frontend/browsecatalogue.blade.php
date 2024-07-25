@@ -14,8 +14,8 @@
 						<div class="new-order-body-scroll">
 						<div class="posts-masonry">
 							<div class="col-md-4 col-xs-12 col-sm-6">
-								<div class="white category-grid-box-1">
-									<div class="images"> <img alt="Carspot" src="images/posting/4.jpg" class="img-responsive">
+								<div class="category-grid-box-1">
+									<div class="images"> <img alt="" src="{{ url('images/cabinet.jpg') }}" class="img-responsive">
 									</div>
 									<div class="short-description-1">
 										<h3>
@@ -30,8 +30,8 @@
 								</div>
 							</div>
 							<div class="col-md-4 col-xs-12 col-sm-6">
-								<div class="white category-grid-box-1">
-									<div class="images"> <img alt="Carspot" src="images/posting/4.jpg" class="img-responsive">
+								<div class="category-grid-box-1">
+									<div class="images"> <img alt="" src="{{ url('images/cabinet.jpg') }}" class="img-responsive">
 									</div>
 									<div class="short-description-1">
 										<h3>
@@ -46,8 +46,8 @@
 								</div>
 							</div>
 							<div class="col-md-4 col-xs-12 col-sm-6">
-								<div class="white category-grid-box-1">
-									<div class="images"> <img alt="Carspot" src="images/posting/4.jpg" class="img-responsive">
+								<div class="category-grid-box-1">
+									<div class="images"> <img alt="" src="{{ url('images/cabinet.jpg') }}" class="img-responsive">
 									</div>
 									<div class="short-description-1">
 										<h3>
@@ -62,8 +62,8 @@
 								</div>
 							</div>
 							<div class="col-md-4 col-xs-12 col-sm-6">
-								<div class="white category-grid-box-1">
-									<div class="images"> <img alt="Carspot" src="images/posting/4.jpg" class="img-responsive">
+								<div class="category-grid-box-1">
+									<div class="images"> <img alt="" src="{{ url('images/cabinet.jpg') }}" class="img-responsive">
 									</div>
 									<div class="short-description-1">
 										<h3>
@@ -78,8 +78,8 @@
 								</div>
 							</div>
 							<div class="col-md-4 col-xs-12 col-sm-6">
-								<div class="white category-grid-box-1">
-									<div class="images"> <img alt="Carspot" src="images/posting/4.jpg" class="img-responsive">
+								<div class="category-grid-box-1">
+									<div class="images"> <img alt="" src="{{ url('images/cabinet.jpg') }}" class="img-responsive">
 									</div>
 									<div class="short-description-1">
 										<h3>
@@ -94,8 +94,8 @@
 								</div>
 							</div>
 							<div class="col-md-4 col-xs-12 col-sm-6">
-								<div class="white category-grid-box-1">
-									<div class="images"> <img alt="Carspot" src="images/posting/4.jpg" class="img-responsive">
+								<div class="category-grid-box-1">
+									<div class="images"> <img alt="" src="{{ url('images/cabinet.jpg') }}" class="img-responsive">
 									</div>
 									<div class="short-description-1">
 										<h3>
@@ -109,13 +109,62 @@
 									</div>
 								</div>
 							</div>
+							<div class="col-md-4 col-xs-12 col-sm-6">
+								<div class="category-grid-box-1">
+									<div class="images"> <img alt="" src="{{ url('images/cabinet.jpg') }}" class="img-responsive">
+									</div>
+									<div class="short-description-1">
+										<h3>
+											<a title="" href="single-page-listing.html">2014 Ford Shelby GT500 Coupe</a>
+										</h3>
+										<p>720 H x 600 W x 560 D</p>
+										<span class="ad-price">Rs.210</span> 
+									</div>
+									<div class="ad-info-1" style="display: flex; justify-content: center; align-items: center;">
+										<button type="button" class="btn btn-danger">add to cart</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 col-xs-12 col-sm-6">
+								<div class="category-grid-box-1">
+									<div class="images"> <img alt="" src="{{ url('images/cabinet.jpg') }}" class="img-responsive">
+									</div>
+									<div class="short-description-1">
+										<h3>
+											<a title="" href="single-page-listing.html">2014 Ford Shelby GT500 Coupe</a>
+										</h3>
+										<p>720 H x 600 W x 560 D</p>
+										<span class="ad-price">Rs.210</span> 
+									</div>
+									<div class="ad-info-1" style="display: flex; justify-content: center; align-items: center;">
+										<button type="button" class="btn btn-danger">add to cart</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 col-xs-12 col-sm-6">
+								<div class="category-grid-box-1">
+									<div class="images"> <img alt="" src="{{ url('images/cabinet.jpg') }}" class="img-responsive">
+									</div>
+									<div class="short-description-1">
+										<h3>
+											<a title="" href="single-page-listing.html">2014 Ford Shelby GT500 Coupe</a>
+										</h3>
+										<p>720 H x 600 W x 560 D</p>
+										<span class="ad-price">Rs.210</span> 
+									</div>
+									<div class="ad-info-1" style="display: flex; justify-content: center; align-items: center;">
+										<button type="button" class="btn btn-danger">add to cart</button>
+									</div>
+								</div>
+							</div>
+						
 						</div>
 						</div>
 					</div>
 				</div>
                 <!-- Middle Content Box End -->
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 new-order-right-sidebar">
                   <!-- Left Sidebar -->
                      <!-- Sidebar Widgets -->
                      <div class="sidebar mr-5px">
@@ -361,11 +410,11 @@
                            <div class="panel panel-default">
                               <!-- Heading -->
                               <div class="panel-heading" role="tab" id="headingTwo">
-                                 <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    Submit Kitchen properties
-                                    </a>
-                                 </h4>
+							  <div class="ad-info-1">
+								<label>
+									<h4 class="panel-title">Submit Kitchen properties</h4>
+								</label>
+                              </div>
                               </div>
                               <!-- Content -->
                               <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
@@ -471,21 +520,20 @@
                            <!-- Brands Panel -->    
                            <div class="panel panel-default">
                               <!-- Heading -->
-                              <div class="panel-heading" role="tab" id="headingTwo">
-                                 <h5 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    Base Cabinet, 2 SS Drawers (2L Plain Baskets)
-                                    </a>
-                                 </h5>
+                              <div class="panel-heading border-bottom-seperator mb-20px" role="tab" id="headingTwo">
+							  <div class="ad-info-1">
+								<label>
+									<h4 class="panel-title">Base Cabinet, 2 SS Drawers (2L Plain Baskets)</h4>
+								</label>
                               </div>
-                              <hr>
+                              </div>
                               <!-- Content -->
                                 
                         <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
 								<div class="row">
                                         
                                         <div class="col-md-3 col-xs-3 col-sm-3">
-                                        <img alt="Carspot" src="front-assets/images/posting/1.jpg" class="img-responsive image-margin">
+                                        <img alt="" src="front-assets/images/posting/1.jpg" class="img-responsive image-margin">
                                         </div>
                                         <div class="col-md-6 col-xs-6 col-sm-6">
                                             <form>

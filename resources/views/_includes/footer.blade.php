@@ -31,7 +31,7 @@
                      <div style="text-align: center;">
                         <!-- Newslatter -->
                         <div class="copyright">
-                           <p>© 2017 Carspot All rights reserved. Design by <a href="http://themeforest.net/user/scriptsbundle/portfolio" target="_blank">Scriptsbundle</a> </p>
+                           <p>© {{ date('Y') }} All rights reserved. Design by <a href="https://exaltedsolution.com/" target="_blank">Exaltedsolution</a> </p>
                         </div>   
                         <!-- Newslatter -->
                      </div>

@@ -1712,7 +1712,7 @@ img.resize {
 	padding: 8px 18px 10px;
 	overflow: hidden;
 	width: 100%;
-	border-top: 1px solid #f1f1f1;
+	/* border-top: 1px solid #f1f1f1; */
 }
 
 .ad-info-1 .skin-minimal .list li label {
@@ -5634,6 +5634,9 @@ h2.no-span:before, h2.no-span:after {
     margin-left: -5px;
   } 
 
+.submited-form label{
+	color: hsl(0, 3%, 33%);
+ }
 .submited-form .form-group {
 	margin-bottom: 5px;
   }
@@ -5682,9 +5685,6 @@ h2.no-span:before, h2.no-span:after {
   }
   .checkbox { 
 	display : none;
- }
- .submited-form label{
-	color: hsl(0, 3%, 33%);
  }
 .doted{
 	border-top: 1px dotted #000; 	
@@ -10018,16 +10018,27 @@ footer.footer-bg {
     font-size: 26px;
     font-weight: 600;
 }
+.new-order-body-scroll {
+	border: 1px solid #ccc;
+    margin: 0 5px 10px 5px;
+    padding: 10px 5px;
+	
+    /*height: 500px;
+	overflow-y: auto;
+    overflow-x: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;*/
+}
+.border-bottom-seperator {
+	border-bottom: 1px solid #eee !important;
+}
+.new-order-right-sidebar {
+	position: sticky !important;
+	top: 5px;
+}
 .mr-5px {
 	margin-right: 5px;
 }
-.new-order-body-scroll {
-	overflow-y: auto;
-    height: 500px;
-    overflow-x: hidden;
-	border: 1px solid #ccc;
-    margin: 0 5px;
-    padding: 10px 5px;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+.mb-20px {
+	margin-bottom: 20px;
 }

@@ -66,29 +66,28 @@
                         <div class="image-container">
                             <div class="col-md-3 col-sm-6 col-xs-6">
                                 <img alt="" src="front-assets/images/posting/1.jpg" class="img-responsive">
-                                <h4>Kitchen</h4>
+                                <h4 style="margin-top: 20px;">Kitchen</h4>
                             </div>
                             <div class="col-md-3 col-sm-6 col-xs-6">
                                 <img alt="" src="front-assets/images/posting/1.jpg" class="img-responsive">
-                                <h4>Laundry</h4>
+                                <h4 style="margin-top: 20px;">Laundry</h4>
                             </div>
                             <div class="col-md-3 col-sm-6 col-xs-6">
                                 <img alt="" src="front-assets/images/posting/1.jpg" class="img-responsive">
-                                <h4>Bedroom</h4>
+                                <h4 style="margin-top: 20px;">Bedroom</h4>
                             </div>
                             <div class="col-md-3 col-sm-6 col-xs-6">
                                 <img alt="" src="front-assets/images/posting/1.jpg" class="img-responsive">
-                                <h4>Bathroom</h4>
+                                <h4 style="margin-top: 20px;">Bathroom</h4>
                             </div>
                         </div>
-                        <!-- <div class="post-excerpt">
-                            <p>
-                            No more hassle of buying raw materials and working with multiple contractors.
-                            Just buy the “CABICRAFT” has all the products that are in your design.
-                            </p>
-                        </div> -->
                     </div>
-                    
+                    <div class="post-excerpt">
+                        <p>
+                        No more hassle of buying raw materials and working with multiple contractors.
+                        Just buy the “CABICRAFT” has all the products that are in your design.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

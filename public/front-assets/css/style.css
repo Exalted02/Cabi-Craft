@@ -5773,6 +5773,40 @@ h2.no-span:before, h2.no-span:after {
     padding: 20px;
     margin-bottom: 20px;
 } */
+.profilerow .row{
+	margin-right: -5px;
+    margin-left: -5px;
+}
+.profile{
+	font-size: 14px;
+
+}
+.table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; 
+    border: 1px solid #ddd; 
+    padding: 0;
+	margin-top: 5px;
+	
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    white-space: nowrap; 
+    padding: 8px;
+}
+.post-ad{
+	border: 1px solid #dddddd;
+	margin-top: 5px;	
+}
+.post-ad .form-control{
+	padding: 5px;
+}
+
 .post-excerpts .post-excerpt {
 	font-size: 14px;
 	line-height: 26px;

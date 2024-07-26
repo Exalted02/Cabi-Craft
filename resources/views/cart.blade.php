@@ -26,82 +26,86 @@
             </div>
         </div>
     </div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Cabinet Type</th>
-                <th>product_images</th>
-                <th>Length</th>
-                <th>Deep </th>
-                <th>QTY</th>
-                <th>C.C Material</th>
-                <th>C.C colour </th>
-                <th>Expo side</th>
-                <th>Expo Colour</th>
-                <th>Shutter Colour</th>
-                <th>Leg Type</th>
-                <th> Skthigh</th>
-                <th>Handel Type </th>
-                <th>Price</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td colspan="14">Kitchen</td>
-            </tr>
-            <tr>
-                <td>1 </td>
-                <td>Base Cabinet 1 Shutters (with out shelf)</td>
-                <td>Row </td>
-                <td>500 </td>
-                <td>720 </td>
-                <td>560 </td>
-                <td>1 </td>
-                <td>(MR)_Ply </td>
-                <td>White </td>
-                <td>Without Expo </td>
-                <td>21091 HGl </td>
-                <td>HDHMR </td>
-                <td>21091 </td>
-                <td>No-skt </td>
-                <td>100 </td>
-            </tr>
-            <tr>
-                <td>2 </td>
-                <td>Base Cabinet,1 shutter +1 Shelf.</td>
-                <td>Row </td>
-                <td>450 </td>
-                <td>720 </td>
-                <td>560 </td>
-                <td>1 </td>
-                <td>(BWP)_Ply </td>
-                <td>White </td>
-                <td>Without Expo </td>
-                <td>21091 HGl </td>
-                <td>HDHMR </td>
-                <td>21091 </td>
-                <td>No-skt </td>
-                <td>100 </td>
-            </tr>
-            <tr>
-                <td colspan="11"></td>
-                <td colspan="2">Sub Total Rs. </td>
-                <td colspan="2">₹ 1,625,690.00 </td>
-            </tr>
-            <tr>
-                <td colspan="11"></td>
-                <td colspan="1">GST</td>
-                <td colspan="1">18% </td>
-                <td colspan="2">₹ 292,624.20</td>
-            </tr>
-            <tr>
-                <td colspan="11"></td>
-                <td colspan="2">Total </td>
-                <td colspan="2">₹ 1,918,314.20 </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="profile">
+        <div class="table-wrapper">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Cabinet Type</th>
+                        <th>product_images</th>
+                        <th>Length</th>
+                        <th>Deep </th>
+                        <th>QTY</th>
+                        <th>C.C Material</th>
+                        <th>C.C colour </th>
+                        <th>Expo side</th>
+                        <th>Expo Colour</th>
+                        <th>Shutter Colour</th>
+                        <th>Leg Type</th>
+                        <th> Skthigh</th>
+                        <th>Handel Type </th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="14">Kitchen</td>
+                    </tr>
+                    <tr>
+                        <td>1 </td>
+                        <td>Base Cabinet 1 Shutters (with out shelf)</td>
+                        <td>Row </td>
+                        <td>500 </td>
+                        <td>720 </td>
+                        <td>560 </td>
+                        <td>1 </td>
+                        <td>(MR)_Ply </td>
+                        <td>White </td>
+                        <td>Without Expo </td>
+                        <td>21091 HGl </td>
+                        <td>HDHMR </td>
+                        <td>21091 </td>
+                        <td>No-skt </td>
+                        <td>100 </td>
+                    </tr>
+                    <tr>
+                        <td>2 </td>
+                        <td>Base Cabinet,1 shutter +1 Shelf.</td>
+                        <td>Row </td>
+                        <td>450 </td>
+                        <td>720 </td>
+                        <td>560 </td>
+                        <td>1 </td>
+                        <td>(BWP)_Ply </td>
+                        <td>White </td>
+                        <td>Without Expo </td>
+                        <td>21091 HGl </td>
+                        <td>HDHMR </td>
+                        <td>21091 </td>
+                        <td>No-skt </td>
+                        <td>100 </td>
+                    </tr>
+                        <tr class="sub-total-row">
+                        <td colspan="11"></td>
+                        <td colspan="2">Sub Total Rs. </td>
+                        <td colspan="2">₹ 1,625,690.00 </td>
+                    </tr>
+                    <tr class="gst-row">
+                        <td colspan="11"></td>
+                        <td colspan="1">GST</td>
+                        <td colspan="1">18% </td>
+                        <td colspan="2">₹ 292,624.20</td>
+                    </tr>
+                    <tr class="Total-row">
+                        <td colspan="11"></td>
+                        <td colspan="2">Total </td>
+                        <td colspan="2">₹ 1,918,314.20 </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
     <div>
         <h4 class="special-heading">special Notice and instructions</h4>
         <p>All prices and spifications are subject to change without notice at any time.<br>
@@ -111,7 +115,7 @@
         <br>price include  cost  of transportaction.
         <br>price include  of 5 years warenty & 3 free servis.</P>
         <h4 class="special-heading">special Notice and instructions</h4>
-        <p>1.price include  cost  of transportaction.
+        <p>1.the warranty shall aplly only.
         <br>2.price include  of 5 years warenty & 3 free servis.</P>
    </div>
     <div>

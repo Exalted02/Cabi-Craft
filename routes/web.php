@@ -64,3 +64,7 @@ Route::get('/loginpage', [FrontendController::class, 'login'])->name('loginpage'
 Route::get('/registerpage', [FrontendController::class, 'register'])->name('registerpage');
 Route::get('/cartpage', [FrontendController::class, 'cart'])->name('cartpage');
 Route::get('/profilepage', [FrontendController::class, 'profile'])->name('profilepage');
+Route::get('/settingpage', [FrontendController::class, 'setting'])->name('settingpage');
+Route::get('/offerpage', [FrontendController::class, 'offer'])->name('offerpage');
+Route::get('/orderhistorys', [FrontendController::class, 'orderhistory'])->name('orderhistorys');
+Route::get('/offerdetailpage', [FrontendController::class, 'offerdetail'])->name('offerdetailpage');

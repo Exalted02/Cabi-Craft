@@ -30,4 +30,20 @@ class FrontendController extends Controller
 	{
         return view('profile');
 	}
+	public function setting()
+	{
+        return view('setting');
+	}
+	public function offer()
+	{
+        return view('offer');
+	}
+	public function orderhistory()
+	{
+        return view('orderhistory');
+	}
+	public function offerdetail()
+	{
+        return view('offerdetails');
+	}
 }

@@ -12,7 +12,7 @@
 				<div class="row grid-style-4">
 					<div class="col-md-12 col-xs-12 col-sm-12">
 						<div class="new-order-body-scroll">
-						<div class="posts-masonry">
+						<div class="posts-masonry1 row">
 							<div class="col-md-4 col-xs-12 col-sm-6">
 								<div class="category-grid-box-1">
 									<div class="images"> <img alt="" src="{{ url('images/cabinet.jpg') }}" class="img-responsive">

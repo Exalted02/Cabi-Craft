@@ -5701,12 +5701,12 @@ h2.no-span:before, h2.no-span:after {
 	padding-right:20px;
 	padding-left:20px;
 } 
-.gride .form-control{
+/* .gride .form-control{
 	padding-top: 4px;
 	padding-right: 1px;
 	padding-bottom: 4px;
 	padding-left: 1px;
-}
+} */
 .image-container {
     padding-top: 40px;
     padding-right: 40px;
@@ -5803,9 +5803,9 @@ h2.no-span:before, h2.no-span:after {
 	border: 1px solid #dddddd;
 	margin-top: 5px;	
 }
-.post-ad .form-control{
+/* .post-ad .form-control{
 	padding: 5px;
-}
+} */
 
 .post-excerpts .post-excerpt {
 	font-size: 14px;

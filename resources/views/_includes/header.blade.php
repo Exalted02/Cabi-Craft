@@ -33,12 +33,11 @@
 						  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="img-circle resize" alt="" src="front-assets/images/users/3.jpg"> <span class="myname hidden-xs"> Hello,  Midhun </span> <span class="caret"></span></a>
 						  <ul class="dropdown-menu">
 							 <li><a href="{{ route('browsecatalogue') }}">New Order</a></li>
-							 <li><a href="profile.html">User Profile</a></li>
-							 <li><a href="archives.html">Archives</a></li>
-							 <li><a href="active-ads.html">Active Ads</a></li>
-							 <li><a href="favourite.html">Favourite Ads</a></li>
-							 <li><a href="messages.html">Message Panel</a></li>
-							 <li><a href="deactive.html">Account Deactivation</a></li>
+							 <li><a href="javascript:void(0)">Order History</a></li>
+							 <li><a href="javascript:void(0)">Profile</a></li>
+							 <li><a href="javascript:void(0)">Offers</a></li>
+							 <li><a href="javascript:void(0)">Settings</a></li>
+							 <li><a href="javascript:void(0)">Log out</a></li>
 						  </ul>
 					   </li>
 					   {{--<li>
@@ -80,9 +79,9 @@
 									<!-- drop down multilevel  -->
 								</li>
 								<li>
-									<a href="javascript:void(0)">Catalogue<i class="fa fa-angle-down fa-indicator"></i></a>
+									<a href="javascript:void(0)">Catalogue{{--<i class="fa fa-angle-down fa-indicator"></i>--}}</a>
 									<!-- drop down multilevel  -->
-									<ul class="drop-down-multilevel">
+									{{--<ul class="drop-down-multilevel">
 										<li>
 											<a href="javascript:void(0)">Grid Style<i class="fa fa-angle-right fa-indicator"></i> </a>
 											<!-- drop down second level -->
@@ -94,7 +93,7 @@
 											<li><a href="listing-4.html"> Grid Style 4</a></li>
 											</ul>
 										</li>
-									</ul>
+									</ul>--}}
 								</li>
 								<li>
 									<a href="javascript:void(0)">Contact us</a>

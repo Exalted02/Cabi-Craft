@@ -15,7 +15,7 @@
 						<div class="posts-masonry1 row">
 							<div class="col-md-4 col-xs-12 col-sm-6">
 								<div class="category-grid-box-1">
-									<div class="images"> <img alt="" src="{{ url('images/cabinet.jpg') }}" class="img-responsive">
+									<div class="images"> <img alt="" src="{{ asset('images/cabinet.jpg') }}" class="img-responsive">
 									</div>
 									<div class="short-description-1">
 										<h3>
@@ -31,7 +31,7 @@
 							</div>
 							<div class="col-md-4 col-xs-12 col-sm-6">
 								<div class="category-grid-box-1">
-									<div class="images"> <img alt="" src="{{ url('images/cabinet.jpg') }}" class="img-responsive">
+									<div class="images"> <img alt="" src="{{ asset('images/cabinet.jpg') }}" class="img-responsive">
 									</div>
 									<div class="short-description-1">
 										<h3>
@@ -47,7 +47,7 @@
 							</div>
 							<div class="col-md-4 col-xs-12 col-sm-6">
 								<div class="category-grid-box-1">
-									<div class="images"> <img alt="" src="{{ url('images/cabinet.jpg') }}" class="img-responsive">
+									<div class="images"> <img alt="" src="{{ asset('images/cabinet.jpg') }}" class="img-responsive">
 									</div>
 									<div class="short-description-1">
 										<h3>
@@ -63,7 +63,7 @@
 							</div>
 							<div class="col-md-4 col-xs-12 col-sm-6">
 								<div class="category-grid-box-1">
-									<div class="images"> <img alt="" src="{{ url('images/cabinet.jpg') }}" class="img-responsive">
+									<div class="images"> <img alt="" src="{{ asset('images/cabinet.jpg') }}" class="img-responsive">
 									</div>
 									<div class="short-description-1">
 										<h3>
@@ -79,7 +79,7 @@
 							</div>
 							<div class="col-md-4 col-xs-12 col-sm-6">
 								<div class="category-grid-box-1">
-									<div class="images"> <img alt="" src="{{ url('images/cabinet.jpg') }}" class="img-responsive">
+									<div class="images"> <img alt="" src="{{ asset('images/cabinet.jpg') }}" class="img-responsive">
 									</div>
 									<div class="short-description-1">
 										<h3>
@@ -95,7 +95,7 @@
 							</div>
 							<div class="col-md-4 col-xs-12 col-sm-6">
 								<div class="category-grid-box-1">
-									<div class="images"> <img alt="" src="{{ url('images/cabinet.jpg') }}" class="img-responsive">
+									<div class="images"> <img alt="" src="{{ asset('images/cabinet.jpg') }}" class="img-responsive">
 									</div>
 									<div class="short-description-1">
 										<h3>
@@ -111,7 +111,7 @@
 							</div>
 							<div class="col-md-4 col-xs-12 col-sm-6">
 								<div class="category-grid-box-1">
-									<div class="images"> <img alt="" src="{{ url('images/cabinet.jpg') }}" class="img-responsive">
+									<div class="images"> <img alt="" src="{{ asset('images/cabinet.jpg') }}" class="img-responsive">
 									</div>
 									<div class="short-description-1">
 										<h3>
@@ -127,7 +127,7 @@
 							</div>
 							<div class="col-md-4 col-xs-12 col-sm-6">
 								<div class="category-grid-box-1">
-									<div class="images"> <img alt="" src="{{ url('images/cabinet.jpg') }}" class="img-responsive">
+									<div class="images"> <img alt="" src="{{ asset('images/cabinet.jpg') }}" class="img-responsive">
 									</div>
 									<div class="short-description-1">
 										<h3>
@@ -143,7 +143,7 @@
 							</div>
 							<div class="col-md-4 col-xs-12 col-sm-6">
 								<div class="category-grid-box-1">
-									<div class="images"> <img alt="" src="{{ url('images/cabinet.jpg') }}" class="img-responsive">
+									<div class="images"> <img alt="" src="{{ asset('images/cabinet.jpg') }}" class="img-responsive">
 									</div>
 									<div class="short-description-1">
 										<h3>

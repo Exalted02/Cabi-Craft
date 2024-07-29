@@ -43,7 +43,9 @@
                                     <input class="form-control" placeholder="*******" type="text">
                                 </div>
                             </div>
-                        <button class="btn btn-theme pull-right">submit</button>
+                            <div class="btns">
+                            <button type="button" class="btn btn-danger pull-right" aria-label="Close" wire:click="return_view_order_form">submit</button>
+                            </div>
                         </form>
                     </div>
                 </div>

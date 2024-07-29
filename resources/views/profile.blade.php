@@ -64,7 +64,7 @@
                             </div>
                         </div>
                         <div class="btns">
-                        <button type="button" class="btn btn-danger pull-right" aria-label="Close" wire:click="return_view_order_form">submit</button>
+                        <button type="button" class="btn btn-success pull-right" aria-label="Close" wire:click="return_view_order_form">submit</button>
                         </div>
                     </form>
                     </div>

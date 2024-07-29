@@ -27,7 +27,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-xs-12 col-sm-7">
+									{{--<div class="col-xs-12 col-sm-7">
                                         <div class="skin-minimal">
                                             <ul class="list">
                                             <li>
@@ -36,8 +36,8 @@
                                             </li>
                                             </ul>
                                         </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-5 text-right">
+                                    </div>--}}
+                                    <div class="col-xs-12 col-sm-12 text-right">
                                         <p class="help-block"><a data-target="#myModal" data-toggle="modal">Forgot password?</a>
                                         </p>
                                     </div>

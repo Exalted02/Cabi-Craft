@@ -18,7 +18,7 @@
                                  <li> <a href="{{url('profilepage')}}"> Profile </a> </li>
                                  <li> <a href="{{url('offerpage')}}"> Offers </a> </li>
                                  <li> <a href="{{url('settingpage')}}">Settings </a> </li>
-                                 <li> <a href=""> Long out  </a> </li>
+                                 <li> <a href=""> Log out  </a> </li>
                               </ul>
                            </div>
                         </div>

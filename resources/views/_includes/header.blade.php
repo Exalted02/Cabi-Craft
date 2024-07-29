@@ -33,10 +33,10 @@
 						  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="img-circle resize" alt="" src="front-assets/images/users/3.jpg"> <span class="myname hidden-xs"> Hello,  Midhun </span> <span class="caret"></span></a>
 						  <ul class="dropdown-menu">
 							 <li><a href="{{ route('browsecatalogue') }}">New Order</a></li>
-							 <li><a href="javascript:void(0)">Order History</a></li>
-							 <li><a href="javascript:void(0)">Profile</a></li>
-							 <li><a href="javascript:void(0)">Offers</a></li>
-							 <li><a href="javascript:void(0)">Settings</a></li>
+							 <li><a href="{{ route('orderhistorys') }}">Order History</a></li>
+							 <li><a href="{{ route('profilepage') }}">Profile</a></li>
+							 <li><a href="{{ route('offerpage') }}">Offers</a></li>
+							 <li><a href="{{ route('settingpage') }}">Settings</a></li>
 							 <li><a href="javascript:void(0)">Log out</a></li>
 						  </ul>
 					   </li>
@@ -79,7 +79,7 @@
 									<!-- drop down multilevel  -->
 								</li>
 								<li>
-									<a href="javascript:void(0)">Catalogue{{--<i class="fa fa-angle-down fa-indicator"></i>--}}</a>
+									<a href="{{ route('browsecatalogue') }}">Catalogue{{--<i class="fa fa-angle-down fa-indicator"></i>--}}</a>
 									<!-- drop down multilevel  -->
 									{{--<ul class="drop-down-multilevel">
 										<li>

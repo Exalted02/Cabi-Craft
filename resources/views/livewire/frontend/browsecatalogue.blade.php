@@ -19,7 +19,7 @@
 									</div>
 									<div class="short-description-1">
 										<h3>
-											<a title="" href="single-page-listing.html">2014 Ford Shelby GT500 Coupe</a>
+											<a title="" href="{{route('offerdetailpage')}}">2014 Ford Shelby GT500 Coupe</a>
 										</h3>
 										<p>720 H x 600 W x 560 D</p>
 										<span class="ad-price">Rs.210</span> 
@@ -35,7 +35,7 @@
 									</div>
 									<div class="short-description-1">
 										<h3>
-											<a title="" href="single-page-listing.html">2014 Ford Shelby GT500 Coupe</a>
+											<a title="" href="{{route('offerdetailpage')}}">2014 Ford Shelby GT500 Coupe</a>
 										</h3>
 										<p>720 H x 600 W x 560 D</p>
 										<span class="ad-price">Rs.210</span> 
@@ -51,7 +51,7 @@
 									</div>
 									<div class="short-description-1">
 										<h3>
-											<a title="" href="single-page-listing.html">2014 Ford Shelby GT500 Coupe</a>
+											<a title="" href="{{route('offerdetailpage')}}">2014 Ford Shelby GT500 Coupe</a>
 										</h3>
 										<p>720 H x 600 W x 560 D</p>
 										<span class="ad-price">Rs.210</span> 
@@ -67,7 +67,7 @@
 									</div>
 									<div class="short-description-1">
 										<h3>
-											<a title="" href="single-page-listing.html">2014 Ford Shelby GT500 Coupe</a>
+											<a title="" href="{{route('offerdetailpage')}}">2014 Ford Shelby GT500 Coupe</a>
 										</h3>
 										<p>720 H x 600 W x 560 D</p>
 										<span class="ad-price">Rs.210</span> 
@@ -83,7 +83,7 @@
 									</div>
 									<div class="short-description-1">
 										<h3>
-											<a title="" href="single-page-listing.html">2014 Ford Shelby GT500 Coupe</a>
+											<a title="" href="{{route('offerdetailpage')}}">2014 Ford Shelby GT500 Coupe</a>
 										</h3>
 										<p>720 H x 600 W x 560 D</p>
 										<span class="ad-price">Rs.210</span> 
@@ -99,7 +99,7 @@
 									</div>
 									<div class="short-description-1">
 										<h3>
-											<a title="" href="single-page-listing.html">2014 Ford Shelby GT500 Coupe</a>
+											<a title="" href="{{route('offerdetailpage')}}">2014 Ford Shelby GT500 Coupe</a>
 										</h3>
 										<p>720 H x 600 W x 560 D</p>
 										<span class="ad-price">Rs.210</span> 
@@ -115,7 +115,7 @@
 									</div>
 									<div class="short-description-1">
 										<h3>
-											<a title="" href="single-page-listing.html">2014 Ford Shelby GT500 Coupe</a>
+											<a title="" href="{{route('offerdetailpage')}}">2014 Ford Shelby GT500 Coupe</a>
 										</h3>
 										<p>720 H x 600 W x 560 D</p>
 										<span class="ad-price">Rs.210</span> 
@@ -131,7 +131,7 @@
 									</div>
 									<div class="short-description-1">
 										<h3>
-											<a title="" href="single-page-listing.html">2014 Ford Shelby GT500 Coupe</a>
+											<a title="" href="{{route('offerdetailpage')}}">2014 Ford Shelby GT500 Coupe</a>
 										</h3>
 										<p>720 H x 600 W x 560 D</p>
 										<span class="ad-price">Rs.210</span> 
@@ -147,7 +147,7 @@
 									</div>
 									<div class="short-description-1">
 										<h3>
-											<a title="" href="single-page-listing.html">2014 Ford Shelby GT500 Coupe</a>
+											<a title="" href="{{route('offerdetailpage')}}">2014 Ford Shelby GT500 Coupe</a>
 										</h3>
 										<p>720 H x 600 W x 560 D</p>
 										<span class="ad-price">Rs.210</span> 
@@ -395,7 +395,7 @@
 
                                         <hr>
                                         <button type="button" class="btn btn-danger" aria-label="Close">Close order</button>
-                                        <button type="button" class="btn btn-success pull-right " aria-label="Close">view cart</button>         
+                                        <a href="{{ route('cartpage') }}" target="_blank"><button type="button" class="btn btn-success pull-right " aria-label="Close">view cart</button></a>         
                                     </div>
                               </div>
                             </div>

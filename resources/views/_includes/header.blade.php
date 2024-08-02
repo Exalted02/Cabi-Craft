@@ -27,19 +27,24 @@
 			  <div class="header-right col-md-6 col-sm-6 col-xs-12 ">
 				 <div class="pull-right">
 					<ul class="listnone">
-					   <li><a href="{{ route('loginpage') }}"><i class="fa fa-sign-in"></i> Log in</a></li>
-					   <li class="hidden-xs hidden-sm"><a href="{{ route('registerpage') }}"><i class="fa fa-unlock" aria-hidden="true"></i> Register</a></li>
-					   <li class="dropdown">
-						  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="img-circle resize" alt="" src="front-assets/images/users/3.jpg"> <span class="myname hidden-xs"> Hello,  Midhun </span> <span class="caret"></span></a>
-						  <ul class="dropdown-menu">
-							 <li><a href="{{ route('browsecatalogue') }}">New Order</a></li>
-							 <li><a href="{{ route('orderhistorys') }}">Order History</a></li>
-							 <li><a href="{{ route('profilepage') }}">Profile</a></li>
-							 <li><a href="{{ route('offerpage') }}">Offers</a></li>
-							 <li><a href="{{ route('settingpage') }}">Settings</a></li>
-							 <li><a href="javascript:void(0)">Log out</a></li>
-						  </ul>
-					   </li>
+						@if(!Auth::user())
+							<li><a href="{{ route('login') }}"><i class="fa fa-sign-in"></i> Log in</a></li>
+							<li class="hidden-xs hidden-sm"><a href="{{ route('register') }}"><i class="fa fa-unlock" aria-hidden="true"></i> Register</a></li>
+						@else
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="img-circle resize" alt="" src="front-assets/images/users/3.jpg"> <span class="myname hidden-xs"> Hello,  {{ Auth::guard('web')->user()->fname }} </span> <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="{{ route('browsecatalogue') }}">New Order</a></li>
+								<li><a href="{{ route('orderhistorys') }}">Order History</a></li>
+								<li><a href="{{ route('profilepage') }}">Profile</a></li>
+								<li><a href="{{ route('offerpage') }}">Offers</a></li>
+								<li><a href="{{ route('settingpage') }}">Settings</a></li>
+								<li><a href="javascript:void(0)" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">Log out</a></li>
+								<form id="logout-form" method="POST" action="{{ route('logout') }}" style="display: none;"> @csrf </form>
+							</ul>
+						</li>
+						@endif
 					   {{--<li>
 						  <a href="post-ad-1.html" class="btn btn-theme">Sell Your Car</a>
 					   </li>--}}
@@ -98,12 +103,14 @@
 								<li>
 									<a href="javascript:void(0)">Contact us</a>
 								</li>
+								@if(!Auth::user())
 								<li>
-									<a href="{{url('loginpage')}}">Login</a>
+									<a href="{{url('login')}}">Login</a>
 								</li>
 								<li>
-									<a href="{{ route('registerpage') }}">Register</a>
+									<a href="{{ route('register') }}">Register</a>
 								</li>
+								@endif
 								</ul>
 							</ul>
 						</div>

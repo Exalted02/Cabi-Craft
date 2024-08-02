@@ -14,14 +14,6 @@ class FrontendController extends Controller
 	{
         return view('browsecatalogue');
 	}
-	public function login()
-	{
-        return view('login');
-	}
-	public function register()
-	{
-        return view('register');
-	}
 	public function cart()
 	{
         return view('cart');

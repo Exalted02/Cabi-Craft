@@ -23,18 +23,44 @@ class AuthenticatedSessionController extends Controller
     public function create(): View
     {
         return view('auth.login');
+        // return view('login');
     }
 
     /**
      * Handle an incoming authentication request.
      */
-    public function store(LoginRequest $request): RedirectResponse
+    /*public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
 		
         $request->session()->regenerate();
 
         return redirect()->intended(RouteServiceProvider::HOME);
+    }*/
+    public function store(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        $check = $request->all();
+        $data = [
+            'email' => $check['email'],
+            'password' => $check['password'],
+        ];
+		
+        if(Auth::guard('web')->attempt($data)) {
+			//$user = Auth::guard('web')->user();
+			if(Auth::guard('web')->user()->role_id == 2){
+				return redirect()->intended(RouteServiceProvider::HOME)->with('success','Invalid Credentials');;
+			}else{
+				Auth::guard('web')->logout();
+				return redirect()->route('login')->with('error','Invalid Credentials');
+			}
+        } else {
+            return redirect()->route('login')->with('error','Invalid Credentials');
+        }
     }
 
     /**
@@ -51,10 +77,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 		
-		Cart::destroy();
-		//set selected language
-		App::setLocale($lang);
-        session()->put('locale', $lang);
+		//Cart::destroy();
         return redirect('/login');
     }
 }

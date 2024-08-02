@@ -289,7 +289,6 @@ class AdminController extends Controller
     }
     public function login_submit(Request $request)
     {
-        //dd($request->all());
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
@@ -302,7 +301,12 @@ class AdminController extends Controller
         ];
 		
         if(Auth::guard('admin')->attempt($data)) {
-            return redirect()->route('admin.dashboard')->with('success','Login Successfull');
+			if(Auth::guard('admin')->user()->role_id == 1 || Auth::guard('admin')->user()->role_id == 3){
+				return redirect()->route('admin.dashboard')->with('success','Login Successfull');
+			}else{
+				Auth::guard('admin')->logout();
+				return redirect()->route('admin_login')->with('error','Invalid Credentials');
+			}
         } else {
             return redirect()->route('admin_login')->with('error','Invalid Credentials');
         }

@@ -22,11 +22,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer(['_includes.*'], function ($view) {
-			if(Auth::check()){
-				$userDetails = User::query()->where('id', Auth::user()->id)->first();
-				$view->with('userDetails', $userDetails);
-			}
-		});
+        
     }
 }

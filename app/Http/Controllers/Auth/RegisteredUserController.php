@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Admin;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -28,26 +28,37 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'contact_number' => ['required', 'digits:10'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.Admin::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-        $user = User::create([
-            'name' => $request->name,
-            'contact_number' => $request->contact_number,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
-        event(new Registered($user));
-
-        Auth::login($user);
-
-		return redirect()->route('profile');
-        //return redirect(RouteServiceProvider::HOME);
+		$username = strtoupper($request->post('name')[0]).strtoupper($request->post('name')[1]).rand('1000','9999');
+		$user = new Admin;
+		$user->fname = $request->post('name');
+		$user->email = $request->post('email');
+		$user->password = Hash::make($request->post('password'));
+		$user->username = $username;
+		$user->phone = $request->post('contact_number');
+		$user->role_id = 2;
+		$user->status = 1;
+		$user->save();
+		if($user){
+			$data = [
+				'email' => $request->post('email'),
+				'password' => $request->post('password'),
+			];
+			
+			if(Auth::guard('web')->attempt($data)) {
+				return redirect()->intended(RouteServiceProvider::HOME);			
+			}else{
+				return redirect()->route('login');
+			}
+		}else{
+			return redirect()->route('register')->with('error','Registration not done');
+		}
     }
 }

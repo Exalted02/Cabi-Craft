@@ -15,8 +15,10 @@
                                         <a title="" href="single-page-listing.html">2014 Ford Shelby GT500 Coupe</a>
                                     </h3>
                                     <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis erat sed lorem dictum ullamcorper. Sed vel elit sed nunc ornare auctor. Suspendisse id ullamcorper purus, sed cursus dui. Sed eget elit magna. Morbi pellentesque gravida vehicula. Nunc ullamcorper rutrum nunc, non consectetur ante egestas non. Donec elementum est at velit accumsan, nec accumsan neque porta. Nunc iaculis condimentum ipsum, eget molestie nulla.</p>
-                                    <a href="{{ route('offerpage') }}" class="btn btn-theme pull-right ">Back</a>
-                                    <span class="ad-price">Rs.210</span> 
+									<div>
+										<span class="ad-price">Rs.210</span> 
+										<a href="{{ route('offerpage') }}" class="btn btn-theme pull-right mb-15px">Back</a>
+									</div>
                                 </div>
                             </div>
                         </div>

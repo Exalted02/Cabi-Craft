@@ -53,18 +53,15 @@ Route::get('/', [FrontendController::class, 'index'])->name('home');
 Route::get('/error', [FrontendController::class, 'error_page'])->name('error');
 
 // ------------- temporary new post add route start ----------
-Route::middleware(['auth','verified'])->group(function () {
-	
+Route::middleware(['auth'])->group(function () {	
+	Route::get('/browsecatalogue', [FrontendController::class, 'browse'])->name('browsecatalogue');
+	Route::get('/cartpage', [FrontendController::class, 'cart'])->name('cartpage');
+	Route::get('/profilepage', [FrontendController::class, 'profile'])->name('profilepage');
+	Route::get('/settingpage', [FrontendController::class, 'setting'])->name('settingpage');
+	Route::get('/offerpage', [FrontendController::class, 'offer'])->name('offerpage');
+	Route::get('/orderhistorys', [FrontendController::class, 'orderhistory'])->name('orderhistorys');
+	Route::get('/offerdetailpage', [FrontendController::class, 'offerdetail'])->name('offerdetailpage');
 });
 require __DIR__.'/auth.php';
 
 require __DIR__.'/backend.php';
-Route::get('/browsecatalogue', [FrontendController::class, 'browse'])->name('browsecatalogue');
-Route::get('/loginpage', [FrontendController::class, 'login'])->name('loginpage');
-Route::get('/registerpage', [FrontendController::class, 'register'])->name('registerpage');
-Route::get('/cartpage', [FrontendController::class, 'cart'])->name('cartpage');
-Route::get('/profilepage', [FrontendController::class, 'profile'])->name('profilepage');
-Route::get('/settingpage', [FrontendController::class, 'setting'])->name('settingpage');
-Route::get('/offerpage', [FrontendController::class, 'offer'])->name('offerpage');
-Route::get('/orderhistorys', [FrontendController::class, 'orderhistory'])->name('orderhistorys');
-Route::get('/offerdetailpage', [FrontendController::class, 'offerdetail'])->name('offerdetailpage');

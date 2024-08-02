@@ -53,7 +53,7 @@ class AuthenticatedSessionController extends Controller
         if(Auth::guard('web')->attempt($data)) {
 			//$user = Auth::guard('web')->user();
 			if(Auth::guard('web')->user()->role_id == 2){
-				return redirect()->intended(RouteServiceProvider::HOME)->with('success','Invalid Credentials');;
+				return redirect()->intended(RouteServiceProvider::HOME)->with('success','Successfully Login');
 			}else{
 				Auth::guard('web')->logout();
 				return redirect()->route('login')->with('error','Invalid Credentials');

@@ -53,7 +53,7 @@ class RegisteredUserController extends Controller
 			];
 			
 			if(Auth::guard('web')->attempt($data)) {
-				return redirect()->intended(RouteServiceProvider::HOME);			
+				return redirect()->intended(RouteServiceProvider::HOME)->with('success','Successfully Registered');;
 			}else{
 				return redirect()->route('login');
 			}

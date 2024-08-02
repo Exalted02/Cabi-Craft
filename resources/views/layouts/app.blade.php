@@ -130,8 +130,8 @@
 		<link rel="stylesheet" href="{{ url('common-assets/css/toastr.min.css') }}"/>
 		<script src="{{ url('common-assets/js/toastr.min.js') }}"></script>
 		<script>
-			@if(Session::has('message'))
-				var msg = "{{ session('message') }}";
+			@if(Session::has('success'))
+				var msg = "{{ session('success') }}";
 				var type = 'success';
 				toastr_msg(msg, type);
 			@endif

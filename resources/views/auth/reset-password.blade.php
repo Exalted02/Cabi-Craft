@@ -8,12 +8,12 @@
 			  <div class="small-breadcrumb">
 				 <div class=" breadcrumb-link">
 					<ul>
-					   <li><a href="{{ route('home') }}">{{ __('common_home_page') }}</a></li>
-					   <li><a class="active" href="">{{ __('page_reset_password') }}</a></li>
+					   <li><a href="{{ route('home') }}">{{ __('Home Page') }}</a></li>
+					   <li><a class="active" href="">{{ __('Reset Password') }}</a></li>
 					</ul>
 				 </div>
 				 <div class="header-page">
-					<h1>{{ __('page_reset_your_password') }}</h1>
+					<h1>{{ __('Reset Your Password') }}</h1>
 				 </div>
 			  </div>
 		   </div>
@@ -38,21 +38,21 @@
 					<!-- Password Reset Token -->
 					<input type="hidden" name="token" value="{{ $request->route('token') }}">
 						<div class="form-group">
-							<x-input-label for="email" :value="__('page_reset_password_email')" />
+							<x-input-label for="email" :value="__('Email')" />
 							<x-text-input id="email" class="" type="email" name="email" :value="old('email', $request->email)" autofocus autocomplete="username" />
 							<x-input-error :messages="$errors->get('email')" class="mt-2 text-danger" />
 						</div>
 					   <div class="form-group">
-							<x-input-label for="password" :value="__('page_reset_password_password')" />
+							<x-input-label for="password" :value="__('Password')" />
 							<x-text-input id="password" class="" type="password" name="password" autocomplete="new-password" />
 							<x-input-error :messages="$errors->get('password')" class="mt-2 text-danger" />
 					   </div>
 					   <div class="form-group">
-							<x-input-label for="password_confirmation" :value="__('page_reset_password_confirm_password')" />
+							<x-input-label for="password_confirmation" :value="__('Confirm Password')" />
 							<x-text-input id="password_confirmation" class="" type="password" name="password_confirmation" autocomplete="new-password" />
 							<x-input-error :messages="$errors->get('password_confirmation')" class="mt-2 text-danger" />
 					   </div>
-					   <button class="btn btn-theme btn-lg btn-block">{{ __('page_reset_password_submit') }}</button>
+					   <button class="btn btn-theme btn-lg btn-block">{{ __('Reset Password') }}</button>
 					</form>
 				 </div>
 				 <!-- Form -->

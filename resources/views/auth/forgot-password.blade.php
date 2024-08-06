@@ -8,12 +8,12 @@
 			  <div class="small-breadcrumb">
 				 <div class=" breadcrumb-link">
 					<ul>
-					   <li><a href="{{ route('home') }}">{{ __('common_home_page') }}</a></li>
-					   <li><a class="active" href="{{ route('login') }}">{{ __('common_log_in') }}</a></li>
+					   <li><a href="{{ route('home') }}">{{ __('Home Page') }}</a></li>
+					   <li><a class="active" href="{{ route('login') }}">{{ __('Log in') }}</a></li>
 					</ul>
 				 </div>
 				 <div class="header-page">
-					<h1>{{ __('common_forgot_password') }}</h1>
+					<h1>{{ __('Forgot Password') }}</h1>
 				 </div>
 			  </div>
 		   </div>
@@ -34,17 +34,17 @@
 				 <!--  Form -->
 				 <div class="form-grid">
 					<p>
-					{{ __('forgot_password_text') }}
+					{{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
 					</p>
 					<x-auth-session-status class="mb-4" :status="session('status')" />
 					<form method="POST" action="{{ route('password.email') }}">
 					@csrf
 						<div class="form-group">
-							<label>{{ __('forgot_password_email') }}</label>
-							<input type="email" id="email" name="email"  placeholder="{{ __('login_page_your') }} {{ __('forgot_password_email') }}" class="form-control" :value="old('email')" autofocus>
+							<label>{{ __('Email') }}</label>
+							<input type="email" id="email" name="email"  placeholder="{{ __('Your Email') }}" class="form-control" :value="old('email')" autofocus>
 							<x-input-error :messages="$errors->get('email')" class="mt-2 text-danger" />
 						</div>
-					   <button class="btn btn-theme btn-lg btn-block">{{ __('forgot_password_reset_link') }}</button>
+					   <button class="btn btn-theme btn-lg btn-block">{{ __('Email Password Reset Link') }}</button>
 					</form>
 				 </div>
 				 <!-- Form -->

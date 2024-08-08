@@ -10,11 +10,10 @@ class Browsecatalogue extends Component
 	public $view_order_form = false;
 	public $kitchen_properties_form = false;
 	public $customise_form = false;
-	public $project_name = '';
 	
 	public function mount()
     {
-		dd($this->project_name);
+		
     }
 	public function submit_new_order_form()
     {

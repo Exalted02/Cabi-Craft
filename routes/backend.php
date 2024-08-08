@@ -27,7 +27,8 @@ use App\Http\Controllers\Admin\CabinettypeController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\CouponcodeController;
 use App\Http\Controllers\Admin\DashboardController;
-
+use App\Http\Controllers\Admin\ProjecttypeController;
+use App\Http\Controllers\Admin\ExposhuttercolourController;
 
 Route::middleware('admin')->prefix('admin')->name('')->group(function () {
 	// Admin Panel Routes
@@ -351,6 +352,28 @@ Route::middleware('admin')->prefix('admin')->name('')->group(function () {
 		
 		// our staff
 		Route::get('staff', [UserController::class, 'our_staff'])->name('admin.staff');
+		
+		// Users projecttype Routes
+		Route::get('projecttype', [ProjecttypeController::class, 'index'])->name('admin.projecttype');
+		Route::get('/projecttype/add-projecttype',[ProjecttypeController::class,'manage_projecttype'])->name('admin.add-projecttype');
+		Route::get('/projecttype/update-projecttype/{id}',[ProjecttypeController::class,'manage_projecttype'])->name('admin.update-projecttype');
+		Route::post('/projecttype/manage_projecttype_process',[ProjecttypeController::class,'manage_projecttype_process'])->name('admin.projecttype.manage_projecttype_process');
+		Route::post('/projecttype/view_projecttype',[ProjecttypeController::class,'view_projecttype']);
+		Route::post('/projecttype/delete',[ProjecttypeController::class,'delete']);
+		Route::post('/projecttype/multi_delete',[ProjecttypeController::class,'multi_delete']);
+		Route::post('/projecttype/status',[ProjecttypeController::class,'status']);
+		Route::post('/projecttype/multi_change_status',[ProjecttypeController::class,'multi_change_status']);
+		
+		// Users expo-shutter-colour Routes
+		Route::get('expo-shutter-colour', [ExposhuttercolourController::class, 'index'])->name('admin.expo-shutter-color');
+		Route::get('/expo-shutter-colour/add-expo-shutter-colour',[ExposhuttercolourController::class,'manage_expo_shutter_colour'])->name('admin.add-expo-shutter-colour');
+		Route::get('/expo-shutter-colour/update-expo-shutter-colour/{id}',[ExposhuttercolourController::class,'manage_expo_shutter_colour'])->name('admin.update-expo-shutter-colour');
+		Route::post('/expo-shutter-colour/manage_expo-shutter-colour_process',[ExposhuttercolourController::class,'manage_expo_shutter_colour_process'])->name('admin.expo-shutter-colour.manage_expo_shutter_colour_process');
+		Route::post('/expo-shutter-colour/view_expo-shutter-colour',[ExposhuttercolourController::class,'view_expo-shutter-colour']);
+		Route::post('/expo-shutter-colour/delete',[ExposhuttercolourController::class,'delete']);
+		Route::post('/expo-shutter-colour/multi_delete',[ExposhuttercolourController::class,'multi_delete']);
+		Route::post('/expo-shutter-colour/status',[ExposhuttercolourController::class,'status']);
+		Route::post('/expo-shutter-colour/multi_change_status',[ExposhuttercolourController::class,'multi_change_status']);
 });
 
 Route::prefix('admin')->group(function () {

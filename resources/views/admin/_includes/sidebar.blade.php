@@ -28,6 +28,16 @@
                             <span class="align-middle">Order</span>
                         </a>
                     </li>
+					<li class="sidebar-item {{ (request()->routeIs('admin.projecttype','admin.projecttype','admin.update-projecttype')) ? 'active' : '' }}">
+                        <a class="sidebar-link" href="{{ route('admin.projecttype') }}">
+                            <i class="align-middle" data-feather="projecttype"></i> <span class="align-middle">Project Type</span>
+                        </a>
+                    </li>
+					<li class="sidebar-item {{ (request()->routeIs('admin.expo-shutter-color','admin.add-expo-shutter-color','admin.update-expo-shutter-color')) ? 'active' : '' }}">
+                        <a class="sidebar-link" href="{{ route('admin.expo-shutter-color') }}">
+                            <i class="align-middle" data-feather="align-justify"></i> <span class="align-middle">Expo/Shutter Colour</span>
+                        </a>
+                    </li>
 					@if(Auth::guard('admin')->user()->role_id != 1)
 					<li class="sidebar-item {{ (request()->routeIs('admin.account')) ? 'active' : '' }}">
                         <a class="sidebar-link" href="{{ route('admin.account') }}">

@@ -192,7 +192,7 @@
                                             <div class="form-group row">
                                                 <label for="project-name" class="col-sm-5 col-form-label no-wrap">Project Name:</label>
                                                 <div class="col-sm-7">
-                                                    <input id="project-name" class="form-control" placeholder="Project name" type="text">
+                                                    <input id="project-name" class="form-control" wire:model="project_name" placeholder="Project name" type="text">
                                                 </div>
                                             </div>
                                             
@@ -721,5 +721,21 @@
         </div>
         </div>
     </div>
+	@section('scripts')
+		<script type="text/javascript">
+			document.addEventListener('livewire:update', function () {
+				alert();
+				// $('#selectbx1').select2();
+				/*$('#selectbx1').on('change', function (e) {
+					var data = $('#selectbx1').select2("val");
+					@this.set('selecta', data);
+				});
+				$('#selectbx2').on('change', function (e) {
+					var data = $('#selectbx2').select2("val");
+					@this.set('selectb', data);
+				});*/
+			});
+		</script>
+	@endsection
     </div>
     

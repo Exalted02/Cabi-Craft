@@ -9,7 +9,7 @@ class FrontendController extends Controller
 {	
 	public function index()
 	{
-		dd(Category::get());
+		//dd(Category::get());
 		return view('home');
 	}
 	public function browse()

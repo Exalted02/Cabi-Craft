@@ -38,6 +38,11 @@
                             <i class="align-middle" data-feather="align-justify"></i> <span class="align-middle">Expo/Shutter Colour</span>
                         </a>
                     </li>
+					<li class="sidebar-item {{ (request()->routeIs('admin.products','admin.products','admin.update-products')) ? 'active' : '' }}">
+                        <a class="sidebar-link" href="{{ route('admin.products') }}">
+                            <i class="align-middle" data-feather="products"></i> <span class="align-middle">Products</span>
+                        </a>
+                    </li>
 					@if(Auth::guard('admin')->user()->role_id != 1)
 					<li class="sidebar-item {{ (request()->routeIs('admin.account')) ? 'active' : '' }}">
                         <a class="sidebar-link" href="{{ route('admin.account') }}">

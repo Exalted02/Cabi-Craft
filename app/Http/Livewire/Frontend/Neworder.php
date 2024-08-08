@@ -5,13 +5,12 @@ namespace App\Http\Livewire\Frontend;
 use Livewire\Component;
 use App\Models\Exposide;
 use Illuminate\Support\Facades\DB;
-class Browsecatalogue extends Component
+class Neworder extends Component
 {
 	public $new_order_form = true;
 	public $view_order_form = false;
 	public $kitchen_properties_form = false;
 	public $customise_form = false;
-	
 	public $products ;
 	public $search_product;
 	public $search_button = true;
@@ -57,6 +56,7 @@ class Browsecatalogue extends Component
     }
 	public function search()
 	{
+		$count = env('PRODUCT_LIST_SHOW_NEW_ORDER');
 		
 		if($this->search_button && $this->search_product!='')
 		{
@@ -71,7 +71,11 @@ class Browsecatalogue extends Component
 				});
 			}
 			$this->search_button = false;
-			$this->products = $query->get();
+			
+			$this->products = $query->limit($count)->orderBy('created_at', 'desc')->get();
+			
+			//---------------------
+			$this->moreload = 1;
 		}
 		else
 		{
@@ -89,29 +93,57 @@ class Browsecatalogue extends Component
 	public function loadMore()
 	{
 		$interval = env('LOAD_MORE_INTERVAL_NEW_ORDER');
+		
 		if($this->moreload)
 		{
 			$count = $this->moreload + $interval;
 			$this->moreload = $count;
 		}
 		else{
+			//$count = $interval; // new implement
 			$this->moreload = $interval;
 		}
 		
-		$loadproducts = DB::table('products')->where('status', '!=', 2)->limit($count)->orderBy('created_at', 'desc')->get();
-		
-		$totalrecord = DB::table('products')->where('status', '!=', 2)->get();
-		$c1 = count($totalrecord);
-		$c2 = count($loadproducts);
-		$this->remain = $c1-$c2;
-		
-		$this->products = $loadproducts;
+		//-----------------------------------
+		if($this->search_product!='')
+		{
+			$query = DB::table('products')->where('status', '!=', 2);
+			if($this->search_product) {
+				$searchTerm = $this->search_product;
+
+				$query->where(function($q) use ($searchTerm) {
+					$q->where('name', 'like', '%' . $searchTerm . '%')
+					  ->orWhere('price', 'like', '%' . $searchTerm . '%')
+					  ->orWhere('size', 'like', '%' . $searchTerm . '%');
+				});
+			}
+			$this->search_button = false;
+			
+			$loadproducts = $query->limit($count)->orderBy('created_at', 'desc')->get();
+			
+			$totalrecord = $query->get();
+			$c1 = count($totalrecord);
+			$c2 = count($loadproducts);
+			$this->remain = $c1-$c2;
+			$this->products = $loadproducts;
+		}
+		else{
+		//-------------
+			$loadproducts = DB::table('products')->where('status', '!=', 2)->limit($count)->orderBy('created_at', 'desc')->get();
+			
+			$totalrecord = DB::table('products')->where('status', '!=', 2)->get();
+			$c1 = count($totalrecord);
+			$c2 = count($loadproducts);
+			$this->remain = $c1-$c2;
+			
+			$this->products = $loadproducts;
+		}
 	}
     public function render()
     {
-        return view('livewire.frontend.browsecatalogue')->with([
+        return view('livewire.frontend.neworder')->with([
             'products' =>  $this->products,
-            'exposide' =>  Exposide::all(),
+			'exposide' =>  Exposide::all(),
         ]);
     }
 }

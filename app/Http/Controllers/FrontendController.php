@@ -40,4 +40,8 @@ class FrontendController extends Controller
 	{
         return view('offerdetails');
 	}
+	public function neworder()
+	{
+		return view('neworder');
+	}
 }

@@ -133,23 +133,24 @@
                   <div class="col-md-12 col-xs-12 col-sm-12">
                      <div class="row">
                         <div class="featured-slider container owl-carousel owl-theme">
+						@foreach($data as $product)
                            <div class="item">
                               <div class="col-md-12 col-xs-12 col-sm-12">
                                  <!-- Ad Box -->
                                  <div class="white category-grid-box-1 ">
-                                    <div class="featured-ribbon">
+								 {{--<div class="featured-ribbon">
                                        <span>Featured</span>
-                                    </div>
+                                    </div>--}}
                                     <!-- Image Box -->
-                                    <div class="image"> <img alt="Carspot" src="front-assets/images/posting/1.jpg" class="img-responsive">
+                                    <div class="image"> <img alt="Carspot" src="{{ asset('admin-assets/images/product/' .$product->image) }}" class="img-responsive" height="100" width="70">
                                     </div>
                                     <!-- Short Description -->
                                     <div class="short-description-1 ">
                                        <!-- Category Title -->
                                        <!-- Location -->
-                                       <p > Base Cabinet, 2 SS Drawers(2L Plain Baskets)</p><p>Rs.3500720 H x 600 W x 560 D</p>
+                                       <p > {{ $product->name }}, {{ \Illuminate\Support\Str::limit($product->description, 30) }}</p><p> {{ $product->size }}</p>
                                        <!-- Price -->
-                                       <span class="ad-price">Rs.210</span> 
+                                       <span class="ad-price">Rs.{{ $product->price }}</span> 
                                     </div>
                                     <!-- Ad Meta Stats -->
                                     <div class="ad-info-1" style="display: flex; justify-content: center; align-items: center;">
@@ -159,8 +160,9 @@
                                  <!-- Ad Box End -->
                               </div>
                            </div>
-                           <div class="item">
-                           <div class="col-md-12 col-xs-12 col-sm-12">
+						  @endforeach
+                           {{--<div class="item">
+                             <div class="col-md-12 col-xs-12 col-sm-12">
                                  <!-- Ad Box -->
                                  <div class="white category-grid-box-1 ">
                                     <div class="featured-ribbon">
@@ -185,8 +187,8 @@
                                  </div>
                                  <!-- Ad Box End -->
                               </div>
-                           </div>
-                           <div class="item">
+                           </div>--}}
+                           {{--<div class="item">
                            <div class="col-md-12 col-xs-12 col-sm-12">
                                  <!-- Ad Box -->
                                  <div class="white category-grid-box-1 ">
@@ -212,8 +214,8 @@
                                  </div>
                                  <!-- Ad Box End -->
                               </div>
-                           </div>
-                           <div class="item">
+                           </div>--}}
+                           {{--<div class="item">
                            <div class="col-md-12 col-xs-12 col-sm-12">
                                  <!-- Ad Box -->
                                  <div class="white category-grid-box-1 ">
@@ -238,7 +240,7 @@
                                  </div>
                                  <!-- Ad Box End -->
                               </div>
-                           </div>
+                           </div>--}}
                         </div>
                      </div>
                   </div>

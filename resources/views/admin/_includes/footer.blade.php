@@ -26,7 +26,7 @@
         </div>
     </div>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	@if (request()->routeIs('admin.staff','admin.couponcode','admin.order','admin.user','admin.category','admin.subcategory','admin.cabinettype','admin.material','admin.cabinet','admin.shutter-material','admin.exposide','admin.legtype','admin.handletype','admin.materialply6mm','admin.materialply18mm','admin.shuttermaterialply18mm','admin.exposideprice','admin.stock-management','admin.expense-type','admin.expanse-tracker','admin.customer-list','admin.payment-mode','admin.bill-generate','admin.projecttype'))
+	@if (request()->routeIs('admin.staff','admin.couponcode','admin.order','admin.user','admin.category','admin.subcategory','admin.cabinettype','admin.material','admin.cabinet','admin.shutter-material','admin.exposide','admin.legtype','admin.handletype','admin.materialply6mm','admin.materialply18mm','admin.shuttermaterialply18mm','admin.exposideprice','admin.stock-management','admin.expense-type','admin.expanse-tracker','admin.customer-list','admin.payment-mode','admin.bill-generate','admin.projecttype','admin.products'))
 
 	<!--Data table plugin start-->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" rel="stylesheet">
@@ -49,7 +49,7 @@
 	<!--Data table plugin end-->
 	@endif
 <!--Delete modal start-->
-	@if (request()->routeIs('admin.staff','admin.couponcode','admin.order','admin.category','admin.subcategory','admin.cabinettype','admin.material', 'admin.cabinet', 'admin.stock-management','admin.expanse-tracker','admin.customer-list','admin.projecttype'))
+	@if (request()->routeIs('admin.staff','admin.couponcode','admin.order','admin.category','admin.subcategory','admin.cabinettype','admin.material', 'admin.cabinet', 'admin.stock-management','admin.expanse-tracker','admin.customer-list','admin.projecttype','admin.products'))
 	<!--Single Delete modal start-->
 	<div class="modal fade" id="confirmDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -91,7 +91,7 @@
 	<!--Single Delete modal end-->
 	@endif
 	<!--confirm checkbox selected-->
-	@if (request()->routeIs('admin.staff','admin.couponcode','admin.order','admin.category','admin.subcategory','admin.cabinettype','admin.material', 'admin.cabinet','admin.projecttype'))
+	@if (request()->routeIs('admin.staff','admin.couponcode','admin.order','admin.category','admin.subcategory','admin.cabinettype','admin.material', 'admin.cabinet','admin.projecttype','admin.products'))
 	<div class="modal fade" id="confirmChkSelect" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -104,7 +104,7 @@
 	</div>
 	@endif
 	<!--Multiple Delete modal start-->
-	@if (request()->routeIs('admin.staff','admin.order','admin.category', 'admin.subcategory','admin.cabinettype', 'admin.material', 'admin.material','admin.projecttype'))
+	@if (request()->routeIs('admin.staff','admin.order','admin.category', 'admin.subcategory','admin.cabinettype', 'admin.material', 'admin.material','admin.projecttype','admin.products'))
 	<div class="modal fade" id="confirmMultiDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -158,7 +158,7 @@
 <!--Delete modal end-->
 <!--Status change modal start-->
 
-@if (request()->routeIs('admin.staff','admin.couponcode','admin.order','admin.user','admin.category','admin.subcategory','admin.cabinettype','admin.material','admin.cabinet','admin.exposide','admin.shutter-material','admin.legtype','admin.handletype','admin.expanse-tracker','admin.customer-list','admin.materialply6mm','admin.materialply18mm','admin.shuttermaterialply18mm','admin.projecttype'))
+@if (request()->routeIs('admin.staff','admin.couponcode','admin.order','admin.user','admin.category','admin.subcategory','admin.cabinettype','admin.material','admin.cabinet','admin.exposide','admin.shutter-material','admin.legtype','admin.handletype','admin.expanse-tracker','admin.customer-list','admin.materialply6mm','admin.materialply18mm','admin.shuttermaterialply18mm','admin.projecttype','admin.products'))
 <!--Single status modal start-->
 <script>
 $(".changeStatus").on('click', function (e) {
@@ -186,7 +186,7 @@ $(".changeStatus").on('click', function (e) {
 <!--Single status modal end-->
 @endif
 
-@if(request()->routeIs('admin.staff','admin.couponcode','admin.order','admin.user','admin.category','admin.subcategory','admin.cabinettype','admin.material','admin.exposide','admin.shutter-material','admin.legtype','admin.handletype','admin.cabinet','admin.materialply6mm','admin.materialply18mm','admin.shuttermaterialply18mm','admin.projecttype'))
+@if(request()->routeIs('admin.staff','admin.couponcode','admin.order','admin.user','admin.category','admin.subcategory','admin.cabinettype','admin.material','admin.exposide','admin.shutter-material','admin.legtype','admin.handletype','admin.cabinet','admin.materialply6mm','admin.materialply18mm','admin.shuttermaterialply18mm','admin.projecttype','admin.products'))
 	<div class="modal fade" id="confirmMultiStatus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -238,7 +238,7 @@ $(".changeStatus").on('click', function (e) {
 	</script>
 	@endif
 <!--Status change modal end-->
-	@if(request()->routeIs('admin.staff','admin.couponcode','admin.order','admin.user','admin.category','admin.subcategory','admin.cabinettype','admin.material','admin.cabinet','admin.shutter-material','admin.legtype','admin.handletype','admin.exposide','admin.materialply6mm','admin.materialply18mm','admin.shuttermaterialply18mm','admin.projecttype'))
+	@if(request()->routeIs('admin.staff','admin.couponcode','admin.order','admin.user','admin.category','admin.subcategory','admin.cabinettype','admin.material','admin.cabinet','admin.shutter-material','admin.legtype','admin.handletype','admin.exposide','admin.materialply6mm','admin.materialply18mm','admin.shuttermaterialply18mm','admin.projecttype','admin.products'))
 
 	<!--View modal image click start-->
 	<script>
@@ -307,7 +307,7 @@ $(document).on('click', '.sidebar-link', function () {
 
 <!--confirm checkbox selected-->
 
-@if(request()->routeIs('admin.stock-management','admin.customer-list','admin.payment-mode','admin.expanse-tracker','admin.expense-type','admin.bill-generate','admin.projecttype'))
+@if(request()->routeIs('admin.stock-management','admin.customer-list','admin.payment-mode','admin.expanse-tracker','admin.expense-type','admin.bill-generate','admin.projecttype','admin.products'))
 
 	<div class="modal fade" id="confirmChkSelect" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -322,7 +322,7 @@ $(document).on('click', '.sidebar-link', function () {
 	@endif
 <!--Multiple Delete stock-management modal start-->
 
-	@if (request()->routeIs('admin.stock-management','admin.customer-list','admin.payment-mode','admin.expense-type','admin.expanse-tracker','admin.bill-generate','admin.projecttype'))
+	@if (request()->routeIs('admin.stock-management','admin.customer-list','admin.payment-mode','admin.expense-type','admin.expanse-tracker','admin.bill-generate','admin.projecttype','admin.products'))
 
 	<div class="modal fade" id="confirmMultiDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -374,7 +374,7 @@ $(document).on('click', '.sidebar-link', function () {
 	@endif
 	<!--Multiple Delete stock-management modal end-->
 
-@if(request()->routeIs('admin.stock-management','admin.customer-list','admin.payment-mode','admin.expense-type','admin.expanse-tracker','admin.bill-generate','admin.projecttype'))
+@if(request()->routeIs('admin.stock-management','admin.customer-list','admin.payment-mode','admin.expense-type','admin.expanse-tracker','admin.bill-generate','admin.projecttype','admin.products'))
 
 <!--Single status modal start-->
 <script>
@@ -403,7 +403,7 @@ $(document).on('click', '.sidebar-link', function () {
 @endif
 <!------ multiple status start--->
 
-@if(request()->routeIs('admin.stock-management','admin.customer-list','admin.payment-mode','admin.expense-type','admin.expanse-tracker','admin.bill-generate','admin.projecttype'))
+@if(request()->routeIs('admin.stock-management','admin.customer-list','admin.payment-mode','admin.expense-type','admin.expanse-tracker','admin.bill-generate','admin.projecttype','admin.products'))
 
 	<div class="modal fade" id="confirmMultiStatus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -462,7 +462,7 @@ $(document).on('click', '.sidebar-link', function () {
 <!--Delete customer Bill modal start-->
 
 
-@if(request()->routeIs('admin.staff','admin.couponcode','admin.order','admin.user','admin.category','admin.subcategory','admin.cabinettype','admin.material','admin.cabinet','admin.exposide','admin.legtype','admin.handletype','admin.shutter-material','admin.materialply6mm','admin.materialply18mm','admin.shuttermaterialply18mm','admin.customer-bill','admin.customer-list','admin.payment-mode','admin.expense-type','admin.expanse-tracker','admin.bill-generate','admin.projecttype'))
+@if(request()->routeIs('admin.staff','admin.couponcode','admin.order','admin.user','admin.category','admin.subcategory','admin.cabinettype','admin.material','admin.cabinet','admin.exposide','admin.legtype','admin.handletype','admin.shutter-material','admin.materialply6mm','admin.materialply18mm','admin.shuttermaterialply18mm','admin.customer-bill','admin.customer-list','admin.payment-mode','admin.expense-type','admin.expanse-tracker','admin.bill-generate','admin.projecttype','admin.products'))
 
 
 	<!--Single Delete modal start-->

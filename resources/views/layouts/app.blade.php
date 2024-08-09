@@ -48,6 +48,7 @@
 		<!-- JavaScripts -->
 		<script src="{{ url('front-assets/js/modernizr.js') }}"></script>
 		@livewireStyles
+		@yield('styles')
 	</head>
 
 	<body>
@@ -162,7 +163,7 @@
 				toastr[type](msg);
 			}
 		</script>
-		@livewireScripts
 		@yield('scripts')
+		@livewireScripts
 	</body>
 </html>

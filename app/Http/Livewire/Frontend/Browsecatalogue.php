@@ -5,13 +5,14 @@ namespace App\Http\Livewire\Frontend;
 use Livewire\Component;
 use App\Models\Exposide;
 use Illuminate\Support\Facades\DB;
+
 class Browsecatalogue extends Component
 {
 	public $new_order_form = true;
 	public $view_order_form = false;
 	public $kitchen_properties_form = false;
 	public $customise_form = false;
-	
+
 	public $products ;
 	public $search_product;
 	public $search_button = true;

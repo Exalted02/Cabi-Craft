@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
-
+use Illuminate\Support\Facades\DB;
 class RegisteredUserController extends Controller
 {
     /**
@@ -20,7 +20,8 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+		$staticdata = DB::table('static')->where(['status'=>1])->limit(4)->get();
+        return view('auth.register',compact('staticdata'));
     }
 
     /**

@@ -48,7 +48,7 @@
                                         </div>
                                     </div>--}}
                                     <div class="col-xs-12 col-sm-12 text-right">
-                                        <p class="help-block"><a data-target="#myModal" data-toggle="modal">Forgot password?</a>
+                                        <p class="help-block"><a href="{{ route('password.request') }}">Forgot password?</a>
                                         </p>
                                     </div>
                                 </div>

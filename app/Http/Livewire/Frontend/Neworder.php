@@ -11,13 +11,13 @@ class Neworder extends Component
 	public $view_order_form = false;
 	public $kitchen_properties_form = false;
 	public $customise_form = false;
-	public $products ;
+	public $products = [];
 	public $search_product;
 	public $search_button = true;
 	public $moreload = '';
 	public $remain;
 	
-	public function mount()
+	public function load_product()
     {
 		$count = env('PRODUCT_LIST_SHOW_NEW_ORDER');
 		$this->products = DB::table('products')->where('status', '!=', 2)->limit($count)->orderBy('created_at', 'desc')->get();
@@ -26,29 +26,38 @@ class Neworder extends Component
 		$product = DB::table('products')->where('status', '!=', 2)->get();
 		$this->remain =  count($product) > $count ? count($product): 0 ;
     }
+	public function mount()
+    {
+		$this->load_product();
+    }
 	public function submit_new_order_form()
     {
+		$this->load_product();
         $this->new_order_form = false;
         $this->view_order_form = true;
     }
 	public function edit_new_order_form()
     {
+		$this->load_product();
         $this->new_order_form = true;
         $this->view_order_form = false;
     }
 	public function open_kitchen_properties_form()
     {
+		$this->load_product();
         $this->view_order_form = false;
         $this->kitchen_properties_form = true;
     }
 	public function open_customise_form()
     {
+		$this->load_product();
         $this->kitchen_properties_form = false;
         $this->view_order_form = false;
         $this->customise_form = true;
     }
 	public function return_view_order_form()
     {
+		$this->load_product();
         $this->new_order_form = false;
         $this->kitchen_properties_form = false;
         $this->customise_form = false;

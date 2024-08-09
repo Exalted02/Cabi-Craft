@@ -3,16 +3,16 @@
         <div class="col-md-12 col-xs-12 col-sm-12">
 			<div class="row">
 				<div class="col-md-12">
+					<form wire:submit.prevent="search">
 					<div class="search-widget">
-						<form wire:submit.prevent="search">
 						<input placeholder="Search by Products" type="text" wire:model="search_product" name="search_product">
 						@if($search_button)
 							<button type="submit"><i class="fa fa-search"></i></button>
 						@else
 							<button type="submit"><i class="fa fa-times" aria-hidden="true"></i></button>
 						@endif
-						</form>
 					</div>
+					</form>
 					<!-- Middle Content Box -->
 					<div class="row grid-style-4">
 						<div class="col-md-12 col-xs-12 col-sm-12">

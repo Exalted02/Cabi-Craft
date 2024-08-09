@@ -41,6 +41,7 @@
 									</label>
 								</th> --}}
 								<th>Cabinet Name</th>
+								<th>Description</th>
 								<th>Image</th>
 								<th class="text-center">Status</th>
 								<th class="text-center">Options</th>
@@ -55,6 +56,7 @@
 									</label>
 								</td> --}}
 								<td>{{$list->name}}</td>
+								<td>{{$list->description}}</td>
 								<td><img src="{{ asset('admin-assets/images/exposhuttercolors/' .$list->image) }}" width="50" height="50"></td>
 								<td class="text-center">
 									<label class="switch">

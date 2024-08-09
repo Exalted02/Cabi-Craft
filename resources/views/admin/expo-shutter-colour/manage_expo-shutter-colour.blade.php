@@ -40,7 +40,7 @@
 				</div>
 				<div class="row add_cat mb-3">
 					<div class="col-lg-2">
-						<h5 class="card-title mb-2">Image<sup>*</sup></h5>
+						<h5 class="card-title mb-2">Image</h5>
 					</div>
 					<div class="col-lg-10">
 						@if ($id=='0')
@@ -53,6 +53,25 @@
 							
 						@endif
 						@error('image')
+						<span class="text-danger">
+							{{$message}}		
+						</span>
+						@enderror
+					</div>
+				</div>
+				<div class="row add_cat mb-3">
+					<div class="col-lg-2">
+						<h5 class="card-title mb-2">Description</h5>
+					</div>
+					<div class="col-lg-10">
+						@if ($id=='0')
+						<textarea name="description" class="form-control"></textarea>
+						
+						@else
+						<textarea name="description" class="form-control">{{ $description ?? ''}}</textarea>
+							
+						@endif
+						@error('description')
 						<span class="text-danger">
 							{{$message}}		
 						</span>

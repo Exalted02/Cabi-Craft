@@ -27,6 +27,7 @@ class ExposhuttercolourController extends Controller
 			if($arr){
 				$result['name']=$arr->name;
 				$result['image']=$arr->image;
+				$result['description']=$arr->description;
 				$result['flag']=$arr->flag;
 				$result['status']=$arr->status;
 				//$result['price_per_quantity']=$arr->price_per_quantity;
@@ -34,6 +35,7 @@ class ExposhuttercolourController extends Controller
 			}else{
 				$result['name']			='';
 				$result['image']	='';
+				$result['description']	='';
 				$result['flag']	='';
 				$result['status']		='';
 				//$result['price_per_quantity']		='';
@@ -43,6 +45,7 @@ class ExposhuttercolourController extends Controller
 			
 			$result['name']='';
 			$result['image']='';
+			$result['description']='';
 			$result['flag']='';
 			$result['status']='';
 			//$result['price_per_quantity']='';
@@ -76,6 +79,7 @@ class ExposhuttercolourController extends Controller
 				'name' => $request->post('name'),
 				'flag' => $request->post('flag'),
 				'image' => $imageName,
+				'description' => $request->post('description'),
 				'updated_at' => date('Y-M-d H:i:s'),
 				]);
 			
@@ -92,6 +96,7 @@ class ExposhuttercolourController extends Controller
 				'name' => $request->post('name'),
 				'flag' => $request->post('flag'),
 				'image' => $imageName,
+				'description' => $request->post('description'),
 				'created_at' => date('Y-m-d H h:i:s'),
 				'status' => 1,
 			]);

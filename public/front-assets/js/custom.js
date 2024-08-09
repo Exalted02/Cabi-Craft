@@ -91,12 +91,12 @@ Designed and Development by: ScriptsBundle
         increaseArea: '20%' // optional
     });
     /* ======= Jquery Select Dropdowns ======= */
-    $("select").select2({
-        width: '100%'
-    });
-	$(".ad-post-status").select2({
+    /*$("select").select2({
         width: '100%',
 		theme: "classic"
+    });*/
+	/*$(".ad-post-status").select2({
+        width: '100%',
     });
 	$(".search-price-min").select2({
 	  placeholder: "Select Pice : Min",
@@ -126,7 +126,7 @@ Designed and Development by: ScriptsBundle
 	  placeholder: "Select Year : Any Year",
 	  allowClear: true,
 	  width: '100%'
-	});
+	});*/
   /* ======= Animation ======= */
 	if($('.wow').length){
 		var wow = new WOW(

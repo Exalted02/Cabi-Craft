@@ -192,7 +192,7 @@
                                             <div class="form-group row">
                                                 <label for="project-name" class="col-sm-5 col-form-label no-wrap">Project Name:</label>
                                                 <div class="col-sm-7">
-                                                    <input id="project-name" class="form-control" placeholder="Project name" type="text">
+                                                    <input id="project-name" class="form-control" wire:model.live="project_name"placeholder="Project name" type="text">
                                                 </div>
                                             </div>
                                             
@@ -601,11 +601,9 @@
                                             <label class="inline-label-select col-sm-5">
                                             Expo:</label>
                                             <div class="col-sm-7">
-                                                    <select class="form-control ad-post-status">
-                                                        <option value="expired">Expo</option>
-                                                        <option value="sold">Sold</option>
-                                                        <option value="active" selected></option>
-                                                    </select>
+                                                 @foreach($exposide as $val)
+													<option value="{{$val->id}}" data-image="{{ asset('admin-assets/images/exposide/'.$val->image) }}">{{$val->name}}</option>
+												@endforeach
                                             </div>
                                         </div>
                                             
@@ -721,5 +719,22 @@
         </div>
         </div>
     </div>
+	@section('scripts')
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			initializeSelect2();
+			Livewire.hook('message.processed', (message, component) => {
+				initializeSelect2();
+			});
+		});
+
+		function initializeSelect2() {
+			$("select").select2({
+				width: '100%',
+				theme: "classic"
+			});
+		}
+	</script>
+	@endsection
     </div>
     

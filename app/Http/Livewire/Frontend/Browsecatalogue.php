@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Frontend;
 
 use Livewire\Component;
+use App\Models\Exposide;
 
 class Browsecatalogue extends Component
 {
@@ -10,6 +11,9 @@ class Browsecatalogue extends Component
 	public $view_order_form = false;
 	public $kitchen_properties_form = false;
 	public $customise_form = false;
+	
+	public $project_name = '';
+	public $data, $name, $email, $password, $selected_id;
 	
 	public function mount()
     {
@@ -46,7 +50,7 @@ class Browsecatalogue extends Component
     public function render()
     {
         return view('livewire.frontend.browsecatalogue')->with([
-            'data' =>  [],
+            'exposide' =>  Exposide::all(),
         ]);
     }
 }

@@ -79,7 +79,7 @@
                         </a>
                     </li>
 					@if(Auth::guard('admin')->user()->role_id != 1)
-					<li class="sidebar-item {{ (request()->routeIs('admin.account')) ? 'active' : '' }}">
+					{{--<li class="sidebar-item {{ (request()->routeIs('admin.account')) ? 'active' : '' }}">
                         <a class="sidebar-link" href="{{ route('admin.account') }}">
                             <i class="align-middle" data-feather="file-text"></i> 
                             <span class="align-middle">Account</span>
@@ -95,9 +95,10 @@
 								@endforeach
 							</div>
 						</div>
-					</div>
+					</div>--}}
 					@endif
 					@if(Auth::guard('admin')->user()->role_id == 1)
+					{{--
 					<li class="sidebar-item {{ (request()->routeIs('admin.category','admin.add-category','admin.update-category')) ? 'active' : '' }}">
                         <a class="sidebar-link" href="{{ route('admin.category') }}">
                             <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Category</span>
@@ -129,6 +130,7 @@
 							<li><a class="nav-link {{ (request()->routeIs('admin.exposideprice')) ? 'active' : '' }}" href="{{ url('admin/exposideprice/add-exposideprice/1') }}">Exposide Price</a></li>
 						</ul>
                     </li>
+					--}}
                     <li class="sidebar-item {{ (request()->routeIs('admin.user','admin.user','admin.update-user')) ? 'active' : '' }}">
                         <a class="sidebar-link" href="{{ route('admin.user') }}">
                             <i class="align-middle" data-feather="users"></i> <span class="align-middle">Users Manage</span>
@@ -139,11 +141,11 @@
                             <i class="align-middle" data-feather="users"></i> <span class="align-middle">Our Staff</span>
                         </a>
                     </li>
-                    <li class="sidebar-item {{ (request()->routeIs('admin.apikey')) ? 'active' : '' }}">
+                    {{--<li class="sidebar-item {{ (request()->routeIs('admin.apikey')) ? 'active' : '' }}">
                         <a class="sidebar-link" href="{{ url('admin/apikey/add-apikey/1') }}">
                             <i class="align-middle" data-feather="align-justify"></i> <span class="align-middle">Appscript API Key</span>
                         </a>
-                    </li>
+                    </li>--}}
 				@endif
 				
 				@if(Auth::guard('admin')->user()->role_id == 1)

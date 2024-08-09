@@ -43,7 +43,8 @@
 								</div>
 								@endforeach
 							</div>
-							<input type="text" value="$moreload" name="moreload" wire:model="moreload">
+							<input type="hidden" value="$moreload" name="moreload" wire:model="moreload">
+							{{--<input type="text" value="$remain" name="moreload" wire:model="moreload">--}}
 							@if($remain>0 && $products->count()>0)
 							<div class="row">
 								<div class="col-lg-12 col-xl-12 col-sm-12 text-center">

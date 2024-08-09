@@ -1,5 +1,5 @@
 @extends('admin.layouts.app', [
-        'title'=> "Leg Type Management"
+        'title'=> "Skt Type Management"
     ])
 
 @section('content')
@@ -7,7 +7,7 @@
 	<div class="container-fluid p-0">
 		<div class="row">
 			<div class="col-lg-6">
-				<h1 class="h3 mb-3"><strong></strong>Product Leg Type Management</h1>
+				<h1 class="h3 mb-3"><strong></strong>Product Skt Type Management</h1>
 			</div>
 			<div class="col-lg-6 text-end">
 				<a href="{{ route('admin.add-legtype') }}"><button type="button" class="btn btn-danger">Add New</button></a>
@@ -40,7 +40,7 @@
 										<input class="form-check-input" type="checkbox" id="checkAll">
 									</label>
 								</th> --}}
-								<th>Leg Type Name</th>
+								<th>Skt Type Name</th>
 								<th>Image</th>
 								<th class="text-center">Status</th>
 								<th class="text-center">Options</th>

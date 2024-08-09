@@ -7,7 +7,7 @@
 	<div class="container-fluid p-0">
 		<div class="row">
 			<div class="col-lg-6">
-				<h1 class="h3 mb-3"><strong></strong>Product Material Management</h1>
+				<h1 class="h3 mb-3"><strong></strong>Cabinate Material Management</h1>
 			</div>
 			<div class="col-lg-6 text-end">
 				<a href="{{ route('admin.add-material') }}"><button type="button" class="btn btn-danger">Add New</button></a>

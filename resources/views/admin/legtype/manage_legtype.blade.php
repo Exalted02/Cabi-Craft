@@ -14,21 +14,21 @@
 </style>
 <main class="content">
 	<div class="container-fluid p-0">
-        <h1 class="h3 mb-3"><strong>{{$id=='0' ? "Add new" : "Edit"}}</strong> Leg Type</h1>
+        <h1 class="h3 mb-3"><strong>{{$id=='0' ? "Add new" : "Edit"}}</strong> Skt Type</h1>
         <div class="card">
 			<form id="cat_form" action="{{route('admin.legtype.manage_legtype_process')}}" enctype="multipart/form-data" method="post">
 			@csrf
 			<div class="card-body">
 				<div class="row add_cat mb-3">
 					<div class="col-lg-2">
-						<h5 class="card-title mb-2">Leg Type Name<sup>*</sup></h5>
+						<h5 class="card-title mb-2">Skt Type Name<sup>*</sup></h5>
 					</div>
 					<div class="col-lg-10">
 						@if ($id=='0')
-						<input type="text" name="name" value="{{old('name')}}" class="form-control" placeholder="Leg Type">
+						<input type="text" name="name" value="{{old('name')}}" class="form-control" placeholder="Skt Type">
 						
 						@else
-						<input type="text" name="name" value="{{$name}}" class="form-control" placeholder="Leg Type">
+						<input type="text" name="name" value="{{$name}}" class="form-control" placeholder="Skt Type">
 							
 						@endif
 						@error('name')

@@ -33,14 +33,44 @@
                             <i class="align-middle" data-feather="projecttype"></i> <span class="align-middle">Project Type</span>
                         </a>
                     </li>
+					<li class="sidebar-item {{ (request()->routeIs('admin.products','admin.products','admin.update-products')) ? 'active' : '' }}">
+                        <a class="sidebar-link" href="{{ route('admin.products') }}">
+                            <i class="align-middle" data-feather="products"></i> <span class="align-middle">Products</span>
+                        </a>
+                    </li>
+					<li class="sidebar-item {{ (request()->routeIs('admin.exposide','admin.add-exposide','admin.update-exposide')) ? 'active' : '' }}">
+                        <a class="sidebar-link" href="{{ route('admin.exposide') }}">
+                            <i class="align-middle" data-feather="align-justify"></i> <span class="align-middle">Expo</span>
+                        </a>
+                    </li>
 					<li class="sidebar-item {{ (request()->routeIs('admin.expo-shutter-color','admin.add-expo-shutter-color','admin.update-expo-shutter-color')) ? 'active' : '' }}">
                         <a class="sidebar-link" href="{{ route('admin.expo-shutter-color') }}">
                             <i class="align-middle" data-feather="align-justify"></i> <span class="align-middle">Expo/Shutter Colour</span>
                         </a>
                     </li>
-					<li class="sidebar-item {{ (request()->routeIs('admin.products','admin.products','admin.update-products')) ? 'active' : '' }}">
-                        <a class="sidebar-link" href="{{ route('admin.products') }}">
-                            <i class="align-middle" data-feather="products"></i> <span class="align-middle">Products</span>
+					<li class="sidebar-item {{ (request()->routeIs('admin.cabinet','aadmin.add-cabinet','admin.update-cabinet')) ? 'active' : '' }}">
+                        <a class="sidebar-link" href="{{ route('admin.cabinet') }}">
+                            <i class="align-middle" data-feather="align-justify"></i> <span class="align-middle">Box Inner Laminate</span>
+                        </a>
+                    </li>
+					<li class="sidebar-item {{ (request()->routeIs('admin.material','admin.add-material','admin.update-material')) ? 'active' : '' }}">
+                        <a class="sidebar-link" href="{{ route('admin.material') }}">
+                            <i class="align-middle" data-feather="align-justify"></i> <span class="align-middle">Cabinet Material</span>
+                        </a>
+                    </li>
+					<li class="sidebar-item {{ (request()->routeIs('admin.shutter-material','admin.add-shutter-material','admin.update-shutter-material')) ? 'active' : '' }}">
+                        <a class="sidebar-link" href="{{ route('admin.shutter-material') }}">
+                            <i class="align-middle" data-feather="align-justify"></i> <span class="align-middle">Shutter Material</span>
+                        </a>
+                    </li>
+					<li class="sidebar-item {{ (request()->routeIs('admin.legtype','admin.legtype','admin.update-legtype')) ? 'active' : '' }}">
+                        <a class="sidebar-link" href="{{ route('admin.legtype') }}">
+                            <i class="align-middle" data-feather="align-justify"></i> <span class="align-middle">Skt Type</span>
+                        </a>
+                    </li>
+					<li class="sidebar-item {{ (request()->routeIs('admin.handletype','admin.handletype','admin.update-handletype')) ? 'active' : '' }}">
+                        <a class="sidebar-link" href="{{ route('admin.handletype') }}">
+                            <i class="align-middle" data-feather="align-justify"></i> <span class="align-middle">Handle Type</span>
                         </a>
                     </li>
 					<li class="sidebar-item {{ (request()->routeIs('admin.static','admin.static','admin.update-static')) ? 'active' : '' }}">
@@ -81,36 +111,6 @@
 					<li class="sidebar-item {{ (request()->routeIs('admin.cabinettype','admin.add-cabinettype','admin.update-cabinettype')) ? 'active' : '' }}">
                         <a class="sidebar-link" href="{{ route('admin.cabinettype') }}">
                             <i class="align-middle" data-feather="align-justify"></i> <span class="align-middle">Cabinet Type</span>
-                        </a>
-                    </li>
-					<li class="sidebar-item {{ (request()->routeIs('admin.material','admin.add-material','admin.update-material')) ? 'active' : '' }}">
-                        <a class="sidebar-link" href="{{ route('admin.material') }}">
-                            <i class="align-middle" data-feather="align-justify"></i> <span class="align-middle">Material</span>
-                        </a>
-                    </li>
-					<li class="sidebar-item {{ (request()->routeIs('admin.cabinet','aadmin.add-cabinet','admin.update-cabinet')) ? 'active' : '' }}">
-                        <a class="sidebar-link" href="{{ route('admin.cabinet') }}">
-                            <i class="align-middle" data-feather="align-justify"></i> <span class="align-middle">Cabinet Colour</span>
-                        </a>
-                    </li>
-					<li class="sidebar-item {{ (request()->routeIs('admin.exposide','admin.add-exposide','admin.update-exposide')) ? 'active' : '' }}">
-                        <a class="sidebar-link" href="{{ route('admin.exposide') }}">
-                            <i class="align-middle" data-feather="align-justify"></i> <span class="align-middle">Expo Side</span>
-                        </a>
-                    </li>
-					<li class="sidebar-item {{ (request()->routeIs('admin.shutter-material','admin.add-shutter-material','admin.update-shutter-material')) ? 'active' : '' }}">
-                        <a class="sidebar-link" href="{{ route('admin.shutter-material') }}">
-                            <i class="align-middle" data-feather="align-justify"></i> <span class="align-middle">Shutter Material</span>
-                        </a>
-                    </li>
-					<li class="sidebar-item {{ (request()->routeIs('admin.legtype','admin.legtype','admin.update-legtype')) ? 'active' : '' }}">
-                        <a class="sidebar-link" href="{{ route('admin.legtype') }}">
-                            <i class="align-middle" data-feather="align-justify"></i> <span class="align-middle">Leg Type</span>
-                        </a>
-                    </li>
-					<li class="sidebar-item {{ (request()->routeIs('admin.handletype','admin.handletype','admin.update-handletype')) ? 'active' : '' }}">
-                        <a class="sidebar-link" href="{{ route('admin.handletype') }}">
-                            <i class="align-middle" data-feather="align-justify"></i> <span class="align-middle">Handle Type</span>
                         </a>
                     </li>
                     <li class="sidebar-item {{ (request()->routeIs('admin.couponcode','admin.couponcode','admin.update-couponcode')) ? 'active' : '' }}">

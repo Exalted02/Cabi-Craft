@@ -4,7 +4,13 @@ namespace App\Http\Livewire\Frontend;
 
 use Livewire\Component;
 use App\Models\Exposide;
+use App\Models\Cabinet;
+use App\Models\Material;
+use App\Models\ShutterMaterial;
+use App\Models\Legtype;
+use App\Models\Handeltype;
 use Illuminate\Support\Facades\DB;
+
 class Neworder extends Component
 {
 	public $new_order_form = true;
@@ -175,6 +181,13 @@ class Neworder extends Component
         return view('livewire.frontend.neworder')->with([
             'products' =>  $this->products,
 			'exposide' =>  Exposide::all(),
+			'expocolour' =>  DB::table('expo_shutter_colour')->where('status', '!=', 2)->where('flag', 1)->get(),
+			'shutter_finish' =>  DB::table('expo_shutter_colour')->where('status', '!=', 2)->where('flag', 2)->get(),
+			'box_inner_laminate' =>  Cabinet::where('status', '!=', 2)->get(),
+			'material' =>  Material::where('status', '!=', 2)->get(),
+			'shutter_material' =>  ShutterMaterial::where('status', '!=', 2)->get(),
+			'legtype' =>  Legtype::where('status', '!=', 2)->get(),
+			'handeltype' =>  Handeltype::where('status', '!=', 2)->get(),
         ]);
     }
 }

@@ -14,7 +14,7 @@ use App;
 use App\Models\Subscription;
 use App\Models\User;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\DB;
 class AuthenticatedSessionController extends Controller
 {
     /**
@@ -22,7 +22,9 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('auth.login');
+		$staticdata = DB::table('static')->where(['status'=>1])->limit(4)->get();
+		//echo "<pre>";print_r($static);die;
+        return view('auth.login',compact('staticdata'));
         // return view('login');
     }
 

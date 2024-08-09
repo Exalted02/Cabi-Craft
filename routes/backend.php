@@ -30,6 +30,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProjecttypeController;
 use App\Http\Controllers\Admin\ExposhuttercolourController;
 use App\Http\Controllers\Admin\ProductsController;
+use App\Http\Controllers\Admin\StaticController;
 
 Route::middleware('admin')->prefix('admin')->name('')->group(function () {
 	// Admin Panel Routes
@@ -386,6 +387,17 @@ Route::middleware('admin')->prefix('admin')->name('')->group(function () {
 		Route::post('/products/multi_delete',[ProductsController::class,'multi_delete']);
 		Route::post('/products/status',[ProductsController::class,'status']);
 		Route::post('/products/multi_change_status',[ProductsController::class,'multi_change_status']);
+		
+		//  Static Routes
+		Route::get('static', [StaticController::class, 'index'])->name('admin.static');
+		Route::get('/static/add-static',[StaticController::class,'manage_static'])->name('admin.add-static');
+		Route::get('/static/update-static/{id}',[StaticController::class,'manage_static'])->name('admin.update-static');
+		Route::post('/static/manage_static_process',[StaticController::class,'manage_static_process'])->name('admin.static.manage_static_process');
+		Route::post('/static/view_static',[StaticController::class,'view_static']);
+		Route::post('/static/delete',[StaticController::class,'delete']);
+		Route::post('/static/multi_delete',[StaticController::class,'multi_delete']);
+		Route::post('/static/status',[StaticController::class,'status']);
+		Route::post('/static/multi_change_status',[StaticController::class,'multi_change_status']);
 });
 
 Route::prefix('admin')->group(function () {

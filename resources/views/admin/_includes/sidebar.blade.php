@@ -43,6 +43,11 @@
                             <i class="align-middle" data-feather="products"></i> <span class="align-middle">Products</span>
                         </a>
                     </li>
+					<li class="sidebar-item {{ (request()->routeIs('admin.static','admin.static','admin.update-static')) ? 'active' : '' }}">
+                        <a class="sidebar-link" href="{{ route('admin.static') }}">
+                            <i class="align-middle" data-feather="static"></i><span class="align-middle">Static</span>
+                        </a>
+                    </li>
 					@if(Auth::guard('admin')->user()->role_id != 1)
 					<li class="sidebar-item {{ (request()->routeIs('admin.account')) ? 'active' : '' }}">
                         <a class="sidebar-link" href="{{ route('admin.account') }}">

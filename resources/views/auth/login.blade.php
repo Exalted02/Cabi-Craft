@@ -53,11 +53,13 @@
                     <div class="row">
                         <div class="image-container">
                             <div class="page-specific-section">
+							@foreach($staticdata as $val)
                                 <div class="col-md-3 col-sm-6 col-xs-12">
-                                    <img alt="" src="front-assets/images/posting/1.jpg" class="img-responsive">
-                                    <h4 style="margin-top: 20px;"><b>Kitchen</b></h4>
+                                    <img alt="" src="{{ asset('admin-assets/images/static/' .$val->image) }}" class="img-responsive">
+                                    <h4 style="margin-top: 20px;"><b>{{$val->name ?? ''}}</b></h4>
                                 </div>
-                                <div class="col-md-3 col-sm-6 col-xs-12">
+							@endforeach
+                                {{--<div class="col-md-3 col-sm-6 col-xs-12">
                                     <img alt="" src="front-assets/images/posting/1.jpg" class="img-responsive">
                                     <h4 style="margin-top: 20px;"><b>Laundry</b></h4>
                                 </div>
@@ -68,7 +70,7 @@
                                 <div class="col-md-3 col-sm-6 col-xs-12">
                                     <img alt="" src="front-assets/images/posting/1.jpg" class="img-responsive">
                                     <h4 style="margin-top: 20px;"><b>Bathroom</b></h4>
-                                </div>
+                                </div>--}}
                             </div>
                         </div>
                     </div>

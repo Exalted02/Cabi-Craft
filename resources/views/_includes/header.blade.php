@@ -34,7 +34,8 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="img-circle resize" alt="" src="front-assets/images/users/3.jpg"> <span class="myname hidden-xs"> Hello,  {{ Auth::guard('web')->user()->fname }} </span> <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="{{ route('browsecatalogue') }}">New Order</a></li>
+							{{--<li><a href="{{ route('browsecatalogue') }}">New Order</a></li>--}}
+								<li><a href="{{ route('neworder') }}">New Order</a></li>
 								<li><a href="{{ route('orderhistorys') }}">Order History</a></li>
 								<li><a href="{{ route('profilepage') }}">Profile</a></li>
 								<li><a href="{{ route('offerpage') }}">Offers</a></li>

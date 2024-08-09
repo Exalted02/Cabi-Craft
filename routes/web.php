@@ -61,6 +61,8 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('/offerpage', [FrontendController::class, 'offer'])->name('offerpage');
 	Route::get('/orderhistorys', [FrontendController::class, 'orderhistory'])->name('orderhistorys');
 	Route::get('/offerdetailpage', [FrontendController::class, 'offerdetail'])->name('offerdetailpage');
+	
+	Route::get('/new-order', [FrontendController::class, 'neworder'])->name('neworder');
 });
 require __DIR__.'/auth.php';
 

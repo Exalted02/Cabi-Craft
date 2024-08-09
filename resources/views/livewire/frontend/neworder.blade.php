@@ -4,26 +4,24 @@
         <div class="col-md-12 col-xs-12 col-sm-12">
         <div class="row">
             <div class="col-md-8">
-                <div class="search-widget">
-				    <form wire:submit.prevent="search">
-                    <input placeholder="Search by Products" type="text" wire:model="search_product" name="search_product">
-					<input type="hidden" value="{{$search_button}}" wire:model="search_button" name="search_button">
-					@if($search_button)
-						<button type="submit"><i class="fa fa-search"></i></button>
-				    @else
-						<button type="submit"><i class="fa fa-times" aria-hidden="true"></i></button>
-				    @endif
-					</form>
-					{{--<button type="button" wire:click="search"><i class="fa fa-search"></i></button>--}}
-                </div>
+				<form wire:submit.prevent="search">
+					<div class="search-widget">
+						<input placeholder="Search by Products" type="text" wire:model="search_product" name="search_product">
+						<input type="hidden" value="{{$search_button}}" wire:model="search_button" name="search_button">
+						@if($search_button)
+							<button type="submit"><i class="fa fa-search"></i></button>
+						@else
+							<button type="submit"><i class="fa fa-times" aria-hidden="true"></i></button>
+						@endif
+						{{--<button type="button" wire:click="search"><i class="fa fa-search"></i></button>--}}
+					</div>
+				</form>
                 <!-- Middle Content Box -->
-				<?php 
-				//echo "<pre>";print_r($products);
-				?>
 				<div class="row grid-style-4">
 					<div class="col-md-12 col-xs-12 col-sm-12">
 						<div class="new-order-body-scroll">
 							<div class="posts-masonry1 row">
+								@if(count($products) > 0)
 								@foreach($products as $product)
 								<div class="col-md-4 col-xs-12 col-sm-6">
 									<div class="category-grid-box-1">
@@ -42,6 +40,7 @@
 									</div>
 								</div>
 								@endforeach
+								@endif
 							</div>
 							<input type="hidden" value="$moreload" name="moreload" wire:model="moreload">
 							{{--<input type="text" value="$remain" name="moreload" wire:model="moreload">--}}
@@ -619,5 +618,22 @@
         </div>
         </div>
     </div>
+	@section('scripts')
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			initializeSelect2();
+			Livewire.hook('message.processed', (message, component) => {
+				initializeSelect2();
+			});
+		});
+
+		function initializeSelect2() {
+			$("select").select2({
+				width: '100%',
+				theme: "classic"
+			});
+		}
+	</script>
+	@endsection
     </div>
     

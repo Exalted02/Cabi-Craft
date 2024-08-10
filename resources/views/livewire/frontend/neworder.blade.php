@@ -152,31 +152,18 @@
 												<div class="form-group row align-items-center">
 													<label for="project-type" class="col-sm-4 col-form-label">Room Name:</label>
 													<div class="col-sm-6">
-														<input id="project-type" class="form-control" placeholder="Room Name" type="text">
+														<input id="project-type" class="form-control" placeholder="Room Name" type="text" wire:model="roomName">
 													</div>
 													<div class="col-sm-2">
-													<i class="fa fa-plus-square" style="color: green;"></i>
+													<i class="fa fa-plus-square" style="color: green;" wire:click="addRoom"></i>
 													</div>
 												</div>
 												<div class="row">
-													<div class="col-md-5">
-														<ol>
-															<li>Kitchen</li>
-															<li>Foyer</li>
-															<li>Crockery</li>
-															<li>Pooja unit</li>
-															<li>T.v unit</li>
-														</ol>
+													@foreach($rooms as $index => $room)
+													<div class="col-md-6">
+														<div>{{ $index + 1 }}. {{ $room }}</div>
 													</div>
-													<div class="col-md-7">
-														<ol>
-															<li>Master bedroom</li>
-															<li>Guest bedroom</li>
-															<li>Kids bedroom</li>
-															<li>Utility</li>
-															<li>PBR</li>
-														</ol>
-													</div>
+													@endforeach
 												</div>
 											</form>
 											
@@ -429,69 +416,84 @@
 									
 							<div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
 									<div class="row">
-											
-											<div class="col-md-3 col-xs-3 col-sm-3">
+										<div class="col-md-3 col-xs-3 col-sm-3">
 											<img alt="" src="front-assets/images/posting/1.jpg" class="img-responsive image-margin">
-											</div>
-											<div class="col-md-6 col-xs-6 col-sm-6">
-												<form>
-												<div class="form-group row">
-													<label class="inline-label-select col-sm-4">
-													Width:</label>
-													<div class="col-sm-8">
-															<select class="form-control ad-post-status">
-																<option value="expired">(MR)_Ply</option>
-																<option value="sold">Sold</option>
-																<option value="active" selected></option>
-															</select>
+										</div>
+										<div class="col-md-9 col-xs-9 col-sm-9">
+											<form>
+												<div class="display-flex">
+													<div class="width-85-percent">
+														<div class="form-group row">
+															<label class="inline-label-select col-sm-4">Width:</label>
+															<div class="col-sm-8">
+																<select class="form-control" id="width" {{ $widthEnabled ? '' : 'disabled' }}>
+																	<option value="expired">(MR)_Ply</option>
+																	<option value="sold">Sold</option>
+																	<option value="active" selected></option>
+																</select>
+															</div>
+														</div>
+													</div>
+													<div class="width-15-percent display-flex justify-content-center align-items-center">
+														<input type="checkbox" id="toggle1" class="checkbox" wire:model="widthEnabled" />
+														<label for="toggle1" class="switch"></label>
 													</div>
 												</div>
-																
-												<div class="form-group row">
-													<label class="inline-label-select col-sm-4">
-													Length:</label>
-													<div class="col-sm-8">
-															<select class="form-control ad-post-status">
-																<option value="expired">(MR)_Ply</option>
-																<option value="sold">Sold</option>
-																<option value="active" selected></option>
-															</select>
+												<div class="display-flex">
+													<div class="width-85-percent">
+														<div class="form-group row">
+															<label class="inline-label-select col-sm-4">Length:</label>
+															<div class="col-sm-8">
+																<select class="form-control" id="length" {{ $lengthEnabled ? '' : 'disabled' }}>
+																	<option value="expired">(MR)_Ply</option>
+																	<option value="sold">Sold</option>
+																	<option value="active" selected></option>
+																</select>
+															</div>
+														</div>
+													</div>
+													<div class="width-15-percent display-flex justify-content-center align-items-center">
+														<input type="checkbox" id="toggle2" class="checkbox" wire:model="lengthEnabled" />
+														<label for="toggle2" class="switch"></label>
 													</div>
 												</div>
-
-												<div class="form-group row">
-													<label class="inline-label-select col-sm-4">
-													Deep:</label>
-													<div class="col-sm-8">
-															<select class="form-control ad-post-status">
-																<option value="expired">(MR)_Ply</option>
-																<option value="sold">Sold</option>
-																<option value="active" selected></option>
-															</select>
+												<div class="display-flex">
+													<div class="width-85-percent">
+														<div class="form-group row">
+															<label class="inline-label-select col-sm-4">Deep:</label>
+															<div class="col-sm-8">
+																<select class="form-control" id="deep" {{ $deepEnabled ? '' : 'disabled' }}>
+																	<option value="expired">(MR)_Ply</option>
+																	<option value="sold">Sold</option>
+																	<option value="active" selected></option>
+																</select>
+															</div>
+														</div>
 													</div>
-												</div>  
-												<div class="form-group row">
-													<label class="inline-label-select col-sm-4">
-													QTY:</label>
-													<div class="col-sm-8">
-															<select class="form-control ad-post-status">
-																<option value="expired">(MR)_Ply</option>
-																<option value="sold">Sold</option>
-																<option value="active" selected></option>
-															</select>
+													<div class="width-15-percent display-flex justify-content-center align-items-center">
+														<input type="checkbox" id="toggle3" class="checkbox" wire:model="deepEnabled" />
+														<label for="toggle3" class="switch"></label>
 													</div>
-												</div>  
-												</form>
-
-											</div>
-											<div class="col-md-3 col-xs-3 col-sm-3">
-											 <input type="checkbox" id="toggle1" class="checkbox" />
-											 <label for="toggle1" class="switch"></label>
-											 <input type="checkbox" id="toggle2" class="checkbox" />
-											 <label for="toggle2" class="switch"></label>
-											 <input type="checkbox" id="toggle3" class="checkbox" />
-											 <label for="toggle3" class="switch"></label>
-											</div>
+												</div>
+												<div class="display-flex">
+													<div class="width-85-percent">
+														<div class="form-group row">
+															<label class="inline-label-select col-sm-4">QTY:</label>
+															<div class="col-sm-8">
+																<select class="form-control">
+																	<option value="expired">(MR)_Ply</option>
+																	<option value="sold">Sold</option>
+																	<option value="active" selected></option>
+																</select>
+															</div>
+														</div>
+													</div>
+													<div class="width-15-percent display-flex justify-content-center align-items-center">
+														
+													</div>
+												</div>
+											</form>
+										</div>
 									</div>
 									<div class="panel-body">
 										<form>

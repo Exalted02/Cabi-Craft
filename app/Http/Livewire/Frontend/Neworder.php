@@ -24,6 +24,20 @@ class Neworder extends Component
 	public $moreload = '';
 	public $remain;
 	
+	public $widthEnabled = true;
+    public $lengthEnabled = true;
+    public $deepEnabled = true;
+	
+	public $roomName = '';
+    public $rooms = [];
+	
+	public function addRoom()
+    {
+        if (!empty($this->roomName)) {
+            $this->rooms[] = $this->roomName;
+            $this->roomName = ''; // Clear the input field after adding
+        }
+    }
 	public function load_product()
     {
 		$count = env('PRODUCT_LIST_SHOW_NEW_ORDER');
@@ -39,32 +53,27 @@ class Neworder extends Component
     }
 	public function submit_new_order_form()
     {
-		$this->load_product();
         $this->new_order_form = false;
         $this->view_order_form = true;
     }
 	public function edit_new_order_form()
     {
-		$this->load_product();
         $this->new_order_form = true;
         $this->view_order_form = false;
     }
 	public function open_kitchen_properties_form()
     {
-		$this->load_product();
         $this->view_order_form = false;
         $this->kitchen_properties_form = true;
     }
 	public function open_customise_form()
     {
-		$this->load_product();
         $this->kitchen_properties_form = false;
         $this->view_order_form = false;
         $this->customise_form = true;
     }
 	public function return_view_order_form()
     {
-		$this->load_product();
         $this->new_order_form = false;
         $this->kitchen_properties_form = false;
         $this->customise_form = false;
@@ -179,6 +188,7 @@ class Neworder extends Component
 	}
     public function render()
     {
+		$this->load_product();
         return view('livewire.frontend.neworder')->with([
             'products' =>  $this->products,
 			'exposide' =>  Exposide::all(),

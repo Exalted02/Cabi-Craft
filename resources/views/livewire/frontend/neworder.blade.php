@@ -1,5 +1,5 @@
 @section('styles')
-<link href="{{ url('css/select2.css') }}" rel="stylesheet">
+<link href="{{ url('css/custom-select2.css') }}" rel="stylesheet">
 @endsection
 <div class="submited-form">
     <div class="row">

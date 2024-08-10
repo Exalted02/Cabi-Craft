@@ -59,7 +59,7 @@ class ExposhuttercolourController extends Controller
         $request->validate([
 			'name'=>'required',
 			//'image'=>'required',
-			'flag'=>'required',
+			// 'flag'=>'required',
 		]);
 		
 		
@@ -77,13 +77,13 @@ class ExposhuttercolourController extends Controller
 				->where('id', $request->post('id'))
 				->update([
 				'name' => $request->post('name'),
-				'flag' => $request->post('flag'),
+				'flag' => 1,
 				'image' => $imageName,
 				'description' => $request->post('description'),
 				'updated_at' => date('Y-M-d H:i:s'),
 				]);
 			
-            $msg="Cabinet has been updated successfully.";
+            $msg="Expo Shutter Colour has been updated successfully.";
 
         }else{
 			$imageName = '';
@@ -94,7 +94,7 @@ class ExposhuttercolourController extends Controller
 			}
             DB::table('expo_shutter_colour')->insert([
 				'name' => $request->post('name'),
-				'flag' => $request->post('flag'),
+				'flag' => 1,
 				'image' => $imageName,
 				'description' => $request->post('description'),
 				'created_at' => date('Y-m-d H h:i:s'),

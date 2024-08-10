@@ -78,7 +78,7 @@
 						@enderror
 					</div>
 				</div>
-				<div class="row add_cat mb-3">
+				{{--<div class="row add_cat mb-3">
 					<div class="col-lg-2">
 						<h5 class="card-title mb-2">Flag<sup>*</sup></h5>
 					</div>
@@ -104,7 +104,7 @@
 						</span>
 						@enderror
 					</div>
-				</div>
+				</div>--}}
 				{{-- <div class="row add_cat mb-3">
 					<div class="col-lg-2">
 						<h5 class="card-title mb-2">Date<sup>*</sup></h5>

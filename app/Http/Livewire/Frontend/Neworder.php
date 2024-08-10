@@ -192,8 +192,8 @@ class Neworder extends Component
         return view('livewire.frontend.neworder')->with([
             'products' =>  $this->products,
 			'exposide' =>  Exposide::all(),
-			'expocolour' =>  DB::table('expo_shutter_colour')->where('status', '!=', 2)->where('flag', 1)->get(),
-			'shutter_finish' =>  DB::table('expo_shutter_colour')->where('status', '!=', 2)->where('flag', 2)->get(),
+			'expocolour' =>  DB::table('expo_shutter_colour')->where('status', '!=', 2)->get(),
+			'shutter_finish' =>  DB::table('expo_shutter_colour')->where('status', '!=', 2)->get(),
 			'box_inner_laminate' =>  Cabinet::where('status', '!=', 2)->get(),
 			'material' =>  Material::where('status', '!=', 2)->get(),
 			'shutter_material' =>  ShutterMaterial::where('status', '!=', 2)->get(),

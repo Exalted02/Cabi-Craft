@@ -3210,7 +3210,7 @@ div.boxicon:last-child {
 	position: relative;
 }
 
-.search-widget input[type="text"] {
+.search-widget input[type="text"], .search-widget input[type="search"] {
 	background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
 	border: medium none;
 	height: 100%;

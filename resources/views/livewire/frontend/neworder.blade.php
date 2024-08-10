@@ -6,25 +6,16 @@
 		<div class="col-md-12 col-xs-12 col-sm-12">
 			<div class="row">
 				<div class="col-md-8">
-					<form wire:submit.prevent="search">
-						<div class="search-widget">
-							<input placeholder="Search by Products" type="text" wire:model="search_product" name="search_product">
-							<input type="hidden" value="{{$search_button}}" wire:model="search_button" name="search_button">
-							@if($search_button)
-								<button type="submit"><i class="fa fa-search"></i></button>
-							@else
-								<button type="submit"><i class="fa fa-times" aria-hidden="true"></i></button>
-							@endif
-							{{--<button type="button" wire:click="search"><i class="fa fa-search"></i></button>--}}
-						</div>
-					</form>
+					<div class="search-widget">
+						<input placeholder="Search by Products" type="search" wire:model.debounce.350ms="search">
+						<button type="submit"><i class="fa fa-search"></i></button>
+					</div>
 					<!-- Middle Content Box -->
 					<div class="row grid-style-4">
 						<div class="col-md-12 col-xs-12 col-sm-12">
 							<div class="new-order-body-scroll">
 								<div class="posts-masonry1 row">
-									@if(count($products) > 0)
-									@foreach($products as $product)
+									@forelse ($products as $product)
 									<div class="col-md-4 col-xs-12 col-sm-6">
 										<div class="category-grid-box-1">
 											<div class="images"> <img alt="" src="{{ asset('admin-assets/images/product/' .$product->image) }}" class="img-responsive">
@@ -41,20 +32,26 @@
 											</div>
 										</div>
 									</div>
-									@endforeach
-									@endif
+									@empty
+									<span style="color: red;" class="text-center"><h3>No Record Found</h3></span>
+									@endforelse
 								</div>
-								<input type="hidden" value="$moreload" name="moreload" wire:model="moreload">
-								{{--<input type="text" value="$remain" name="moreload" wire:model="moreload">--}}
-								@if($remain>0 && $products->count()>0)
+								@if($products->total()!=count($products))
 								<div class="row">
 									<div class="col-lg-12 col-xl-12 col-sm-12 text-center">
-									<a href="javascript:void(0);" wire:click="loadMore" class="btn-theme btn-lg btn">{{ __('Load More') }} <i class="fa fa-angle-right"></i></a>
+										<button
+											type="button"
+											name=""
+											id=""
+											wire:click="seeMore"
+											class="btn-theme btn-lg btn"
+											wire:loading.attr="disabled"
+										>
+											<span wire:loading.remove>{{ __('Load More') }} <i class="fa fa-angle-right"></i></span>
+											<span wire:loading>{{ __('Loading..') }}</span>
+										</button>
 									</div>
 								</div>
-								@endif
-								@if($products->count()==0)
-									<span style="color: red;" class="text-center"><h3>No Record Found</h3></span>
 								@endif
 							</div>
 						</div>

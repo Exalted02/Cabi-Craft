@@ -16,7 +16,7 @@ function initializeSelect2() {
 		theme: "classic",
         templateResult: formatOption,
         templateSelection: formatOptionSelection,
-        minimumResultsForSearch: Infinity
+        // minimumResultsForSearch: Infinity
     });
 }
 

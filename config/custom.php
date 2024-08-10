@@ -1,6 +1,6 @@
 <?php
 return [
-//Email Management id
-    'APPLICATION_FORM_EMAIL_ID_RECEIVED_BY_STUDENT' => 1,
-    'APPLICATION_FORM_EMAIL_ID_RECEIVED_BY_ADMIN' => 2,
+	//New order page
+	'PRODUCT_LIST_SHOW_NEW_ORDER'  => 2,
+	'LOAD_MORE_INTERVAL_NEW_ORDER' => 2,
 ];

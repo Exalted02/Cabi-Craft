@@ -9,6 +9,7 @@ use App\Models\Material;
 use App\Models\ShutterMaterial;
 use App\Models\Legtype;
 use App\Models\Handeltype;
+use App\Models\Projecttype;
 use Illuminate\Support\Facades\DB;
 
 class Neworder extends Component
@@ -188,6 +189,7 @@ class Neworder extends Component
 			'shutter_material' =>  ShutterMaterial::where('status', '!=', 2)->get(),
 			'legtype' =>  Legtype::where('status', '!=', 2)->get(),
 			'handeltype' =>  Handeltype::where('status', '!=', 2)->get(),
+			'projecttype' =>  DB::table('projecttype')->where('status', '!=', 2)->get(),
         ]);
     }
 }

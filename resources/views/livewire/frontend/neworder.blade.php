@@ -137,14 +137,14 @@
 												</div>
 
 												<div class="form-group row">
-												<label class="inline-label-select col-sm-5">
-												Project Type:</label>
+												<label class="inline-label-select col-sm-5">Project Type:</label>
 												<div class="col-sm-7">
-														<select class="form-control ad-post-status">
-															<option value="(MR)_Ply"></option>
-															<option value="sold">Sold</option>
-															<option value="active" selected></option>
-														</select>
+													<select class="form-control">
+														<option value="">Select</option>
+														@foreach($projecttype as $projecttype_val)
+															<option value="{{$projecttype_val->id}}">{{$projecttype_val->name}}</option>
+														@endforeach
+													</select>
 												</div>
 											</div>
 												<hr>

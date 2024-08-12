@@ -32,7 +32,7 @@
 												<span class="ad-price">Rs.{{ $product->price}}</span> 
 											</div>
 											<div class="ad-info-1" style="display: flex; justify-content: center; align-items: center;">
-												<button type="button" class="btn btn-danger">add to cart</button>
+												<button type="button" class="btn btn-danger" wire:click="addToCart({{ $product->id }})">add to cart</button>
 											</div>
 										</div>
 									</div>
@@ -87,73 +87,83 @@
 								  <!-- Content -->
 								  <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
 										<div class="panel-body">
-											<form id="bodyform">
+											<form wire:submit.prevent="submitNewOrderForm" id="bodyform">
 												<div class="form-group row">
 													<label for="project-name" class="col-sm-5 col-form-label no-wrap">Project Name:</label>
 													<div class="col-sm-7">
-														<input id="project-name" class="form-control" placeholder="Project name" type="text">
+														<input wire:model="project_name" id="project_name" class="form-control" placeholder="Project name" type="text">
+														@error('project_name') <span class="text-danger">{{ $message }}</span> @enderror
 													</div>
 												</div>
 												
 												<div class="form-group row">
 													<label for="address" class="col-sm-5 col-form-label">Address:</label>
 													<div class="col-sm-7">
-														<input id="address" class="form-control" placeholder="Address" type="text">
+														<input wire:model="address" id="address" class="form-control" placeholder="Address" type="text">@error('address') <span class="text-danger">{{ $message }}</span> @enderror
 													</div>
 												</div>
 
 												<div class="form-group row">
 													<label for="city" class="col-sm-5 col-form-label">City:</label>
 													<div class="col-sm-7">
-														<input id="city" class="form-control" placeholder="City" type="text">
+														<input wire:model="city" id="city" class="form-control" placeholder="City" type="text">
+														@error('city') <span class="text-danger">{{ $message }}</span> @enderror
 													</div>
 												</div>
 
 												<div class="form-group row">
 													<label for="zip-code" class="col-sm-5 col-form-label">Zip Code:</label>
 													<div class="col-sm-7">
-														<input id="zip-code" class="form-control" placeholder="Zip Code" type="text">
+														<input wire:model="zip_code" id="zip_code" class="form-control" placeholder="Zip Code" type="text">
+														@error('zip_code') <span class="text-danger">{{ $message }}</span> @enderror
 													</div>
 												</div>
 
 												<div class="form-group row">
 													<label for="state" class="col-sm-5 col-form-label">State:</label>
 													<div class="col-sm-7">
-														<input id="state" class="form-control" placeholder="State" type="text">
+														<input wire:model="state" id="state" class="form-control" placeholder="State" type="text">
+														@error('state') <span class="text-danger">{{ $message }}</span> @enderror
 													</div>
 												</div>
 
 												<div class="form-group row">
 													<label for="country" class="col-sm-5 col-form-label">Country:</label>
 													<div class="col-sm-7">
-														<input id="country" class="form-control" placeholder="Country" type="text">
+														<input wire:model="country" id="country" class="form-control" placeholder="Country" type="text">
+														@error('country') <span class="text-danger">{{ $message }}</span> @enderror
 													</div>
 												</div>
 
 												<div class="form-group row">
 													<label for="mobile" class="col-sm-5 col-form-label">Mobile:</label>
 													<div class="col-sm-7">
-														<input id="mobile" class="form-control" placeholder="Mobile #" type="text">
+														<input wire:model="mobile" id="mobile" class="form-control" placeholder="Mobile #" type="text">
+														@error('mobile') <span class="text-danger">{{ $message }}</span> @enderror
 													</div>
 												</div>
 
 												<div class="form-group row">
 												<label class="inline-label-select col-sm-5">Project Type:</label>
 												<div class="col-sm-7">
-													<select class="form-control">
+													<select wire:model="project_type" id="select-project-type" class="form-control">
 														<option value="">Select</option>
 														@foreach($projecttype as $projecttype_val)
 															<option value="{{$projecttype_val->id}}">{{$projecttype_val->name}}</option>
 														@endforeach
 													</select>
+													@error('project_type') <span class="text-danger">{{ $message }}</span> @enderror
 												</div>
-											</div>
+												</div>
 												<hr>
 												
 												<div class="form-group row align-items-center">
 													<label for="project-type" class="col-sm-4 col-form-label">Room Name:</label>
 													<div class="col-sm-6">
 														<input id="project-type" class="form-control" placeholder="Room Name" type="text" wire:model="roomName">
+														@if($room_validation)
+															<font color="red">Enter Room Name</font>
+														@endif
 													</div>
 													<div class="col-sm-2">
 													<i class="fa fa-plus-square" style="color: green;" wire:click="addRoom"></i>
@@ -166,11 +176,13 @@
 													</div>
 													@endforeach
 												</div>
-											</form>
-											
+											    <input type="hidden" wire:model="room_names" value="{{ json_encode($rooms) }}" id="room_names">
+											    <input type="hidden" wire:model="edit_id" id="edit_id" value="{{$edit_id ?? ''}}">
 											<hr>
 											<button type="button" class="btn btn-danger" aria-label="Close">Close</button>
-											<button type="button" class="btn btn-success pull-right" aria-label="Close" wire:click="submit_new_order_form">Submit</button>         
+											<button type="submit" class="btn btn-success pull-right" aria-label="Close">Submit</button>
+											{{--<button type="button" class="btn btn-success pull-right" aria-label="Close" wire:click="submit_new_order_form">Submit</button>--}} 
+											</form>											
 										</div>
 								  </div>
 								</div>
@@ -188,7 +200,7 @@
 										<div class="ad-info-1">
 											<!-- Ad Status -->
 											<label>
-												<h4 class="panel-title">Mr.Robin_2BKH</h4>
+												<h4 class="panel-title">{{$project_name_label ?? ''}}</h4>
 											</label>
 											<ul class="pull-right ">
 												<li><a data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit Ad" href="javascript:void(0);" wire:click="edit_new_order_form"><i class="fa fa-pencil edit"></i></a> </li>
@@ -211,7 +223,7 @@
 													</div>
 													
 													<div class="col-sm-4">
-														<h5 class="mr-2 mb-0">Rs.9,900</h5> 
+														<h5 class="mr-2 mb-0">Rs.{{$total_cart_price ?? 0}}</h5> 
 													</div>
 													<div class="col-sm-3">
 														<ul class="list-inline mb-0 ml-auto text-right">
@@ -230,23 +242,25 @@
 												</div>
 										
 											  <hr>
-											
-													<div class="row">
+											@if($exists_cart_data)
+											@foreach($list_add_to_cart as $cartlist)
+											<div class="row">
 														<div class="col-md-6 col-xs-6 col-sm-6">
-																	<p>1 .Basic cabinet, 2ss <br>
+																	<p>{{ $cartlist->product_name ?? ''}}<br>
 																	(2L plane Baskets)<br>
-																	720H * 600W * 560D</p>
+																	{{ $cartlist->length ?? '' }} L *  {{ $cartlist->breadth ?? '' }} B * {{ $cartlist->deep ?? '' }} D</p>
 														</div>
 														
 														<div class="col-md-6 col-xs-6 col-sm-6">
-															<span class="label label-warning" wire:click="open_customise_form">Customize <ul class="pull-right ">
-																<li><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="fa fa-times delete"></i></a></li>
+															<span class="label label-warning"><font wire:click="open_customise_form({{ $cartlist->product_id }})">Customize</font> <ul class="pull-right ">
+																<li><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" wire:click="deleteFromCart({{ $cartlist->id }})"><i class="fa fa-times delete"></i></a></li>
 															</ul></span>
-															<h5>Rs.3,500.00</h5>
+															<h5>Rs.{{ $cartlist->price ?? '' }}</h5>
 															
 														</div>
 													</div>
-													<div class="row">
+													@endforeach
+													{{--<div class="row">
 														<div class="col-md-6 col-xs-6 col-sm-6">
 
 																	<p>2.Basic cabinet, 2ss <br>
@@ -260,10 +274,10 @@
 															<h5>Rs.4,100.00</h5>
 															
 														</div>
-													</div>
+													</div>--}}
 												
 											
-													<div class="row">
+													{{--<div class="row">
 														<div class="col-md-6 col-xs-6 col-sm-6">
 
 																  <p>  3.Basic cabinet, 2ss<br>
@@ -277,11 +291,13 @@
 															<h5>Rs.2,300.00</h5>
 															
 														</div>
-													</div>
-
+													</div>--}}
+											@endif	
 											<hr>
+											@if($exists_cart_data)
 											<button type="button" class="btn btn-danger" aria-label="Close">Close order</button>
-											<a href="{{ route('cartpage') }}" target="_blank"><button type="button" class="btn btn-success pull-right " aria-label="Close">view cart</button></a>         
+											<a href="{{ route('cartpage') }}" target="_blank"><button type="button" class="btn btn-success pull-right " aria-label="Close">view cart</button></a>
+											@endif											
 										</div>
 								  </div>
 								</div>
@@ -409,12 +425,33 @@
 								  <div class="panel-heading border-bottom-seperator mb-20px" role="tab" id="headingTwo">
 								  <div class="ad-info-1">
 									<label>
-										<h4 class="panel-title">Base Cabinet, 2 SS Drawers (2L Plain Baskets)</h4>
+										<h4 class="panel-title">{{$product_details->name ?? ''}}, 2 SS Drawers (2L Plain Baskets)</h4>
 									</label>
 								  </div>
 								  </div>
 								  <!-- Content -->
-									
+							@php
+								$lengthArr = [];							
+								$breadthArr = [];							
+								$deepArr = [];							
+								if(strpos($product_details->length, ',') !== false)
+								$lengthArr = explode(',',$product_details->length);
+								else
+									$lengthArr[] = $product_details->length;
+								
+								
+								if (strpos($product_details->breadth, ',') !== false)
+								$breadthArr=explode(',',$product_details->breadth);
+								else
+									$breadthArr[] = $product_details->breadth;
+								
+								
+								if (strpos($product_details->deep, ',') !== false)
+									$deepArr = explode(',',$product_details->deep);
+								else
+									$deepArr[] = $product_details->deep;
+								
+							@endphp							
 							<div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
 									<div class="row">
 										<div class="col-md-3 col-xs-3 col-sm-3">
@@ -428,9 +465,9 @@
 															<label class="inline-label-select col-sm-4">Width:</label>
 															<div class="col-sm-8">
 																<select class="form-control" id="width" {{ $widthEnabled ? '' : 'disabled' }}>
-																	<option value="expired">(MR)_Ply</option>
-																	<option value="sold">Sold</option>
-																	<option value="active" selected></option>
+															    <option value="">Select</option>	@foreach($breadthArr as $val)
+																	<option value="{{$val}}">{{$val}}</option>
+																@endforeach	
 																</select>
 															</div>
 														</div>
@@ -446,9 +483,10 @@
 															<label class="inline-label-select col-sm-4">Length:</label>
 															<div class="col-sm-8">
 																<select class="form-control" id="length" {{ $lengthEnabled ? '' : 'disabled' }}>
-																	<option value="expired">(MR)_Ply</option>
-																	<option value="sold">Sold</option>
-																	<option value="active" selected></option>
+																<option value="">Select</option>
+																@foreach($lengthArr as $val)
+																	<option value="{{$val}}">{{$val}}</option>
+																@endforeach	
 																</select>
 															</div>
 														</div>
@@ -464,9 +502,10 @@
 															<label class="inline-label-select col-sm-4">Deep:</label>
 															<div class="col-sm-8">
 																<select class="form-control" id="deep" {{ $deepEnabled ? '' : 'disabled' }}>
-																	<option value="expired">(MR)_Ply</option>
-																	<option value="sold">Sold</option>
-																	<option value="active" selected></option>
+																<option value="">Select</option>
+																  @foreach($deepArr as $val)
+																	<option value="{{$val}}">{{$val}}</option>
+																    @endforeach	
 																</select>
 															</div>
 														</div>

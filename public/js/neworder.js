@@ -1,8 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
 	initializeSelect2();
-	
 	Livewire.hook('message.processed', (message, component) => {
 		initializeSelect2();
+	});
+	
+	$('#select-project-type').on('change', function (e) {
+		var data = $(this).val();
+		//alert(data);
+		//@this.set('project_type', data);
+		Livewire.emit('updateProjectType', data); // Emit an event
 	});
 });
 

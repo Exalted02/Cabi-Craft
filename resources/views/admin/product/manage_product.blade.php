@@ -2,6 +2,8 @@
 
 @section('content')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" />
+
+<link href="{{ url('admin-assets/css/bootstrap-tagsinput.css') }}" rel="stylesheet">
 <style type="text/css">
 	.datepicker {
 		font-size: 0.875em;
@@ -15,7 +17,7 @@
 
 <main class="content">
 	<div class="container-fluid p-0">
-        <h1 class="h3 mb-3"><strong>{{$id=='0' ? "Add new" : "Edit"}}</strong> Cabinet</h1>
+        <h1 class="h3 mb-3"><strong>{{$id=='0' ? "Add new" : "Edit"}}</strong> Products</h1>
         <div class="card">
 			<form id="cat_form" action="{{route('admin.products.manage_products_process')}}" enctype="multipart/form-data" method="post">
 			@csrf
@@ -81,17 +83,55 @@
 				</div>
 				<div class="row add_cat mb-3">
 					<div class="col-lg-2">
-						<h5 class="card-title mb-2">Size<sup>*</sup></h5>
+						<h5 class="card-title mb-2">Length<sup>*</sup></h5>
 					</div>
 					<div class="col-lg-10">
 						@if ($id=='0')
-						<input type="text" name="size" value="{{old('size')}}" class="form-control" placeholder="Size">
+						<input type="text" name="length" value="{{old('length')}}" class="input-tags form-control" placeholder="Length" data-role="tagsinput">
 						
 						@else
-						<input type="text" name="size" value="{{$size}}" class="form-control" placeholder="Size">
+						<input type="text" name="length" value="{{$length}}" class="input-tags form-control" placeholder="Length" data-role="tagsinput">
 							
 						@endif
-						@error('size')
+						@error('length')
+						<span class="text-danger">
+							{{$message}}		
+						</span>
+						@enderror
+					</div>
+				</div>
+				<div class="row add_cat mb-3">
+					<div class="col-lg-2">
+						<h5 class="card-title mb-2">Breadth<sup>*</sup></h5>
+					</div>
+					<div class="col-lg-10">
+						@if ($id=='0')
+						<input type="text" name="breadth" value="{{old('breadth')}}" class="input-tags form-control" placeholder="Breadth" data-role="tagsinput">
+						
+						@else
+						<input type="text" name="breadth" value="{{$breadth}}" class="input-tags form-control" placeholder="Breadth" data-role="tagsinput">
+							
+						@endif
+						@error('breadth')
+						<span class="text-danger">
+							{{$message}}		
+						</span>
+						@enderror
+					</div>
+				</div>
+				<div class="row add_cat mb-3">
+					<div class="col-lg-2">
+						<h5 class="card-title mb-2">Deep<sup>*</sup></h5>
+					</div>
+					<div class="col-lg-10">
+						@if ($id=='0')
+						<input type="text" name="deep" value="{{old('deep')}}" class="input-tags form-control" placeholder="Deep" data-role="tagsinput">
+						
+						@else
+						<input type="text" name="deep" value="{{$deep}}" class="input-tags form-control" placeholder="Deep" data-role="tagsinput">
+							
+						@endif
+						@error('deep')
 						<span class="text-danger">
 							{{$message}}		
 						</span>
@@ -148,6 +188,7 @@
 
 @section('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script src="{{ asset('admin-assets/js/bootstrap-tagsinput.js') }}"></script>
 <script>
 	$(".datepicker").datepicker({
 		clearBtn: true,

@@ -535,3 +535,19 @@ input:checked + .slider:before {
 .disabled-link{
 	pointer-events: none;
 }
+
+/*-----tag implement for input field*/
+
+.input-tags {
+  width: 100%;
+  padding: 15px;
+  display: block;
+  margin: 0 auto;
+}
+
+.label-info {
+  background-color: #5bc0de;
+  padding: 0px 5px 4px 5px;
+  border-radius:4px;
+  line-height: 30px
+}

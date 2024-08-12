@@ -42,7 +42,9 @@
 								</th> --}}
 								<th>Products Name</th>
 								<th>Image</th>
-								<th>Size</th>
+								<th>Length</th>
+								<th>Breadth</th>
+								<th>Deep</th>
 								<th>Price</th>
 								<th>Description</th>
 								<th class="text-center">Status</th>
@@ -57,11 +59,13 @@
 										<input class="form-check-input" type="checkbox" name="chk_id" data-emp-id="{{$list->id}}">
 									</label>
 								</td> --}}
-								<td>{{$list->name}}</td>
+								<td>{{$list->name ?? ''}}</td>
 								<td><img src="{{ asset('admin-assets/images/product/' .$list->image) }}" width="50" height="50"></td>
-								<td>{{$list->size}}</td>
-								<td>{{$list->price}}</td>
-								<td>{{$list->description}}</td>
+								<td>{{$list->length ?? ''}}</td>
+								<td>{{$list->breadth ?? ''}}</td>
+								<td>{{$list->deep ?? ''}}</td>
+								<td>{{$list->price ?? ''}}</td>
+								<td>{{$list->description ?? ''}}</td>
 								
 								<td class="text-center">
 									<label class="switch">

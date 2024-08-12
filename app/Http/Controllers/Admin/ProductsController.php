@@ -26,7 +26,9 @@ class ProductsController extends Controller
 			if($arr){
 				$result['name']=$arr->name;
 				$result['image']=$arr->image;
-				$result['size']=$arr->size;
+				$result['length']=$arr->length;
+				$result['breadth']=$arr->breadth;
+				$result['deep']=$arr->deep;
 				$result['price']=$arr->price;
 				$result['description']=$arr->description;
 				$result['status']=$arr->status;
@@ -35,7 +37,9 @@ class ProductsController extends Controller
 			}else{
 				$result['name']			='';
 				$result['image']		='';
-				$result['size']			=  '';
+				$result['length']		='';
+				$result['breadth']		='';
+				$result['deep']			='';
 				$result['price']		='';
 				$result['description']	='';
 				$result['status']		='';
@@ -46,7 +50,9 @@ class ProductsController extends Controller
 			
 			$result['name']			='';
 			$result['image']		='';
-			$result['size']			=  '';
+			$result['length']		='';
+			$result['breadth']		='';
+			$result['deep']			='';
 			$result['price']		='';
 			$result['description']	='';
 			$result['status']		='';
@@ -61,7 +67,9 @@ class ProductsController extends Controller
         $request->validate([
 			'name'=>'required',
 			//'image'=>'required',
-			'size'=>'required',
+			'length'=>'required',
+			'breadth'=>'required',
+			'deep'=>'required',
 			'price'=>'required',
 			'description'=>'required',
 		]);
@@ -88,7 +96,9 @@ class ProductsController extends Controller
 				->where('id', $request->post('id'))
 				->update([
 				'name' => $request->post('name'),
-				'size' => $request->post('size'),
+				'length' => $request->post('length'),
+				'breadth' => $request->post('breadth'),
+				'deep' => $request->post('deep'),
 				'price' => $request->post('price'),
 				'description' => $request->post('description'),
 				'image' => $imageName,
@@ -106,7 +116,9 @@ class ProductsController extends Controller
 			}
             DB::table('products')->insert([
 				'name' => $request->post('name'),
-				'size' => $request->post('size'),
+				'length' => $request->post('length'),
+				'breadth' => $request->post('breadth'),
+				'deep' => $request->post('deep'),
 				'price' => $request->post('price'),
 				'description' => $request->post('description'),
 				'image' => $imageName,

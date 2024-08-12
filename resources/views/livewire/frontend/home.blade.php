@@ -148,7 +148,7 @@
                                     <div class="short-description-1 ">
                                        <!-- Category Title -->
                                        <!-- Location -->
-                                       <p > {{ $product->name }}, {{ \Illuminate\Support\Str::limit($product->description, 30) }}</p><p> {{ $product->size }}</p>
+                                       <p > {{ $product->name }}, {{ \Illuminate\Support\Str::limit($product->description, 30) }}</p><p> {{ $product->length }}</p>
                                        <!-- Price -->
                                        <span class="ad-price">Rs.{{ $product->price }}</span> 
                                     </div>

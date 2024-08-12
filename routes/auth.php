@@ -33,6 +33,10 @@ Route::middleware('guest')->group(function () {
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])
                 ->name('password.store');
+				
+	//Facebook login
+	Route::get('auth/facebook', [AuthenticatedSessionController::class, 'facebook'])->name('facebook.login');			
+	Route::get('auth/facebook/callback', [AuthenticatedSessionController::class, 'facebook_callback'])->name('facebook.login.callback');			
 });
 Route::get('/verify-email/{id}/{hash}', [VerifyEmailController::class, 'verify'])->name('verification.verify');
 

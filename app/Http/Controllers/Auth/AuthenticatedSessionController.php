@@ -13,8 +13,12 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use App;
 use App\Models\Subscription;
 use App\Models\User;
+use App\Models\Admin;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Laravel\Socialite\Facades\Socialite;
+use Exception;
+
 class AuthenticatedSessionController extends Controller
 {
     /**
@@ -80,5 +84,47 @@ class AuthenticatedSessionController extends Controller
 		
 		//Cart::destroy();
         return redirect('/login');
+    }
+	public function facebook()
+    {
+		return Socialite::driver('facebook')
+                ->scopes(['email'])
+                ->redirect();
+    }
+	public function facebook_callback()
+    {
+		try{
+			$user = Socialite::driver('facebook')->user();
+			//dd($user);
+			$finduser = Admin::where('facebook_id', $user->id)->first();
+			if($finduser){
+				$data = [
+					'email' => $finduser->email,
+					'password' => $user->id,
+				];
+				Auth::guard('web')->attempt($data);
+				return redirect()->intended(RouteServiceProvider::HOME)->with('success','Successfully Login');		
+			}else{
+				$add_user = new Admin;
+				$add_user->fname = $user->name;
+				$add_user->email = $user->email;
+				$add_user->password = Hash::make($user->id);
+				$add_user->username = $username = strtoupper($user->name[0]).strtoupper($user->name[1]).rand('1000','9999');;
+				$add_user->phone = '';
+				$add_user->facebook_id = $user->id;
+				$add_user->role_id = 2;
+				$add_user->status = 1;
+				$add_user->save();
+				
+				$data = [
+					'email' => $user->email,
+					'password' => $user->id,
+				];
+				Auth::guard('web')->attempt($data);
+				return redirect()->intended(RouteServiceProvider::HOME)->with('success','Successfully Login');				
+			}
+		}catch (Exception $e) {
+			dd($e->getMessage());
+		}
     }
 }

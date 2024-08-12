@@ -18,8 +18,12 @@
 									@forelse ($products as $product)
 									<div class="col-md-4 col-xs-12 col-sm-6">
 										<div class="category-grid-box-1">
-											<div class="images"> <img alt="" src="{{ asset('admin-assets/images/product/' .$product->image) }}" class="img-responsive">
-											</div>
+											{{--<div class="images"> <img alt="" src="{{ asset('admin-assets/images/product/' .$product->image) }}" class="img-responsive">
+											</div>--}}
+											<div class="category-grid-img">
+												<div class="image-background" style="background-image: url('{{ isset($product->image) && $product->image!='' ? asset('admin-assets/images/product/'.$product->image) : asset('/images/noimage.png') }}');"></div>
+												<img class="main-image" src="{{ isset($product->image) && $product->image!='' ? asset('admin-assets/images/product/'.$product->image) : asset('/images/noimage.png') }}" alt="image">
+											 </div>
 											<div class="short-description-1">
 												<h3>
 													<a title="" href="{{route('offerdetailpage')}}">{{$product->name}}</a>

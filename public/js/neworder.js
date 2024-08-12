@@ -6,9 +6,11 @@ document.addEventListener('DOMContentLoaded', function() {
 	
 	$('#select-project-type').on('change', function (e) {
 		var data = $(this).val();
-		//alert(data);
-		//@this.set('project_type', data);
-		Livewire.emit('updateProjectType', data); // Emit an event
+		if(data!='')
+		{
+			//@this.set('project_type', data);
+			Livewire.emit('projectTypeSelected', data);
+		}
 	});
 });
 

@@ -53,6 +53,7 @@ class Neworder extends Component
     public $list_add_to_cart;
     public $product_details;
     public $room_validation  = false;
+	protected $listeners = ['projectTypeSelected'];
 	
 	protected $rules = [
         'project_name' => 'required|string|max:255',
@@ -62,10 +63,10 @@ class Neworder extends Component
         'state' => 'required|string|max:255',
         'country' => 'required|string|max:255',
         'mobile' => 'required|string|max:255',
-        //'project_type' => 'required|exists:projecttype,id',
+        'project_type' => 'required|exists:projecttype,id',
     ];
 	
-	public function updateProjectType($value)
+	public function projectTypeSelected($value)
 	{
 		$this->project_type = $value;
 		$this->edit_id  = 0;

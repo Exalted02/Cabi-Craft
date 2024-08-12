@@ -425,7 +425,7 @@
 								  <div class="panel-heading border-bottom-seperator mb-20px" role="tab" id="headingTwo">
 								  <div class="ad-info-1">
 									<label>
-										<h4 class="panel-title">{{$product_details->name ?? ''}}, 2 SS Drawers (2L Plain Baskets)</h4>
+										<h4 class="panel-title">{{$product_details->name ?? ''}}</h4>
 									</label>
 								  </div>
 								  </div>
@@ -455,7 +455,7 @@
 							<div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
 									<div class="row">
 										<div class="col-md-3 col-xs-3 col-sm-3">
-											<img alt="" src="front-assets/images/posting/1.jpg" class="img-responsive image-margin">
+											<img alt="" src="{{ isset($product_details->image) && $product_details->image!='' ? asset('admin-assets/images/product/'.$product_details->image) : asset('/images/noimage.png') }}" class="img-responsive image-margin">
 										</div>
 										<div class="col-md-9 col-xs-9 col-sm-9">
 											<form>

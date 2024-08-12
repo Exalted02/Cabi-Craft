@@ -10100,6 +10100,43 @@ footer.footer-bg {
 	background-image: linear-gradient(to bottom, #b7b1b1 50%, #cdcccc 100%) !important;
 	pointer-events: none;
 }
+
+/**********List image**********/
+.category-grid-box-1 .category-grid-img {
+	position: relative;
+	height: 200px;
+    width: auto;
+}
+.category-grid-box-1 .image-background {
+    background-color: rgb(238, 238, 238);
+    background-size: 100000%;
+    background-position: left center;
+    align-self: baseline;
+    width: 100%;
+    height: 100%;
+    right: auto;
+    bottom: auto;
+    left: 0px;
+    opacity: 0.5;
+}
+.category-grid-box-1 .main-image {
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+    inset: 0px;
+    margin: auto;
+    background-color: rgb(238, 238, 238);
+}
+.category-grid-box-1 .short-description-1 h3 a {
+    -webkit-line-clamp: 2 !important;
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    height: 55px;
+}
+/**********List image**********/
+
 .mr-5px {
 	margin-right: 5px;
 }

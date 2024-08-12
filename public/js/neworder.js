@@ -14,6 +14,16 @@ document.addEventListener('DOMContentLoaded', function() {
 	});
 });
 
+/*document.addEventListener('show-success-message', event => {
+	document.getElementById('messageContent').textContent = event.detail.message;
+	document.getElementById('successMessage').style.display = 'block';
+
+	
+	setTimeout(() => {
+		document.getElementById('successMessage').style.display = 'none';
+	}, 3000);
+});*/
+
 function initializeSelect2() {
 	$("select").select2({
 		width: '100%',

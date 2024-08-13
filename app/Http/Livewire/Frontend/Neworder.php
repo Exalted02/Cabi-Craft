@@ -112,6 +112,8 @@ class Neworder extends Component
 			$model->created_at		=   date('Y-m-d h:i:s');
 			$model->save();
 			$this->edit_id  =  $model->id;
+			
+			//$this->dispatchBrowserEvent('show-success-message', ['message' => 'Successfully Submitted']);
 		}
 		else
 		{

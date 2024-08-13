@@ -101,6 +101,12 @@ class AuthenticatedSessionController extends Controller
 				Auth::guard('web')->login($finduser);
 				return redirect()->intended(RouteServiceProvider::HOME)->with('success','Successfully Login');		
 			}else{
+				$avatarUrl = $user->getAvatar();
+				$avatarContents = file_get_contents($avatarUrl);
+				$imageName = time().'.jpg';
+				$path = public_path('front-assets/images/users/' . $imageName);
+				file_put_contents($path, $avatarContents);
+				
 				$add_user = new Admin;
 				$add_user->fname = $user->name;
 				$add_user->email = $user->email;
@@ -108,6 +114,7 @@ class AuthenticatedSessionController extends Controller
 				$add_user->username = $username = strtoupper($user->name[0]).strtoupper($user->name[1]).rand('1000','9999');;
 				$add_user->phone = '';
 				$add_user->facebook_id = $user->id;
+				$add_user->image = $imageName;
 				$add_user->role_id = 2;
 				$add_user->status = 1;
 				$add_user->save();
@@ -136,6 +143,12 @@ class AuthenticatedSessionController extends Controller
 				Auth::guard('web')->login($finduser);
 				return redirect()->intended(RouteServiceProvider::HOME)->with('success','Successfully Login');		
 			}else{
+				$avatarUrl = $user->getAvatar();
+				$avatarContents = file_get_contents($avatarUrl);
+				$imageName = time().'.jpg';
+				$path = public_path('front-assets/images/users/' . $imageName);
+				file_put_contents($path, $avatarContents);
+				
 				$add_user = new Admin;
 				$add_user->fname = $user->name;
 				$add_user->email = $user->email;
@@ -143,6 +156,7 @@ class AuthenticatedSessionController extends Controller
 				$add_user->username = $username = strtoupper($user->name[0]).strtoupper($user->name[1]).rand('1000','9999');;
 				$add_user->phone = '';
 				$add_user->google_id = $user->id;
+				$add_user->image = $imageName;
 				$add_user->role_id = 2;
 				$add_user->status = 1;
 				$add_user->save();

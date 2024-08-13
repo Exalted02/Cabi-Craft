@@ -36,7 +36,10 @@ Route::middleware('guest')->group(function () {
 				
 	//Facebook login
 	Route::get('auth/facebook', [AuthenticatedSessionController::class, 'facebook'])->name('facebook.login');			
-	Route::get('auth/facebook/callback', [AuthenticatedSessionController::class, 'facebook_callback'])->name('facebook.login.callback');			
+	Route::get('auth/facebook/callback', [AuthenticatedSessionController::class, 'facebook_callback'])->name('facebook.login.callback');
+	//Google login
+	Route::get('auth/google', [AuthenticatedSessionController::class, 'google'])->name('google.login');			
+	Route::get('auth/google/callback', [AuthenticatedSessionController::class, 'google_callback'])->name('google.login.callback');
 });
 Route::get('/verify-email/{id}/{hash}', [VerifyEmailController::class, 'verify'])->name('verification.verify');
 

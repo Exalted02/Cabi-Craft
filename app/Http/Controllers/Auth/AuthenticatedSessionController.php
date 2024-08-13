@@ -96,19 +96,17 @@ class AuthenticatedSessionController extends Controller
     {
 		try{
 			$user = Socialite::driver('facebook')->user();
-			//dd($user);
 			$finduser = Admin::where('email', $user->email)->first();
 			if($finduser){
-				/*$data = [
-					'email' => $finduser->email,
-					'password' => $user->id,
-				];*/
-				//dd($data);
-				//Auth::guard('web')->attempt($data);
-				// Auth::login($user);
 				Auth::guard('web')->login($finduser);
 				return redirect()->intended(RouteServiceProvider::HOME)->with('success','Successfully Login');		
 			}else{
+				$avatarUrl = $user->getAvatar();
+				$avatarContents = file_get_contents($avatarUrl);
+				$imageName = time().'.jpg';
+				$path = public_path('front-assets/images/users/' . $imageName);
+				file_put_contents($path, $avatarContents);
+				
 				$add_user = new Admin;
 				$add_user->fname = $user->name;
 				$add_user->email = $user->email;
@@ -116,6 +114,7 @@ class AuthenticatedSessionController extends Controller
 				$add_user->username = $username = strtoupper($user->name[0]).strtoupper($user->name[1]).rand('1000','9999');;
 				$add_user->phone = '';
 				$add_user->facebook_id = $user->id;
+				$add_user->image = $imageName;
 				$add_user->role_id = 2;
 				$add_user->status = 1;
 				$add_user->save();
@@ -124,12 +123,55 @@ class AuthenticatedSessionController extends Controller
 					'email' => $user->email,
 					'password' => $user->id,
 				];
-				//dd($data);
 				Auth::guard('web')->attempt($data);
 				return redirect()->intended(RouteServiceProvider::HOME)->with('success','Successfully Login');				
 			}
 		}catch (Exception $e) {
-			dd($e->getMessage());
+			return redirect()->back()->with('error', 'Something went wrong, please try again.');
+			//dd($e->getMessage());
+		}
+    }
+	public function google()
+    {
+		return Socialite::driver('google')->redirect();
+    }
+	public function google_callback()
+    {
+		try{
+			$user = Socialite::driver('google')->user();
+			$finduser = Admin::where('email', $user->email)->first();
+			if($finduser){
+				Auth::guard('web')->login($finduser);
+				return redirect()->intended(RouteServiceProvider::HOME)->with('success','Successfully Login');		
+			}else{
+				$avatarUrl = $user->getAvatar();
+				$avatarContents = file_get_contents($avatarUrl);
+				$imageName = time().'.jpg';
+				$path = public_path('front-assets/images/users/' . $imageName);
+				file_put_contents($path, $avatarContents);
+				
+				$add_user = new Admin;
+				$add_user->fname = $user->name;
+				$add_user->email = $user->email;
+				$add_user->password = Hash::make($user->id);
+				$add_user->username = $username = strtoupper($user->name[0]).strtoupper($user->name[1]).rand('1000','9999');;
+				$add_user->phone = '';
+				$add_user->google_id = $user->id;
+				$add_user->image = $imageName;
+				$add_user->role_id = 2;
+				$add_user->status = 1;
+				$add_user->save();
+				
+				$data = [
+					'email' => $user->email,
+					'password' => $user->id,
+				];
+				Auth::guard('web')->attempt($data);
+				return redirect()->intended(RouteServiceProvider::HOME)->with('success','Successfully Login');				
+			}
+		}catch (Exception $e) {
+			return redirect()->back()->with('error', 'Something went wrong, please try again.');
+			//dd($e->getMessage());
 		}
     }
 }

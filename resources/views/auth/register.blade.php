@@ -56,12 +56,11 @@
                             
                             <button class="btn btn-theme btn-lg btn-block">Register</button>
                             <h2 class="no-span"><b>(OR)</b></h2>
-                            <a class="btn btn-lg btn-block btn-social btn-facebook">
-                                <span class="fa fa-facebook"></span> Sign up with Facebook
+                            <a href="{{route('facebook.login')}}" class="btn btn-lg btn-block btn-social btn-facebook">
+                                <span class="fa fa-facebook"></span> Sign in with Facebook
                             </a>
-                        
-                            <a class="btn btn-lg btn-block btn-social btn-google">
-                                <span class="fa fa-google"></span> Sign up with Facebook
+                            <a href="{{route('google.login')}}" class="btn btn-lg btn-block btn-social btn-google">
+                                <span class="fa fa-google"></span> Sign in with Google
                             </a>
                         </form> 
                     </div>

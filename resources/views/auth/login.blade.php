@@ -38,7 +38,7 @@
                             <a href="{{route('facebook.login')}}" class="btn btn-lg btn-block btn-social btn-facebook">
                                 <span class="fa fa-facebook"></span> Sign in with Facebook
                             </a>
-                            <a class="btn btn-lg btn-block btn-social btn-google">
+                            <a href="{{route('google.login')}}" class="btn btn-lg btn-block btn-social btn-google">
                                 <span class="fa fa-google"></span> Sign in with Google
                             </a>
                         </form>

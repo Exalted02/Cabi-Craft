@@ -127,7 +127,8 @@ class AuthenticatedSessionController extends Controller
 				return redirect()->intended(RouteServiceProvider::HOME)->with('success','Successfully Login');				
 			}
 		}catch (Exception $e) {
-			dd($e->getMessage());
+			return redirect()->back()->with('error', 'Something went wrong, please try again.');
+			//dd($e->getMessage());
 		}
     }
 	public function google()
@@ -169,7 +170,8 @@ class AuthenticatedSessionController extends Controller
 				return redirect()->intended(RouteServiceProvider::HOME)->with('success','Successfully Login');				
 			}
 		}catch (Exception $e) {
-			dd($e->getMessage());
+			return redirect()->back()->with('error', 'Something went wrong, please try again.');
+			//dd($e->getMessage());
 		}
     }
 }

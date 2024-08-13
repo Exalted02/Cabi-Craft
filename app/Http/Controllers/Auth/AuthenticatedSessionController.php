@@ -18,6 +18,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Laravel\Socialite\Facades\Socialite;
 use Exception;
+use Illuminate\Support\Facades\Hash;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -96,13 +97,16 @@ class AuthenticatedSessionController extends Controller
 		try{
 			$user = Socialite::driver('facebook')->user();
 			//dd($user);
-			$finduser = Admin::where('facebook_id', $user->id)->first();
+			$finduser = Admin::where('email', $user->email)->first();
 			if($finduser){
-				$data = [
+				/*$data = [
 					'email' => $finduser->email,
 					'password' => $user->id,
-				];
-				Auth::guard('web')->attempt($data);
+				];*/
+				//dd($data);
+				//Auth::guard('web')->attempt($data);
+				// Auth::login($user);
+				Auth::guard('web')->login($finduser);
 				return redirect()->intended(RouteServiceProvider::HOME)->with('success','Successfully Login');		
 			}else{
 				$add_user = new Admin;
@@ -120,6 +124,7 @@ class AuthenticatedSessionController extends Controller
 					'email' => $user->email,
 					'password' => $user->id,
 				];
+				//dd($data);
 				Auth::guard('web')->attempt($data);
 				return redirect()->intended(RouteServiceProvider::HOME)->with('success','Successfully Login');				
 			}

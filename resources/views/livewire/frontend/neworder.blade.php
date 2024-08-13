@@ -149,7 +149,7 @@
 													<select wire:model="project_type" id="select-project-type" class="form-control">
 														<option value="">Select</option>
 														@foreach($projecttype as $projecttype_val)
-															<option value="{{$projecttype_val->id}}">{{$projecttype_val->name}}</option>
+															<option value="{{$projecttype_val->id}}" {{ !empty($project_type) && $project_type == $projecttype_val->id ? 'selected' : '' }}>{{$projecttype_val->name}}</option>
 														@endforeach
 													</select>
 													@error('project_type') <span class="text-danger">{{ $message }}</span> @enderror
@@ -177,7 +177,7 @@
 													@endforeach
 												</div>
 											    <input type="hidden" wire:model="room_names" value="{{ json_encode($rooms) }}" id="room_names">
-											    <input type="hidden" wire:model="edit_id" id="edit_id" value="{{$edit_id ?? ''}}">
+											    <input type="text" wire:model="edit_id" id="edit_id" value="{{$edit_id ?? ''}}">
 											<hr>
 											<button type="button" class="btn btn-danger" aria-label="Close">Close</button>
 											<button type="submit" class="btn btn-success pull-right" aria-label="Close">Submit</button>
@@ -209,24 +209,16 @@
 										</div>
 								  </div>
 								  <!-- Content -->
-								  @php
-								   $room_data= [];
-								   
-								   if(!empty($get_rooms))
-								   {
-									$room_data = explode(",",$get_rooms);
-								   }
-								  @endphp
 								  <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
 										<div class="panel-body">
-											
+											<input type="hidden" wire:model="hasRoomDetails" id="has_room_details">
 												<!-- Ad Status -->
 												<div class="form-group row align-items-center">
 													<div class="col-sm-5">
-														<select class="form-control ad-post-status col-sm-4">
+														<select class="form-control ad-post-status col-sm-4" id="select-room-lists" wire:model="select_rooms">
 															<option value="">Select</option>
-															@foreach($room_data as $val)
-															<option value="{{$val ?? ''}}">{{ $val ?? ''}}</option>
+															@foreach($get_rooms as $val)
+															<option value="{{$val->room_name ?? ''}}">{{ $val->room_name ?? ''}}</option>
 															@endforeach
 														</select>
 													</div>
@@ -328,18 +320,24 @@
 								  </div>
 								  </div>
 								  <!-- Content -->
+								  <?php 
+								  //echo "<pre>";print_r($indivisual_room_data);
+								  ?>
 								  <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
-										<div class="panel-body">
-										<form>
+									 <div class="panel-body">
+										<form wire:submit.prevent="submitKitchenOrderForm" id="bodyform">
+										<input type="hidden" wire:model="select_rooms">
 											<div class="form-group row">
 												<label class="inline-label-select col-sm-5">
 												Cabinet Material:</label>
 												<div class="col-sm-7">
-														<select class="form-control ad-post-status">
-															<option value="(MR)_Ply">(MR)_Ply</option>
-															<option value="sold">Sold</option>
-															<option value="active" selected></option>
+														<select class="form-control ad-post-status" wire:model="room_cabinet_material" id="room_material">
+															<option value="">Select Material</option>
+															@foreach($material as $material_val)
+															<option value="{{$material_val->id}}" data-image="{{ asset('admin-assets/images/materials/'.$material_val->image) }}" {{!empty($room_cabinet_material) && $room_cabinet_material == $material_val->id ? 'selected' : ''}}  >{{$material_val->name}}</option>
+															@endforeach
 														</select>
+														@error('room_cabinet_material') <span class="text-danger">{{ $message }}</span> @enderror
 												</div>
 											</div>
 	  
@@ -347,11 +345,13 @@
 												<label class="inline-label-select col-sm-5">
 												Box Inner Laminate:</label>
 												<div class="col-sm-7">
-														<select class="form-control ad-post-status">
-															<option value="expired">Half White</option>
-															<option value="sold">Sold</option>
-															<option value="active" selected></option>
+														<select class="form-control ad-post-status" wire:model="room_box_inner_lam" id="room_box_inner_lam">
+															<option value="">Select</option>
+															@foreach($box_inner_laminate as $box_inner_laminate_val)
+															<option value="{{$box_inner_laminate_val->id}}" data-image="{{ asset('admin-assets/images/cabinetcolors/'.$box_inner_laminate_val->image) }}" {{!empty($room_box_inner_lam) && $room_box_inner_lam == $box_inner_laminate_val->id ? 'selected' : ''}}>{{$box_inner_laminate_val->name}}</option>
+														@endforeach
 														</select>
+														@error('room_box_inner_lam') <span class="text-danger">{{ $message }}</span> @enderror
 												</div>
 											</div>
 
@@ -359,11 +359,13 @@
 												<label class="inline-label-select col-sm-5">
 												Shutter Material:</label>
 												<div class="col-sm-7">
-														<select class="form-control ad-post-status">
-															<option value="expired">HDHMR</option>
-															<option value="sold">Sold</option>
-															<option value="active" selected></option>
+														<select class="form-control ad-post-status" wire:model="room_shutter_material" id="room_shutter_material">
+															<option value="">Select</option>
+															@foreach($shutter_material as $shutter_material_val)
+															<option value="{{$shutter_material_val->id}}" data-image="{{ asset('admin-assets/images/shuttermaterial/'.$shutter_material_val->image) }}" {{!empty($room_shutter_material) && $room_shutter_material == $shutter_material_val->id ? 'selected' : ''}}>{{$shutter_material_val->name}}</option>
+														@endforeach
 														</select>
+														@error('room_shutter_material') <span class="text-danger">{{ $message }}</span> @enderror
 												</div>
 											</div>
 
@@ -371,11 +373,13 @@
 												<label class="inline-label-select col-sm-5">
 												Shutter Finish:</label>
 												<div class="col-sm-7">
-														<select class="form-control ad-post-status">
-															<option value="expired">21091_HGL</option>
-															<option value="sold">Sold</option>
-															<option value="active" selected></option>
+														<select class="form-control ad-post-status" wire:model="room_shutter_finish" id="room_shutter_finish">
+															<option value="">Select</option>
+															@foreach($shutter_finish as $shutter_finish_val)
+															<option value="{{$shutter_finish_val->id}}" data-image="{{ asset('admin-assets/images/exposhuttercolors/'.$shutter_finish_val->image) }}" {{!empty($room_shutter_finish) && $room_shutter_finish == $shutter_finish_val->id ? 'selected' : ''}}>{{$shutter_finish_val->name}}</option>
+														@endforeach
 														</select>
+														@error('room_shutter_finish') <span class="text-danger">{{ $message }}</span> @enderror
 												</div>
 											</div>
 
@@ -383,11 +387,12 @@
 												<label class="inline-label-select col-sm-5">
 												Skt Type:</label>
 												<div class="col-sm-7">
-														<select class="form-control ad-post-status">
-															<option value="expired">PVC_Skt</option>
-															<option value="sold">Sold</option>
-															<option value="active" selected></option>
+														<select class="form-control ad-post-status" wire:model="room_skt_type" id="room_skt_type">
+															<option value="">Select </option>
+															<option value="100" {{!empty($room_skt_type) && $room_skt_type == 100 ? 'selected' : ''}}>PVC_Skt</option>
+															<option value="200" {{!empty($room_skt_type) && $room_skt_type == 200 ? 'selected' : ''}}>Sold</option>
 														</select>
+														@error('room_skt_type') <span class="text-danger">{{ $message }}</span> @enderror
 												</div>
 											</div>
 
@@ -395,11 +400,12 @@
 												<label class="inline-label-select col-sm-5">
 												Skt height:</label>
 												<div class="col-sm-7">
-														<select class="form-control ad-post-status">
-															<option value="expired">100 mm</option>
-															<option value="sold">Sold</option>
-															<option value="active" selected></option>
+														<select class="form-control ad-post-status" wire:model="room_skt_height" id="room_skt_height">
+															<option value="">Select</option>
+															<option value="100" {{!empty($room_skt_height) && $room_skt_height == 100 ? 'selected' : ''}}>100</option>
+															<option value="200" {{!empty($room_skt_height) && $room_skt_height == 200 ? 'selected' : ''}}>200</option>
 														</select>
+														@error('room_skt_height') <span class="text-danger">{{ $message }}</span> @enderror
 												</div>
 											</div>
 
@@ -407,19 +413,22 @@
 												<label class="inline-label-select col-sm-5">
 												Handle Types:</label>
 												<div class="col-sm-7">
-														<select class="form-control ad-post-status">
-															<option value="expired">Gola profile Handles</option>
-															<option value="sold">Sold</option>
-															<option value="active" selected></option>
+														<select class="form-control ad-post-status" wire:model="room_handeltype_val" id="room_handeltype_val">
+															<option value="">Select</option>
+															@foreach($handeltype as $handeltype_val)
+															<option value="{{$handeltype_val->id}}" data-image="{{ asset('admin-assets/images/handletype/'.$handeltype_val->image) }}" {{!empty($room_handeltype_val) && $room_handeltype_val == $handeltype_val->id ? 'selected' : ''}}>{{$handeltype_val->name}}</option>
+														@endforeach
 														</select>
+														@error('room_handeltype_val') <span class="text-danger">{{ $message }}</span> @enderror
 												</div>
 											</div>
-										</form>
+										
 
 											<hr>
 											<button type="button" class="btn btn-danger" aria-label="Close" wire:click="return_view_order_form">Close</button>
-											<button type="button" class="btn btn-success pull-right" aria-label="Close">Submit</button>         
-										</div>
+											<button type="submit" class="btn btn-success pull-right" aria-label="Close">Submit</button>  
+                                         </form>							
+									</div>
 								  </div>
 								</div>
 							   <!-- Latest Ads Panel End -->
@@ -672,6 +681,34 @@
 			</div>
         </div>
     </div>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="roomDetailsModal" tabindex="-1" role="dialog" aria-labelledby="roomDetailsModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<!-- Modal content goes here -->
+			</div>
+		</div>
+	</div>
+
+	{{--<div class="modal fade" id="roomDetailsModal" tabindex="-1" role="dialog" aria-labelledby="roomDetailsModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="roomDetailsModalLabel">Room Details Missing</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					Please fill in the missing room details.
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>--}}
 	@section('scripts')
 	<script src="{{ url('js/neworder.js') }}"></script>
 	@endsection

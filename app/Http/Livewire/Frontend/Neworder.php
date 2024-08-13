@@ -54,10 +54,22 @@ class Neworder extends Component
     public $list_add_to_cart;
     public $product_details;
     public $room_validation  = false;
-	protected $listeners = ['projectTypeSelected'];
+	protected $listeners = ['projectTypeSelected','roomTypeSelected','roomMaterialTypeSelected','roomBoxInnerTypeSelected','roomShutterTypeSelected','roomShFinishTypeSelected','roomSktTypeTypeSelected','roomSktHtTypeSelected','roomHandleTypeSelected'];
+	//protected $listeners = ['roomTypeSelected'];
 	public $get_rooms;
+	public $hasRoomDetails = false;
+	public $select_rooms;
+	public $room_cabinet_material;
+	public $room_box_inner_lam;
+	public $room_shutter_material;
+	public $room_shutter_finish;
+	public $room_skt_type;
+	public $room_skt_height;
+	public $room_handeltype_val;
+	//public $indivisual_room_data;
+	//public $user_order_dtls;
 	
-	protected $rules = [
+	protected $rulesForForm1  = [
         'project_name' => 'required|string|max:255',
         'address' => 'required|string|max:255',
         'city' => 'required|string|max:255',
@@ -66,13 +78,65 @@ class Neworder extends Component
         'country' => 'required|string|max:255',
         'mobile' => 'required|string|max:255',
         'project_type' => 'required|exists:projecttype,id',
+	];
+	
+	protected $rulesForForm2  = [
+        'room_cabinet_material' => 'required|string|max:255',
+        'room_box_inner_lam' => 'required|string|max:255',
+        'room_shutter_material' => 'required|string|max:255',
+        'room_shutter_finish' => 'required|string|max:255',
+        'room_skt_type' => 'required|string|max:255',
+        'room_skt_height' => 'required|string|max:255',
+        'room_handeltype_val' => 'required|string|max:255',
     ];
 	
 	public function projectTypeSelected($value)
 	{
 		$this->project_type = $value;
-		$this->edit_id  = 0;
+		$this->edit_id  = '';
 	}
+	public function roomTypeSelected($value)
+	{
+		$hasdetails = Temporderroomtype::where(['order_id'=>session()->get('session_order_id'),'user_id'=>auth()->user()->id,'room_name'=>$value])->first();
+		if($hasdetails->cabinet_material!=0 || $hasdetails->box_Inner_laminate!=0 || $hasdetails->shutter_material!=0 || $hasdetails->shutter_finish!=0 || $hasdetails->skt_type!=0 || $hasdetails->skt_height!=0 || $hasdetails->handle_types)
+		{
+			$this->hasRoomDetails = true;
+		}
+		else{
+			$this->hasRoomDetails = false;
+			//$this->dispatchBrowserEvent('openRoomDetailsModal');
+		}
+		$this->select_rooms = $value;
+	}
+	public function roomMaterialTypeSelected($value)
+	{
+		$this->room_cabinet_material = $value;
+	}
+	public function roomBoxInnerTypeSelected($value)
+	{
+		$this->room_box_inner_lam = $value;
+	}
+	public function roomShutterTypeSelected($value)
+	{
+		$this->room_shutter_material = $value;
+	}
+	public function roomShFinishTypeSelected($value)
+	{
+		$this->room_shutter_finish = $value;
+	}
+	public function roomSktTypeTypeSelected($value)
+	{
+		$this->room_skt_type = $value;
+	}
+	public function roomSktHtTypeSelected($value)
+	{
+		$this->room_skt_height = $value;
+	}
+	public function roomHandleTypeSelected($value)
+	{
+		$this->room_handeltype_val = $value;
+	}
+	
 	public function addRoom()
     {
         if (!empty($this->roomName)) {
@@ -86,21 +150,31 @@ class Neworder extends Component
 		{
 			$this->room_validation = true;
 		}
-		$this->edit_id  = 0;
+		//if(empty($this->edit_id))
+		$this->edit_id  = empty($this->edit_id) ? '' : $this->edit_id;
     }
 	public function mount()
-    {		
+    {	
+		//session()->forget('steps');	
         $this->limitPerLoad = config('custom.PRODUCT_LIST_SHOW_NEW_ORDER');
-    }
+		
+		$roomData    = Temporderroomtype::select('room_name')->where(['order_id'=> session()->get('session_order_id'),'user_id'=>auth()->user()->id])->get();
+		foreach($roomData as $val)
+		{
+			$this->rooms[] = $val->room_name;
+		}
+	}
 	public function submitNewOrderForm()
     {
-        $this->validate();
+        $this->validate($this->rulesForForm1);
 		//dd($this->project_type);
 		$rm = !empty(json_decode($this->room_names)) ? implode(',', json_decode($this->room_names)) : '';
-		
-		if($this->edit_id==0)
+		//dd($this->project_name);
+		if($this->edit_id=='')
 		{
+			//dd($this->project_name);
 			$model=new Cartorderforms();
+			$model->user_id			=	auth()->user()->id;
 			$model->project_name	=	$this->project_name;
 			$model->address			=	$this->address;
 			$model->city			=	$this->city;
@@ -133,6 +207,7 @@ class Neworder extends Component
 		else
 		{
 			$model=Cartorderforms::find($this->edit_id);
+			$model->user_id			=	auth()->user()->id;
 			$model->project_name	=	$this->project_name;
 			$model->address			=	$this->address;
 			$model->city			=	$this->city;
@@ -164,11 +239,14 @@ class Neworder extends Component
 				}
 			}
 		}
-		$this->get_rooms    = '';
+		session()->put('steps', 2);
+		session()->put('session_order_id', $this->edit_id);
+		
 		$this->new_order_form = false;
 		$this->view_order_form = true;
 		$this->exists_cart_data = false;
 		$this->project_name_label = $this->project_name;
+		
     }
 	public function addToCart($productId)
     {
@@ -223,11 +301,31 @@ class Neworder extends Component
     {
         $this->new_order_form = true;
         $this->view_order_form = false;
+		session()->put('steps', 1);
     }
 	public function open_kitchen_properties_form()
     {
+		//dd($this->select_rooms);
+		if($this->select_rooms != null && $this->hasRoomDetails ==true)
+		{
+			$indivisual_room_data = Temporderroomtype::where(['order_id'=>session()->get('session_order_id'),'user_id'=>auth()->user()->id,'room_name'=>$this->select_rooms])->first();
+		
+			$this->room_cabinet_material = $this->room_cabinet_material ?? $indivisual_room_data->cabinet_material;
+			$this->room_box_inner_lam = $this->room_box_inner_lam ?? $indivisual_room_data->box_Inner_laminate;
+			$this->room_shutter_material = $this->room_shutter_material ?? $indivisual_room_data->shutter_material;
+			$this->room_shutter_finish = $this->room_shutter_finish ?? $indivisual_room_data->shutter_finish;
+			$this->room_skt_type = $this->room_skt_type ?? $indivisual_room_data->skt_type;
+			$this->room_skt_height = $this->room_skt_height ?? $indivisual_room_data->skt_height;
+			$this->room_handeltype_val = $this->room_handeltype_val ?? $indivisual_room_data->handle_types;
+			
+			$this->kitchen_properties_form = true;
+		}
+		else{
+			//dd($this->hasRoomDetails);
+			$this->kitchen_properties_form = false;
+		}
         $this->view_order_form = false;
-        $this->kitchen_properties_form = true;
+        //$this->kitchen_properties_form = true;
     }
 	public function open_customise_form($productId)
     {
@@ -235,6 +333,7 @@ class Neworder extends Component
         $this->kitchen_properties_form = false;
         $this->view_order_form = false;
         $this->customise_form = true;
+		session()->put('steps', 3);
     }
 	public function return_view_order_form()
     {
@@ -243,9 +342,87 @@ class Neworder extends Component
         $this->customise_form = false;
         $this->view_order_form = true;
     }
+	public function submitKitchenOrderForm()
+	{
+		$this->validate($this->rulesForForm2);
+		Temporderroomtype::where(['room_name'=>$this->select_rooms,'user_id'=>auth()->user()->id,'order_id'=>session()->get('session_order_id')])
+        ->update([
+            'cabinet_material'    	=> $this->room_cabinet_material,
+            'box_Inner_laminate'    => $this->room_box_inner_lam,
+            'shutter_material'    	=> $this->room_shutter_material,
+            'shutter_finish'    	=> $this->room_shutter_finish,
+            'skt_type'    			=> $this->room_skt_type,
+            'skt_height'    		=> $this->room_skt_height,
+            'handle_types'    		=> $this->room_handeltype_val
+		]);
+		$this->new_order_form = false;
+		$this->view_order_form = true;
+		$this->customise_form = false;
+	}
 	
 	public function render()
     {
+		$this->edit_id = session()->get('session_order_id');
+		$this->get_rooms   = Temporderroomtype::select('room_name')->where(['order_id'=> session()->get('session_order_id'),'user_id'=>auth()->user()->id])->get();
+		
+		$user_order_dtls    = Cartorderforms::where(['id'=>session()->get('session_order_id'),'user_id'=>auth()->user()->id])->first();
+		if(!empty($user_order_dtls->project_name))
+		{
+			$this->project_name = $user_order_dtls->project_name;
+		}
+		if(!empty($user_order_dtls->address))
+		{
+			$this->address = $user_order_dtls->address;
+		}
+		if(!empty($user_order_dtls->city))
+		{
+			$this->city = $user_order_dtls->city;
+		}
+		if(!empty($user_order_dtls->zip_code))
+		{
+			$this->zip_code = $user_order_dtls->zip_code;
+		}
+		if(!empty($user_order_dtls->state))
+		{
+			$this->state = $user_order_dtls->state;
+		}
+		if(!empty($user_order_dtls->country))
+		{
+			$this->country = $user_order_dtls->country;
+		}
+		if(!empty($user_order_dtls->mobile))
+		{
+			$this->mobile = $user_order_dtls->mobile;
+		}
+		if(!empty($user_order_dtls->project_type))
+		{
+			$this->project_type = $user_order_dtls->project_type;
+		}
+		if(!empty($user_order_dtls->project_name))
+		{
+			$this->project_name_label = $user_order_dtls->project_name;
+		}
+		
+		if(session()->get('steps')==1)
+		{
+			$this->new_order_form = true;
+			$this->view_order_form = false;
+			$this->customise_form = false;
+		}
+		elseif(session()->get('steps')==2)
+		{
+			$this->new_order_form = false;
+			$this->view_order_form = true;
+			$this->customise_form = false;
+			//$this->exists_cart_data = false;
+		}
+		/*elseif(session()->get('steps')==3)
+		{
+			$this->kitchen_properties_form = false;
+			$this->view_order_form = false;
+			$this->customise_form = true;
+		}*/
+		
 		//$this->load_product();
         return view('livewire.frontend.neworder')->with([
             //'products' =>  $this->products,

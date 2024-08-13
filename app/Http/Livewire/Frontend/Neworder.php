@@ -54,9 +54,10 @@ class Neworder extends Component
     public $product_details;
     public $room_validation  = false;
 	protected $listeners = ['projectTypeSelected'];
+	public $get_rooms;
 	
 	protected $rules = [
-        'project_name' => 'required|string|max:255',
+        'project_name' => 'required|string|max:255|unique:cartorderforms,project_name',
         'address' => 'required|string|max:255',
         'city' => 'required|string|max:255',
         'zip_code' => 'required|string|max:255',
@@ -133,6 +134,7 @@ class Neworder extends Component
 			$model->save();
 			$this->edit_id  =  $this->edit_id;
 		}
+		$this->get_rooms    = $rm;
 		$this->new_order_form = false;
 		$this->view_order_form = true;
 		$this->exists_cart_data = false;

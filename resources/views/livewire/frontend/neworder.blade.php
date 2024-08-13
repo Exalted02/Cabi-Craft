@@ -28,7 +28,7 @@
 												<h3>
 													<a title="" href="{{route('offerdetailpage')}}">{{$product->name}}</a>
 												</h3>
-												<p>{{ $product->size}}</p>
+												<p>{{ \Illuminate\Support\Str::limit($product->description, 30) }}</p>
 												<span class="ad-price">Rs.{{ $product->price}}</span> 
 											</div>
 											<div class="ad-info-1" style="display: flex; justify-content: center; align-items: center;">
@@ -209,6 +209,14 @@
 										</div>
 								  </div>
 								  <!-- Content -->
+								  @php
+								   $room_data= [];
+								   
+								   if(!empty($get_rooms))
+								   {
+									$room_data = explode(",",$get_rooms);
+								   }
+								  @endphp
 								  <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
 										<div class="panel-body">
 											
@@ -216,9 +224,10 @@
 												<div class="form-group row align-items-center">
 													<div class="col-sm-5">
 														<select class="form-control ad-post-status col-sm-4">
-															<option value="expired">Expired</option>
-															<option value="sold">Sold</option>
-															<option value="active" selected=""></option>
+															<option value="">Select</option>
+															@foreach($room_data as $val)
+															<option value="{{$val ?? ''}}">{{ $val ?? ''}}</option>
+															@endforeach
 														</select>
 													</div>
 													
@@ -247,8 +256,8 @@
 											<div class="row">
 														<div class="col-md-6 col-xs-6 col-sm-6">
 																	<p>{{ $cartlist->product_name ?? ''}}<br>
-																	(2L plane Baskets)<br>
-																	{{ $cartlist->length ?? '' }} L *  {{ $cartlist->breadth ?? '' }} B * {{ $cartlist->deep ?? '' }} D</p>
+																	<br>
+																	</p>
 														</div>
 														
 														<div class="col-md-6 col-xs-6 col-sm-6">

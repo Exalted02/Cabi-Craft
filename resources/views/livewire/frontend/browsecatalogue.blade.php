@@ -27,7 +27,7 @@
 											<h3>
 												<a title="" href="{{route('offerdetailpage')}}">{{$product->name}}</a>
 											</h3>
-											<p>{{ $product->size}}</p>
+											<p>{{ \Illuminate\Support\Str::limit($product->description, 30) }}</p>
 											<span class="ad-price">Rs.{{ $product->price}}</span> 
 										</div>
 										<div class="ad-info-1" style="display: flex; justify-content: center; align-items: center;">

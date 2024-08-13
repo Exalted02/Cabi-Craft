@@ -17,6 +17,7 @@ use App\Models\Cartorderforms;
 use Illuminate\Http\Request;
 use App\Models\Tempaddtocart;
 use Illuminate\Validation\Rule;
+use App\Models\Temporderroomtype;
 
 class Neworder extends Component
 {
@@ -57,7 +58,7 @@ class Neworder extends Component
 	public $get_rooms;
 	
 	protected $rules = [
-        'project_name' => 'required|string|max:255|unique:cartorderforms,project_name',
+        'project_name' => 'required|string|max:255',
         'address' => 'required|string|max:255',
         'city' => 'required|string|max:255',
         'zip_code' => 'required|string|max:255',
@@ -108,13 +109,26 @@ class Neworder extends Component
 			$model->country			=   $this->country;
 			$model->mobile			=   $this->mobile;
 			$model->project_type	=   $this->project_type  ?? 0;
-			$model->room_name		=   $rm;
+			//$model->room_name		=   $rm;
 			$model->status			=   1;
 			$model->created_at		=   date('Y-m-d h:i:s');
 			$model->save();
 			$this->edit_id  =  $model->id;
 			
-			//$this->dispatchBrowserEvent('show-success-message', ['message' => 'Successfully Submitted']);
+			if(!empty($rm))
+			{
+				$expRooms = explode(",", $rm);
+				foreach($expRooms as $val)
+				{
+					$roommodel = new Temporderroomtype();
+					$roommodel->order_id		=	$model->id;
+					$roommodel->user_id			=	auth()->user()->id;
+					$roommodel->room_name		=	$val;
+					$roommodel->status			=	1;
+					$roommodel->created_at		=   date('Y-m-d h:i:s');
+					$roommodel->save();
+				}
+			}
 		}
 		else
 		{
@@ -127,14 +141,30 @@ class Neworder extends Component
 			$model->country			=   $this->country;
 			$model->mobile			=   $this->mobile;
 			$model->project_type	=   $this->project_type  ?? 0;
-			$model->room_name		=   $rm;
+			//$model->room_name		=   $rm;
 			$model->status			=   1;
 			$model->created_at		=   date('Y-m-d h:i:s');
 			$model->updated_at=date('Y-m-d H:i:s');
 			$model->save();
 			$this->edit_id  =  $this->edit_id;
+			
+			if(!empty($rm))
+			{
+				Temporderroomtype::where(['order_id'=>$this->edit_id,'user_id'=>auth()->user()->id])->delete();
+				$expRooms = explode(",", $rm);
+				foreach($expRooms as $val)
+				{
+					$roommodel = new Temporderroomtype();
+					$roommodel->order_id		=	$model->id;
+					$roommodel->user_id			=	auth()->user()->id;
+					$roommodel->room_name		=	$val;
+					$roommodel->status			=	1;
+					$roommodel->updated_at		=   date('Y-m-d h:i:s');
+					$roommodel->save();
+				}
+			}
 		}
-		$this->get_rooms    = $rm;
+		$this->get_rooms    = '';
 		$this->new_order_form = false;
 		$this->view_order_form = true;
 		$this->exists_cart_data = false;
@@ -224,8 +254,8 @@ class Neworder extends Component
                 ->where(function (Builder $query) {
                     if ($this->search) {
                         $query->where('name', 'like', '%' . $this->search . '%')
-							->orWhere('price', 'like', '%' . $this->search . '%')
-							->orWhere('size', 'like', '%' . $this->search . '%');
+							->orWhere('price', 'like', '%' . $this->search . '%');
+							//->orWhere('size', 'like', '%' . $this->search . '%');
                     }
                 })->paginate($this->limitPerLoad),
 			'exposide' =>  Exposide::all(),

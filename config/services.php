@@ -40,8 +40,14 @@ return [
 	'facebook' => [
         'client_id' => '2602096099999591',
         'client_secret' => '7510587dce9a6327fc6a75033489dd33',
-        // 'redirect' => 'http://localhost:8000/auth/facebook/callback',
-        'redirect' => 'https://ccraft.exaltedsolution.com/auth/facebook/callback',
+        'redirect' => env('APP_URL').'/auth/facebook/callback',
+    ],
+	
+	//Google login credential
+	'google' => [
+        'client_id' => '705514145962-7r5tnagfaoer255gto7bjakdu5tnlbnu.apps.googleusercontent.com',
+        'client_secret' => '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',
+        'redirect' => env('APP_URL').'/auth/google/callback',
     ],
 
 ];

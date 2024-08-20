@@ -30,9 +30,9 @@ class Neworder extends Component
 	public $search;
 	public $limitPerLoad = '';
 	
-	public $widthEnabled = true;
-    public $lengthEnabled = true;
-    public $deepEnabled = true;
+	public $widthEnabled = false;
+    public $lengthEnabled = false;
+    public $deepEnabled = false;
 	
 	public $roomName = '';
     public $rooms = [];
@@ -77,6 +77,13 @@ class Neworder extends Component
 	public $modal_room_skt_type;
 	public $modal_room_skt_height;
 	public $modal_room_handeltype_val;
+	public $customize_product_id;
+	
+	public $customizewidthSel = true;
+    public $customizelengthSel = true;
+    public $customizedeepSel = true;
+	
+    public $select_rooms_id = true;
 	
 	protected $rulesForForm1  = [
         'project_name' => 'required|string|max:255',
@@ -99,7 +106,7 @@ class Neworder extends Component
         'room_handeltype_val' => 'required|string|max:255',
     ];
 	
-	protected $rulesForForm3  = [
+	/*protected $rulesForForm3  = [
         'modal_room_cabinet_material' => 'required|string|max:255',
         'modal_room_box_inner_lam' => 'required|string|max:255',
         'modal_room_shutter_material' => 'required|string|max:255',
@@ -107,7 +114,7 @@ class Neworder extends Component
         'modal_room_skt_type' => 'required|string|max:255',
         'modal_room_skt_height' => 'required|string|max:255',
         'modal_room_handeltype_val' => 'required|string|max:255',
-    ];
+    ];*/
 	
 	public function projectTypeSelected($value)
 	{
@@ -192,8 +199,21 @@ class Neworder extends Component
 		//if(empty($this->edit_id))
 		$this->edit_id  = empty($this->edit_id) ? '' : $this->edit_id;
     }
+	public function open_customise_form($productId)
+    {
+		//dd($productId);
+		$this->product_details = Products::where('id',$productId)->first();
+        $this->kitchen_properties_form = false;
+        $this->view_order_form = false;
+        $this->customise_form = true;
+		$this->customize_product_id = $productId;
+		session()->put('steps', 3);
+		session()->put('customize_product_id', $productId);
+		$this->select_rooms_id = $this->select_rooms;
+    }
 	public function mount()
     {	
+		//session()->put('steps', 2);
 		//session()->forget('steps');	
 		//session()->forget('session_order_id');	
         $this->limitPerLoad = config('custom.PRODUCT_LIST_SHOW_NEW_ORDER');
@@ -203,7 +223,6 @@ class Neworder extends Component
 		{
 			$this->rooms[] = $val->room_name;
 		}
-		
 		//$this->modal_room_cabinet_material = $this->modal_room_cabinet_material;
 	}
 	public function submitNewOrderForm()
@@ -273,7 +292,6 @@ class Neworder extends Component
 			
 			if(!empty($rm))
 			{
-				//Temporderroomtype::where(['order_id'=>$this->edit_id,'user_id'=>auth()->user()->id])->delete();
 				$temproomArr = [];
 				$temproomType = Temporderroomtype::where(['order_id'=>$this->edit_id,'user_id'=>auth()->user()->id])->get();
 				foreach($temproomType as $roomNm)
@@ -305,6 +323,7 @@ class Neworder extends Component
 		$this->view_order_form = true;
 		$this->exists_cart_data = false;
 		$this->project_name_label = $this->project_name;
+		$this->select_rooms_id = '';
 		return redirect()->route('neworder')->with('success',$msg);
     }
 	public function addToCart($productId)
@@ -424,20 +443,22 @@ class Neworder extends Component
 		$this->view_order_form = false;
         //$this->kitchen_properties_form = true;
     }
-	public function open_customise_form($productId)
-    {
-		$this->product_details = Products::where('id',$productId)->first();
-        $this->kitchen_properties_form = false;
-        $this->view_order_form = false;
-        $this->customise_form = true;
-		session()->put('steps', 3);
-    }
+	// customize form
 	public function return_view_order_form()
     {
         $this->new_order_form = false;
         $this->kitchen_properties_form = false;
         $this->customise_form = false;
         $this->view_order_form = true;
+    }
+	public function return_room_property_form($roomid='')
+    {
+		$this->new_order_form = false;
+		$this->view_order_form = true;
+		$this->customise_form = false;
+		$this->kitchen_properties_form = false;
+		session()->put('steps', 2);
+		$this->select_rooms_id = $roomid;
     }
 	public function submitKitchenOrderForm()
 	{
@@ -494,6 +515,48 @@ class Neworder extends Component
 		session()->put('steps', 1);
 		return redirect()->route('neworder')->with('success','Project Name Deleted Successfully');
 	}
+	public function updatedWidthEnabled($value)
+    {
+		//dd($value);
+        // $value will be true or false depending on the checkbox state
+        if($value) {
+            $this->customizewidthSel  = false;
+			//$this->customizelengthSel = false;
+			//$this->customizedeepSel	= false;
+        } else {
+            $this->customizewidthSel  = true;
+			//$this->customizelengthSel = true;
+			//$this->customizedeepSel	= true;
+        }
+    }
+	public function updatedLengthEnabled($value)
+    {
+		//dd($value);
+        // $value will be true or false depending on the checkbox state
+        if($value) {
+            //$this->customizewidthSel  = false;
+			$this->customizelengthSel = false;
+			//$this->customizedeepSel	= false;
+        } else {
+            //$this->customizewidthSel  = true;
+			$this->customizelengthSel = true;
+			//$this->customizedeepSel	= true;
+        }
+    }
+	public function updatedDeepEnabled($value)
+    {
+		//dd($value);
+        // $value will be true or false depending on the checkbox state
+        if($value) {
+            //$this->customizewidthSel  = false;
+			//$this->customizelengthSel = false;
+			$this->customizedeepSel	= false;
+        } else {
+            //$this->customizewidthSel  = true;
+			//$this->customizelengthSel = true;
+			$this->customizedeepSel	= true;
+        }
+    }
 	public function render()
     {
 		$this->edit_id = session()->get('session_order_id');
@@ -544,20 +607,33 @@ class Neworder extends Component
 			$this->new_order_form = true;
 			$this->view_order_form = false;
 			$this->customise_form = false;
+			session()->forget('customize_product_id');
 		}
 		elseif(session()->get('steps')==2)
 		{
+			//dd($this->customise_form);
 			$this->new_order_form = false;
 			$this->view_order_form = true;
 			$this->customise_form = false;
+			$this->kitchen_properties_form = false;
+			//dd('ee');
+			session()->forget('customize_product_id');
 			//$this->exists_cart_data = false;
 		}
-		/*elseif(session()->get('steps')==3)
+		elseif(session()->get('steps')==3)
 		{
+			
+			$this->product_details = Products::where('id',session()->get('customize_product_id'))->first();
+			$this->new_order_form = false;
 			$this->kitchen_properties_form = false;
 			$this->view_order_form = false;
 			$this->customise_form = true;
-		}*/
+			$this->customize_product_id = session()->get('customize_product_id');
+			
+			//$this->customizewidthSel  = true;
+			//$this->customizelengthSel = true;
+			//$this->customizedeepSel	= true;
+		}
 		
 		//$this->load_product();
         return view('livewire.frontend.neworder')->with([

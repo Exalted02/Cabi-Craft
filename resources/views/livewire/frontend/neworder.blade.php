@@ -218,7 +218,7 @@
 														<select class="form-control ad-post-status col-sm-4" id="select-room-lists" wire:model="select_rooms">
 															<option value="">Select Room</option>
 															@foreach($get_rooms as $val)
-															<option value="{{$val->id ?? ''}}">{{ $val->room_name ?? ''}}</option>
+															<option value="{{$val->id ?? ''}}" {{$select_rooms_id==$val->id ? 'selected' : ''}}>{{ $val->room_name ?? ''}}</option>
 															@endforeach
 														</select>
 														<span id="err_room_type"></span>
@@ -263,6 +263,7 @@
 														</div>
 													</div>
 													@endforeach
+													
 													{{--<div class="row">
 														<div class="col-md-6 col-xs-6 col-sm-6">
 
@@ -453,12 +454,14 @@
 							@php
 								$lengthArr = [];							
 								$breadthArr = [];							
-								$deepArr = [];							
-								if(strpos($product_details->length, ',') !== false)
-								$lengthArr = explode(',',$product_details->length);
-								else
+								$deepArr = [];
+								if($product_details->length!=0)							
+								{
+									if(strpos($product_details->length, ',') !== false)
+									$lengthArr = explode(',',$product_details->length);
+									else
 									$lengthArr[] = $product_details->length;
-								
+								}
 								
 								if (strpos($product_details->breadth, ',') !== false)
 								$breadthArr=explode(',',$product_details->breadth);
@@ -471,12 +474,15 @@
 								else
 									$deepArr[] = $product_details->deep;
 								
+								
+								$roomdtls = App\Models\Temporderroomtype::where('id',$select_rooms_id)->first();
 							@endphp							
 							<div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
 									<div class="row">
 										<div class="col-md-3 col-xs-3 col-sm-3">
 											<img alt="" src="{{ isset($product_details->image) && $product_details->image!='' ? asset('admin-assets/images/product/'.$product_details->image) : asset('/images/noimage.png') }}" class="img-responsive image-margin">
 										</div>
+										<input type="hidden" value="{{!empty($customize_product_id) ? $customize_product_id : ''}}" wire:model="customize_product_id">
 										<div class="col-md-9 col-xs-9 col-sm-9">
 											<form>
 												<div class="display-flex">
@@ -484,16 +490,20 @@
 														<div class="form-group row">
 															<label class="inline-label-select col-sm-4">Width:</label>
 															<div class="col-sm-8">
-																<select class="form-control" id="width" {{ $widthEnabled ? '' : 'disabled' }}>
+															@if($customizewidthSel)
+																<select class="form-control" id="width" >
 															    <option value="">Select</option>	@foreach($breadthArr as $val)
 																	<option value="{{$val}}">{{$val}}</option>
 																@endforeach	
 																</select>
+															@else
+																<input type="text" class="form-control">
+														    @endif
 															</div>
 														</div>
 													</div>
 													<div class="width-15-percent display-flex justify-content-center align-items-center">
-														<input type="checkbox" id="toggle1" class="checkbox" wire:model="widthEnabled" />
+														<input type="checkbox" id="toggle1" class="checkbox" wire:model="widthEnabled"/>
 														<label for="toggle1" class="switch"></label>
 													</div>
 												</div>
@@ -502,12 +512,16 @@
 														<div class="form-group row">
 															<label class="inline-label-select col-sm-4">Length:</label>
 															<div class="col-sm-8">
-																<select class="form-control" id="length" {{ $lengthEnabled ? '' : 'disabled' }}>
+															@if($customizelengthSel)
+																<select class="form-control" id="length">
 																<option value="">Select</option>
 																@foreach($lengthArr as $val)
 																	<option value="{{$val}}">{{$val}}</option>
 																@endforeach	
 																</select>
+																@else
+																<input type="text" class="form-control">	
+																@endif
 															</div>
 														</div>
 													</div>
@@ -521,12 +535,16 @@
 														<div class="form-group row">
 															<label class="inline-label-select col-sm-4">Deep:</label>
 															<div class="col-sm-8">
-																<select class="form-control" id="deep" {{ $deepEnabled ? '' : 'disabled' }}>
+															@if($customizedeepSel)
+																<select class="form-control" id="deep">
 																<option value="">Select</option>
 																  @foreach($deepArr as $val)
 																	<option value="{{$val}}">{{$val}}</option>
 																    @endforeach	
 																</select>
+															@else 
+															<input type="text" class="form-control">
+														    @endif
 															</div>
 														</div>
 													</div>
@@ -587,7 +605,7 @@
 													<select class="form-control" id="material">
 														<option value="">Select</option>
 														@foreach($material as $material_val)
-															<option value="{{$material_val->id}}" data-image="{{ asset('admin-assets/images/materials/'.$material_val->image) }}">{{$material_val->name}}</option>
+															<option value="{{$material_val->id}}" data-image="{{ asset('admin-assets/images/materials/'.$material_val->image) }}" {{$roomdtls->cabinet_material==$material_val->id ? 'selected':''}}>{{$material_val->name}}</option>
 														@endforeach
 													</select>
 												</div>
@@ -599,7 +617,7 @@
 													<select class="form-control" id="box_inner_laminate_val">
 														<option value="">Select</option>
 														@foreach($box_inner_laminate as $box_inner_laminate_val)
-															<option value="{{$box_inner_laminate_val->id}}" data-image="{{ asset('admin-assets/images/cabinetcolors/'.$box_inner_laminate_val->image) }}">{{$box_inner_laminate_val->name}}</option>
+															<option value="{{$box_inner_laminate_val->id}}" data-image="{{ asset('admin-assets/images/cabinetcolors/'.$box_inner_laminate_val->image) }}" {{$roomdtls->box_Inner_laminate==$box_inner_laminate_val->id ? 'selected':''}}>{{$box_inner_laminate_val->name}}</option>
 														@endforeach
 													</select>
 												</div>
@@ -611,7 +629,7 @@
 													<select class="form-control" id="shutter_material">
 														<option value="">Select</option>
 														@foreach($shutter_material as $shutter_material_val)
-															<option value="{{$shutter_material_val->id}}" data-image="{{ asset('admin-assets/images/shuttermaterial/'.$shutter_material_val->image) }}">{{$shutter_material_val->name}}</option>
+															<option value="{{$shutter_material_val->id}}" data-image="{{ asset('admin-assets/images/shuttermaterial/'.$shutter_material_val->image) }}" {{$roomdtls->shutter_material==$shutter_material_val->id ? 'selected': ''}}>{{$shutter_material_val->name}}</option>
 														@endforeach
 													</select>
 												</div>
@@ -623,7 +641,7 @@
 													<select class="form-control" id="shutter_finish">
 														<option value="">Select</option>
 														@foreach($shutter_finish as $shutter_finish_val)
-															<option value="{{$shutter_finish_val->id}}" data-image="{{ asset('admin-assets/images/exposhuttercolors/'.$shutter_finish_val->image) }}">{{$shutter_finish_val->name}}</option>
+															<option value="{{$shutter_finish_val->id}}" data-image="{{ asset('admin-assets/images/exposhuttercolors/'.$shutter_finish_val->image) }}" {{$roomdtls->shutter_finish==$shutter_finish_val->id ? 'selected': ''}}>{{$shutter_finish_val->name}}</option>
 														@endforeach
 													</select>
 												</div>
@@ -643,7 +661,7 @@
 											<div class="form-group row">
 												<label for="address" class="col-sm-5 col-form-label">Skt height:</label>
 												<div class="col-sm-7">
-													<input id="address" class="form-control" placeholder="100" type="text">
+													<input id="address" class="form-control" placeholder="100" type="text" value="{{$roomdtls->skt_height ?  $roomdtls->skt_height: ''}}">
 												</div>
 											</div>
 
@@ -653,7 +671,7 @@
 													<select class="form-control" id="handeltype">
 														<option value="">Select</option>
 														@foreach($handeltype as $handeltype_val)
-															<option value="{{$handeltype_val->id}}" data-image="{{ asset('admin-assets/images/handletype/'.$handeltype_val->image) }}">{{$handeltype_val->name}}</option>
+															<option value="{{$handeltype_val->id}}" data-image="{{ asset('admin-assets/images/handletype/'.$handeltype_val->image) }}" {{$roomdtls->handle_types==$handeltype_val->id ? 'selected': ''}}>{{$handeltype_val->name}}</option>
 														@endforeach
 													</select>
 												</div>
@@ -668,7 +686,7 @@
 										</form>
 										<hr>
 
-										<button type="button" class="btn btn-danger" aria-label="Close" wire:click="return_view_order_form">Close</button>
+										<button type="button" class="btn btn-danger" aria-label="Close" wire:click="return_room_property_form({{ $select_rooms_id }})">Close</button>
 										<button type="button" class="btn btn-success pull-right" aria-label="Close">Submit</button>         
 									</div>
 									</div>
@@ -844,6 +862,19 @@
 			</div>
 		</div>
 	</div>
+	<div class="modal fade" id="confirmDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-body">
+				   Are you sure want to delete this Room Name ?
+				</div>
+				<div class="modal-footer">
+					<button type="button" data-bs-dismiss="modal" class="btn btn-primary" id="roomdelete">Delete</button>
+					<button type="button" data-bs-dismiss="modal" class="btn btn-secondary" id="cancelroom">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="modal fade" id="confirmProjectDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -863,6 +894,9 @@
     <script>
 	document.addEventListener('livewire:load', function () {
 		 //alert('ok');
+		 $('#toggle1').prop('checked', false);
+		 $('#toggle2').prop('checked', false);
+		 $('#toggle3').prop('checked', false);
 		    initializeSelect2();
             $(document).on('change', '#modal_room_material', function (e) {
                 var data = $(this).val();
@@ -916,11 +950,7 @@
 					$('#roomDetailsModal').modal('show');
 				}
 			});
-			
-			//window.addEventListener('modalClosed', function () {
-				//$('#roomDetailsModal').modal('show');
-			//});
-        });
+		});
 	</script>
 	@endsection
 </div>

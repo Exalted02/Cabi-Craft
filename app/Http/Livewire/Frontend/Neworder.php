@@ -55,7 +55,7 @@ class Neworder extends Component
     public $list_add_to_cart;
     public $product_details;
     public $room_validation  = false;
-	protected $listeners = ['projectTypeSelected','roomTypeSelected','roomMaterialTypeSelected','roomBoxInnerTypeSelected','roomShutterTypeSelected','roomShFinishTypeSelected','roomSktTypeTypeSelected','roomSktHtTypeSelected','roomHandleTypeSelected','modalRoomHandleTypeSelected','submitModalKitchenOrderForm','modalRoomMaterialSelected','open_kitchen_properties_form'];
+	protected $listeners = ['projectTypeSelected','roomTypeSelected','roomMaterialTypeSelected','roomBoxInnerTypeSelected','roomShutterTypeSelected','roomShFinishTypeSelected','roomSktTypeTypeSelected','roomSktHtTypeSelected','roomHandleTypeSelected','modalRoomHandleTypeSelected','submitModalKitchenOrderForm','modalRoomMaterialSelected','open_kitchen_properties_form','deleteroom','deleteprojectname'];
 	//protected $listeners = ['roomTypeSelected'];
 	public $get_rooms;
 	public $hasRoomDetails = false;
@@ -273,17 +273,27 @@ class Neworder extends Component
 			
 			if(!empty($rm))
 			{
-				Temporderroomtype::where(['order_id'=>$this->edit_id,'user_id'=>auth()->user()->id])->delete();
+				//Temporderroomtype::where(['order_id'=>$this->edit_id,'user_id'=>auth()->user()->id])->delete();
+				$temproomArr = [];
+				$temproomType = Temporderroomtype::where(['order_id'=>$this->edit_id,'user_id'=>auth()->user()->id])->get();
+				foreach($temproomType as $roomNm)
+				{
+					$temproomArr[] = $roomNm->room_name;
+				}
+				//dd($this->edit_id);
 				$expRooms = explode(",", $rm);
 				foreach($expRooms as $val)
 				{
-					$roommodel = new Temporderroomtype();
-					$roommodel->order_id		=	$this->edit_id;
-					$roommodel->user_id			=	auth()->user()->id;
-					$roommodel->room_name		=	$val;
-					$roommodel->status			=	1;
-					$roommodel->updated_at		=   date('Y-m-d h:i:s');
-					$roommodel->save();
+					if(!in_array($val, $temproomArr))
+					{
+						$roommodel = new Temporderroomtype();
+						$roommodel->order_id		=	$this->edit_id;
+						$roommodel->user_id			=	auth()->user()->id;
+						$roommodel->room_name		=	$val;
+						$roommodel->status			=	1;
+						$roommodel->updated_at		=   date('Y-m-d h:i:s');
+						$roommodel->save();
+					}
 				}
 			}
 			$msg = 'New Order Form Updated Successfully';
@@ -469,6 +479,20 @@ class Neworder extends Component
 		else{
 			return redirect()->route('neworder')->with('error','Error Try Again');
 		}
+	}
+	public function deleteroom()
+	{
+		Temporderroomtype::where(['id'=>$this->select_rooms,'user_id'=>auth()->user()->id])->delete();
+		Tempaddtocart::where(['room_type_id'=>$this->select_rooms,'user_id'=>auth()->user()->id])->delete();
+		return redirect()->route('neworder')->with('success','Room Deleted Successfully');
+	}
+	public function deleteprojectname()
+	{
+		Cartorderforms::where('id',$this->edit_id)->delete();
+		Temporderroomtype::where('order_id',$this->edit_id)->delete();
+		Tempaddtocart::where('order_id',$this->edit_id)->delete();
+		session()->put('steps', 1);
+		return redirect()->route('neworder')->with('success','Project Name Deleted Successfully');
 	}
 	public function render()
     {

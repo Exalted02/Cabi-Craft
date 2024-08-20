@@ -147,58 +147,36 @@ document.addEventListener('DOMContentLoaded', function() {
 			Livewire.emit('roomHandleTypeSelected', data);
 		}
 	});
-	// modal form
-	//$(document).on('change', '#modal_room_material', function (e) {
-		//var data = $(this).val();
-		//if(data!='')
-		//{
-			 //$('#modal_room_material').val(data).trigger('change');
-			 //$('#modal_room_material').select2('close');
-			 //Livewire.emit('modalRoomMaterialSelected', data);
-			 //$('#roomDetailsModal').modal('show');
-			 //setTimeout(function() {
-                //$('#modal_room_material').select2('close');
-            //}, 100); // Adjust the delay if necessary
-        
-			 
-			 //$('#modal_room_material').select2('val', data);
-			//initializeSelect2() {$('#modal_room_material').select2({})}
-			//Livewire.emit('modalRoomHandleTypeSelected', data);
-		//}
-	//});
-	
-	/*$(document).on('change', '[id^=room_], [id^=modal_room_]', function (e) {
-		let data = $(this).val();
-		if (data !== '') {
-			//alert(data);
-			let eventName = $(this).data('livewire-event'); // Use data-livewire-event to dynamically determine the event name
-			if (eventName) {
-				Livewire.emit(eventName, data);
-			}
+	// delete room
+	$('#delete-room').on('click', function(e) {
+		if($('#select-room-lists').val()=='')
+		{
+			$('#err_room_type').html('<font color="red">Select Room</font>');
 		}
-	});*/
-
-
-	/*document.addEventListener('livewire:load', function () {
-		//initializeSelect2();
-		
-		// Listen for the event dispatched from Livewire
-		window.addEventListener('openRoomDetailsModal', function (event) {
-			const data = event.detail.status;
-			alert(data);
-			if (data == 'true') {
-				$('#roomDetailsModal').modal('hide');
-			} else if (data == 'false') {
-				$('#roomDetailsModal').modal('show');
-			}
+		else{
+			$('#confirmDelete').modal("show");
+		}
+		e.preventDefault();
+		$('#confirmDelete').on('click', '#roomdelete', function(e) {
+			Livewire.emit('deleteroom');
 		});
 		
-		window.addEventListener('modalClosed', function () {
-			$('#roomDetailsModal').modal('show');
+		$('#confirmDelete').on('click', '#cancelroom', function(e) {
+			$('#confirmDelete').modal("hide");
 		});
-	});*/
-	
-	
+	}); 
+	$('#delete-project-name').on('click', function(e) {
+		
+		$('#confirmProjectDelete').modal("show");
+		e.preventDefault();
+		$('#confirmProjectDelete').on('click', '#projectdelete', function(e) {
+			Livewire.emit('deleteprojectname');
+		});
+		
+		$('#confirmProjectDelete').on('click', '#projectcancel', function(e) {
+			$('#confirmProjectDelete').modal("hide");
+		});
+	});
 });
 
 function initializeSelect2() {
@@ -240,69 +218,4 @@ function formatOption(option) {
 	return optionWithImage;
 }
 
-// Generic listener for dynamically generated select elements
-/*$(document).on('change', '[id^=room_], [id^=modal_room_]', function (e) {
-	let data = $(this).val();
-	if (data !== '') {
-		//alert(data);
-		let eventName = $(this).data('livewire-event'); // Use data-livewire-event to dynamically determine the event name
-		if (eventName) {
-			Livewire.emit(eventName, data);
-		}
-	}
-});*/
 
-
-//document.addEventListener('livewire:load', function () {
-	//initializeSelect2();
-	
-	// Listen for the event dispatched from Livewire
-	/*window.addEventListener('openRoomDetailsModal', function (event) {
-		const data = event.detail.status;
-		//alert(data);
-		if (data == 'true') {
-            $('#roomDetailsModal').modal('hide');
-        } else if (data == 'false') {
-            $('#roomDetailsModal').modal('show');
-        }
-	});
-	
-	window.addEventListener('modalClosed', function () {
-        $('#roomDetailsModal').modal('show');
-    });*/
-//});
-/*document.addEventListener('livewire:update', function (event) {
-		$('#modal_room_material').select2();
-		$('#modal_room_material').on('change', function (e) {
-			//@this.set('modal_room_cabinet_material', $(this).val(), true);
-			//eval(livewire).set('modal_room_cabinet_material', $(this).val())
-		});
-	});*/
-//$('#modal_room_material').select2();
-	
-	//$('#modal_room_material').on('change', function (e) {
-		//alert($(this).val());
-		//let livewire = $(this).data('livewire')
-        //eval(livewire).set('modal_room_cabinet_material', $(this).val());
-		//$('#modal_room_material').val($(this).val());
-        //@this.set('modal_room_cabinet_material', $(this).val(), true);
-		//let value = $(this).val();
-        //Livewire.emit('updateCabinetMaterial', value);
-		
-    //});
-	//Livewire.hook('message.processed', (message, component) => {
-        // Sync Select2 with the Livewire property value
-        //$('#modal_room_material').val(@this.modal_room_cabinet_material).trigger('change');
-    //});
-	//document.addEventListener('livewire:update', function () {
-		
-	//});
-	//$('#modal_room_material').on('change', function (e) {
-		//alert($(this).val());
-		//$('#modal_room_material').val($(this).val());
-	//});	
-	/*$('#modal_room_material').on('change', function (e) {
-		alert($(this).val());
-		let livewire = $(this).data('livewire');
-		eval(livewire).set('modal_room_cabinet_material', $(this).val());
-	});*/

@@ -204,7 +204,7 @@
 											</label>
 											<ul class="pull-right ">
 												<li><a data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit Ad" href="javascript:void(0);" wire:click="edit_new_order_form"><i class="fa fa-pencil edit"></i></a> </li>
-												<li><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="fa fa-times delete"></i></a></li>
+												<li><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" id="delete-project-name"><i class="fa fa-times delete"></i></a></li>
 											</ul>
 										</div>
 								  </div>
@@ -236,7 +236,7 @@
 																</a>
 															</li>
 															<li class="list-inline-item">
-																<a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Delete">
+																<a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Delete" id="delete-room">
 																	<i class="fa fa-times delete"></i>
 																</a>
 															</li>
@@ -683,7 +683,7 @@
 			</div>
         </div>
     </div>
-	
+	<input type="hidden" wire:model="edit_id" id="edit_id" value="{{$edit_id ?? ''}}">
 	<!-- Modal -->
 	{{--<div class="modal fade" id="roomDetailsModal" tabindex="-1" role="dialog" aria-labelledby="roomDetailsModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
@@ -693,9 +693,9 @@
 		</div>
 	</div>--}}
 	<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+	{{--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
   Launch demo modal
-</button>
+</button>--}}
 
 
 	
@@ -844,6 +844,19 @@
 			</div>
 		</div>
 	</div>
+	<div class="modal fade" id="confirmProjectDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-body">
+				   Are you sure want to delete this Project Name ?
+				</div>
+				<div class="modal-footer">
+					<button type="button" data-bs-dismiss="modal" class="btn btn-primary" id="projectdelete">Delete</button>
+					<button type="button" data-bs-dismiss="modal" class="btn btn-secondary" id="projectcancel">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	@section('scripts')
 	<script src="{{ url('js/neworder.js') }}"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
@@ -908,9 +921,6 @@
 				//$('#roomDetailsModal').modal('show');
 			//});
         });
-		
-		
-	
 	</script>
 	@endsection
 </div>

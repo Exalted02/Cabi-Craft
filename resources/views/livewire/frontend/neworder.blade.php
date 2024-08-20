@@ -475,7 +475,9 @@
 									$deepArr[] = $product_details->deep;
 								
 								
-								$roomdtls = App\Models\Temporderroomtype::where('id',$select_rooms_id)->first();
+							$roomdtls = App\Models\Temporderroomtype::where('id',$select_rooms_id)->first();
+							
+								//echo "<pre>";print_r($roomdtls);die;
 							@endphp							
 							<div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
 									<div class="row">
@@ -484,18 +486,19 @@
 										</div>
 										<input type="hidden" value="{{!empty($customize_product_id) ? $customize_product_id : ''}}" wire:model="customize_product_id">
 										<div class="col-md-9 col-xs-9 col-sm-9">
-											<form>
+									<form wire:submit.prevent="submitcostomizeOrderForm" id="bodyform">
 												<div class="display-flex">
 													<div class="width-85-percent">
 														<div class="form-group row">
 															<label class="inline-label-select col-sm-4">Width:</label>
 															<div class="col-sm-8">
 															@if($customizewidthSel)
-																<select class="form-control" id="width" >
+																<select class="form-control" id="width"  wire:model="customize_width">
 															    <option value="">Select</option>	@foreach($breadthArr as $val)
 																	<option value="{{$val}}">{{$val}}</option>
 																@endforeach	
 																</select>
+																@error('customize_width') <span class="text-danger">{{ $message }}</span> @enderror
 															@else
 																<input type="text" class="form-control">
 														    @endif
@@ -513,12 +516,13 @@
 															<label class="inline-label-select col-sm-4">Length:</label>
 															<div class="col-sm-8">
 															@if($customizelengthSel)
-																<select class="form-control" id="length">
+																<select class="form-control" id="length" wire:model="customize_length">
 																<option value="">Select</option>
 																@foreach($lengthArr as $val)
 																	<option value="{{$val}}">{{$val}}</option>
 																@endforeach	
 																</select>
+																@error('customize_length') <span class="text-danger">{{ $message }}</span> @enderror
 																@else
 																<input type="text" class="form-control">	
 																@endif
@@ -536,12 +540,13 @@
 															<label class="inline-label-select col-sm-4">Deep:</label>
 															<div class="col-sm-8">
 															@if($customizedeepSel)
-																<select class="form-control" id="deep">
+																<select class="form-control" id="deep" wire:model="customize_deep">
 																<option value="">Select</option>
 																  @foreach($deepArr as $val)
 																	<option value="{{$val}}">{{$val}}</option>
 																    @endforeach	
 																</select>
+																@error('customize_deep') <span class="text-danger">{{ $message }}</span> @enderror
 															@else 
 															<input type="text" class="form-control">
 														    @endif
@@ -558,11 +563,12 @@
 														<div class="form-group row">
 															<label class="inline-label-select col-sm-4">QTY:</label>
 															<div class="col-sm-8">
-																<select class="form-control">
+																<select class="form-control" wire:model="customize_qty">
 																	<option value="expired">(MR)_Ply</option>
 																	<option value="sold">Sold</option>
 																	<option value="active" selected></option>
 																</select>
+																@error('customize_qty') <span class="text-danger">{{ $message }}</span> @enderror
 															</div>
 														</div>
 													</div>
@@ -570,126 +576,137 @@
 														
 													</div>
 												</div>
-											</form>
+											
 										</div>
 									</div>
 									<div class="panel-body">
-										<form>
+										
 											<div class="form-group row">
 												<label class="inline-label-select col-sm-5">Expo:</label>
 												<div class="col-sm-7">
-													<select class="form-control" id="expo_name">
+													<select class="form-control" id="expo_name" wire:model="customize_expo_name">
 														<option value="">Select</option>
 														@foreach($exposide as $val)
 															<option value="{{$val->id}}" data-image="{{ asset('admin-assets/images/exposide/'.$val->image) }}">{{$val->name}}</option>
 														@endforeach
 													</select>
+													@error('customize_expo_name') <span class="text-danger">{{ $message }}</span> @enderror
 												</div>
 											</div>
 												
 											<div class="form-group row">
 												<label class="inline-label-select col-sm-5">Expo Colour:</label>
 												<div class="col-sm-7">
-													<select class="form-control" id="expo_colour">
+													<select class="form-control" id="expo_colour" wire:model="customize_expo_colour">
 														<option value="">Select</option>
 														@foreach($expocolour as $expocolour_val)
 															<option value="{{$expocolour_val->id}}" data-image="{{ asset('admin-assets/images/exposhuttercolors/'.$expocolour_val->image) }}">{{$expocolour_val->name}}</option>
 														@endforeach
 													</select>
+													@error('customize_expo_colour') <span class="text-danger">{{ $message }}</span> @enderror
 												</div>
 											</div>
 
 											<div class="form-group row">
 												<label class="inline-label-select col-sm-5">Cabinet Material:</label>
 												<div class="col-sm-7">
-													<select class="form-control" id="material">
+													<select class="form-control customize_cabinet_material" id="material" wire:model="customize_cabinet_material">
 														<option value="">Select</option>
 														@foreach($material as $material_val)
-															<option value="{{$material_val->id}}" data-image="{{ asset('admin-assets/images/materials/'.$material_val->image) }}" {{$roomdtls->cabinet_material==$material_val->id ? 'selected':''}}>{{$material_val->name}}</option>
+															<option value="{{$material_val->id}}" data-image="{{ asset('admin-assets/images/materials/'.$material_val->image) }}" {{$customize_cabinet_material==$material_val->id ? 'selected':''}}>{{$material_val->name}}</option>
 														@endforeach
 													</select>
+													@error('customize_cabinet_material') <span class="text-danger">{{ $message }}</span> @enderror
 												</div>
 											</div>
 
 											<div class="form-group row">
 												<label class="inline-label-select col-sm-5">Box Inner Laminate:</label>
 												<div class="col-sm-7">
-													<select class="form-control" id="box_inner_laminate_val">
+													<select class="form-control" id="box_inner_laminate_val" wire:model="customize_box_inner_laminate">
 														<option value="">Select</option>
 														@foreach($box_inner_laminate as $box_inner_laminate_val)
-															<option value="{{$box_inner_laminate_val->id}}" data-image="{{ asset('admin-assets/images/cabinetcolors/'.$box_inner_laminate_val->image) }}" {{$roomdtls->box_Inner_laminate==$box_inner_laminate_val->id ? 'selected':''}}>{{$box_inner_laminate_val->name}}</option>
+															<option value="{{$box_inner_laminate_val->id}}" data-image="{{ asset('admin-assets/images/cabinetcolors/'.$box_inner_laminate_val->image) }}" {{$customize_box_inner_laminate==$box_inner_laminate_val->id ? 'selected':''}}>{{$box_inner_laminate_val->name}}</option>
 														@endforeach
 													</select>
+													@error('customize_box_inner_laminate') <span class="text-danger">{{ $message }}</span> @enderror
 												</div>
 											</div>
 
 											<div class="form-group row">
 												<label class="inline-label-select col-sm-5">Shutter Material:</label>
 												<div class="col-sm-7">
-													<select class="form-control" id="shutter_material">
+													<select class="form-control" id="shutter_material" wire:model="customize_shutter_material">
 														<option value="">Select</option>
 														@foreach($shutter_material as $shutter_material_val)
-															<option value="{{$shutter_material_val->id}}" data-image="{{ asset('admin-assets/images/shuttermaterial/'.$shutter_material_val->image) }}" {{$roomdtls->shutter_material==$shutter_material_val->id ? 'selected': ''}}>{{$shutter_material_val->name}}</option>
+															<option value="{{$shutter_material_val->id}}" data-image="{{ asset('admin-assets/images/shuttermaterial/'.$shutter_material_val->image) }}" {{$customize_shutter_material==$shutter_material_val->id ? 'selected': ''}}>{{$shutter_material_val->name}}</option>
 														@endforeach
 													</select>
+													@error('customize_shutter_material') <span class="text-danger">{{ $message }}</span> @enderror
 												</div>
 											</div>
 
 											<div class="form-group row">
 												<label class="inline-label-select col-sm-5">Shutter Finish:</label>
 												<div class="col-sm-7">
-													<select class="form-control" id="shutter_finish">
+													<select class="form-control" id="shutter_finish" wire:model="customize_shutter_finish">
 														<option value="">Select</option>
 														@foreach($shutter_finish as $shutter_finish_val)
-															<option value="{{$shutter_finish_val->id}}" data-image="{{ asset('admin-assets/images/exposhuttercolors/'.$shutter_finish_val->image) }}" {{$roomdtls->shutter_finish==$shutter_finish_val->id ? 'selected': ''}}>{{$shutter_finish_val->name}}</option>
+															<option value="{{$shutter_finish_val->id}}" data-image="{{ asset('admin-assets/images/exposhuttercolors/'.$shutter_finish_val->image) }}" {{$customize_shutter_finish==$shutter_finish_val->id ? 'selected': ''}}>{{$shutter_finish_val->name}}</option>
 														@endforeach
 													</select>
+													@error('customize_shutter_finish') <span class="text-danger">{{ $message }}</span> @enderror
 												</div>
 											</div>
 
 											<div class="form-group row">
 												<label class="inline-label-select col-sm-5">Leg Type:</label>
 												<div class="col-sm-7">
-													<select class="form-control" id="legtype">
+													<select class="form-control" id="legtype" wire:model="customize_legtype">
 														<option value="">Select</option>
 														@foreach($legtype as $legtype_val)
 															<option value="{{$legtype_val->id}}" data-image="{{ asset('admin-assets/images/legtype/'.$legtype_val->image) }}">{{$legtype_val->name}}</option>
 														@endforeach
 													</select>
+													@error('customize_legtype') <span class="text-danger">{{ $message }}</span> @enderror
 												</div>
 											</div>
 											<div class="form-group row">
 												<label for="address" class="col-sm-5 col-form-label">Skt height:</label>
 												<div class="col-sm-7">
-													<input id="address" class="form-control" placeholder="100" type="text" value="{{$roomdtls->skt_height ?  $roomdtls->skt_height: ''}}">
+													<input id="address" class="form-control" placeholder="100" type="text" value="{{$customize_skt_height ?  $customize_skt_height: ''}}" wire:model="customize_skt_height">
+													@error('customize_skt_height') <span class="text-danger">{{ $message }}</span> @enderror
 												</div>
 											</div>
 
 											<div class="form-group row">
 												<label class="inline-label-select col-sm-5">Handle Type:</label>
 												<div class="col-sm-7">
-													<select class="form-control" id="handeltype">
+													<select class="form-control" id="handeltype" wire:model="customize_handeltype">
 														<option value="">Select</option>
 														@foreach($handeltype as $handeltype_val)
-															<option value="{{$handeltype_val->id}}" data-image="{{ asset('admin-assets/images/handletype/'.$handeltype_val->image) }}" {{$roomdtls->handle_types==$handeltype_val->id ? 'selected': ''}}>{{$handeltype_val->name}}</option>
+															<option value="{{$handeltype_val->id}}" data-image="{{ asset('admin-assets/images/handletype/'.$handeltype_val->image) }}" {{$customize_handeltype==$handeltype_val->id ? 'selected': ''}}>{{$handeltype_val->name}}</option>
 														@endforeach
 													</select>
+													@error('customize_handeltype') <span class="text-danger">{{ $message }}</span> @enderror
 												</div>
 											</div>
 											<div class="form-group row">
 													<label for="address" class="col-sm-5 col-form-label">Address:</label>
 													<div class="col-sm-7">
-														<input id="address" class="form-control" placeholder="Address" type="text">
+														<input id="address" class="form-control" placeholder="Address" type="text" wire:model="customize_address">
+														@error('customize_address') <span class="text-danger">{{ $message }}</span> @enderror
 													</div>
 												</div>
 
-										</form>
+										
 										<hr>
 
 										<button type="button" class="btn btn-danger" aria-label="Close" wire:click="return_room_property_form({{ $select_rooms_id }})">Close</button>
-										<button type="button" class="btn btn-success pull-right" aria-label="Close">Submit</button>         
+										<button type="submit" class="btn btn-success pull-right" aria-label="Close">Submit</button>         
 									</div>
 									</div>
+								</form>
 								</div>
 							   <!-- Latest Ads Panel End -->
 							</div>
@@ -894,6 +911,8 @@
     <script>
 	document.addEventListener('livewire:load', function () {
 		 //alert('ok');
+		 //@this.set('customize_cabinet_material', <?php isset($roomdtls->cabinet_material) ? $roomdtls->cabinet_material : ''; ?>, true);
+		 
 		 $('#toggle1').prop('checked', false);
 		 $('#toggle2').prop('checked', false);
 		 $('#toggle3').prop('checked', false);

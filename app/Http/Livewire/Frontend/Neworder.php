@@ -85,6 +85,21 @@ class Neworder extends Component
 	
     public $select_rooms_id = true;
 	
+    public $customize_width;
+    public $customize_length;
+    public $customize_deep;
+    public $customize_qty;
+    public $customize_expo_name;
+    public $customize_expo_colour;
+    public $customize_cabinet_material;
+    public $customize_box_inner_laminate;
+    public $customize_shutter_material;
+    public $customize_shutter_finish;
+    public $customize_legtype;
+    public $customize_skt_height;
+    public $customize_handeltype;
+    public $customize_address;
+   	
 	protected $rulesForForm1  = [
         'project_name' => 'required|string|max:255',
         'address' => 'required|string|max:255',
@@ -106,15 +121,22 @@ class Neworder extends Component
         'room_handeltype_val' => 'required|string|max:255',
     ];
 	
-	/*protected $rulesForForm3  = [
-        'modal_room_cabinet_material' => 'required|string|max:255',
-        'modal_room_box_inner_lam' => 'required|string|max:255',
-        'modal_room_shutter_material' => 'required|string|max:255',
-        'modal_room_shutter_finish' => 'required|string|max:255',
-        'modal_room_skt_type' => 'required|string|max:255',
-        'modal_room_skt_height' => 'required|string|max:255',
-        'modal_room_handeltype_val' => 'required|string|max:255',
-    ];*/
+	protected $rulesForForm3  = [
+        'customize_width' => 'required|string|max:255',
+        'customize_length' => 'required|string|max:255',
+        'customize_deep' => 'required|string|max:255',
+        'customize_qty' => 'required|string|max:255',
+        'customize_expo_name' => 'required|string|max:255',
+        'customize_expo_colour' => 'required|string|max:255',
+        'customize_cabinet_material' => 'required|string|max:255',
+        'customize_box_inner_laminate' => 'required|string|max:255',
+        'customize_shutter_material' => 'required|string|max:255',
+        'customize_shutter_finish' => 'required|string|max:255',
+        'customize_legtype' => 'required|string|max:255',
+        'customize_skt_height' => 'required|string|max:255',
+        'customize_handeltype' => 'required|string|max:255',
+        'customize_address' => 'required|string|max:255',
+    ];
 	
 	public function projectTypeSelected($value)
 	{
@@ -210,6 +232,16 @@ class Neworder extends Component
 		session()->put('steps', 3);
 		session()->put('customize_product_id', $productId);
 		$this->select_rooms_id = $this->select_rooms;
+		
+		session()->put('customize_select_room', $this->select_rooms);
+		//$roomdtls = Temporderroomtype::where('id',$this->select_rooms)->first();
+		//dd($roomdtls);
+		/*$this->customize_cabinet_material 	= $roomdtls->cabinet_material;
+		$this->customize_box_inner_laminate = $roomdtls->box_Inner_laminate;
+		$this->customize_shutter_material 	= $roomdtls->shutter_material;
+		$this->customize_shutter_finish 	= $roomdtls->shutter_finish;
+		$this->customize_skt_height 		= $roomdtls->skt_height;
+		$this->customize_handeltype 		= $roomdtls->handle_types;*/
     }
 	public function mount()
     {	
@@ -557,6 +589,11 @@ class Neworder extends Component
 			$this->customizedeepSel	= true;
         }
     }
+	public function submitcostomizeOrderForm()
+    {
+        $this->validate($this->rulesForForm3);
+		
+	}
 	public function render()
     {
 		$this->edit_id = session()->get('session_order_id');
@@ -630,9 +667,17 @@ class Neworder extends Component
 			$this->customise_form = true;
 			$this->customize_product_id = session()->get('customize_product_id');
 			
-			//$this->customizewidthSel  = true;
-			//$this->customizelengthSel = true;
-			//$this->customizedeepSel	= true;
+			$roomdtls = Temporderroomtype::where('id',session()->get('customize_select_room'))->first();
+			//dd($roomdtls);
+			if(!empty($roomdtls))
+			{
+				$this->customize_cabinet_material 	= $roomdtls->cabinet_material;
+				$this->customize_box_inner_laminate = $roomdtls->box_Inner_laminate;
+				$this->customize_shutter_material 	= $roomdtls->shutter_material;
+				$this->customize_shutter_finish 	= $roomdtls->shutter_finish;
+				$this->customize_skt_height 		= $roomdtls->skt_height;
+				$this->customize_handeltype 		= $roomdtls->handle_types;
+			}
 		}
 		
 		//$this->load_product();

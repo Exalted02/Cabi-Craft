@@ -16,4 +16,9 @@ class Tempaddtocart extends Model
         'breadth',
         'deep'
     ];
+	
+	public function get_products()
+	{
+		return $this->belongsTo(Products::class, 'product_id', 'id');
+	}
 }

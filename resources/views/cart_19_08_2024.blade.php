@@ -16,7 +16,7 @@
                     <p><b>Project Type :<u> Job Work</b></u></p>
                 </div>
                 <div class="col-md-4 col-sm-6">
-                    <p>Date :- {{ \Carbon\Carbon::now()->format('d-F-y') }}<br>
+                    <p>Date :- 07-July-24<br>
                         Valid Until :-<br>
                         Order ID :-<br>
                         Customer Name :- Mr.Kumar<br>
@@ -49,60 +49,58 @@
                     </tr>
                 </thead>
                 <tbody>
-				@php 
-				$pr = 0;
-				@endphp
-				@foreach($cartdata as $cart)
                     <tr>
-                        <td colspan="15"><strong>{{$cart->room_name ?? ''}}</strong></td>
+                        <td colspan="14">Kitchen</td>
                     </tr>
-					@php 
-						$material = App\Models\Material::select('name')->where('id',$cart->cabinet_material)->first();
-						$handletyp = App\Models\Handeltype::select('name')->where('id',$cart->handle_types)->first();
-						
-					@endphp
-					@foreach($cart->get_cart_data as $val)
                     <tr>
                         <td>1 </td>
-                        <td>{{ ucwords($val->product_name) ?? ''}}</td>
-                        <td><img src="{{asset('admin-assets/images/product/' . $val->get_products->image)}}" height="70" width="70"> </td>
-                        <td>{{ $val->length ?? ''}} </td>
-                        <td>{{ $val->deep ?? ''}} </td>
-                        <td>N/A </td>
-                        <td>{{$material->name ?? ''}}</td>
-                        <td>N/A </td>
-                        <td>N/A</td>
-                        <td>N/A</td>
-                        <td>N/A </td>
-                        <td>N/A</td>
-                        <td>{{$cart->skt_height ?? ''}}</td>
-                        <td>{{$handletyp->name ?? ''}} </td>
-                        <td>{{ $val->price ?? ''}} </td>
+                        <td>Base Cabinet 1 Shutters (with out shelf)</td>
+                        <td>Row </td>
+                        <td>500 </td>
+                        <td>720 </td>
+                        <td>560 </td>
+                        <td>1 </td>
+                        <td>(MR)_Ply </td>
+                        <td>White </td>
+                        <td>Without Expo </td>
+                        <td>21091 HGl </td>
+                        <td>HDHMR </td>
+                        <td>21091 </td>
+                        <td>No-skt </td>
+                        <td>100 </td>
                     </tr>
-					 @php 
-					 $pr += $val->price;
-					 @endphp
-					@endforeach
-                @endforeach
-				@php
-				$percentage	 = 18;			
-				$percentage_of_price = ($pr * $percentage) / 100;
-				@endphp
+                    <tr>
+                        <td>2 </td>
+                        <td>Base Cabinet,1 shutter +1 Shelf.</td>
+                        <td>Row </td>
+                        <td>450 </td>
+                        <td>720 </td>
+                        <td>560 </td>
+                        <td>1 </td>
+                        <td>(BWP)_Ply </td>
+                        <td>White </td>
+                        <td>Without Expo </td>
+                        <td>21091 HGl </td>
+                        <td>HDHMR </td>
+                        <td>21091 </td>
+                        <td>No-skt </td>
+                        <td>100 </td>
+                    </tr>
                     <tr class="sub-total-row">
                         <td colspan="11"></td>
                         <td colspan="2">Sub Total Rs. </td>
-                        <td colspan="2">₹ {{$pr ?? ''}} </td>
+                        <td colspan="2">₹ 1,625,690.00 </td>
                     </tr>
                     <tr class="gst-row">
                         <td colspan="11"></td>
                         <td colspan="1">GST</td>
                         <td colspan="1">18% </td>
-                        <td colspan="2">₹ {{ $percentage_of_price}}</td>
+                        <td colspan="2">₹ 292,624.20</td>
                     </tr>
                     <tr class="Total-row">
                         <td colspan="11"></td>
                         <td colspan="2">Total </td>
-                        <td colspan="2">₹ {{$pr + $percentage_of_price}} </td>
+                        <td colspan="2">₹ 1,918,314.20 </td>
                     </tr>
                 </tbody>
             </table>

@@ -177,7 +177,7 @@
 													@endforeach
 												</div>
 											    <input type="hidden" wire:model="room_names" value="{{ json_encode($rooms) }}" id="room_names">
-											    <input type="text" wire:model="edit_id" id="edit_id" value="{{$edit_id ?? ''}}">
+											    <input type="hidden" wire:model="edit_id" id="edit_id" value="{{$edit_id ?? ''}}">
 											<hr>
 											<button type="button" class="btn btn-danger" aria-label="Close">Close</button>
 											<button type="submit" class="btn btn-success pull-right" aria-label="Close">Submit</button>
@@ -216,11 +216,13 @@
 												<div class="form-group row align-items-center">
 													<div class="col-sm-5">
 														<select class="form-control ad-post-status col-sm-4" id="select-room-lists" wire:model="select_rooms">
-															<option value="">Select</option>
+															<option value="">Select Room</option>
 															@foreach($get_rooms as $val)
-															<option value="{{$val->room_name ?? ''}}">{{ $val->room_name ?? ''}}</option>
+															<option value="{{$val->id ?? ''}}">{{ $val->room_name ?? ''}}</option>
 															@endforeach
 														</select>
+														<span id="err_room_type"></span>
+														
 													</div>
 													
 													<div class="col-sm-4">
@@ -229,7 +231,7 @@
 													<div class="col-sm-3">
 														<ul class="list-inline mb-0 ml-auto text-right">
 															<li class="list-inline-item dropdown">
-																<a href="javascript:void(0)" wire:click="open_kitchen_properties_form">
+																<a href="javascript:void(0)" id="open-kitchen-form-modal">
 																	<i class="fa fa-ellipsis-v"></i>
 																</a>
 															</li>
@@ -297,7 +299,7 @@
 											<hr>
 											@if($exists_cart_data)
 											<button type="button" class="btn btn-danger" aria-label="Close">Close order</button>
-											<a href="{{ route('cartpage') }}" target="_blank"><button type="button" class="btn btn-success pull-right " aria-label="Close">view cart</button></a>
+											<a href="{{ route('cartpage', ['ordid' => $this->edit_id]) }}" target="_blank"><button type="button" class="btn btn-success pull-right " aria-label="Close">view cart</button></a>
 											@endif											
 										</div>
 								  </div>
@@ -683,34 +685,233 @@
     </div>
 	
 	<!-- Modal -->
-	<div class="modal fade" id="roomDetailsModal" tabindex="-1" role="dialog" aria-labelledby="roomDetailsModalLabel" aria-hidden="true">
+	{{--<div class="modal fade" id="roomDetailsModal" tabindex="-1" role="dialog" aria-labelledby="roomDetailsModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<!-- Modal content goes here -->
 			</div>
 		</div>
-	</div>
+	</div>--}}
+	<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
 
-	{{--<div class="modal fade" id="roomDetailsModal" tabindex="-1" role="dialog" aria-labelledby="roomDetailsModalLabel" aria-hidden="true">
+
+	
+	<div class="modal fade" id="roomDetailsModal" tabindex="-1" role="dialog" aria-labelledby="roomDetailsModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="roomDetailsModalLabel">Room Details Missing</h5>
+					<h5 class="modal-title" id="roomDetailsModalLabel"></h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">
-					Please fill in the missing room details.
+					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+								<!-- Brands Panel -->    
+							   <div class="panel panel-default">
+								  <!-- Heading -->
+								  <div class="panel-heading" role="tab" id="headingTwo">
+								  <div class="ad-info-1">
+									<label>
+										<h4 class="panel-title">Submit Kitchen properties</h4>
+									</label>
+								  </div>
+								  </div>
+								  <!-- Content -->
+								  <?php 
+								  //echo "<pre>";print_r($indivisual_room_data);
+								  ?>
+								  <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+									 <div class="panel-body">
+									 {{--<form id="kitchenOrderForm">--}}
+										<form>
+										<input type="hidden" wire:model="select_rooms">
+											<div class="form-group row">
+												<label class="inline-label-select col-sm-5">
+												Cabinet Material:</label>
+												<div class="col-sm-7">
+														<select class="form-control ad-post-status" wire:model="modal_room_cabinet_material" id="modal_room_material">
+															<option value="">Select Material</option>
+															@foreach($material as $material_val)
+															<option value="{{$material_val->id}}" data-image="{{ asset('admin-assets/images/materials/'.$material_val->image) }}" {{!empty($room_cabinet_material) && $room_cabinet_material == $material_val->id ? 'selected' : ''}}  >{{$material_val->name}}</option>
+															@endforeach
+														</select>
+														<span id="error_modal_material"></span>
+												</div>
+											</div>
+	  
+											<div class="form-group row">
+												<label class="inline-label-select col-sm-5">
+												Box Inner Laminate:</label>
+												<div class="col-sm-7">
+														<select class="form-control ad-post-status" wire:model="modal_room_box_inner_lam" id="modal_room_box_inner_lam">
+															<option value="">Select</option>
+															@foreach($box_inner_laminate as $box_inner_laminate_val)
+															<option value="{{$box_inner_laminate_val->id}}" data-image="{{ asset('admin-assets/images/cabinetcolors/'.$box_inner_laminate_val->image) }}" {{!empty($room_box_inner_lam) && $room_box_inner_lam == $box_inner_laminate_val->id ? 'selected' : ''}}>{{$box_inner_laminate_val->name}}</option>
+														@endforeach
+														</select>
+														<span id="error_modal_box_inner"></span>
+												</div>
+											</div>
+
+											<div class="form-group row">
+												<label class="inline-label-select col-sm-5">
+												Shutter Material:</label>
+												<div class="col-sm-7">
+														<select class="form-control ad-post-status" wire:model="modal_room_shutter_material" id="modal_room_shutter_material">
+															<option value="">Select</option>
+															@foreach($shutter_material as $shutter_material_val)
+															<option value="{{$shutter_material_val->id}}" data-image="{{ asset('admin-assets/images/shuttermaterial/'.$shutter_material_val->image) }}" {{!empty($room_shutter_material) && $room_shutter_material == $shutter_material_val->id ? 'selected' : ''}}>{{$shutter_material_val->name}}</option>
+														@endforeach
+														</select>
+														<span id="error_modal_shutter_material"></span>
+												</div>
+											</div>
+
+											<div class="form-group row">
+												<label class="inline-label-select col-sm-5">
+												Shutter Finish:</label>
+												<div class="col-sm-7">
+														<select class="form-control ad-post-status" wire:model="modal_room_shutter_finish" id="modal_room_shutter_finish">
+															<option value="">Select</option>
+															@foreach($shutter_finish as $shutter_finish_val)
+															<option value="{{$shutter_finish_val->id}}" data-image="{{ asset('admin-assets/images/exposhuttercolors/'.$shutter_finish_val->image) }}" {{!empty($room_shutter_finish) && $room_shutter_finish == $shutter_finish_val->id ? 'selected' : ''}}>{{$shutter_finish_val->name}}</option>
+														@endforeach
+														</select>
+														<span id="error_modal_shutter_finish"></span>
+												</div>
+											</div>
+
+											<div class="form-group row">
+												<label class="inline-label-select col-sm-5">
+												Skt Type:</label>
+												<div class="col-sm-7">
+														<select class="form-control ad-post-status" wire:model="modal_room_skt_type" id="modal_room_skt_type">
+															<option value="">Select </option>
+															<option value="100" {{!empty($room_skt_type) && $room_skt_type == 100 ? 'selected' : ''}}>PVC_Skt</option>
+															<option value="200" {{!empty($room_skt_type) && $room_skt_type == 200 ? 'selected' : ''}}>Sold</option>
+														</select>
+														<span id="error_modal_skt_type"></span>
+												</div>
+											</div>
+
+											<div class="form-group row">
+												<label class="inline-label-select col-sm-5">
+												Skt height:</label>
+												<div class="col-sm-7">
+														<select class="form-control ad-post-status" wire:model="modal_room_skt_height" id="modal_room_skt_height">
+															<option value="">Select</option>
+															<option value="100" {{!empty($room_skt_height) && $room_skt_height == 100 ? 'selected' : ''}}>100</option>
+															<option value="200" {{!empty($room_skt_height) && $room_skt_height == 200 ? 'selected' : ''}}>200</option>
+														</select>
+														<span id="error_modal_skt_height"></span>
+												</div>
+											</div>
+
+											<div class="form-group row">
+												<label class="inline-label-select col-sm-5">
+												Handle Types:</label>
+												<div class="col-sm-7">
+														<select class="form-control ad-post-status" wire:model="modal_room_handeltype_val" id="modal_room_handeltype_val">
+															<option value="">Select</option>
+															@foreach($handeltype as $handeltype_val)
+															<option value="{{$handeltype_val->id}}" data-image="{{ asset('admin-assets/images/handletype/'.$handeltype_val->image) }}" {{!empty($room_handeltype_val) && $room_handeltype_val == $handeltype_val->id ? 'selected' : ''}}>{{$handeltype_val->name}}</option>
+														@endforeach
+														</select>
+														<span id="error_modal_handle_type"></span>
+												</div>
+											</div>
+										
+
+											<hr>
+											{{--<button type="button" class="btn btn-danger" aria-label="Close" wire:click="return_view_order_form">Close</button>--}}
+											
+											{{--<button type="button" class="btn btn-success pull-right" aria-label="Close" wire:click="submitModalKitchenOrderForm">Submit</button>--}}  
+												<button type="submit" class="btn btn-success pull-right" aria-label="Close" id="submitKitchenOrderForm">Submit</button>  
+                                         </form>							
+									</div>
+								  </div>
+								</div>
+							   <!-- Latest Ads Panel End -->
+							  </div>
 				</div>
-				<div class="modal-footer">
+				<div class="modal-footer d-flex justify-content-between">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 				</div>
 			</div>
 		</div>
-	</div>--}}
+	</div>
 	@section('scripts')
 	<script src="{{ url('js/neworder.js') }}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script>
+	document.addEventListener('livewire:load', function () {
+		 //alert('ok');
+		    initializeSelect2();
+            $(document).on('change', '#modal_room_material', function (e) {
+                var data = $(this).val();
+                if (data != '') {
+					@this.set('modal_room_cabinet_material', data, true);
+                }
+            });
+			$(document).on('change', '#modal_room_box_inner_lam', function (e) {
+                var data = $(this).val();
+                if (data != '') {
+					@this.set('modal_room_box_inner_lam', data, true);
+                }
+            });
+			$(document).on('change', '#modal_room_shutter_material', function (e) {
+                var data = $(this).val();
+                if (data != '') {
+					@this.set('modal_room_shutter_material', data, true);
+                }
+            });
+			$(document).on('change', '#modal_room_shutter_finish', function (e) {
+                var data = $(this).val();
+                if (data != '') {
+					@this.set('modal_room_shutter_finish', data, true);
+                }
+            });
+			$(document).on('change', '#modal_room_skt_type', function (e) {
+                var data = $(this).val();
+                if (data != '') {
+					@this.set('modal_room_skt_type', data, true);
+                }
+            });
+			$(document).on('change', '#modal_room_skt_height', function (e) {
+                var data = $(this).val();
+                if (data != '') {
+					@this.set('modal_room_skt_height', data, true);
+                }
+            });
+			$(document).on('change', '#modal_room_handeltype_val', function (e) {
+                var data = $(this).val();
+                if (data != '') {
+					@this.set('modal_room_handeltype_val', data, true);
+                }
+            });
+			
+			window.addEventListener('openRoomDetailsModal', function (event) {
+				const data = event.detail.status;
+				//alert(data);
+				if (data == 'true') {
+					$('#roomDetailsModal').modal('hide');
+				} else if (data == 'false') {
+					$('#roomDetailsModal').modal('show');
+				}
+			});
+			
+			//window.addEventListener('modalClosed', function () {
+				//$('#roomDetailsModal').modal('show');
+			//});
+        });
+		
+		
+	
+	</script>
 	@endsection
 </div>
     

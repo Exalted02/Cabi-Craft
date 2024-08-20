@@ -55,7 +55,7 @@ Route::get('/error', [FrontendController::class, 'error_page'])->name('error');
 // ------------- temporary new post add route start ----------
 Route::middleware(['auth'])->group(function () {	
 	Route::get('/browsecatalogue', [FrontendController::class, 'browse'])->name('browsecatalogue');
-	Route::get('/cartpage', [FrontendController::class, 'cart'])->name('cartpage');
+	Route::get('/cartpage/{ordid}', [FrontendController::class, 'cart'])->name('cartpage');
 	Route::get('/profilepage', [FrontendController::class, 'profile'])->name('profilepage');
 	Route::get('/settingpage', [FrontendController::class, 'setting'])->name('settingpage');
 	Route::get('/offerpage', [FrontendController::class, 'offer'])->name('offerpage');

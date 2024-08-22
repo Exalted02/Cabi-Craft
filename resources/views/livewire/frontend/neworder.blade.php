@@ -837,7 +837,7 @@
 												<label class="inline-label-select col-sm-5">
 												Skt height:</label>
 												<div class="col-sm-7">
-												<input type="text" class="form-control" wire:model="modal_room_skt_height">
+												<input type="text" class="form-control" wire:model="modal_room_skt_height" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
 													{{--<select class="form-control ad-post-status" wire:model="modal_room_skt_height" id="modal_room_skt_height">
 															<option value="">Select</option>
 															<option value="100" {{!empty($room_skt_height) && $room_skt_height == 100 ? 'selected' : ''}}>100</option>

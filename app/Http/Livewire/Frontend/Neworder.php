@@ -149,7 +149,6 @@ class Neworder extends Component
 		$hasdetails = Temporderroomtype::where(['order_id'=>session()->get('session_order_id'),'user_id'=>auth()->user()->id,'id'=>$value])->first();
 		if($hasdetails->cabinet_material!=0 || $hasdetails->box_Inner_laminate!=0 || $hasdetails->shutter_material!=0 || $hasdetails->shutter_finish!=0 || $hasdetails->skt_type!=0 || $hasdetails->skt_height!=0 || $hasdetails->handle_types)
 		{
-			//$this->dispatchBrowserEvent('openRoomDetailsModal','true');
 			$this->dispatchBrowserEvent('openRoomDetailsModal', ['status' => 'true']);
 			$this->hasRoomDetails = true;
 			
@@ -165,11 +164,10 @@ class Neworder extends Component
 			
 			$this->hasRoomDetails = false;
 			$this->dispatchBrowserEvent('openRoomDetailsModal', ['status' => 'false']);
-			//$this->dispatchBrowserEvent('openRoomDetailsModal','false');
-			//$this->dispatchBrowserEvent('openRoomDetailsModal', ['someKey' => 'someValue']);
 		}
 		$this->select_room_type_validation = false;
 		$this->select_rooms = $value;
+		session()->put('session_room_id',$value);
 	}
 	public function roomMaterialTypeSelected($value)
 	{
@@ -527,7 +525,8 @@ class Neworder extends Component
 		$model->updated_at=date('Y-m-d H:i:s');
 		if($model->save())
 		{
-			return redirect()->route('neworder')->with('success','Room Details Updated');
+			$this->dispatchBrowserEvent('openRoomDetailsModal', ['status' => 'true']);
+			//return redirect()->route('neworder')->with('success','Room Details Updated');
 		}
 		else{
 			return redirect()->route('neworder')->with('error','Error Try Again');
@@ -645,10 +644,11 @@ class Neworder extends Component
 			$this->view_order_form = false;
 			$this->customise_form = false;
 			session()->forget('customize_product_id');
+			session()->forget('session_room_id');
 		}
 		elseif(session()->get('steps')==2)
 		{
-			//dd($this->customise_form);
+			//dd($this->select_rooms);
 			$this->new_order_form = false;
 			$this->view_order_form = true;
 			$this->customise_form = false;
@@ -656,6 +656,14 @@ class Neworder extends Component
 			//dd('ee');
 			session()->forget('customize_product_id');
 			//$this->exists_cart_data = false;
+			// get cart data 
+			$check_room_data = Temporderroomtype::where(['order_id'=>session()->get('session_order_id'),'user_id'=>auth()->user()->id,'id'=>session()->get('session_room_id')])->first();
+			//dd(session()->get('session_room_id'));
+			if(!empty($check_room_data))
+			{
+				$this->list_add_to_cart = Tempaddtocart::where(['user_id'=>auth()->user()->id,'order_id'=>$check_room_data->order_id,'room_type_id'=>$check_room_data->id])->get();
+				$this->total_cart_price =  Tempaddtocart::where(['user_id'=>auth()->user()->id,'order_id'=>$check_room_data->order_id,'room_type_id'=>$check_room_data->id])->sum('price');
+			}
 		}
 		elseif(session()->get('steps')==3)
 		{

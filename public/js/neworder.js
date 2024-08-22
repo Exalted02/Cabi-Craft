@@ -64,9 +64,8 @@ document.addEventListener('DOMContentLoaded', function() {
 			return false; 
 		}
 		else{
-			//initializeSelect2();
+			
 			Livewire.emit('submitModalKitchenOrderForm');
-			//return true;
 		}
     });
 	

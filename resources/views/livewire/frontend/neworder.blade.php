@@ -734,7 +734,7 @@
 
 
 	
-	<div class="modal fade" id="roomDetailsModal" tabindex="-1" role="dialog" aria-labelledby="roomDetailsModalLabel" aria-hidden="true">
+	<div class="modal fade" id="roomDetailsModal" tabindex="-1" role="dialog" aria-labelledby="roomDetailsModalLabel" aria-hidden="true" wire:ignore.self>
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -837,11 +837,12 @@
 												<label class="inline-label-select col-sm-5">
 												Skt height:</label>
 												<div class="col-sm-7">
-														<select class="form-control ad-post-status" wire:model="modal_room_skt_height" id="modal_room_skt_height">
+												<input type="text" class="form-control" wire:model="modal_room_skt_height">
+													{{--<select class="form-control ad-post-status" wire:model="modal_room_skt_height" id="modal_room_skt_height">
 															<option value="">Select</option>
 															<option value="100" {{!empty($room_skt_height) && $room_skt_height == 100 ? 'selected' : ''}}>100</option>
 															<option value="200" {{!empty($room_skt_height) && $room_skt_height == 200 ? 'selected' : ''}}>200</option>
-														</select>
+														</select>--}}
 														<span id="error_modal_skt_height"></span>
 												</div>
 											</div>
@@ -947,12 +948,14 @@
 					@this.set('modal_room_skt_type', data, true);
                 }
             });
-			$(document).on('change', '#modal_room_skt_height', function (e) {
+			
+			
+			/*$(document).on('change', '#modal_room_skt_height', function (e) {
                 var data = $(this).val();
                 if (data != '') {
 					@this.set('modal_room_skt_height', data, true);
                 }
-            });
+            });*/
 			$(document).on('change', '#modal_room_handeltype_val', function (e) {
                 var data = $(this).val();
                 if (data != '') {

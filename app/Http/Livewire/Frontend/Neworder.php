@@ -655,7 +655,7 @@ class Neworder extends Component
 			$this->kitchen_properties_form = false;
 			//dd('ee');
 			session()->forget('customize_product_id');
-			//$this->exists_cart_data = false;
+			//$this->exists_cart_data = true;
 			// get cart data 
 			$check_room_data = Temporderroomtype::where(['order_id'=>session()->get('session_order_id'),'user_id'=>auth()->user()->id,'id'=>session()->get('session_room_id')])->first();
 			//dd(session()->get('session_room_id'));
@@ -663,6 +663,10 @@ class Neworder extends Component
 			{
 				$this->list_add_to_cart = Tempaddtocart::where(['user_id'=>auth()->user()->id,'order_id'=>$check_room_data->order_id,'room_type_id'=>$check_room_data->id])->get();
 				$this->total_cart_price =  Tempaddtocart::where(['user_id'=>auth()->user()->id,'order_id'=>$check_room_data->order_id,'room_type_id'=>$check_room_data->id])->sum('price');
+				$this->exists_cart_data = true;
+			}
+			else{
+				$this->exists_cart_data = false;
 			}
 		}
 		elseif(session()->get('steps')==3)

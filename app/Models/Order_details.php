@@ -71,4 +71,13 @@ class Order_details extends Model
     {
         return $this->belongsTo(Handeltype::class, 'handel_type');
     }
+	// new add
+	public function product()
+    {
+        return $this->belongsTo(Products::class, 'product_id');
+    }
+	public function room()
+    {
+        return $this->belongsTo(Temporderroomtype::class, 'room_id');
+    }
 }

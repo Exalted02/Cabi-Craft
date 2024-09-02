@@ -1,7 +1,7 @@
 @section('styles')
 <link href="{{ url('css/custom-select2.css') }}" rel="stylesheet">
 @endsection
-<div class="submited-form">
+<div class="submited-form" style="margin-top:5px;">
     <div class="row">
 		<div class="col-md-12 col-xs-12 col-sm-12">
 			<div class="row">
@@ -26,7 +26,7 @@
 											 </div>
 											<div class="short-description-1">
 												<h3>
-													<a title="" href="{{route('offerdetailpage')}}">{{$product->name}}</a>
+													<a title="" href="{{route('offerdetailpage' ,$product->id )}}">{{$product->name}}</a>
 												</h3>
 												<p>{{ \Illuminate\Support\Str::limit($product->description, 30) }}</p>
 												<span class="ad-price">Rs.{{ $product->price}}</span> 
@@ -192,7 +192,7 @@
 							@endif
 							@if($this->view_order_form)
 							 <!-- MR Robin-->
-							 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+							 <div class="panel-group view-order-form-div" id="accordion" role="tablist" aria-multiselectable="true">
 							   <!-- Brands Panel -->    
 							   <div class="panel panel-default">
 								  <!-- Heading -->
@@ -255,7 +255,7 @@
 														</div>
 														
 														<div class="col-md-6 col-xs-6 col-sm-6">
-															<span class="label label-warning"><font wire:click="open_customise_form({{ $cartlist->product_id }})">Customize</font> <ul class="pull-right ">
+															<span class="label label-warning"><font class="open-customize-form" data-id="{{ $cartlist->id }}">Customize</font> <ul class="pull-right ">
 																<li><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" wire:click="deleteFromCart({{ $cartlist->id }})"><i class="fa fa-times delete"></i></a></li>
 															</ul></span>
 															<h5>Rs.{{ $cartlist->price ?? '' }}</h5>
@@ -299,7 +299,7 @@
 											@endif	
 											<hr>
 											@if($exists_cart_data)
-											<button type="button" class="btn btn-danger" aria-label="Close">Close order</button>
+											<button type="button" class="btn btn-danger" aria-label="Close" wire:click="edit_new_order_form">Close order</button>
 											<a href="{{ route('cartpage', ['ordid' => $this->edit_id]) }}" target="_blank"><button type="button" class="btn btn-success pull-right " aria-label="Close">view cart</button></a>
 											@endif											
 										</div>
@@ -310,11 +310,11 @@
 							  <!--  end MR Robin-->
 							@endif  
 							@if($this->kitchen_properties_form)
-							 <!--SubmitKitchen properties-->
-							 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-							   <!-- Brands Panel -->    
+							 
+							 {{--<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+							  
 							   <div class="panel panel-default">
-								  <!-- Heading -->
+								 
 								  <div class="panel-heading" role="tab" id="headingTwo">
 								  <div class="ad-info-1">
 									<label>
@@ -322,10 +322,7 @@
 									</label>
 								  </div>
 								  </div>
-								  <!-- Content -->
-								  <?php 
-								  //echo "<pre>";print_r($indivisual_room_data);
-								  ?>
+								  
 								  <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
 									 <div class="panel-body">
 										<form wire:submit.prevent="submitKitchenOrderForm" id="bodyform">
@@ -346,7 +343,7 @@
 	  
 											<div class="form-group row">
 												<label class="inline-label-select col-sm-5">
-												Box Inner Laminate:</label>
+												Box Inner Laminate_sssss:</label>
 												<div class="col-sm-7">
 														<select class="form-control ad-post-status" wire:model="room_box_inner_lam" id="room_box_inner_lam">
 															<option value="">Select</option>
@@ -434,14 +431,16 @@
 									</div>
 								  </div>
 								</div>
-							   <!-- Latest Ads Panel End -->
-							  </div>
+							   
+							 </div>--}}
 							<!--End SubmitKitchen properties-->
 							@endif  
-							@if($this->customise_form)
-							 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-							   <!-- Brands Panel -->    
-							   <div class="panel panel-default">
+							
+							
+						@if($this->customise_form)
+						<div class="panel-group customer_form_div" id="accordion" role="tablist" aria-multiselectable="true" style="@if(session()->get('steps')==3)display:block @else display:none @endif">
+							<!-- Brands Panel -->    
+							<div class="panel panel-default">
 								  <!-- Heading -->
 								  <div class="panel-heading border-bottom-seperator mb-20px" role="tab" id="headingTwo">
 								  <div class="ad-info-1">
@@ -451,34 +450,41 @@
 								  </div>
 								  </div>
 								  <!-- Content -->
-							@php
-								$lengthArr = [];							
-								$breadthArr = [];							
-								$deepArr = [];
-								if($product_details->length!=0)							
-								{
-									if(strpos($product_details->length, ',') !== false)
-									$lengthArr = explode(',',$product_details->length);
+								@php
+								   
+									$lengthArr = [];							
+									$breadthArr = [];							
+									$deepArr = [];
+									if(isset($product_details->length) && $product_details->length!=0)							
+									{
+										if(strpos($product_details->length, ',') !== false)
+										$lengthArr = explode(',',$product_details->length);
+										else
+										$lengthArr[] = $product_details->length;
+									}
+									
+									if(isset($product_details->breadth) && $product_details->breadth!=0)
+									{
+									if (strpos($product_details->breadth, ',') !== false)
+									$breadthArr=explode(',',$product_details->breadth);
 									else
-									$lengthArr[] = $product_details->length;
-								}
+										$breadthArr[] = $product_details->breadth;
+									}
+									
+									if(isset($product_details->deep) && $product_details->deep!=0)
+									{
+									if (strpos($product_details->deep, ',') !== false)
+										$deepArr = explode(',',$product_details->deep);
+									else
+										$deepArr[] = $product_details->deep;
+									}
+									
+								$roomdtls = App\Models\Temporderroomtype::where('id',$select_rooms_id)->first();
 								
-								if (strpos($product_details->breadth, ',') !== false)
-								$breadthArr=explode(',',$product_details->breadth);
-								else
-									$breadthArr[] = $product_details->breadth;
-								
-								
-								if (strpos($product_details->deep, ',') !== false)
-									$deepArr = explode(',',$product_details->deep);
-								else
-									$deepArr[] = $product_details->deep;
-								
-								
-							$roomdtls = App\Models\Temporderroomtype::where('id',$select_rooms_id)->first();
+									//echo "<pre>";print_r($roomdtls);die;
+								@endphp	
+
 							
-								//echo "<pre>";print_r($roomdtls);die;
-							@endphp							
 							<div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
 									<div class="row">
 										<div class="col-md-3 col-xs-3 col-sm-3">
@@ -486,22 +492,24 @@
 										</div>
 										<input type="hidden" value="{{!empty($customize_product_id) ? $customize_product_id : ''}}" wire:model="customize_product_id">
 										<div class="col-md-9 col-xs-9 col-sm-9">
-									<form wire:submit.prevent="submitcostomizeOrderForm" id="bodyform">
+										{{--<form wire:submit.prevent="submitcostomizeOrderForm" id="bodyform">--}}
+									<form>
+									<input type="hidden" value="{{$customize_cart_id ?? ''}}" wire.model="customize_cart_id">
 												<div class="display-flex">
 													<div class="width-85-percent">
 														<div class="form-group row">
 															<label class="inline-label-select col-sm-4">Width:</label>
 															<div class="col-sm-8">
-															@if($customizewidthSel)
-																<select class="form-control" id="width"  wire:model="customize_width">
+												@if($customizewidthSel)			
+																<select class="form-control" id="customize_width"  wire:model="customize_width">
 															    <option value="">Select</option>	@foreach($breadthArr as $val)
-																	<option value="{{$val}}">{{$val}}</option>
+																	<option value="{{$val}}" {{!empty($customize_width_text) && $customize_width_text==$val ? 'selected' : ''}}>{{$val}}</option>
 																@endforeach	
 																</select>
 																@error('customize_width') <span class="text-danger">{{ $message }}</span> @enderror
-															@else
-																<input type="text" class="form-control">
-														    @endif
+				@else
+																<input type="text" class="form-control" wire:model="customize_width_text" value="{{$customize_width_text ?? ''}}">
+														    @endif											
 															</div>
 														</div>
 													</div>
@@ -515,22 +523,23 @@
 														<div class="form-group row">
 															<label class="inline-label-select col-sm-4">Length:</label>
 															<div class="col-sm-8">
-															@if($customizelengthSel)
-																<select class="form-control" id="length" wire:model="customize_length">
+													@if($customizelengthSel)
+																<select class="form-control" id="customize_length" wire:model="customize_length">
 																<option value="">Select</option>
 																@foreach($lengthArr as $val)
-																	<option value="{{$val}}">{{$val}}</option>
+																	<option value="{{$val}}" {{!empty($customize_length_text) && $customize_length_text==$val ? 'selected' : ''}}>{{$val}}</option>
 																@endforeach	
 																</select>
 																@error('customize_length') <span class="text-danger">{{ $message }}</span> @enderror
-																@else
-																<input type="text" class="form-control">	
+											@else
+																<input type="text" class="form-control" wire:model="customize_length_text" value="{{$customize_length_text ?? ''}}">	
 																@endif
+																
 															</div>
 														</div>
 													</div>
 													<div class="width-15-percent display-flex justify-content-center align-items-center">
-														<input type="checkbox" id="toggle2" class="checkbox" wire:model="lengthEnabled" />
+														<input type="checkbox" id="toggle2" class="checkbox" wire:model="lengthEnabled"/>
 														<label for="toggle2" class="switch"></label>
 													</div>
 												</div>
@@ -539,22 +548,22 @@
 														<div class="form-group row">
 															<label class="inline-label-select col-sm-4">Deep:</label>
 															<div class="col-sm-8">
-															@if($customizedeepSel)
-																<select class="form-control" id="deep" wire:model="customize_deep">
+											@if($customizedeepSel)
+																<select class="form-control" id="customize_deep" wire:model="customize_deep">
 																<option value="">Select</option>
 																  @foreach($deepArr as $val)
-																	<option value="{{$val}}">{{$val}}</option>
+																	<option value="{{$val}}" {{!empty($customize_deep_text) && $customize_deep_text==$val ? 'selected' : ''}}>{{$val}}</option>
 																    @endforeach	
 																</select>
 																@error('customize_deep') <span class="text-danger">{{ $message }}</span> @enderror
-															@else 
-															<input type="text" class="form-control">
-														    @endif
+							@else 
+								<input type="text" class="form-control" wire:model="customize_deep_text" value="{{$customize_deep_text ?? ''}}">
+							@endif	
 															</div>
 														</div>
 													</div>
 													<div class="width-15-percent display-flex justify-content-center align-items-center">
-														<input type="checkbox" id="toggle3" class="checkbox" wire:model="deepEnabled" />
+														<input type="checkbox" id="toggle3" class="checkbox" wire:model="deepEnabled"/>
 														<label for="toggle3" class="switch"></label>
 													</div>
 												</div>
@@ -563,10 +572,11 @@
 														<div class="form-group row">
 															<label class="inline-label-select col-sm-4">QTY:</label>
 															<div class="col-sm-8">
-																<select class="form-control" wire:model="customize_qty">
-																	<option value="expired">(MR)_Ply</option>
-																	<option value="sold">Sold</option>
-																	<option value="active" selected></option>
+																<select class="form-control" wire:model="customize_qty" id="customize_qty">
+																	<option value="">Select</option>
+@for($i=1;$i<=20;$i++)																<option value="{{$i}}">{{$i}}</option>
+@endfor												
+															{{--<option value="active" selected></option>--}}
 																</select>
 																@error('customize_qty') <span class="text-danger">{{ $message }}</span> @enderror
 															</div>
@@ -584,134 +594,136 @@
 											<div class="form-group row">
 												<label class="inline-label-select col-sm-5">Expo:</label>
 												<div class="col-sm-7">
-													<select class="form-control" id="expo_name" wire:model="customize_expo_name">
+													<select class="form-control customize_expo_name" id="expo_name" wire:model="customize_expo_name">
 														<option value="">Select</option>
 														@foreach($exposide as $val)
 															<option value="{{$val->id}}" data-image="{{ asset('admin-assets/images/exposide/'.$val->image) }}">{{$val->name}}</option>
 														@endforeach
 													</select>
-													@error('customize_expo_name') <span class="text-danger">{{ $message }}</span> @enderror
+													<span id="error_customize_expo"></span>
 												</div>
 											</div>
 												
 											<div class="form-group row">
 												<label class="inline-label-select col-sm-5">Expo Colour:</label>
 												<div class="col-sm-7">
-													<select class="form-control" id="expo_colour" wire:model="customize_expo_colour">
+													<select class="form-control customize_expo_colour" id="expo_colour" wire:model="customize_expo_colour">
 														<option value="">Select</option>
 														@foreach($expocolour as $expocolour_val)
 															<option value="{{$expocolour_val->id}}" data-image="{{ asset('admin-assets/images/exposhuttercolors/'.$expocolour_val->image) }}">{{$expocolour_val->name}}</option>
 														@endforeach
 													</select>
-													@error('customize_expo_colour') <span class="text-danger">{{ $message }}</span> @enderror
+													<span id="error_customize_expo_color"></span>
 												</div>
 											</div>
 
 											<div class="form-group row">
 												<label class="inline-label-select col-sm-5">Cabinet Material:</label>
 												<div class="col-sm-7">
-													<select class="form-control customize_cabinet_material" id="material" wire:model="customize_cabinet_material">
+													<select class="form-control" id="material" wire:model="customize_cabinet_material">
 														<option value="">Select</option>
 														@foreach($material as $material_val)
-															<option value="{{$material_val->id}}" data-image="{{ asset('admin-assets/images/materials/'.$material_val->image) }}" {{$customize_cabinet_material==$material_val->id ? 'selected':''}}>{{$material_val->name}}</option>
+															<option value="{{$material_val->id}}" data-image="{{ asset('admin-assets/images/materials/'.$material_val->image) }}">{{$material_val->name}}</option>
 														@endforeach
 													</select>
-													@error('customize_cabinet_material') <span class="text-danger">{{ $message }}</span> @enderror
+													<span id="error_customize_cab_material"></span>
 												</div>
 											</div>
 
 											<div class="form-group row">
 												<label class="inline-label-select col-sm-5">Box Inner Laminate:</label>
 												<div class="col-sm-7">
-													<select class="form-control" id="box_inner_laminate_val" wire:model="customize_box_inner_laminate">
+													<select class="form-control customize_box_inner_laminate" id="box_inner_laminate_val" wire:model="customize_box_inner_laminate">
 														<option value="">Select</option>
 														@foreach($box_inner_laminate as $box_inner_laminate_val)
-															<option value="{{$box_inner_laminate_val->id}}" data-image="{{ asset('admin-assets/images/cabinetcolors/'.$box_inner_laminate_val->image) }}" {{$customize_box_inner_laminate==$box_inner_laminate_val->id ? 'selected':''}}>{{$box_inner_laminate_val->name}}</option>
+															<option value="{{$box_inner_laminate_val->id}}" data-image="{{ asset('admin-assets/images/cabinetcolors/'.$box_inner_laminate_val->image) }}">{{$box_inner_laminate_val->name}}</option>
 														@endforeach
 													</select>
-													@error('customize_box_inner_laminate') <span class="text-danger">{{ $message }}</span> @enderror
+													<span id="error_customize_box_inner"></span>
 												</div>
 											</div>
 
 											<div class="form-group row">
 												<label class="inline-label-select col-sm-5">Shutter Material:</label>
 												<div class="col-sm-7">
-													<select class="form-control" id="shutter_material" wire:model="customize_shutter_material">
+													<select class="form-control customize_shutter_material" id="shutter_material" wire:model="customize_shutter_material">
 														<option value="">Select</option>
 														@foreach($shutter_material as $shutter_material_val)
-															<option value="{{$shutter_material_val->id}}" data-image="{{ asset('admin-assets/images/shuttermaterial/'.$shutter_material_val->image) }}" {{$customize_shutter_material==$shutter_material_val->id ? 'selected': ''}}>{{$shutter_material_val->name}}</option>
+															<option value="{{$shutter_material_val->id}}" data-image="{{ asset('admin-assets/images/shuttermaterial/'.$shutter_material_val->image) }}">{{$shutter_material_val->name}}</option>
 														@endforeach
 													</select>
-													@error('customize_shutter_material') <span class="text-danger">{{ $message }}</span> @enderror
+													<span id="error_customize_shut_material"></span>
 												</div>
 											</div>
 
 											<div class="form-group row">
 												<label class="inline-label-select col-sm-5">Shutter Finish:</label>
 												<div class="col-sm-7">
-													<select class="form-control" id="shutter_finish" wire:model="customize_shutter_finish">
+													<select class="form-control customize_shutter_finish" id="shutter_finish" wire:model="customize_shutter_finish">
 														<option value="">Select</option>
 														@foreach($shutter_finish as $shutter_finish_val)
-															<option value="{{$shutter_finish_val->id}}" data-image="{{ asset('admin-assets/images/exposhuttercolors/'.$shutter_finish_val->image) }}" {{$customize_shutter_finish==$shutter_finish_val->id ? 'selected': ''}}>{{$shutter_finish_val->name}}</option>
+															<option value="{{$shutter_finish_val->id}}" data-image="{{ asset('admin-assets/images/exposhuttercolors/'.$shutter_finish_val->image) }}">{{$shutter_finish_val->name}}</option>
 														@endforeach
 													</select>
-													@error('customize_shutter_finish') <span class="text-danger">{{ $message }}</span> @enderror
+													<span id="error_customize_shut_finish"></span>
 												</div>
 											</div>
 
 											<div class="form-group row">
 												<label class="inline-label-select col-sm-5">Leg Type:</label>
 												<div class="col-sm-7">
-													<select class="form-control" id="legtype" wire:model="customize_legtype">
+													<select class="form-control customize_legtype" id="legtype" wire:model="customize_legtype">
 														<option value="">Select</option>
 														@foreach($legtype as $legtype_val)
 															<option value="{{$legtype_val->id}}" data-image="{{ asset('admin-assets/images/legtype/'.$legtype_val->image) }}">{{$legtype_val->name}}</option>
 														@endforeach
 													</select>
-													@error('customize_legtype') <span class="text-danger">{{ $message }}</span> @enderror
+													<span id="error_customize_legtype"></span>
 												</div>
 											</div>
 											<div class="form-group row">
 												<label for="address" class="col-sm-5 col-form-label">Skt height:</label>
 												<div class="col-sm-7">
-													<input id="address" class="form-control" placeholder="100" type="text" value="{{$customize_skt_height ?  $customize_skt_height: ''}}" wire:model="customize_skt_height">
-													@error('customize_skt_height') <span class="text-danger">{{ $message }}</span> @enderror
+													<input id="customize_skt_height" class="form-control customize_skt_height" placeholder="100" type="text" value="{{$customize_skt_height ?? '' ?  $customize_skt_height: ''}}" wire:model="customize_skt_height">
+													<span id="error_customize_skt_height"></span>
 												</div>
 											</div>
 
 											<div class="form-group row">
 												<label class="inline-label-select col-sm-5">Handle Type:</label>
 												<div class="col-sm-7">
-													<select class="form-control" id="handeltype" wire:model="customize_handeltype">
+													<select class="form-control customize_handeltype" id="handeltype" wire:model="customize_handeltype">
 														<option value="">Select</option>
 														@foreach($handeltype as $handeltype_val)
-															<option value="{{$handeltype_val->id}}" data-image="{{ asset('admin-assets/images/handletype/'.$handeltype_val->image) }}" {{$customize_handeltype==$handeltype_val->id ? 'selected': ''}}>{{$handeltype_val->name}}</option>
+															<option value="{{$handeltype_val->id}}" data-image="{{ asset('admin-assets/images/handletype/'.$handeltype_val->image) }}" >{{$handeltype_val->name}}</option>
 														@endforeach
 													</select>
-													@error('customize_handeltype') <span class="text-danger">{{ $message }}</span> @enderror
+													<span id="error_customize_handle_type"></span>
 												</div>
 											</div>
 											<div class="form-group row">
-													<label for="address" class="col-sm-5 col-form-label">Address:</label>
+													<label for="address" class="col-sm-5 col-form-label">Note:</label>
 													<div class="col-sm-7">
-														<input id="address" class="form-control" placeholder="Address" type="text" wire:model="customize_address">
-														@error('customize_address') <span class="text-danger">{{ $message }}</span> @enderror
+														<input class="form-control customer_address" placeholder="Note" type="text" wire:model="customize_address">
+														<span id="error_customize_address"></span>
 													</div>
 												</div>
 
 										
 										<hr>
 
-										<button type="button" class="btn btn-danger" aria-label="Close" wire:click="return_room_property_form({{ $select_rooms_id }})">Close</button>
-										<button type="submit" class="btn btn-success pull-right" aria-label="Close">Submit</button>         
+										{{--<button type="button" class="btn btn-danger" aria-label="Close" wire:click="return_view_order_form({{ $select_rooms_id }})">Close</button>--}}
+										<button type="button" class="btn btn-danger close-customer-form" aria-label="Close" data-id="{{ $select_rooms_id }}">Close</button>
+										
+										<button type="button" class="btn btn-success pull-right" aria-label="Close" id="submitCustomizeOrferForm">Submit</button>         
 									</div>
-									</div>
-								</form>
-								</div>
-							   <!-- Latest Ads Panel End -->
+								 </form>
+							   </div>
 							</div>
-							@endif  
+							   <!-- Latest Ads Panel End -->
 						</div>
+						@endif
+					</div>
 						 <!-- Sidebar Widgets End -->
 					  <!-- Left Sidebar End -->
 				</div> 
@@ -860,7 +872,14 @@
 														<span id="error_modal_handle_type"></span>
 												</div>
 											</div>
-										
+											<div class="form-group row">
+												<label class="inline-label-select col-sm-5">
+												Note:</label>
+												<div class="col-sm-7">
+													<input type="text" class="form-control" wire:model="modal_room_note" id="modal_room_note" value="{{$modal_room_note ?? ''}}">
+														<span id="error_modal_note"></span>
+												</div>
+											</div>
 
 											<hr>
 											{{--<button type="button" class="btn btn-danger" aria-label="Close" wire:click="return_view_order_form">Close</button>--}}
@@ -908,10 +927,9 @@
 	</div>
 	@section('scripts')
 	<script src="{{ url('js/neworder.js') }}"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+		{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>--}}
     <script>
 	document.addEventListener('livewire:load', function () {
-		 //alert('ok');
 		 //@this.set('customize_cabinet_material', <?php isset($roomdtls->cabinet_material) ? $roomdtls->cabinet_material : ''; ?>, true);
 		 
 		 $('#toggle1').prop('checked', false);
@@ -963,6 +981,88 @@
                 }
             });
 			
+			$(document).on('change', '#customize_width', function (e) {
+                var data = $(this).val();
+				//alert(data);
+                if (data != '') {
+					@this.set('customize_width', data, true);
+                }
+            });
+			$(document).on('change', '#customize_length', function (e) {
+                var data = $(this).val();
+				//alert(data);
+                if (data != '') {
+					@this.set('customize_length', data, true);
+                }
+            });
+			$(document).on('change', '#customize_deep', function (e) {
+                var data = $(this).val();
+                if (data != '') {
+					@this.set('customize_deep', data, true);
+                }
+            });
+			$(document).on('change', '#customize_qty', function (e) {
+                var data = $(this).val();
+                if (data != '') {
+					@this.set('customize_qty', data, true);
+                }
+            });
+			$(document).on('change', '#expo_name', function (e) {
+                var data = $(this).val();
+                if (data != '') {
+					@this.set('customize_expo_name', data, true);
+                }
+            });
+			$(document).on('change', '#expo_colour', function (e) {
+                var data = $(this).val();
+                if (data != '') {
+					@this.set('customize_expo_colour', data, true);
+                }
+            });
+			$(document).on('change', '#material', function (e) {
+                var data = $(this).val();
+                if (data != '') {
+					@this.set('customize_cabinet_material', data, true);
+                }
+            });
+			$(document).on('change', '.customize_box_inner_laminate', function (e) {
+                var data = $(this).val();
+                if (data != '') {
+					@this.set('customize_box_inner_laminate', data, true);
+                }
+            });
+			$(document).on('change', '.customize_shutter_material', function (e) {
+                var data = $(this).val();
+                if (data != '') {
+					@this.set('customize_shutter_material', data, true);
+                }
+            });
+			$(document).on('change', '.customize_shutter_finish', function (e) {
+                var data = $(this).val();
+                if (data != '') {
+					@this.set('customize_shutter_finish', data, true);
+                }
+            });
+			$(document).on('change', '.customize_legtype', function (e) {
+                var data = $(this).val();
+                if (data != '') {
+					@this.set('customize_legtype', data, true);
+                }
+            });
+			$(document).on('change', '.customize_skt_height', function (e) {
+                var data = $(this).val();
+                if (data != '') {
+					@this.set('customize_skt_height', data, true);
+                }
+            });
+			$(document).on('change', '.customize_handeltype', function (e) {
+                var data = $(this).val();
+                if (data != '') {
+					@this.set('customize_handeltype', data, true);
+                }
+            });
+			
+			
 			window.addEventListener('openRoomDetailsModal', function (event) {
 				const data = event.detail.status;
 				//alert(data);
@@ -972,6 +1072,33 @@
 					$('#roomDetailsModal').modal('show');
 				}
 			});
+			
+			window.addEventListener('openCustomozeForm', function (event) {
+				const data = event.detail.status;
+				//alert(data);
+				if (data == 'true') {
+					$('.customer_form_div').show();
+					$('.view-order-form-div').hide();
+				} else if (data == 'false') {
+					$('.customer_form_div').hide();
+				}
+			});
+			
+			$(document).on('click', '.close-customer-form', function () {
+				var room_id = $(this).data('id'); 
+                //alert(room_id);				
+				Livewire.emit('return_view_order_form', room_id);  // Emit Livewire event
+			});
+			
+			@if(session()->get('steps')==3)
+			{
+				$('.customer_form_div').show();
+				//$('.view-order-form-div').hide();
+			}
+			@else{
+				$('.customer_form_div').hide();
+			}
+			@endif
 		});
 	</script>
 	@endsection

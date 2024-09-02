@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\CmsController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +52,7 @@ Route::get('db-seed', function () {
 Route::get('/', [FrontendController::class, 'index'])->name('home');
 //Route::get('/tours/{id}', [FrontendController::class, 'tour_details'])->name('tour.details');
 Route::get('/error', [FrontendController::class, 'error_page'])->name('error');
-
+Route::get('{slug}', [CmsController::class, 'cms_page']);
 // ------------- temporary new post add route start ----------
 Route::middleware(['auth'])->group(function () {	
 	Route::get('/browsecatalogue', [FrontendController::class, 'browse'])->name('browsecatalogue');
@@ -60,9 +61,12 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('/settingpage', [FrontendController::class, 'setting'])->name('settingpage');
 	Route::get('/offerpage', [FrontendController::class, 'offer'])->name('offerpage');
 	Route::get('/orderhistorys', [FrontendController::class, 'orderhistory'])->name('orderhistorys');
-	Route::get('/offerdetailpage', [FrontendController::class, 'offerdetail'])->name('offerdetailpage');
+	Route::get('/product-details/{id}', [FrontendController::class, 'offerdetail'])->name('offerdetailpage');
 	
 	Route::get('/new-order', [FrontendController::class, 'neworder'])->name('neworder');
+	
+	Route::post('/save-order', [FrontendController::class, 'save_order'])->name('saveorder');
+	
 });
 require __DIR__.'/auth.php';
 

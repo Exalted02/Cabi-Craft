@@ -55,7 +55,7 @@ class Neworder extends Component
     public $list_add_to_cart;
     public $product_details;
     public $room_validation  = false;
-	protected $listeners = ['projectTypeSelected','roomTypeSelected','roomMaterialTypeSelected','roomBoxInnerTypeSelected','roomShutterTypeSelected','roomShFinishTypeSelected','roomSktTypeTypeSelected','roomSktHtTypeSelected','roomHandleTypeSelected','modalRoomHandleTypeSelected','submitModalKitchenOrderForm','modalRoomMaterialSelected','open_kitchen_properties_form','deleteroom','deleteprojectname'];
+	protected $listeners = ['projectTypeSelected','roomTypeSelected','roomMaterialTypeSelected','roomBoxInnerTypeSelected','roomShutterTypeSelected','roomShFinishTypeSelected','roomSktTypeTypeSelected','roomSktHtTypeSelected','roomHandleTypeSelected','modalRoomHandleTypeSelected','submitModalKitchenOrderForm','modalRoomMaterialSelected','open_kitchen_properties_form','deleteroom','deleteprojectname','submitcostomizeOrderForm','open_customise_form','return_view_order_form'];
 	//protected $listeners = ['roomTypeSelected'];
 	public $get_rooms;
 	public $hasRoomDetails = false;
@@ -77,7 +77,9 @@ class Neworder extends Component
 	public $modal_room_skt_type;
 	public $modal_room_skt_height;
 	public $modal_room_handeltype_val;
+	public $modal_room_note;
 	public $customize_product_id;
+	
 	
 	public $customizewidthSel = true;
     public $customizelengthSel = true;
@@ -99,6 +101,9 @@ class Neworder extends Component
     public $customize_skt_height;
     public $customize_handeltype;
     public $customize_address;
+    public $cart_id;
+    public $final_form_new= false;
+    public $customize_cart_id;
    	
 	protected $rulesForForm1  = [
         'project_name' => 'required|string|max:255',
@@ -121,7 +126,7 @@ class Neworder extends Component
         'room_handeltype_val' => 'required|string|max:255',
     ];
 	
-	protected $rulesForForm3  = [
+	/*protected $rulesForForm3  = [
         'customize_width' => 'required|string|max:255',
         'customize_length' => 'required|string|max:255',
         'customize_deep' => 'required|string|max:255',
@@ -136,7 +141,7 @@ class Neworder extends Component
         'customize_skt_height' => 'required|string|max:255',
         'customize_handeltype' => 'required|string|max:255',
         'customize_address' => 'required|string|max:255',
-    ];
+    ];*/
 	
 	public function projectTypeSelected($value)
 	{
@@ -146,6 +151,7 @@ class Neworder extends Component
 	}
 	public function roomTypeSelected($value)
 	{
+		//dd($value);
 		$hasdetails = Temporderroomtype::where(['order_id'=>session()->get('session_order_id'),'user_id'=>auth()->user()->id,'id'=>$value])->first();
 		if($hasdetails->cabinet_material!=0 || $hasdetails->box_Inner_laminate!=0 || $hasdetails->shutter_material!=0 || $hasdetails->shutter_finish!=0 || $hasdetails->skt_type!=0 || $hasdetails->skt_height!=0 || $hasdetails->handle_types)
 		{
@@ -161,6 +167,7 @@ class Neworder extends Component
 			$this->modal_room_skt_type 			= '';
 			$this->modal_room_skt_height 		= '';
 			$this->modal_room_handeltype_val 	= '';
+			$this->modal_room_note 	= '';
 			
 			$this->hasRoomDetails = false;
 			$this->dispatchBrowserEvent('openRoomDetailsModal', ['status' => 'false']);
@@ -219,19 +226,44 @@ class Neworder extends Component
 		//if(empty($this->edit_id))
 		$this->edit_id  = empty($this->edit_id) ? '' : $this->edit_id;
     }
-	public function open_customise_form($productId)
+	public function open_customise_form($cartId)
     {
+		//dd($cartId);
+		$cartData = Tempaddtocart::select('product_id')->where('id',$cartId)->first();
+		$productId = $cartData->product_id;
 		//dd($productId);
 		$this->product_details = Products::where('id',$productId)->first();
         $this->kitchen_properties_form = false;
         $this->view_order_form = false;
-        $this->customise_form = true;
+        //$this->customise_form = true;  
+        $this->final_form_new = true;  
+		//dd($this->customise_form);
 		$this->customize_product_id = $productId;
 		session()->put('steps', 3);
 		session()->put('customize_product_id', $productId);
 		$this->select_rooms_id = $this->select_rooms;
-		
+		//dd($this->select_rooms);
 		session()->put('customize_select_room', $this->select_rooms);
+		$this->customize_cart_id = $cartId;
+		session()->put('customize_cart_id',$cartId);
+		
+		$this->dispatchBrowserEvent('openCustomozeForm', ['status' => 'true']);
+		
+		$this->customize_qty  			= '';
+		$this->customize_expo_name  	= '';
+		$this->customize_expo_colour  	= '';
+		$this->customize_cabinet_material  = '';
+		$this->customize_box_inner_laminate  = '';
+		$this->customize_shutter_material  = '';
+		$this->customize_shutter_finish  = '';
+		$this->customize_legtype  = '';
+		$this->customize_skt_height  = '';
+		$this->customize_handeltype  = '';
+		$this->customize_address  = '';
+		//$this->customize_width_text  = '';
+		//$this->customize_length_text  = '';
+		//$this->customize_deep_text  = '';
+		
 		//$roomdtls = Temporderroomtype::where('id',$this->select_rooms)->first();
 		//dd($roomdtls);
 		/*$this->customize_cabinet_material 	= $roomdtls->cabinet_material;
@@ -315,7 +347,7 @@ class Neworder extends Component
 				//$model->room_name		=   $rm;
 				$model->status			=   1;
 				$model->created_at		=   date('Y-m-d h:i:s');
-				$model->updated_at=date('Y-m-d H:i:s');
+				$model->updated_at		=	date('Y-m-d H:i:s');
 				$model->save();
 				$this->edit_id  =  $this->edit_id;
 			}
@@ -460,6 +492,7 @@ class Neworder extends Component
 			$this->modal_room_skt_type = $indivisual_room_data->skt_type;
 			$this->modal_room_skt_height = $indivisual_room_data->skt_height;
 			$this->modal_room_handeltype_val = $indivisual_room_data->handle_types;
+			$this->modal_room_note = $indivisual_room_data->note;
 			
 			$this->dispatchBrowserEvent('openRoomDetailsModal', ['status' => 'false']);
 			//$this->kitchen_properties_form = true;
@@ -474,22 +507,28 @@ class Neworder extends Component
         //$this->kitchen_properties_form = true;
     }
 	// customize form
-	public function return_view_order_form()
+	public function return_view_order_form($roomid='')
     {
+		//dd($roomid);
         $this->new_order_form = false;
         $this->kitchen_properties_form = false;
-        $this->customise_form = false;
+        $this->customise_form = false;  // 28-08-2024
+        $this->final_form_new = false;
         $this->view_order_form = true;
+		session()->put('steps', 2);
+		$this->select_rooms_id = $roomid;
+		$this->dispatchBrowserEvent('openCustomozeForm', ['status' => 'false']);
     }
-	public function return_room_property_form($roomid='')
+	/*public function return_room_property_form($roomid='')
     {
+		//dd('hiii');
 		$this->new_order_form = false;
 		$this->view_order_form = true;
 		$this->customise_form = false;
 		$this->kitchen_properties_form = false;
 		session()->put('steps', 2);
 		$this->select_rooms_id = $roomid;
-    }
+    }*/
 	public function submitKitchenOrderForm()
 	{
 		$this->validate($this->rulesForForm2);
@@ -505,7 +544,7 @@ class Neworder extends Component
 		]);
 		$this->new_order_form = false;
 		$this->view_order_form = true;
-		$this->customise_form = false;
+		//$this->customise_form = false;
 	}
 	public function modalRoomMaterialSelected($value)
 	{
@@ -522,6 +561,7 @@ class Neworder extends Component
 		$model->skt_type			=   $this->modal_room_skt_type;
 		$model->skt_height			=   $this->modal_room_skt_height;
 		$model->handle_types		=   $this->modal_room_handeltype_val;
+		$model->note				=   $this->modal_room_note;
 		$model->updated_at=date('Y-m-d H:i:s');
 		if($model->save())
 		{
@@ -559,6 +599,8 @@ class Neworder extends Component
 			//$this->customizelengthSel = true;
 			//$this->customizedeepSel	= true;
         }
+		$cart_dtls  = Tempaddtocart::where('id',session()->get('customize_cart_id'))->first();
+		$this->customize_width_text    = $this->customize_width_text ?? $cart_dtls->breadth;
     }
 	public function updatedLengthEnabled($value)
     {
@@ -573,7 +615,10 @@ class Neworder extends Component
 			$this->customizelengthSel = true;
 			//$this->customizedeepSel	= true;
         }
-    }
+		
+		$cart_dtls  = Tempaddtocart::where('id',session()->get('customize_cart_id'))->first();
+		$this->customize_length_text    = $this->customize_length_text ?? $cart_dtls->length;
+	}
 	public function updatedDeepEnabled($value)
     {
 		//dd($value);
@@ -587,11 +632,39 @@ class Neworder extends Component
 			//$this->customizelengthSel = true;
 			$this->customizedeepSel	= true;
         }
+		$cart_dtls  = Tempaddtocart::where('id',session()->get('customize_cart_id'))->first();
+		$this->customize_deep_text    = $this->customize_deep_text ?? $cart_dtls->deep;
     }
 	public function submitcostomizeOrderForm()
     {
-        $this->validate($this->rulesForForm3);
-		
+		//dd($this->customize_cart_id);
+        //$this->validate($this->rulesForForm3);
+		$model = Tempaddtocart::find($this->customize_cart_id);
+		$model->user_id				=	auth()->user()->id;
+		$model->length				=	$this->customize_length ?? $this->customize_length_text;
+		$model->breadth				=	$this->customize_width ?? $this->customize_width_text;
+		$model->deep				=	$this->customize_deep ?? $this->customize_deep_text;
+		$model->qty					=	$this->customize_qty;
+		$model->expo				=   $this->customize_expo_name;
+		$model->expo_colour			=   $this->customize_expo_colour;
+		$model->cabinet_material	=   $this->customize_cabinet_material;
+		$model->box_Inner_laminate	=   $this->customize_box_inner_laminate;
+		$model->shutter_material	=   $this->customize_shutter_material;
+		$model->shutter_finish		=   $this->customize_shutter_finish;
+		$model->leg_type			=   $this->customize_legtype;
+		$model->handle_type			=   $this->customize_handeltype;
+		$model->skt_height			=   $this->customize_skt_height;
+		$model->address				=   $this->customize_address;
+		$model->created_at			=   date('Y-m-d h:i:s');
+		//$model->save();
+		if($model->save())
+		{
+			session()->put('steps', 2);
+			return redirect()->route('neworder')->with('success','Cart Updated  Successfully');
+		}
+		else{
+			return redirect()->route('neworder')->with('error','Try Again');
+		}
 	}
 	public function render()
     {
@@ -637,62 +710,202 @@ class Neworder extends Component
 		{
 			$this->project_name_label = $user_order_dtls->project_name;
 		}
+		// reset customer form
+		$room_type_dtls    = Temporderroomtype::where(['id'=>session()->get('session_order_id'),'user_id'=>auth()->user()->id,'id'=>session()->get('session_room_id')])->first();
+		/*if(!empty($room_type_dtls->cabinet_material))
+		{
+			$this->customize_cabinet_material = $this->customize_cabinet_material ?? $room_type_dtls->cabinet_material;
+		}
+		if(!empty($room_type_dtls->box_Inner_laminate))
+		{
+			$this->customize_box_inner_laminate = $this->customize_box_inner_laminate ?? $room_type_dtls->box_Inner_laminate;
+		}
+		if(!empty($room_type_dtls->shutter_material))
+		{
+			$this->customize_shutter_material = $this->customize_shutter_material ?? $room_type_dtls->shutter_material;
+		}
+		if(!empty($room_type_dtls->shutter_finish))
+		{
+			$this->customize_shutter_finish = $this->customize_shutter_finish ?? $room_type_dtls->shutter_finish;
+		}
+		if(!empty($room_type_dtls->skt_type))
+		{
+			$this->customize_legtype = $this->customize_legtype ?? $room_type_dtls->skt_type;
+		}
+		if(!empty($room_type_dtls->skt_height))
+		{
+			$this->customize_skt_height = $this->customize_skt_height ?? $room_type_dtls->skt_height;
+		}
+		if(!empty($room_type_dtls->handle_types))
+		{
+			$this->customize_handeltype = $this->customize_handeltype ?? $room_type_dtls->handle_types;
+		}*/
+		if(!empty($this->cart_id))
+		{
+			$this->cart_id = $this->cart_id ?? '';
+		}
+		
+		//----customize form-------
+		$roomdtls = Temporderroomtype::where(['id'=>session()->get('customize_select_room'),'order_id'=>session()->get('session_order_id')])->first();
+		//dd($this->customize_cart_id);
+		$cart_dtls  = Tempaddtocart::where('id',session()->get('customize_cart_id'))->first();
+		//dd($cart_dtls);
+		
 		
 		if(session()->get('steps')==1)
 		{
 			$this->new_order_form = true;
 			$this->view_order_form = false;
-			$this->customise_form = false;
+			//$this->customise_form = false;
+			$this->final_form_new = false;
 			session()->forget('customize_product_id');
 			session()->forget('session_room_id');
+			session()->forget('customize_cart_id');
+			//dd($this->final_form_new);
 		}
-		elseif(session()->get('steps')==2)
+		
+		if(session()->get('steps')=='2')
 		{
-			//dd($this->select_rooms);
+			session()->forget('costmz_form');
+			//dd($this->customise_form);
 			$this->new_order_form = false;
 			$this->view_order_form = true;
 			$this->customise_form = false;
+			$this->final_form_new = 10;
 			$this->kitchen_properties_form = false;
 			//dd('ee');
 			session()->forget('customize_product_id');
+			session()->forget('customize_cart_id');
 			//$this->exists_cart_data = true;
 			// get cart data 
 			$check_room_data = Temporderroomtype::where(['order_id'=>session()->get('session_order_id'),'user_id'=>auth()->user()->id,'id'=>session()->get('session_room_id')])->first();
 			//dd(session()->get('session_room_id'));
+			//dd($check_room_data);
 			if(!empty($check_room_data))
 			{
 				$this->list_add_to_cart = Tempaddtocart::where(['user_id'=>auth()->user()->id,'order_id'=>$check_room_data->order_id,'room_type_id'=>$check_room_data->id])->get();
 				$this->total_cart_price =  Tempaddtocart::where(['user_id'=>auth()->user()->id,'order_id'=>$check_room_data->order_id,'room_type_id'=>$check_room_data->id])->sum('price');
-				$this->exists_cart_data = true;
-			}
-			else{
-				$this->exists_cart_data = false;
+				//$this->exists_cart_data = true;
+				//dd($this->list_add_to_cart);
+				
+				if(count($this->list_add_to_cart) === 0)
+				{
+					$this->exists_cart_data = false;
+				}
+				else{
+					$this->exists_cart_data = true;
+				}
 			}
 		}
-		elseif(session()->get('steps')==3)
+		
+		if(session()->get('steps')=='3')
 		{
+			session()->put('costmz_form',1);
+			//dd(session()->get('steps'));
+			//dd(session()->get('costmz_form'));
 			
 			$this->product_details = Products::where('id',session()->get('customize_product_id'))->first();
 			$this->new_order_form = false;
 			$this->kitchen_properties_form = false;
 			$this->view_order_form = false;
 			$this->customise_form = true;
+			$this->final_form_new = 11;
+			//dd($this->final_form_new);
 			$this->customize_product_id = session()->get('customize_product_id');
 			
-			$roomdtls = Temporderroomtype::where('id',session()->get('customize_select_room'))->first();
-			//dd($roomdtls);
-			if(!empty($roomdtls))
+		if(!empty($roomdtls))
+		{
+			//dd($cart_dtls->expo);
+			if(!empty($cart_dtls->expo))
 			{
-				$this->customize_cabinet_material 	= $roomdtls->cabinet_material;
-				$this->customize_box_inner_laminate = $roomdtls->box_Inner_laminate;
-				$this->customize_shutter_material 	= $roomdtls->shutter_material;
-				$this->customize_shutter_finish 	= $roomdtls->shutter_finish;
-				$this->customize_skt_height 		= $roomdtls->skt_height;
-				$this->customize_handeltype 		= $roomdtls->handle_types;
+				$this->customize_expo_name = $cart_dtls->expo ?? $this->customize_expo_name;
 			}
+			else{
+				$this->customize_expo_name = $this->customize_expo_name;
+			}
+			
+			
+			if(!empty($cart_dtls->expo))
+			{
+				$this->customize_expo_colour =  $cart_dtls->expo_colour;
+			}
+			else
+			{
+				$this->customize_expo_colour = $this->customize_expo_colour;
+			}
+			
+			$this->customize_cabinet_material = $this->customize_cabinet_material ? $this->customize_cabinet_material : ($cart_dtls->cabinet_material ? $cart_dtls->cabinet_material: $roomdtls->cabinet_material);
+			
+			$this->customize_box_inner_laminate = $this->customize_box_inner_laminate ? $this->customize_box_inner_laminate : ($cart_dtls->box_Inner_laminate ? $cart_dtls->box_Inner_laminate: $roomdtls->box_Inner_laminate);
+			
+			
+			$this->customize_shutter_material 	= $this->customize_shutter_material ? $this->customize_shutter_material : ($cart_dtls->shutter_material ? $cart_dtls->shutter_material: $roomdtls->shutter_material);
+			
+			$this->customize_shutter_finish 	= $this->customize_shutter_finish ? $this->customize_shutter_finish : ($cart_dtls->shutter_finish ? $cart_dtls->shutter_finish: $roomdtls->shutter_finish);
+			
+			
+			$this->customize_skt_height 	= $this->customize_skt_height ? $this->customize_skt_height : ($cart_dtls->skt_height ? $cart_dtls->skt_height: $roomdtls->skt_height);
+			
+			$this->customize_legtype 	= $this->customize_legtype ? $this->customize_legtype : ($cart_dtls->leg_type ? $cart_dtls->leg_type: $roomdtls->skt_type);
+			
+			$this->customize_handeltype  = $this->customize_handeltype ? $this->customize_handeltype : ($cart_dtls->handle_type ? $cart_dtls->handle_type : $roomdtls->handle_types);
+			
+			//$this->customize_skt_height    = $this->customize_skt_height; 
+			
+			if(!empty($cart_dtls->qty))
+			{
+				$this->customize_qty    = $cart_dtls->qty;
+			}
+			else{
+				$this->customize_qty    = $this->customize_qty;
+			}
+			
+			if(!empty($cart_dtls->address))
+			{
+				$this->customize_address    = $cart_dtls->address;
+			}
+			else{
+				$this->customize_address    = $this->customize_address;
+			}
+			
+			//$this->customize_address    = $this->customize_address ?? $cart_dtls->address;
+			//dd($roomdtls->id);
+			$this->customize_cart_id  = session()->get('customize_cart_id');
+			
+			/*if(!empty($cart_dtls->breadth))
+			{
+				$this->customize_width_text    = $cart_dtls->breadth;
+			}
+			else{
+				$this->customize_width_text    = $this->customize_width_text;
+			}*/
+			$this->customize_width_text    = $this->customize_width_text ?? $cart_dtls->breadth;
+			
+			/*if(!empty($cart_dtls->length))
+			{
+				$this->customize_length_text    = $cart_dtls->length;
+			}
+			else{
+				$this->customize_length_text    = $this->customize_length_text;
+			}*/
+			$this->customize_length_text    = $this->customize_length_text ?? $cart_dtls->length;
+			
+			/*if(!empty($cart_dtls->deep))
+			{
+				$this->customize_deep_text    = $cart_dtls->deep;
+			}
+			else{
+				$this->customize_deep_text    = $this->customize_deep_text;
+			}*/
+			
+			$this->customize_deep_text    = $this->customize_deep_text ?? $cart_dtls->deep;
+			//dd($this->customize_length_text);
+			$this->customize_qty    = $this->customize_qty ?? $cart_dtls->qty;
+		}
+			
 		}
 		
-		//$this->load_product();
+		
         return view('livewire.frontend.neworder')->with([
             //'products' =>  $this->products,
 			'products' => Products::query()

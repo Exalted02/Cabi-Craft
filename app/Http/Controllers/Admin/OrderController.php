@@ -18,7 +18,8 @@ class OrderController extends Controller
 		$statusArr = order_status();
 		//echo "<pre>";print_r($data);die;
 		//echo 'order'; die;
-		return view('admin.order.order_list',compact('data','statusArr'));
+		return view('admin.order.order_list_new',compact('data','statusArr'));
+		//return view('admin.order.order_list',compact('data','statusArr'));
 	}
 	public function order_store(Request $request)
 	{
@@ -211,7 +212,17 @@ class OrderController extends Controller
         // Output the generated PDF (inline or download)
         return $dompdf->stream('invoice.pdf');
 	}
-	public function order_edit($exlid='')
+	public function order_edit_bck($exlid='')
+	{
+		$orderDetails = Order_details::where('order_id',$exlid)->get();
+		//echo "<pre>";print_r($orderDetails);die;
+		//$order_type = $order->order_type;
+		$statusArr = order_status();
+		$role_id = Auth::guard('admin')->user()->role_id;
+		$username = Auth::guard('admin')->user()->username;
+		return view('admin.order.order_list_new_details',compact('role_id','username','exlid','orderDetails','statusArr'));
+	}
+	public function order_edit($exlid='') // 30-08-2024
 	{
 		$order = Order::select('order_type')->where('excel_sl_no',$exlid)->first();
 		$order_type = $order->order_type;
@@ -255,7 +266,34 @@ class OrderController extends Controller
 		return view('admin.order.order_list',compact('data','statusArr'));
 
 	}
-	
+	public function order_view_details($ordid='')
+	{
+		$orderDetails = Order_details::with('product','room')->where('order_id',$ordid)->get();
+		//echo "<pre>";print_r($orderDetails);die;
+		//$order_type = $order->order_type;
+		$statusArr = order_status();
+		$role_id = Auth::guard('admin')->user()->role_id;
+		$username = Auth::guard('admin')->user()->username;
+		return view('admin.order.order_list_new_details',compact('role_id','username','ordid','orderDetails','statusArr'));
+	}
+	public function sub_order_details(Request $request)
+	{
+		$id = $request->post('id');
+		$Order_details  = Order_details::with('cabinettypes','materials','cabinetcolour','exposides','shuttermaterials','legtypes','handeltypes')->where('id',$id)->first();
+		
+		//echo "<pre>";print_r($Order_details);die;
+		//dd($Order_details->cabinetcolour->name);
+		//echo $Order_details->cabinetcolour->id;die;
+		$result = array();
+		//$result['cabinettypes']  = $Order_details->cabinettypes->name ?? '';
+		$result['materials']  	 = $Order_details->materials->name ?? '';
+		$result['cabinetcolour']  = $Order_details->cabinetcolour->name ?? '';
+		$result['exposides']  	 = $Order_details->exposides->name ?? '';
+		$result['shuttermaterials'] = $Order_details->shuttermaterials->name ?? '';
+		$result['legtypes']  	 = $Order_details->legtypes->name ?? '';
+		$result['handeltypes']   = $Order_details->handeltypes->name ?? '';
+		echo json_encode($result);
+	}
 	
 	/*public function order_store_details(Request $request) // not used for testing purpose
 	{

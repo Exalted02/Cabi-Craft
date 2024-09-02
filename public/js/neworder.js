@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
 	
-	$('#open-kitchen-form-modal').on('click', function (e) {
-        //e.preventDefault();
+	//$('#open-kitchen-form-modal').on('click', function (e) {
+	$(document).on('click', '#open-kitchen-form-modal', function (e) {
+		//e.preventDefault();
 		if($('#select-room-lists').val()=='')
 		{
 			$('#err_room_type').html('<font color="red">Select Room Type</font>');
@@ -26,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		$('#error_modal_skt_type').html('');
 		$('#error_modal_skt_height').html('');
 		$('#error_modal_handle_type').html('');
-		
+		$('#error_modal_note').html('');
 		
 		if($('#modal_room_material').val()=='')
 		{
@@ -89,7 +90,8 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	});
 	
-	$('#select-room-lists').on('change', function (e) {
+	//$('#select-room-lists').on('change', function (e) {
+	$(document).on('change', '#select-room-lists', function (e) {
 		var data = $(this).val();
 		if(data!='')
 		{
@@ -176,6 +178,87 @@ document.addEventListener('DOMContentLoaded', function() {
 			$('#confirmProjectDelete').modal("hide");
 		});
 	});
+	
+	// submit customize orfer form 
+	//$('#submitCustomizeOrferForm').on('click', function(e) {
+	$(document).on('click', '#submitCustomizeOrferForm', function () {
+        // Initialize form validation
+		//initializeSelect2();
+		//e.preventDefault();
+		$('#error_customize_expo').html('');
+		$('#error_customize_expo_color').html('');
+		$('#error_customize_cab_material').html('');
+		$('#error_customize_box_inner').html('');
+		$('#error_customize_shut_material').html('');
+		$('#error_customize_shut_finish').html('');
+		$('#error_customize_legtype').html('');
+		$('#error_customize_skt_height').html('');
+		$('#error_customize_handle_type').html('');
+		$('#error_customize_address').html('');
+		
+		
+		if($('.customize_expo_name').val()=='')
+		{
+			$('#error_customize_expo').html('<font color="red">Select Expo</font>');
+			return false; 
+		}
+		else if($('.customize_expo_colour').val()=='')
+		{
+			$('#error_customize_expo_color').html('<font color="red">Select Expo Colour</font>');
+			return false; 
+		}
+		else if($('.customize_cabinet_material').val()=='')
+		{
+			$('#error_customize_cab_material').html('<font color="red">Select Cabinet Material</font>');
+			return false; 
+		}
+		else if($('.customize_box_inner_laminate').val()=='')
+		{
+			$('#error_customize_box_inner').html('<font color="red">Select Inner Box</font>');
+			return false; 
+		}
+		else if($('.customize_shutter_material').val()=='')
+		{
+			$('#error_customize_shut_material').html('<font color="red">Select Shutter material</font>');
+			return false; 
+		}
+		else if($('.customize_shutter_finish').val()=='')
+		{
+			$('#error_customize_shut_finish').html('<font color="red">Select Shutter Finish</font>');
+			return false; 
+		}
+		else if($('.customize_legtype').val()=='')
+		{
+			$('#error_customize_legtype').html('<font color="red">Select Leg Type</font>');
+			return false; 
+		}
+		else if($('.customize_skt_height').val()=='')
+		{
+			$('#error_customize_skt_height').html('<font color="red">Select Skt Height</font>');
+			return false; 
+		}
+		else if($('.customize_handeltype').val()=='')
+		{
+			$('#error_customize_handle_type').html('<font color="red">Select Handle Type</font>');
+			return false; 
+		}
+		/*else if($('.customer_address').val()=='')
+		{
+			$('#error_customize_address').html('<font color="red">Address  Require</font>');
+			return false; 
+		}*/
+		else{
+			
+			Livewire.emit('submitcostomizeOrderForm');
+		}
+    });
+	
+	$(document).on('click', '.open-customize-form', function () {
+		var cart_id = $(this).data('id');
+		//alert(cart_id);
+		Livewire.emit('open_customise_form',cart_id);
+	});
+	
 });
 
 function initializeSelect2() {

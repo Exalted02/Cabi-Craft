@@ -18,7 +18,7 @@
                data-delay="2500"
                data-duration="2000"
                data-ease="easeOutExpo"
-               data-effect="skewleft(30,80)"><span class="font-color font-thin-xs heading-color">You can bring into live</span></h3>
+               data-effect="skewleft(30,80)"><span class="font-color font-thin-xs heading-color"><strong>You can bring into live</strong></span></h3>
 			   {{--<h5 class="ms-layer text1 font-white"
                style="left: 120px; top: 280px;"
                data-type="text"
@@ -78,9 +78,10 @@
                <div class="heading-panel">
                      <div class="col-xs-12 col-md-12 col-sm-12 text-center">
                         <!-- Main Title -->
-                        <h1>The new experience using <span class="heading-color">Cabicraft  </span> products</h1>
+                        {{--<h1>The new experience using <span class="heading-color">Cabicraft  </span> products</h1>--}}
+						<h1>Why To <span class="heading-color">Choose  </span> Us</h1>
                         <!-- Short Description -->
-                        <p class="heading-text">From Kitchen to Wardrobes, Hinged to Sliding, Laminate toLacquer glass – Deliver your design with ease using“CABICRAFT” products.</p>
+                        {{--<p class="heading-text">From Kitchen to Wardrobes, Hinged to Sliding, Laminate toLacquer glass – Deliver your design with ease using“CABICRAFT” products.</p>--}}
                      </div>
                   </div>
                </div>
@@ -99,7 +100,7 @@
                      <div class="services-grid">
                         <div class="icons"><i class="flaticon-engine-2"></i></div>
                         <h4><b>1000s of Products</b></h4>
-                        <p></p>
+                        <p>From Kitchen to Wardrobes, Hinged to Sliding, Laminate toLacquer glass – Deliver your design with ease using“CABICRAFT” products.</p>
                      </div>
                   </div>
                   <div class="col-md-4 col-xs-12 col-sm-6">
@@ -111,6 +112,12 @@
                      </div>
                   </div>
                </div>
+			   <div class="row margin-top-20 text-center">
+                   <div class="col-md-12 col-xs-12 col-sm-6">
+                     <!-- services grid -->
+                     <p>You make our products us your site condition.Buy then and assembled</p>
+                   </div>
+			   </div>
             </div>
          </section>
       <!-- =-=-=-=-=-=-= About CarSpot End =-=-=-=-=-=-= -->   

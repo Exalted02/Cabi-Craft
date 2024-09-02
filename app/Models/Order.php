@@ -26,4 +26,9 @@ class Order extends Model
 		'status'
     ];
 	
+	public function order_detail()
+	{
+		return $this->hasMany(Order_details::class, 'order_id', 'id');
+	}
+	
 }

@@ -31,6 +31,8 @@ use App\Http\Controllers\Admin\ProjecttypeController;
 use App\Http\Controllers\Admin\ExposhuttercolourController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\StaticController;
+use App\Http\Controllers\Admin\CmsController;
+use App\Http\Controllers\Admin\EmailManagementController;
 
 Route::middleware('admin')->prefix('admin')->name('')->group(function () {
 	// Admin Panel Routes
@@ -318,13 +320,14 @@ Route::middleware('admin')->prefix('admin')->name('')->group(function () {
 		Route::post('setting-update/{id}', [SettingController::class, 'updateDetails'])->name('admin.setting.update');
 		
 		// order
-		Route::get('order-details', [OrderController::class, 'order'])->name('admin.order');
+		Route::get('order-details', [OrderController::class, 'order'])->name('admin.order'); 
 		
 		Route::post('/order-store-data', [OrderController::class, 'order_store'])->name('admin.orderstore');
 		
 		Route::post('/order-store-details', [OrderController::class, 'order_store_details'])->name('admin.orderdetailsstore');
 		Route::post('/order-status', [OrderController::class, 'order_status'])->name('admin.orderStatusChange');
 		
+		Route::post('/sub-order', [OrderController::class, 'sub_order_details'])->name('admin.subOrderDetails');
 		
 		// Coupon code Routes
 		Route::get('couponcode', [CouponcodeController::class, 'index'])->name('admin.couponcode');
@@ -347,6 +350,7 @@ Route::middleware('admin')->prefix('admin')->name('')->group(function () {
 		Route::get('/order-view/{id}', [OrderController::class, 'order_view']);
 		Route::post('/order-details', [OrderController::class, 'order_search'])->name('admin.order.search');
 		
+		Route::get('/order-view-details/{id}', [OrderController::class, 'order_view_details']);
 		// Account
 		
 		Route::get('account', [AdminController::class, 'user_account'])->name('admin.account');
@@ -398,6 +402,28 @@ Route::middleware('admin')->prefix('admin')->name('')->group(function () {
 		Route::post('/static/multi_delete',[StaticController::class,'multi_delete']);
 		Route::post('/static/status',[StaticController::class,'status']);
 		Route::post('/static/multi_change_status',[StaticController::class,'multi_change_status']);
+		
+		// CMS Routes
+		Route::get('cms', [CmsController::class, 'index'])->name('admin.cms');
+		Route::get('/cms/add-cms',[CmsController::class,'cms_edit'])->name('admin.add-cms');
+		Route::get('/cms/cms-edit/{id}', [CmsController::class, 'cms_edit'])->name('admin.cms-edit');
+		Route::post('/cms/manage_cms_process',[CmsController::class,'manage_cms_process'])->name('admin.cms.manage_cms_process');
+		Route::post('/cms/view-cms',[CmsController::class,'admin.view_cms']);
+		Route::post('/cms/status',[CmsController::class,'status']);
+		Route::post('/cms/multi_change_status',[CmsController::class,'multi_change_status']);
+		Route::get('/cms/cms-apply/{id}', [CmsController::class, 'cms_apply'])->name('cms-apply');
+		Route::post('/cms/cms-apply-view', [CmsController::class, 'cms_apply_view']);
+		
+		// Email Management Routes
+		Route::get('email-management', [EmailManagementController::class,'index'])->name('admin.email-management');
+		Route::get('/email-management/add-email-management',[EmailManagementController::class,'manage_email_management'])->name('admin.add-email-management');
+		Route::get('/email-management/email-management-edit/{id}', [EmailManagementController::class, 'manage_email_management'])->name('admin.email-management-edit');
+		Route::post('/email-management/manage_email_management_process',[EmailManagementController::class,'manage_email_management_process'])->name('admin.email-management.manage_email_management_process');
+		Route::post('/email-management/view_email_management',[EmailManagementController::class,'view_email_management']);
+		Route::post('/email-management/delete',[EmailManagementController::class,'delete']);
+		Route::post('/email-management/multi_delete',[EmailManagementController::class,'multi_delete']);
+		Route::post('/email-management/status',[EmailManagementController::class,'status']);
+		Route::post('/email-management/multi_change_status',[EmailManagementController::class,'multi_change_status']);
 });
 
 Route::prefix('admin')->group(function () {

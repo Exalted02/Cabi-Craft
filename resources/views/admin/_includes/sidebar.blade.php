@@ -141,6 +141,16 @@
                             <i class="align-middle" data-feather="users"></i> <span class="align-middle">Our Staff</span>
                         </a>
                     </li>
+					<li class="sidebar-item {{ (request()->routeIs('admin.cms','admin.add-cms','admin.cms-edit','admin.cms-apply')) ? 'active' : '' }}">
+						<a class="sidebar-link" href="{{ route('admin.cms') }}">
+							<i class="align-middle" data-feather="server"></i> <span class="align-middle">CMS</span>
+						</a>
+					</li>
+					<li class="sidebar-item {{ (request()->routeIs('admin.email-management','admin.add-email-management','admin.email-management-edit')) ? 'active' : '' }}">
+						<a class="sidebar-link" href="{{ route('admin.email-management') }}">
+							<i class="align-middle" data-feather="server"></i> <span class="align-middle">Email Management</span>
+						</a>
+					</li>
                     {{--<li class="sidebar-item {{ (request()->routeIs('admin.apikey')) ? 'active' : '' }}">
                         <a class="sidebar-link" href="{{ url('admin/apikey/add-apikey/1') }}">
                             <i class="align-middle" data-feather="align-justify"></i> <span class="align-middle">Appscript API Key</span>

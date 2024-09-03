@@ -20,10 +20,12 @@
 										<div class="category-grid-box-1">
 											{{--<div class="images"> <img alt="" src="{{ asset('admin-assets/images/product/' .$product->image) }}" class="img-responsive">
 											</div>--}}
+											<a href="{{route('offerdetailpage' ,$product->id )}}">
 											<div class="category-grid-img">
-												<div class="image-background" style="background-image: url('{{ isset($product->image) && $product->image!='' ? asset('admin-assets/images/product/'.$product->image) : asset('/images/noimage.png') }}');"></div>
+											<div class="image-background" style="background-image: url('{{ isset($product->image) && $product->image!='' ? asset('admin-assets/images/product/'.$product->image) : asset('/images/noimage.png') }}');"></div>
 												<img class="main-image" src="{{ isset($product->image) && $product->image!='' ? asset('admin-assets/images/product/'.$product->image) : asset('/images/noimage.png') }}" alt="image">
 											 </div>
+											 </a>
 											<div class="short-description-1">
 												<h3>
 													<a title="" href="{{route('offerdetailpage' ,$product->id )}}">{{$product->name}}</a>
@@ -249,7 +251,7 @@
 											@foreach($list_add_to_cart as $cartlist)
 											<div class="row">
 														<div class="col-md-6 col-xs-6 col-sm-6">
-																	<p>{{ $cartlist->product_name ?? ''}}<br>
+																	<p>{{ $cartlist->product_name ?? ''}}<br> ({{$cartlist->length ?? ''}}x{{$cartlist->breadth ?? ''}}x{{$cartlist->deep ?? ''}})
 																	<br>
 																	</p>
 														</div>

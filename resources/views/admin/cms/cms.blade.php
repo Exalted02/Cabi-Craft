@@ -51,7 +51,7 @@
 										<input class="form-check-input" type="checkbox" value="option1" name="chk_id" data-emp-id="{{$list->id}}">
 									</label>
 								</td>
-								<td>{{$list->cms_page_name}}</td>
+								<td>{{$list->cms_page_name ?? ''}}</td>
 								<td class="text-center">
 									<label class="switch">
 										<input type="checkbox" class="changeStatus" data-id="{{$list->id}}" data-url="{{url('admin/cms/status')}}" {{$list->status==1 ? 'checked' : ''}}>

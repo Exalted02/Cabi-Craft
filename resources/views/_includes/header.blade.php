@@ -11,7 +11,7 @@
 			  <!-- Header Top Left -->
 			  <div class="header-top-left col-md-6 col-sm-6 col-xs-12 hidden-xs">
 				 <ul class="listnone">
-					<li><a href="{{url($aboutus->slug)}}"><i class="fa fa-heart-o" aria-hidden="true"></i> About</a></li>
+					<li><a href="{{url('cms/'. $aboutus->slug)}}"><i class="fa fa-heart-o" aria-hidden="true"></i> About</a></li>
 					{{--<li><a href="faqs.html"><i class="fa fa-folder-open-o" aria-hidden="true"></i> FAQS</a></li>
 					<li class="dropdown">
 					   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-globe" aria-hidden="true"></i> Language <span class="caret"></span></a>

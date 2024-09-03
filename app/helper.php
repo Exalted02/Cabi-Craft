@@ -10,7 +10,7 @@ use App\Models\Legtype;
 use App\Models\Handeltype;
 use App\Models\Exposideprice;
 use App\Models\Couponcode;
-
+use App\Models\EmailManagement;
 
 function getJsonData()
 {
@@ -234,6 +234,11 @@ function couponCodeImages()
 {
 	$images = Couponcode::select('image')->get();
 	return $images;
+}
+function get_email($id)
+{
+	$arr = EmailManagement::where('id',$id)->first();
+	return $arr;
 }
 
 ?>

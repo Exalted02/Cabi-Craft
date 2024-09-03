@@ -17,7 +17,7 @@ class CmsController extends Controller
     public function index()
     {	
 		$cmsPages = Cms_pages::query()->where('status', '!=', 2)->get();
-		//return $cmsPages;
+		//echo "<pre>";print_r($cmsPages);die;
 		$result['data']=$cmsPages;
         return view('admin.cms.cms',$result);
     }

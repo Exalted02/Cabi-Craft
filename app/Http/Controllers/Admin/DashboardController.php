@@ -11,7 +11,6 @@ class DashboardController extends Controller
     public function index()
 	{
 		$totalOrderSale = Order::sum('grand_total');
-		
 		// today's sale
 		$todayDate = date('Y-m-d');
 		$todayOrderSale = Order::where('invoice_date',$todayDate)->sum('grand_total');

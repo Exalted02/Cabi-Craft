@@ -9,7 +9,8 @@ use App\Models\Temporderroomtype;
 use App\Models\Order;
 use App\Models\Order_details;
 use App\Models\Products;
-
+use Illuminate\Support\Facades\Mail;
+//use Mail;
 class FrontendController extends Controller
 {	
 	public function index()
@@ -55,6 +56,8 @@ class FrontendController extends Controller
 	}
 	public function save_order(Request $request)
 	{
+		//$get_email = get_email(5);
+		//echo "<pre>";print_r($get_email);die;
 		$order_id = $request->post('order_id');
 		$cartData = Tempaddtocart::where(['order_id'=>$order_id,'user_id'=>auth()->user()->id])->get();
 		//echo "<pre>";print_r($cartData);die;
@@ -102,9 +105,48 @@ class FrontendController extends Controller
 			$orderDtlsmodel->shutter_finish  	= $val->shutter_finish;
 			$orderDtlsmodel->price  			= $val->price;
 			$orderDtlsmodel->status  			= 1;
-			$orderDtlsmodel->save();
+			//$orderDtlsmodel->save();
 		}
 		
+		//------- mail part ----------
+		$name  		= $request->name;
+		$email  	= $request->email;
+		$subject  	= $request->subject;
+		$message  	= $request->message;
+		$argr       = 'AreaGroup';
+		$get_email = get_email(5);
+		//echo "<pre>";print_r($get_email);die;
+		$get_msg = $get_email->message;
+		$get_subject = $get_email->message_subject;
+		//echo $get_subject; die;
+		
+		//$web_settings = web_settings();
+		//echo "<pre>";print_r($web_settings);die;
+		//$data["email"] = $request->email;
+		$data["email"] = 'exaltedsol04@gmail.com';
+		
+		$cartdata = Temporderroomtype::with(['get_cart_data.get_products'])->where(['order_id'=>$order_id,'user_id'=>auth()->user()->id])->where('cabinet_material', '!=',0)->get();
+		$orderview = view('orderemail', compact('cartdata'))->render();
+		
+		//$orderview = $this->orderEmailCartView($order_id);
+		//echo $orderview;die;
+		
+		$body = str_replace(array("[USERNAME]", "[SCREEN_NAME]", "[ORDERDETAILS]"), array(auth()->user()->username,'',$orderview), $get_msg);
+		
+		$data["body"] = $body;
+		$data["message_subject"] = $get_subject;
+		//echo "<pre>";print_r($data);die;
+		Mail::send('sendmail', $data, function($message)use($data){
+			$message->to($data["email"])
+					->subject($data["message_subject"]);
+		});
+		
+		//----- mail end------
 		return redirect()->back()->with('success', 'Order saved successfully.');
+	}
+	public function orderEmailCartView($orderid='')
+	{
+		$cartdata = Temporderroomtype::with(['get_cart_data.get_products'])->where(['order_id'=>$orderid,'user_id'=>auth()->user()->id])->where('cabinet_material', '!=',0)->get();
+		return view('orderemail',compact('cartdata','orderid'));
 	}
 }

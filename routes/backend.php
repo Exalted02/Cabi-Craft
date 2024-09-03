@@ -33,11 +33,11 @@ use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\StaticController;
 use App\Http\Controllers\Admin\CmsController;
 use App\Http\Controllers\Admin\EmailManagementController;
-
-Route::middleware('admin')->prefix('admin')->name('')->group(function () {
+//Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
+Route::middleware('admin')->prefix('admin')->group(function () {
 	// Admin Panel Routes
 	// Datatable Routes
-		Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
+		Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 		Route::get('/add-invoice', [AdminController::class, 'index'])->name('admin.index');
 		Route::get('/materialUrl', [AdminController::class, 'getMaterialData'])->name('admin.materialUrl');
 		Route::get('/cabinetcolour', [AdminController::class, 'getCabinetcolourData']);

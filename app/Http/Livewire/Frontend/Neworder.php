@@ -413,16 +413,36 @@ class Neworder extends Component
 					if($chkProductExist==0)
 					{
 						$product = Products::find($productId);
-						//dd($product);
+						$lengthArray = explode(",", $product->length);
+						$widthArray = explode(",", $product->breadth);
+						$deepArray = explode(",", $product->deep);
+						if (count($lengthArray) > 1) {
+							$minLength = min($lengthArray);
+						} else {
+							$minLength = $lengthArray[0];
+						}
+						
+						if (count($widthArray) > 1) {
+							$minWidth = min($widthArray);
+						} else {
+							$minWidth = $widthArray[0];
+						}
+						
+						if (count($deepArray) > 1) {
+							$minDeep = min($deepArray);
+						} else {
+							$minDeep = $deepArray[0];
+						}
+						
 						if ($product) {
 							$model=new Tempaddtocart();
 							$model->user_id			=	auth()->user()->id;
 							$model->product_id		=	$productId;
 							$model->product_name	=	$product->name;
 							$model->price			=	$product->price;
-							$model->length			=	$product->length;
-							$model->breadth			=	$product->breadth;
-							$model->deep			=   $product->deep;
+							$model->length			=	$minLength;
+							$model->breadth			=	$minWidth;
+							$model->deep			=   $minDeep;
 							$model->order_id		=   $check_room_data->order_id;
 							$model->room_type_id	=   $check_room_data->id;
 							$model->save();

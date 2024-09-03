@@ -41,13 +41,12 @@ class EmailManagementController extends Controller
 	public function manage_email_management_process(Request $request)
     {
 		if($request->post('id')>0){
-			$arr = EmailManagement::updateOrCreate([
-				'id'   => $request->post('id'),
-			],[
-				'message'     		=> $request->post('message'),
-				'message_subject' 	=> $request->post('message_subject'),
-				'status'  => $request->post("status"),
-			]);
+			$model = EmailManagement::find($request->post('id'));
+			$model->updated_at=date('Y-m-d h:i:s');
+			$model->message=$request->post('message');
+			$model->message_subject=$request->post('message_subject');
+			$model->status=$request->post('status');
+			$model->save();
 			$msg="Data has been updated successfully.";
 		}else{
 			$model=new EmailManagement();

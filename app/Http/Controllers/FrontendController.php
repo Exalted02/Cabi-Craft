@@ -130,8 +130,8 @@ class FrontendController extends Controller
 		
 		//$orderview = $this->orderEmailCartView($order_id);
 		//echo $orderview;die;
-		
-		$body = str_replace(array("[USERNAME]", "[SCREEN_NAME]", "[ORDERDETAILS]"), array(auth()->user()->username,'',$orderview), $get_msg);
+		$username = auth()->user()->fname.''.auth()->user()->lname;
+		$body = str_replace(array("[USERNAME]", "[SCREEN_NAME]", "[ORDERDETAILS]"), array($username,'',$orderview), $get_msg);
 		
 		$data["body"] = $body;
 		$data["message_subject"] = $get_subject;

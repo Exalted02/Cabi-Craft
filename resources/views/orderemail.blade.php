@@ -66,11 +66,11 @@
                         <th>QTY</th>
                         <th>C.C Material</th>
                         <th>C.C colour </th>
-                        <th>Expo side</th>
+                        {{--<th>Expo side</th>
                         <th>Expo Colour</th>
                         <th>Shutter Material</th>
                         <th>Shutter Colour</th>
-                        <th>Leg Type</th>
+                        <th>Leg Type</th>--}}
                         <th> Skthigh</th>
                         <th>Handel Type </th>
 						<th>Note </th>
@@ -121,10 +121,10 @@
                         <td>{{ $val->qty ?? ''}} </td>
                         <td>{{$material->name ?? 'N/A'}}</td>
                         <td>{{$cabinet_color->name ?? 'N/A'}} </td>
-                        <td>{{$exposide->name ?? 'N/A'}}</td>
+							{{--<td>{{$exposide->name ?? 'N/A'}}</td>
                         <td>{{ $expocolor->name ?? 'N/A'}}</td>
                         <td>{{ $shutMaterial->name ?? 'N/A'}}</td>
-                        <td>{{$shutFinish->name ?? 'N/A'}} </td>
+							<td>{{$shutFinish->name ?? 'N/A'}} </td>--}}
                         <td>{{ $Legtype->name ?? 'N/A'}}</td>
                         <td>{{$cart->skt_height ?? 'N/A'}}</td>
                         <td>{{$handletyp->name ?? 'N/A'}} </td>
